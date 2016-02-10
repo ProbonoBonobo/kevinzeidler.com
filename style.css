@@ -1,0 +1,74 @@
+h2 {
+  font-family: 'Proxima Nova Alt Condensed', 'Proxima Nova Condensed', 'Helvetica';
+font-weight: 800;
+font-style: italic;
+text-transform: uppercase;
+letter-spacing: 1.4px;
+font-size: 72px;
+}
+p {
+line-height: 30px; 
+font-family: 'Capita','Proxima Nova', 'Proxima Nova', 'Open Sans';
+font-weight: 100;
+font-size: 20px;
+
+}
+
+li {
+  font-family: 'Capita','Proxima Nova Condensed';
+font-weight: 400;
+}
+a {
+  color: #CA4603;
+}
+
+#text-wrapper{
+  width: 80%;
+ margin-left: 10%;
+ position: relative;
+ z-index:999;
+background-color: #C52304;
+margin-bottom: 30%;
+
+}
+
+#heading {
+	margin-top: 120px;
+	background-color: DCAB06;
+	position: relative;
+	text-indent: 10px;
+	width: 100%;
+}
+
+#rest {
+	background-color: #FFFCE7;
+	position: absolute;
+	padding-left: 35px;
+	margin-left: 17px;
+}
+.bordered {
+  display: inline-block;
+  padding: 20px;
+  /* Fallback dashed border
+     - the 4px width here is overwritten with the border-image-width (if set)
+     - the border-image-width can be omitted below if it is the same as the 4px here
+  */
+  border: dashed 4px #129195;
+  
+  /* Individual border image properties */
+  border-image-source: url("potemkinvillage.local/dashed-teal.png");
+  border-image-slice: 2;
+  border-image-repeat: round;  
+  
+  /* or use the shorthand border-image */
+ /* border-image: url("http://i.stack.imgur.com/wLdVc.png") 2 round;*/
+  border-image: url("potemkinvillage.local/dashed-teal.png") 2 round;
+  
+}
+
+
+/*The border image of this one creates wider gaps*/
+.largeGaps {
+  border-image-source: url("/dashed-teal.png");
+  margin: 0 20px;
+}
