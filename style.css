@@ -1,9 +1,10 @@
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css);
 h2 {
-  font-family: 'Proxima Nova Alt Condensed', 'Proxima Nova Condensed', 'Helvetica';
+  font-family: 'Open Sans Hebrew', 'Proxima Nova Condensed', 'Helvetica';
 font-weight: 800;
 font-style: italic;
 text-transform: uppercase;
-letter-spacing: 1.4px;
+letter-spacing: .5px;
 font-size: 72px;
 }
 p {
