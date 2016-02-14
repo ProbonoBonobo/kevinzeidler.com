@@ -1,0 +1,79 @@
+
+.ribbon {
+   width: 100%;
+   position: relative;
+   text-align: center;
+   font-size: 40px!important;
+   background: #dcaa06;
+   background: -webkit-gradient(linear, left top, left bottom, from(#dcaa06), to(#dcaa06));
+   background: -webkit-linear-gradient(top, #dcaa06, #dcaa06);
+   background: -moz-linear-gradient(top, #dcaa06, #dcaa06);
+   background: -ms-linear-gradient(top, #dcaa06, #dcaa06);
+   background: -o-linear-gradient(top, #dcaa06, #dcaa06);
+   background-image: -ms-linear-gradient(top, #dcaa06 0%, #dcaa06 100%);
+   -webkit-box-shadow: rgba(000,000,000,.3) 0 1px 1px;
+   -moz-box-shadow: rgba(000,000,000,1) 0 1px 1px;
+   box-shadow: rgba(000,000,000,) 0px 5px 7px -2px;
+/*   font-family: 'Helvetica Neue',Helvetica, sans-serif;*/
+   }
+.ribbon h2 {
+  /* font-size: 25px!important;*/
+   color: #262626;
+   /*text-shadow: #eae6ca 0 1px 0;*/
+   margin:0px;
+   padding: 15px 10px;
+   }
+.ribbon:before, .ribbon:after {
+   content: '';
+   position: absolute;
+   display: block;
+   bottom: -1em;
+   border: 1.5em solid #dcaa06;
+   z-index: -1;
+   }
+.ribbon:before {
+   left: -2em;
+   border-right-width: 1.5em;
+   border-left-color: transparent;
+   -webkit-box-shadow: rgba(000,000,000,0.4) 1px 1px 1px;
+   -moz-box-shadow: rgba(000,000,000,0.4) 1px 1px 1px;
+   box-shadow: rgba(000,000,000,0.4) 1px 1px 1px;
+   }
+.ribbon:after {
+   right: -2em;
+   border-left-width: 1.5em;
+   border-right-color: transparent;
+   -webkit-box-shadow: rgba(000,000,000,0.4) -1px 1px 1px;
+   -moz-box-shadow: rgba(000,000,000,0.4) -1px 1px 1px;
+   box-shadow: rgba(000,000,000,0.4) -1px 1px 1px;
+   }
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+   border-color: #a57f02 transparent transparent transparent;
+   position: absolute;
+   display: block;
+   border-style: solid;
+   bottom: -1em;
+   content: '';
+   }
+.ribbon .ribbon-content:before {
+   left: 0;
+   border-width: 1em 0 0 1em;
+   }
+.ribbon .ribbon-content:after {
+   right: 0;
+   border-width: 1em 1em 0 0;
+   }
+.ribbon-stitches-top {
+   margin-top:2px;
+   border-top: 1px dashed rgba(0, 0, 0, 0.2);
+   -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+   -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+   box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
+   }
+.ribbon-stitches-bottom {
+   margin-bottom:2px;
+   border-top: 1px dashed rgba(0, 0, 0, 0.2);
+   -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+   -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+   box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.3);
+   }
