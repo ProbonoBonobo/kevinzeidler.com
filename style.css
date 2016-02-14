@@ -72,11 +72,17 @@ a {
  position: relative;
 
  z-index: 100;
-/*background-color: #FFCC66*/;
-margin-bottom: 30%;
-padding-bottom: 40%;
 
+}
 
+.homepage-wrapper {
+ margin-bottom: 20%;
+padding-bottom: 20%;
+
+}
+
+.blog {
+  margin-bottom: 20%;
 }
 
 /*#banner {
