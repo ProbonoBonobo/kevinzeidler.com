@@ -1,0 +1,48 @@
+{
+	"length": "4",
+	"posts": [
+	{
+		"id": "0",
+		"title": "Creating a Blog From Scratch",
+		"date": "2016-02-14",
+		"time": "2:00:00AM",
+		"author": "Kevin Zeidler",
+		"avatar": "me.jpg",
+		"content": "<p>Here's my very first blog post. If you're reading this, it means we've successfully created a blog from scratch!</p> <p>Now hold on. Blog from scratch? What does that mean exactly? Well, the post you're currently reading is actually written as a JSON object with fields corresponding to the post's 'title', 'author', 'date'. At some point in the future, we'll probably write an GUI interface to the blog program that outputs JSON objects, and saves us from having to compose new posts in straight-up object notation. The blog.html page requests the json document, and if the request is successful, it will proceed to construct an HTML representation of the formatted page. For starters, it grabs the 0th blog post's title, inserts it between h1 tags, and appends the header to a designated DOM node. Cool, huh?</p><p>So, what happens next? Well, currently I haven't even gotten that far, but our next step will be to write some logic that iterates through the numbered keys of a 'posts.json' response object, and prints fixednum blog posts in order of recency! In fact, let's see if we can't figure that out right now. Stay tuned! </p>"
+	}, {
+		"id": "1",
+		"title": "Displaying Posts in Order of Recency",
+		"date": "2016-02-14",
+		"time": "2:38:00AM",
+		"author": "Kevin Zeidler",
+		"avatar": "me.jpg",
+		"content": "<p>Here's the second post. It should display above the first post.</p>"
+	}, {
+		"id": "2",
+		"title": "Quick Schema Revision",
+		"date": "2016-02-14",
+		"time": "3:38:00AM",
+		"author": "Kevin Zeidler",
+		"avatar": "me.jpg",
+		"content": "<p>Interesting. It seems the previous schema format (which had integer keys and blogpost objectvals) isn't compatible with ES5. We can't easily enumerate the items in an array; we need to hash the post's id to a static 'id' field and iteratively inspect obj[id] for each object in the array. I'm revising the schema to wrap the entire object in a 'post' key for some reason that made a lot more sense in my head 5 minutes ago. I'm about 75% sure this is doomed to fail.</p>"
+	}, {
+		"id": "3",
+		"title": "D'oh! Another Schema Revision",
+		"date": "2016-02-14",
+		"time": "4:38:00AM",
+		"author": "Kevin Zeidler",
+		"avatar": "me.jpg",
+		"content": "<p>As I was starting to suspect in the last post, and briefly forgot because it's like practically dawn and I'm tired, the previous schema reduces to a single post. Why? Because you hashed all your posts to the same key, ya dummy! Try storing the objects in an array. And also, for the hell of it, because we can and since it was weirdly non-trivial to determine on the fly, I've added a 'length' property to the keys.</p>"
+
+	}, {
+		"id" : "4",
+		"title" : "Well, I'll be darned. Looks like we got ourselves a blog.",
+		"date": "2016-02-14",
+		"time:":"5:27:00AM",
+		"author": "Kevin Zeidler",
+		"avatar": "me.jpg",
+		"content":"<p>Now to make it look pretty.</p>"
+	}
+	]
+
+}
