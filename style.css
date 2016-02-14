@@ -27,7 +27,7 @@ p {
 
 
 
-ul.b {
+ul {
 
    list-style: none;
    margin-left: 0;
@@ -37,17 +37,17 @@ ul.b {
    text-indent: -1em;
 }
 
-li.b {
+li {
   /*padding-left: 33.3%;*/
   text-indent: -1.55em;
-  line-height: 17px;
+  line-height: 18px;
   -webkit-margin-before: .1em;
     -webkit-margin-after: .3em;
     -webkit-margin-start: 0em;
     -webkit-margin-end: 0px;
 }
 
-li.b:before {
+li:before {
   content: "⤖";
   color: #CA4603;
   padding-right: 10px;
@@ -59,7 +59,7 @@ li {
 font-family: 'Kreon';
 font-weight: 400;
 font-style: italic;
-font-size: 16px;
+font-size: 15px;
 }
 a {
   color: #CA4603;
@@ -82,7 +82,8 @@ padding-bottom: 20%;
 }
 
 .blog {
-  margin-bottom: 20%;
+  margin-bottom: 30%;
+  padding-bottom: 20%;
 }
 
 /*#banner {

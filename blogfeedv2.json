@@ -1,5 +1,5 @@
 {
-	"length": "4",
+	"length": "3",
 	"posts": [
 	{
 		"id": "0",
@@ -18,30 +18,13 @@
 		"avatar": "me.jpg",
 		"content": "<p>Here's the second post. It should display above the first post.</p>"
 	}, {
-		"id": "2",
-		"title": "Quick Schema Revision",
-		"date": "2016-02-14",
-		"time": "3:38:00AM",
-		"author": "Kevin Zeidler",
-		"avatar": "me.jpg",
-		"content": "<p>Interesting. It seems the previous schema format (which had integer keys and blogpost objectvals) isn't compatible with ES5. We can't easily enumerate the items in an array; we need to hash the post's id to a static 'id' field and iteratively inspect obj[id] for each object in the array. I'm revising the schema to wrap the entire object in a 'post' key for some reason that made a lot more sense in my head 5 minutes ago. I'm about 75% sure this is doomed to fail.</p>"
-	}, {
-		"id": "3",
-		"title": "D'oh! Another Schema Revision",
-		"date": "2016-02-14",
-		"time": "4:38:00AM",
-		"author": "Kevin Zeidler",
-		"avatar": "me.jpg",
-		"content": "<p>As I was starting to suspect in the last post, and briefly forgot because it's like practically dawn and I'm tired, the previous schema reduces to a single post. Why? Because you hashed all your posts to the same key, ya dummy! Try storing the objects in an array. And also, for the hell of it, because we can and since it was weirdly non-trivial to determine on the fly, I've added a 'length' property to the keys.</p>"
-
-	}, {
-		"id" : "4",
+		"id" : "2",
 		"title" : "Well, I'll be darned. Looks like we got ourselves a blog.",
 		"date": "2016-02-14",
 		"time:":"5:27:00AM",
 		"author": "Kevin Zeidler",
 		"avatar": "me.jpg",
-		"content":"<p>Now to make it look pretty.</p>"
+		"content":"<p>Phew! The hard part's largely done. Now to create a nice CMS interface to the blog, make the blog itself look pretty, and implement a reasonable pagination strategy. I also need to do the following:</p><ul><li>Implement permanent URLs for blog posts</li><li>Write a CMS utility method that encodes HTML as a JSON-compatible ASCII string</li><li>Introduce style rules for code snippets</li><li>Integrate homepage nav bar(s)</li></ul>"
 	}
 	]
 
