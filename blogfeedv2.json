@@ -1,31 +1,71 @@
 {
-	"length": "3",
+	"length": "4",
 	"posts": [
 	{
 		"id": "0",
 		"title": "Creating a Blog From Scratch",
+		"lede" : "Sure we <i>could</i> use a ready-made CMS like Wordpress or Jekyll. What fun would that be?",
 		"date": "2016-02-14",
+		"day" : "14",
+		"month" : "February",
+		"year" : "2016",
 		"time": "2:00:00AM",
+		"image" : "/images/demo/standard.jpg",
 		"author": "Kevin Zeidler",
 		"avatar": "me.jpg",
-		"content": "<p>Here's my very first blog post. If you're reading this, it means we've successfully created a blog from scratch!</p> <p>Now hold on. Blog from scratch? What does that mean exactly? Well, the post you're currently reading is actually written as a JSON object with fields corresponding to the post's 'title', 'author', 'date'. At some point in the future, we'll probably write an GUI interface to the blog program that outputs JSON objects, and saves us from having to compose new posts in straight-up object notation. The blog.html page requests the json document, and if the request is successful, it will proceed to construct an HTML representation of the formatted page. For starters, it grabs the 0th blog post's title, inserts it between h1 tags, and appends the header to a designated DOM node. Cool, huh?</p><p>So, what happens next? Well, currently I haven't even gotten that far, but our next step will be to write some logic that iterates through the numbered keys of a 'posts.json' response object, and prints fixednum blog posts in order of recency! In fact, let's see if we can't figure that out right now. Stay tuned! </p>"
+		"tags" : ["random", "words", "stapler"],
+		"displayoption" : "default",
+		"content": ["Here's my very first blog post. If you're reading this, it means we've successfully created a blog from scratch!</p> <p>Now hold on. Blog from scratch? What does that mean exactly? Well, the post you're currently reading is actually written as a JSON object with fields corresponding to the post's 'title', 'author', 'date'.", "At some point in the future, we'll probably write an GUI interface to the blog program that outputs JSON objects, and saves us from having to compose new posts in straight-up object notation. The blog.html page requests the json document, and if the request is successful, it will proceed to construct an HTML representation of the formatted page. For starters, it grabs the 0th blog post's title, inserts it between h1 tags, and appends the header to a designated DOM node. Cool, huh?</p><p>So, what happens next? Well, currently I haven't even gotten that far, but our next step will be to write some logic that iterates through the numbered keys of a 'posts.json' response object, and prints fixednum blog posts in order of recency! In fact, let's see if we can't figure that out right now. Stay tuned!"]
 	}, {
 		"id": "1",
-		"title": "Displaying Posts in Order of Recency",
+		"title": "Display posts in order of recency",
+		"lede" : "",
 		"date": "2016-02-14",
+		"day" : "14",
+		"month" : "February",
+		"year" : "2016", 
 		"time": "2:38:00AM",
+		"image" : "/images/time.jpg",
 		"author": "Kevin Zeidler",
 		"avatar": "me.jpg",
-		"content": "<p>Here's the second post. It should display above the first post.</p>"
+		"tags" : ["carpet", "pajamas", "lithuania"],
+        "displayoption" : "default",
+		"content": ["Here's the second post. It should display above the first post."]
 	}, {
 		"id" : "2",
-		"title" : "Well, I'll be darned. Looks like we got ourselves a blog.",
-		"date": "2016-02-14",
+		"title" : "Well, I'll be darned.",
+		"lede" : "Looks like we got ourselves a blog.",
+		"date" : "2016-02-14",
+		"day" : "14",
+		"month" : "February",
+		"year" : "2016",
+		"time:" : "5:27:00AM",
+		"image" : "/images/demo/standard2.jpg",
+		"author" : "Kevin Zeidler",
+		"avatar" : "me.jpg",
+		"tags" : ["carpet", "pizza", "tresspassing"],
+        "displayoption" : "default",
+		"content":["Phew! The hard part's largely done. Now to create a nice CMS interface to the blog, make the blog itself look pretty, and implement a reasonable pagination strategy. I also need to do the following:","</p><ul><li>Implement permanent URLs for blog posts</li><li>Write a CMS utility method that encodes HTML as a JSON-compatible ASCII string</li><li>Introduce style rules for code snippets</li><li>Integrate homepage nav bar(s)</li></ul>"]
+	},
+      {
+
+      "id": "3",
+		"title" : "Let's travel through time.",
+		"lede" : "Wheee! Wheeee! *Kills Hitler* Wheee!",
+		"date" : "2016-02-14",
+		"day" : "14",
+		"month" : "March",
+		"year" : "2019",
 		"time:":"5:27:00AM",
+		"image" : "/images/time-travel.jpg",
 		"author": "Kevin Zeidler",
 		"avatar": "me.jpg",
-		"content":"<p>Phew! The hard part's largely done. Now to create a nice CMS interface to the blog, make the blog itself look pretty, and implement a reasonable pagination strategy. I also need to do the following:</p><ul><li>Implement permanent URLs for blog posts</li><li>Write a CMS utility method that encodes HTML as a JSON-compatible ASCII string</li><li>Introduce style rules for code snippets</li><li>Integrate homepage nav bar(s)</li></ul>"
+		"tags" : [ "pizza", "socks", "eels"],
+        "displayoption" : "default",
+		"content": ["I actually wrote this on the same day as the other ones, but today, March 16, 2019, I've decided to be a sneaky person. A sneaky, sneaky person."]
+
 	}
 	]
 
 }
+
