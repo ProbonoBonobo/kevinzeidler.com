@@ -79,7 +79,7 @@
       "month": "February",
       "year": "2016",
       "time:": "8:08:00PM",
-      "image": "images/4.jpg",
+      "image": "images/4-alt.jpg",
       "author": "Kevin Zeidler",
       "avatar": "me.jpg",
       "tags": [
@@ -90,7 +90,7 @@
       ],
       "displayoption": "default",
       "content": [
-  "As you might have guessed, a tag engine generates links to posts that all have a certain tag. It's basically a filter operation over a tree, however since the nodes we're interested are all located at a specific level of depth, I suspect in practice this is much closer in time complexity to filtering an array. In fact, let's append that array directly to this post. <ul class=\"tags\">",
+  "As you might have guessed, a tag engine generates links to posts that all have a certain tag. It's basically a filter operation over a tree, however since the nodes we're interested are all located at a specific level of depth, I suspect in practice this is much closer in time complexity to filtering an array. In fact, let's append that array directly to this post. </p><ul id=\"tags-demo\">",
         "If all is working according to plan, this post should now show a bulleted list of all our tags."
       ]
     }

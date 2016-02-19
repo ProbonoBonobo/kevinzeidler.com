@@ -1,5 +1,183 @@
 /* =Main INIT Function
 -------------------------------------------------------------- */
+
+//window.onload = function onLoad() {
+//	console.log("initializing progressbar");
+//	var circle = new ProgressBar.Circle('#progressbar', {
+//		color: '#FCB03C',
+//		duration: 3000,
+//		easing: 'easeInOut'
+//		text: {
+//			// Initial value for text.
+//			// Default: null
+//			value: '80',
+//
+//			// Class name for text element.
+//			// Default: 'progressbar-text'
+//			className: 'progressbar__label',
+//		}
+//	});
+//
+//	circle.animate(1);
+//};
+
+
+var gradient = ["#FF5A5A",
+				"#FF5C58",
+				"#FF5F56",
+				"#FF6254",
+				"#FF6552",
+				"#FF6851",
+				"#FF6A4F",
+				"#FF6D4D",
+				"#FF704B",
+				"#FF7349",
+				"#FF7648",
+				"#FF7946",
+				"#FF7B44",
+				"#FF7E42",
+				"#FF8140",
+				"#FF843E",
+				"#FF873D",
+				"#FF893B",
+				"#FF8C39",
+				"#FF8F37",
+				"#FF9236",
+				"#FF9534",
+				"#FF9832",
+				"#FF9A30",
+				"#FF9D2E",
+				"#FFA02D",
+				"#FFA32B",
+				"#FFA629",
+				"#FFA827",
+				"#FFAB25",
+				"#FFAE24",
+				"#FFB122",
+				"#FFB420",
+				"#FFB71E",
+				"#FFB91C",
+				"#FFBC1B",
+				"#FFBF19",
+				"#FFC217",
+				"#FFC515",
+				"#FFC713",
+				"#FFCA11",
+				"#FFCD10",
+				"#FFD00E",
+				"#FFD30C",
+				"#FFD60A",
+				"#FFD808",
+				"#FFDB07",
+				"#FFDE05",
+				"#FFE103",
+				"#FFE401",
+				"#FFE700",
+				"#F8E700",
+				"#F5E800",
+				"#F1E800",
+				"#EEE900",
+				"#EBE900",
+				"#E7EA00",
+				"#FBE700",
+				"#E4EA00",
+				"#E1EB00",
+				"#DDEB00",
+				"#DAEC00",
+				"#D7EC00",
+				"#D3ED00",
+				"#D0ED00",
+				"#CDEE00",
+				"#C9EE00",
+				"#C6EF00",
+				"#C3EF00",
+				"#BFF000",
+				"#BCF000",
+				"#B9F100",
+				"#B5F100",
+				"#B2F200",
+				"#AFF200",
+				"#ACF300",
+				"#A8F300",
+				"#A5F300",
+				"#A2F400",
+				"#9EF400",
+				"#9BF500",
+				"#98F500",
+				"#94F600",
+				"#91F600",
+				"#8EF700",
+				"#8AF700",
+				"#87F800",
+				"#84F800",
+				"#80F900",
+				"#7DF900",
+				"#7AFA00",
+				"#76FA00",
+				"#73FB00",
+				"#70FB00",
+				"#6CFC00",
+				"#69FC00",
+				"#66FD00",
+				"#62FD00",
+				"#5FFE00",
+				"#5CFE00",
+				"#59FF00"];
+
+function move() {
+	var elem = document.getElementById("myBar");
+	var width = 0;
+	var id = setInterval(frame, 10);
+	var health = elem.getAttribute("data-percent-correct");
+	function frame() {
+		if (width == health) {
+			clearInterval(id);
+		} else {
+			width++;
+			elem.style.width = width + '%';
+			document.getElementById("myBar").style.backgroundColor = gradient[width];
+			document.getElementById("blogHealth" ).innerHTML = (width + '%');
+			document.getElementById( "blogHealth" ).style.left = width + '%';
+
+
+
+		}
+	}
+
+}
+
+
+//$(document).on({
+//				   change: function(e) {
+//
+//					   var self = this,
+//						   span = $(self).parent("span"),
+//						   val = parseInt(self.value),
+//						   red = new Color(232, 9, 26),
+//						   white = new Color(255, 255, 255),
+//						   green = new Color(6, 170, 60),
+//						   start = green,
+//						   end = white;
+//
+//					   $(".value", span).text(val);
+//
+//					   if (val > 50) {
+//						   start = white,
+//								   end = red;
+//						   val = val % 51;
+//					   }
+//					   var startColors = start.getColors(),
+//						   endColors = end.getColors();
+//					   var r = Interpolate(startColors.r, endColors.r, 50, val);
+//					   var g = Interpolate(startColors.g, endColors.g, 50, val);
+//					   var b = Interpolate(startColors.b, endColors.b, 50, val);
+//
+//					   span.css({
+//									backgroundColor: "rgb(" + r + "," + g + "," + b + ")"
+//								});
+//				   }
+//			   }, "input[type='range']");
+
 function initializeMaven() {
 	"use strict";
 	
