@@ -71,6 +71,7 @@
 	<script src="js/modernizr.js"></script>
 	<script src="js/progressbar.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="js/knockout.js"></script>
 	<style>
 
 		#myProgress {
@@ -285,7 +286,7 @@
 										<!--<img class="test-icon" src="images/success.png" width="30%" height="30%">-->
 									</div>
 									<div class="col-xs-10 test-icon">
-										<li class="cat-item test-description"><a href="#">Are the posts in reverse chronological order?</a></li>
+										<li class="cat-item test-description"><a href="#">Are there posts to display for the present view?</a></li>
 									</div>
 								</div>
 								<div class="row">
@@ -307,53 +308,51 @@
 
 						<!-- categories widget -->
 						<div class="widget">
-							<h5>CATEGORIES</h5>
-							<ul>
-								<li class="cat-item"><a href="#">Standard</a> (3)</li>
-								<li class="cat-item"><a href="#">Video</a> (6)</li>
-								<li class="cat-item"><a href="#">Gallery</a> (12)</li>
-								<li class="cat-item"><a href="#">Quotes</a> (4)</li>
+							<h5>EXPOSED PIPES</h5>
+							<ul class="categories-widget">
+								<li>Current tag: <strong data-bind="text: currentTag"></strong></li>
+								<p>Focused content tag</p>
+
+								<!--<li class="cat-item"><a href="#">Standard</a> (3)</li>-->
+								<!--<li class="cat-item"><a href="#">Video</a> (6)</li>-->
+								<!--<li class="cat-item"><a href="#">Gallery</a> (12)</li>-->
+								<!--<li class="cat-item"><a href="#">Quotes</a> (4)</li>-->
 							</ul>
+							<button data-bind="click: updateTag ">View jQuery Posts</button>
+
 						</div><!-- END -->
 
 						<!-- tagcloud widget -->
 						<div class="widget" id="tagCloud">
 							<h5>TAGS</h5>
 							<div class="tagcloud">
-								<a href='#'>Portfolio</a>
-								<a href='#'>Tag</a>
-								<a href='#'>Demo</a>
-								<a href='#'>Blog</a>
 							</div>
 						</div><!-- END -->
 
 						<!-- archives widget -->
 						<div class="widget widget-archive">
 							<h5>Archives</h5>
-							<ul>
-								<li><a href="#">July 2013</a></li>
-								<li><a href="#">June 2013</a></li>
+							<ul id="date-archives">
+								<!--<li><a href="#">July 2013</a></li>-->
+								<!--<li><a href="#">June 2013</a></li>-->
 							</ul>
 						</div><!-- END -->
 
 						<!-- recent comments widget -->
-						<div class="widget widget-recent-comments">
-							<h5>Recent Comments</h5>
-							<ul id="recentcomments">
-								<li class="recentcomments">Admin on <a href="#">Standard post with goodies.</a></li>
-								<li class="recentcomments">Aether-Themes on <a href="#">Fluid video. Yeah we got that.</a></li>
-								<li class="recentcomments">Admin on <a href="#">Gallery post with slider.</a></li>
-							</ul>
-						</div><!-- END -->
+						<!--<div class="widget widget-recent-comments">-->
+							<!--<h5>Recent Comments</h5>-->
+							<!--<ul id="recentcomments">-->
+								<!--<li class="recentcomments">Admin on <a href="#">Standard post with goodies.</a></li>-->
+								<!--<li class="recentcomments">Aether-Themes on <a href="#">Fluid video. Yeah we got that.</a></li>-->
+								<!--<li class="recentcomments">Admin on <a href="#">Gallery post with slider.</a></li>-->
+							<!--</ul>-->
+						<!--</div>&lt;!&ndash; END &ndash;&gt;-->
 
 						<!-- recent posts widget -->
 						<div class="widget widget-recent-entries">
 							<h5>Recent Posts</h5>
-							<ul>
-								<li><a href="#" title="Post Title">Standard post with goodies.</a></li>
-								<li><a href="#" title="Post Title">Fluid video. Yeah we got that.</a></li>
-								<li><a href="#" title="Post Title">Gallery post with slider.</a></li>
-							</ul>
+
+
 						</div><!-- END -->
 
 					</div>
@@ -407,6 +406,18 @@
                     fp = "blogfeedv2.json";
                     break;
             }
+			function AppViewModel() {
+				this.currentTag =
+						ko.observable( "kittens" );
+				this.updateTag = function() {
+					var val = document.getElementById("selectedContentTag");
+				};
+			}
+
+			// Activates knockout.js
+			ko.applyBindings(new AppViewModel());
+
+
 			function getPostsForCurrentView(maxNum, view) {
 				// Return an array containing the IDs of the posts we need to load.
 				// 2/18: don't automatically load every post. instead, require callee to specify a view flag of 'all'
@@ -454,6 +465,7 @@
 								  console.log( arr );
 							  }
 				);
+				initiateUnitTest(3, [arr]);
 				for ( i = 0; i < arr.length; i += 2) {
 					console.log(i);
 					$( "<a href='#" + arr[ i+1 ] + "' id='tag" + i + "' data-freq='"+ arr[i] + "' >" + arr[ i+1 ] + "</a>" )
@@ -462,39 +474,13 @@
 			}
 
 
-//					else {
-//						$( "<div class='tagcloud'><a href='#"
-//						   + arr[ tag ]
-//						   + "' id='tag"
-//						   + tag
-//						   + "'>"
-//						   + arr[ tag ]
-//						   + "</a></div>"
-//						)
-//								.insertAfter( 'tag' + tag - 1 );
-//						console.log(  "<div class='tagcloud'><a href='#"
-//									  + arr[ tag ]
-//									  + "' id='tag"
-//									  + tag
-//									  + "'>"
-//									  + arr[ tag ]
-//									  + "</a></div>");
-//						console.log( 'arr[tag] is ' + arr[ tag ] );
-//					}}
-
-//
-
-
-
-
-
-
-
-
-
             var callback;
             callback = function ( data ) {
-				$('<img src = "images/success.png">').insertChildAfter("ut1");
+				if (data) {
+					($( '<img src = "/images/success.png">' )
+					).appendTo( "#ut1" );
+				}
+
 				console.log( "Initiating load sequence" )
             };
 
@@ -540,6 +526,30 @@
                         /* Must be before the next replacement. */
                         .replace( /[\r\n]/g, preserveCR );
             }
+			function initiateUnitTest(test, argarr) {
+				var success,
+					failed;
+				success = ($('<img src = "/images/success.png">'));
+				failed = ($('<img src = "/images/failed.png">'));
+				switch (test) {
+					case 2: // are there actually posts to display for the present view?
+						if (argarr[0 ].length > 0) {
+							ret = success;
+						}
+						else {
+							ret = failed;
+						}
+						return ret.appendTo("#ut2");
+
+
+					case 3: // is our content tag engine accumulating at least some tags?
+						if (argarr[0 ].length > 0) { ret = success; }
+						else { ret = failed;}
+						return ret.appendTo("#ut3");
+				}
+
+
+			}
             function generateTemplateString(
                     typeOfNode, argarr ) {
                 var target = String(),
@@ -588,6 +598,13 @@
                         );
                         return dynode;
 
+					case 'recent-posts, 1':
+						dynode = dynode.concat('<li><a href="#">',
+											   argarr[0],
+											   '</a>');
+
+
+
 
                     default:
                         console.log(
@@ -611,91 +628,38 @@ $.getJSON( fp,
 			   var i,
 				   tagCounter,
 				   current;
-			   console.
-					  log( "\n\n\n=====================Begin Counting Tags======================" );
-			   console.log( "Raw JSON Response:    { 'data' : ", data, "}" );
 			   tagCounter = new Map();
-			   console.log( "Our counter obj:    { 'tagCounter' : ", tagCounter, "}\n\n\n" );
 			   for ( i in data[ 'posts' ] ) {
-				   console.log( i, "th element of data['posts']:    { 'data['posts'][", i, "] :", data[
-						   'posts' ][ i ], "}"
-				   );
-				   console.log(
-						   "    its tags are:   { 'data['posts'][",
-						   i,
-						   "]['tags']' :",
-						   data[ 'posts' ][ i ][ 'tags' ],
-						   "}"
-				   );
 				   for ( tag in data[
 						   'posts' ][ i ][ 'tags' ] ) {
-					   console.log( "        Now iterating over the elements of 'data['posts'][",
-									i,
-									"]['tags']'"
-					   );
-					   console.log( "             Now looking at '", tag, "' "
-					   );
 					   current = tagCounter[ tag ];
-					   console.log( "                 Looking to see if tagCounter['",
-									tag,
-									"'] has a value..."
-					   );
-					   console.log( "        *~Aha!~*  Current needs to be redefined to data['posts'][i]['tags'][", tag, "].");
-					   console.log( "             doing that now...");
-					   current = data['posts'][i]['tags'][tag];
-					   console.log( "                 ...current is now ", current);
-					   console.log( "        Now checking to see if tagCounter[current] has a value.");
-					   console.log( "        (tagCounter is ", tagCounter, ".");
-					   console.log( "\n\n let's see what this predicate is actually evaluating to.");
-					   console.log(" tagCounter has ", current, "?  ", tagCounter.has(current));
-					   console.log(" tagCounter has String(", current, ")? ", tagCounter.has(String(current)));
-					   console.log(" tagCounter.get(", current, ")? ", tagCounter.get(current));
-					   if (tagCounter.has(String(current)) ) {
-						   v =  tagCounter.get( String( current ) );
-						   console.log(
-								   "                       ...It does! (we're making progress.) Its value is ",
-								   tagCounter.get( String( current ) )
-						   );
-						   tagCounter.set( String( current ), v+1);
-					   } else {
-						   console.log( "                            Incrementing tagCounter[",
-										current,
-										"]..."
-						   );
-						   tagCounter.set(String(current), 1);
+					   current = data[ 'posts' ][ i ][ 'tags' ][ tag ];
+					   if ( tagCounter.has( String( current ) ) ) {
+						   v = tagCounter.get( String( current ) );
+						   tagCounter.set( String( current ), v + 1 );
 					   }
-					   console.log( "                 Finished inspecting ",
-									current,
-									". tagCounter[",
-									current,
-									"] updated."
-					   );
-					   console.log( "                 tagCounter[", current,"]: ", tagCounter[ String(current) ] );
-					   console.log( "" );
-					   console.log(
-							   "       *-----------tagCounter now has the following properties-----------*     "
-					   );
-					   console.log( "          tagCounter: ", tagCounter );
-					   console.log( "          tagCounter.keys: ", tagCounter.keys );
-					   console.log( "          tagCounter.values: ", tagCounter.values);
-					   for ( item in tagCounter ) {
-						   console.log( "         ", item, " is in tagCounter" );
-						   console.
-								  log( "          tagCounter[", item, "]: ", tagCounter[ item ] );
+					   else {
+						   tagCounter.set( String( current ), 1 );
 					   }
-					   console.log( "    This concludes the inspection of ", String(current), "." );
 				   }
-				   console.log( "   This concludes the inspection of data['posts'][", i, "]" );
 			   }
-			   console.log( "This concludes the inspection. Final value of tagCounter is ", tagCounter, tagCounter.entries(), tagCounter);
-                           var sortedTags = sortProperties(tagCounter);
-                            console.log("The tags are:" +  sortedTags);
-						   insertTagEngineDemo(tagCounter);
+
+			   var sortedTags = sortProperties(tagCounter);
+			   console.log("The tags are:" +  sortedTags);
+			   insertTagEngineDemo(tagCounter);
 
                        }
 
             );
+			function generateDateArchives(jsonResponse) {
+				for (i in jsonResponse['posts']) {
+					console.log( "now generating date archives from ", jsonResponse[ 'posts' ][ i ]['month'], jsonResponse[ 'posts' ][ i ]['year']  );
+//					$('<li>', jsonResponse, [ "posts" ][ i ]["month"], jsonResponse[ "posts" ][ i ]["year"], '</li>').appendTo("#date-archives");
+
+				}
+			}
             $.getJSON( fp , function ( data ) {
+						   generateDateArchives(data);
                            var postArray    = [];
                            var
 
@@ -729,6 +693,8 @@ $.getJSON( fp,
                                postIsExtensible;
                            var len = data['posts' ].length;
 						   postsToFetch = getPostsForCurrentView(len, 'all');
+						   initiateUnitTest(2, [postsToFetch]);
+
 				           for (i = postsToFetch.length-1; i > 0-1; i--) {
 
 								console.log("Now creating post " + i);
@@ -781,7 +747,9 @@ $.getJSON( fp,
                                   )
                                ).insertAfter( '.post#' + i + ' .post-container' );
 
+
                            }
+
                        }
             );
 
