@@ -31,6 +31,11 @@ Author URI: http://www.aetherthemes.com
 
 /* =Common Styles
 -------------------------------------------------------------- */
+
+th
+{
+	cursor:pointer;
+}
 body { 
 	background: #fff;
 	color: #666666;

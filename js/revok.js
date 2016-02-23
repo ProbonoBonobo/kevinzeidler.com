@@ -1,4 +1,29 @@
-// 2/22: It would appear we need to construct a model of the JSON object in order to filter that object on the client's side.
+/**
+ *
+ *
+revok.js
+ a plucky little tag engine that could. runs client-side. fast as blazes, at least for small sites. fragile though. i
+ decided while writing this i'm a react man, personally, that mvvc is obscure for the reason venetian glass prefab
+ homes are obscure
+ fragile. not at all wow
+
+ anyway i named this after my favorite la tag artist because it's really badass how it updates the view more or less
+ instantaneously
+
+ it has a dependency on knockout.js which isn't obvious from this snippet. knockout binds the functions as
+ callbacks to specific DOM nodes
+\
+
+ author: kevin zeidler
+ date: 22/2/2016
+ license: mit
+
+
+
+*
+ * */
+
+
 $.ajax({
            url: "blogfeed-dev.json",
            dataType: 'json',
@@ -101,3 +126,4 @@ var viewModel = function(){
 }
 vm = new viewModel();
 ko.applyBindings(vm);
+vm.appendAll(table);
