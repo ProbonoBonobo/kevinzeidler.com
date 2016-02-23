@@ -52,7 +52,7 @@
 	<link rel="stylesheet" type="text/css" href="maven/bootstrap.css"/>
 
 	<!-- Colors -->
-<link rel="stylesheet" type="text/css" href="css/colors/blue.css" title="blue" media="screen">
+<link rel="stylesheet" type="text/css" href="maven/blue.css" title="blue" media="screen">
 	<!--<link rel="alternate stylesheet" type="text/css" href="css/colors/red.css" title="red" media="screen">-->
 	<!--<link rel="alternate stylesheet" type="text/css" href="css/colors/green.css" title="green" media="screen">-->
 	<!--<link rel="alternate stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen">-->
@@ -72,6 +72,7 @@
 	<script src="js/progressbar.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="js/knockout.js"></script>
+	<script src="js/revok.js" type="text/javascript" charset="utf-8"></script>
 	<style>
 
 		#myProgress {
@@ -182,6 +183,8 @@
 				<div class="col-sm-8" id="post-macro">
 
 					<!-- Standard Post -->
+					<!--<ul class="categories-widget">-->
+					<!--</ul>-->
 
 
 
@@ -224,10 +227,10 @@
 						<!--<div class="post-container"></div>-->
 					<!--</div>&lt;!&ndash; END &ndash;&gt;-->
 
-					<div class="navlinks">
-						<div class="prev"></div>
-						<div class="next"></div>
-					</div>
+					<!--<div class="navlinks">-->
+						<!--<div class="prev"></div>-->
+						<!--<div class="next"></div>-->
+					<!--</div>-->
 				</div>
 
 
@@ -310,24 +313,41 @@
 						<div class="widget">
 							<h5>EXPOSED PIPES</h5>
 							<ul class="categories-widget">
-								<li>Current tag: <strong data-bind="text: currentTag"></strong></li>
-								<p>Focused content tag</p>
+								<div data-bind="foreach: filters" style="font-size: 10px;">
+									<input type="button" data-bind="click: $parent.setActiveFilter, value: title"/>
+								</div>
 
-								<!--<li class="cat-item"><a href="#">Standard</a> (3)</li>-->
-								<!--<li class="cat-item"><a href="#">Video</a> (6)</li>-->
-								<!--<li class="cat-item"><a href="#">Gallery</a> (12)</li>-->
-								<!--<li class="cat-item"><a href="#">Quotes</a> (4)</li>-->
+								<br/>
+
+								<table>
+									<thead>
+									<tr data-bind="foreach: headers">
+										<th data-bind="click: $parent.sort, text: title"></th>
+									</tr>
+									</thead>
+									<tbody data-bind="foreach: filteredPosts" style="font-size: 10px;">
+									<tr>
+										<td data-bind="text: ID"></td>
+										<td data-bind="text: monthYear"></td>
+										<td data-bind="text: flytitle"></td>
+										<td data-bind="text: headline"></td>
+										<td data-bind="text: lede"></td>
+										<td data-bind="text: img"></td>
+										<td data-bind="text: tags"></td>
+									</tr>
+									</tbody>
+								</table>
 							</ul>
-							<button data-bind="click: updateTag ">View jQuery Posts</button>
+							<!--<button data-bind="click: updateTag " id="refreshbutton">Refresh Tag</button>-->
 
 						</div><!-- END -->
 
-						<!-- tagcloud widget -->
-						<div class="widget" id="tagCloud">
-							<h5>TAGS</h5>
-							<div class="tagcloud">
-							</div>
-						</div><!-- END -->
+						<!--&lt;!&ndash; tagcloud widget &ndash;&gt;-->
+						<!--<div class="widget" id="tagCloud">-->
+							<!--<h5>TAGS</h5>-->
+							<!--<div class="tagcloud">-->
+							<!--</div>-->
+						<!--</div>&lt;!&ndash; END &ndash;&gt;-->
 
 						<!-- archives widget -->
 						<div class="widget widget-archive">
@@ -406,16 +426,7 @@
                     fp = "blogfeedv2.json";
                     break;
             }
-			function AppViewModel() {
-				this.currentTag =
-						ko.observable( "kittens" );
-				this.updateTag = function() {
-					var val = document.getElementById("selectedContentTag");
-				};
-			}
 
-			// Activates knockout.js
-			ko.applyBindings(new AppViewModel());
 
 
 			function getPostsForCurrentView(maxNum, view) {
@@ -468,23 +479,24 @@
 				initiateUnitTest(3, [arr]);
 				for ( i = 0; i < arr.length; i += 2) {
 					console.log(i);
-					$( "<a href='#" + arr[ i+1 ] + "' id='tag" + i + "' data-freq='"+ arr[i] + "' >" + arr[ i+1 ] + "</a>" )
+					$( "<a href='#" +
+					   arr[ i+1 ] +
+					   "' class='content-tag initial' id='tag" +
+					   i +
+					   "' data-freq='" +
+					   arr[i] +
+					   "' >" +
+					   arr[ i+1 ] +
+					   "</a>" ).click(function(e) {$(this ).addClass("focus" ).siblings().removeClass("focus"); $(this ).removeClass("blurred" ).siblings().addClass("blurred"); } )
 							.appendTo( $( '.tagcloud' ) );
 				}
+				var tags = document.getElementsByClassName("initial");
+
+
 			}
 
 
-            var callback;
-            callback = function ( data ) {
-				if (data) {
-					($( '<img src = "/images/success.png">' )
-					).appendTo( "#ut1" );
-				}
 
-				console.log( "Initiating load sequence" )
-            };
-
-            $.getJSON( fp, callback );
 
             function getJSONValueOf( param, index ) {
                 return data.responseJSON[ 'posts' ][ index ][ param ];
@@ -529,9 +541,16 @@
 			function initiateUnitTest(test, argarr) {
 				var success,
 					failed;
-				success = ($('<img src = "/images/success.png">'));
-				failed = ($('<img src = "/images/failed.png">'));
+				success = ($('<img src = "/images/success.png" style="min-width: 15px;">'));
+				failed = ($('<img src = "/images/failed.png" style="min-width: 15px;" >'));
 				switch (test) {
+					case 1:
+						if (argarr[0 ].length > 0) {
+							ret = success;
+						} else {
+							ret = failed;
+						}
+						return ret.appendTo("#ut1");
 					case 2: // are there actually posts to display for the present view?
 						if (argarr[0 ].length > 0) {
 							ret = success;
@@ -622,6 +641,119 @@
                     return false;
                 }
             }
+
+var callback;
+callback = function ( data ) {
+	initiateUnitTest(1, [data]);
+
+	console.log( "Initiating load sequence" )
+};
+
+$.getJSON( fp, callback );
+
+
+
+
+// 2/22: It would appear we need to construct a model of the JSON object in order to filter that object on the client's side.
+$.ajax({
+	       url: "blogfeed-dev.json",
+		   dataType: 'json',
+		   success: function (res) {
+			localStorage.setItem("dataCache", JSON.stringify(res));
+			}
+});
+
+var manifest, db;
+
+
+if(localStorage.getItem("dataCache")) {
+	manifest = JSON.parse(localStorage.getItem("dataCache"));
+}
+
+
+	var table, row, tags;
+	table = [];
+	console.log("Now constructing a model from ", manifest);
+	for (i in manifest['posts']) {
+		row = [];
+		row.push(i,  (manifest['posts'][i]['month'] + " " + manifest['posts'][i]['year']),  manifest['posts'][i]['category'], manifest['posts'][i]['title'],manifest['posts'][i]['lede'], manifest['posts'][i]['image'],manifest['posts'][i]['tags' ].join());
+		table.push(row);
+	}
+	console.log("Model constructed. ", table);
+
+
+function get(i, field) {
+	return manifest['posts'][i][field];
+}
+
+var viewModel = function() {
+	var self    = this;
+	self.posts =
+			ko.observableArray( [ {
+									ID: table[ 0 ][ 0 ],
+									monthYear: table[ 0 ][ 1 ],
+									flytitle: table[ 0 ][ 2 ],
+									headline: table[ 0 ][ 3 ],
+									lede: table[ 0 ][ 4 ],
+									img: table[ 0 ][ 5 ],
+									tags: table[ 0 ][ 6 ]
+								},
+									{
+										ID: table[ 1 ][ 0 ],
+										monthYear: table[ 1 ][ 1 ],
+										flytitle: table[ 1 ][ 2 ],
+										headline: table[ 1 ][ 3 ],
+										lede: table[ 1 ][ 4 ],
+										img: table[ 1 ][ 5 ],
+										tags: table[ 1 ][ 6 ]
+									}]
+			);
+
+	self.headers = [
+		{title:'ID',sortPropertyName:'ID', asc: true},
+		{title:'Publication Date',sortPropertyName:'monthYear', asc: true},
+		{title:'H2',sortPropertyName:'flytitle', asc: true},
+		{title:'H1', sortPropertyName:'headline',asc: true},
+		{title:'Lede', sortPropertyName: 'lede', asc: true},
+		{title:'Image', sortPropertyName: 'img', asc: true},
+		{title:'Tags', sortPropertyName: 'tags', asc: true}
+	];
+	self.filters = [
+		{title:'Show All', filter: null},
+		{title:'Only jQuery', filter: function(item){return item.tags.includes('jQuery');}},
+		{title:'Only kittens', filter: function(item){return item.tags.includes('kittens');}}
+			];
+	self.activeSort = self.headers[0]; //set the default sort
+	self.sort = function(header, event){
+		//if this header was just clicked a second time
+		if(self.activeSort === header) {
+			header.asc = !header.asc; //toggle the direction of the sort
+		} else {
+			self.activeSort = header; //first click, remember it
+		}
+		var prop = self.activeSort.sortPropertyName;
+		var ascSort = function(a,b){ return a[prop] < b[prop] ? -1 : a[prop] > b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
+		var descSort = function(a,b){ return a[prop] > b[prop] ? -1 : a[prop] < b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
+		var sortFunc = self.activeSort.asc ? ascSort : descSort;
+		self.posts.sort(sortFunc);
+	};
+	self.activeFilter = ko.observable(self.filters[0].filter);
+	self.filteredPosts = ko.computed(function(){
+		if(self.activeFilter()){
+			return ko.utils.arrayFilter(self.posts(), self.activeFilter());
+		} else {
+			return self.posts();
+		}
+	});
+	self.setActiveFilter = function(model,event){
+		self.activeFilter(model.filter);
+	};
+}
+ko.applyBindings(new viewModel());
+
+console.log("db value is ", db);
+
+
 
 $.getJSON( fp,
 		   function ( data ) {
@@ -882,6 +1014,8 @@ $.getJSON( fp,
 	<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
 
 
+
 	<script src="js/styleswitch.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
+}
