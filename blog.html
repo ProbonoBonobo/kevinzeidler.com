@@ -420,10 +420,10 @@
 
             switch (my_env) {
                 	case 0:
-                    fp = "blogfeed-dev.json";
+                    fp = "./blogfeed-dev.json";
                     break;
                 case 1:
-                    fp = "blogfeedv2.json";
+                    fp = "./blogfeedv2.json";
                     break;
             }
 
@@ -541,8 +541,8 @@
 			function initiateUnitTest(test, argarr) {
 				var success,
 					failed;
-				success = ($('<img src = "/images/success.png" style="min-width: 15px;">'));
-				failed = ($('<img src = "/images/failed.png" style="min-width: 15px;" >'));
+				success = ($('<img src = "./images/success.png" style="min-width: 15px;">'));
+				failed = ($('<img src = "./images/failed.png" style="min-width: 15px;" >'));
 				switch (test) {
 					case 1:
 						if (argarr[0 ].length > 0) {
@@ -656,7 +656,7 @@ $.getJSON( fp, callback );
 
 // 2/22: It would appear we need to construct a model of the JSON object in order to filter that object on the client's side.
 $.ajax({
-	       url: "blogfeed-dev.json",
+	       url: "./blogfeed-dev.json",
 		   dataType: 'json',
 		   success: function (res) {
 			localStorage.setItem("dataCache", JSON.stringify(res));
