@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Cardo:400,400italic|Montserrat:700,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="maven/style.css"/>
+    <script src="js/knockout.js"></script>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+
+
+<div class="row">
+    <div class="col-xs-4">
+        <div id="date-filters"></div>
+    </div>
+    <div class="col-xs-4">
+        <div id="content-filters"></div>
+    </div>
+    <div class="col-xs-4">
+        <div id="page-filters"></div>
+    </div>
+</div>
+
+
+<ul class="categories-widget">
+    <div class="row">
+        <div class="col-m-4">
+            <p>Filter posts by tag</p>
+            <div data-bind="foreach: combinedFilters">
+                <input type="button" data-bind="click: $parent.setActiveFilter, value: title"/>
+            </div>
+        </div>
+
+
+    </div>
+
+    <br/>
+
+
+<table>
+    <thead>
+    <tr data-bind="foreach: headers">
+        <th data-bind="click: $parent.sort, text: title"></th>
+    </tr>
+    </thead>
+    <tbody data-bind="foreach: filteredPeople">
+    <tr>
+        <td data-bind="text: ID"></td>
+        <td data-bind="text: DD"></td>
+        <td data-bind="text: MMM"></td>
+        <td data-bind="text: monthYear"></td>
+        <td data-bind="text: flytitle"></td>
+        <td data-bind="text: headline"></td>
+        <td data-bind="text: author"></td>
+        <td data-bind="text: lede"></td>
+        <td data-bind="text: img"></td>
+        <td data-bind="text: contentHead"></td>
+        <td data-bind="text: contentTail"></td>
+        <td data-bind="text: tags"></td>
+    </tr>
+    </tbody>
+
+    <!--<div class="post image">-->
+        <!--<span class="date">08<br><small>Jan</small></span>-->
+        <!--<div class="post-title">-->
+            <!--<h4><a href="blog-single.html">Standard post with goodies.</a></h4>-->
+            <!--<div class="post-meta">-->
+                <!--<h6>Posted by <a href="#">John Doe</a> / <a href="#">Standard</a></h6>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="post-media">-->
+            <!--<img src="images/blog/standard2.jpg" alt="">-->
+        <!--</div>-->
+
+        <!--<div class="post-body">-->
+            <!--<p>Etiam in nulla arcu, ut vehicula velit. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate. Donec varius felis fermentum nisl imperdiet at molestie purus porta.</p>-->
+            <!--<div>-->
+                <!--<a href="#">Continue Reading...</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>&lt;!&ndash; END &ndash;&gt;-->
+
+</table>
+    <section class="container">
+    <div class="row">
+        <div class="col-m-4">
+            <div class="nullparent" data-bind="foreach: filteredPeople">
+                <div class="post image" data-bind="attr: {id: ID}"></div>
+                    <div class="date-container">
+                        <span class="date"><span data-bind="text: DD"></span><br><small data-bind="text: MMM"></small></span>
+                    </div>
+                <div class="post-title">
+                    <h5 data-bind="text: flytitle"></h5>
+                    <h1 data-bind="text: headline"</h1>
+                    <h6 data-bind="text: lede"</h6>
+                </div>
+                <div class="post-media">
+                   <div class="head">
+                       <p>
+                         <img data-bind="attr: {src: img}">
+                       </p>
+                        <p>
+                            <div class="post-body" data-bind="text: contentHead"></div>
+                       </p>
+                            <!-- ko if: contentTail -->
+                       <p>
+                            <div class="post-tail">
+                            <button data-bind="attr: {id: ID}, click: expandPreview">Continue reading...</button></p>
+                           </div>
+                       <!-- /ko -->
+
+
+                   </div>
+                       </p>
+
+                       </div>
+                </div>
+                <!--<div class="head"><p><img src="',-->
+                                                <!--argarr[ 1 ],-->
+                                                <!--'"></p><p>',-->
+                    <!--argarr[ 0 ][ 0 ],-->
+                    <!--'</p></div><div class="dynode" data-pid="',-->
+                                                <!--argarr[ 3 ],-->
+                                                <!--'" id="dynode',-->
+                                                <!--argarr[ 3 ],-->
+                                                <!--'"><p>Continue reading...</p></div>-->
+                </div>
+            </div>
+        </div>
+    </ul>
+
+
+<script>
+    // 2/22: It would appear we need to construct a model of the JSON object in order to filter that object on the client's side.
+    $.ajax({
+               url: "blogfeed-dev.json",
+               dataType: 'json',
+               success: function (res) {
+                   localStorage.setItem("dataCache", JSON.stringify(res));
+               }
+           });
+
+    var manifest, db;
+
+
+    if(localStorage.getItem("dataCache")) {
+        manifest = JSON.parse(localStorage.getItem("dataCache"));
+    }
+
+
+    var table, row, tags, monthStr, MMM;
+    table = [];
+    console.log("Now constructing a model from ", manifest);
+    for (i in manifest['posts']) {
+        row = [];
+        monthStr = manifest['posts'][i]['month' ];
+        MMM = monthStr.substring(0,3);
+        row.push(i,  manifest['posts'][i]['day'], MMM, (manifest['posts'][i]['month'] + " " + manifest['posts'][i]['year']),  manifest['posts'][i]['category'], manifest['posts'][i]['title'],manifest['posts'][i]['author'],manifest['posts'][i]['lede'], manifest['posts'][i]['image'],manifest['posts'][i]['content'][0],manifest['posts'][i]['content'][1],
+manifest['posts'][i]['tags' ].join());
+        table.push(row);
+    }
+    console.log("Model constructed. ", table);
+
+
+    function get(i, field) {
+        return manifest['posts'][i][field];
+    }
+
+
+    // Generate an array of all the unique filters
+    var dateFilters = new Set();
+    manifest['posts'].forEach( function(o) { dateFilters.add(o.month + " " +  o.year); } );
+
+    var contentFilters = new Set();
+    manifest['posts' ].forEach( function(o) {
+        for (t in o['tags']) {
+            if (o['tags'][t]) {
+                contentFilters.add( o[ 'tags' ][ t ] );
+            }
+        }
+    });
+
+    var dateFilterArr = Array.from(dateFilters);
+    var contentFilterArr = Array.from(contentFilters);
+
+
+    // Append the unique filters to the divs
+    Array.from(dateFilters ).forEach(function (d) { $("<div>" + d + "</div>" ).insertAfter("#date-filters"); });
+    Array.from(contentFilters ).forEach( function ( tag ) { $( "<div>" + tag + "</div>" ).insertAfter( "#content-filters" ); });
+
+
+
+
+
+
+
+    var viewModel = function(){
+        var self = this;
+        self.posts = ko.observableArray();
+
+        self.appendRow = function(data, event) {
+            self.posts.push({ID: table[data][0], DD: table[data][1], MMM: table[data][2], monthYear: table[data][3], flytitle: table[data][4], headline: table[data][5], author: table[data][6], lede:table[data][7], img: table[data][8], contentHead: table[data][9], contentTail: table[data][10], tags: table[data][11]});
+            self.id = self.posts()[0]['ID'];
+            console.log("My id is ", self.id);
+
+        }
+        self.appendAll = function(data, event) {
+            for(i in data) {
+                self.appendRow(i);
+            }
+        }
+//        self.id = ko.observable(self.posts[0]);
+
+        self.headers = [
+            {title:'ID',sortPropertyName:'ID',  asc: true, active: true},
+            {title:'DD', sortPropertyName:'DD', asc: true, active: false},
+            {title: 'MMM', sortPropertyName: 'MMM', asc: true, active: false},
+            {title:'Publication Date',sortPropertyName:'monthYear', asc: true, active: false},
+            {title:'H2',sortPropertyName:'flytitle', asc: true, active: false },
+            {title:'H1',sortPropertyName: 'headline', asc: true, active: false },
+            {title: 'Author', sortPropertyName: 'author', asc: true, active: false},
+            {title: 'Lede', sortPropertyName: 'lede', asc: true, active: false},
+            {title: 'Image', sortPropertyName: 'img', asc: true, active: false},
+            {title: 'Head', sortPropertyName: 'contentHead', asc: true, active: false},
+            {title: 'Tail', sortPropertyName: 'contentTail', asc: true, active: false},
+            {title: 'Tags', sortPropertyName: 'tags', asc: true, active: false}
+        ];
+
+        self.filters = [
+            {title:'Show All', filter: null},
+            {title:'Kittens', filter: function(item){return item.includes("kittens");}},
+            {title:'jQuery', filter: function(item){return item.tags.includes("jQuery");}},
+            {title:'Eels', filter: function(item){return item.tags.includes("eels"); }},
+            {title:'Show All', filter: null},
+            {title:'February 2016', filter: function(item){return item.monthYear==("February 2016");}},
+            {title:'March 2019', filter: function(item){return item.monthYear==("March 2019");}}
+        ];
+
+        self.chronoFilters = [];
+        self.contentFilters = [];
+        self.combinedFilters = [];
+        dateFilterArr.forEach(function(monthStr) {
+            self.chronoFilters.push(
+                    {title: monthStr, filter: function(item) {return item.monthYear==(monthStr); }}
+            );
+        });
+
+        contentFilterArr.forEach(function(contentTagStr) {
+            self.contentFilters.push(
+                    {title: contentTagStr, filter: function(item) { return item.tags.includes(contentTagStr); }}
+            );
+        });
+
+//        self.allFilters = Array.prototype.push.apply(self.chronoFilters, self.contentFilters);
+        var merged = [];
+        merged.push(self.chronoFilters);
+        merged.push(self.contentFilters);
+        self.combinedFilters = [].concat.apply([], merged);
+
+        console.log("Created filter " + self.combinedFilters);
+
+
+
+        self.activeSort = ko.observable(function(){return 0;}); //set the default sort
+        self.sort = function(header, event){
+            //if this header was just clicked a second time
+            if(header.active) {
+                header.asc = !header.asc; //toggle the direction of the sort
+            }
+            //make sure all other headers are set to inactive
+            ko.utils.arrayForEach(self.headers, function(item){ item.active = false; } );
+            //the header that was just clicked is now active
+            header.active = true;//our now-active header
+
+            var prop = header.sortPropertyName;
+            var ascSort = function(a,b){ return a[prop] < b[prop] ? -1 : a[prop] > b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
+            var descSort = function(a,b){ return a[prop] > b[prop] ? -1 : a[prop] < b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
+            var sortFunc = header.asc ? ascSort : descSort;
+
+            //store the new active sort function
+            self.activeSort(sortFunc);
+        };
+
+        self.activeFilter = ko.observable(self.filters[0].filter);//set a default filter
+        self.setActiveFilter = function(model,event){
+            self.activeFilter(model.filter);
+        };
+
+        self.filteredPeople = ko.computed(function(){
+            var result;
+            if(self.activeFilter()){
+                result = ko.utils.arrayFilter(self.posts(), self.activeFilter());
+            } else {
+                result = self.posts();
+            }
+            return result.sort(self.activeSort());
+        });
+
+         expandPreview = function(data,event) {
+            var target;
+
+            if (event.target) target = event.target;
+            else if (event.srcElement) target = event.srcElement;
+
+            if (target.nodeType == 3) // defeat Safari bug
+                target = target.parentNode;
+
+            target.parentNode.innerHTML = manifest['posts'][event.target.id]['content'][1];
+        }
+
+
+
+        self.sort(self.headers[0]);
+
+
+
+
+    }
+    vm = new viewModel();
+    ko.applyBindings(vm);
+    vm.appendAll(table);
+</script>
+
+
+</body>
+</html>
