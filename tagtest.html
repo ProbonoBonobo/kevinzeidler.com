@@ -5,21 +5,20 @@
     <title>Title</title>
     <link href='http://fonts.googleapis.com/css?family=Cardo:400,400italic|Montserrat:700,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="maven/style.css"/>
-    <link rel=stylesheet" type="text/css" href="maven/colors/blue.css">
-    <link rel="stylesheet" type="text/css" href="maven/framework.css"></link>
+    <link rel=stylesheet" type="text/css" href="maven/colors/blue.css"/>
+    <link rel="stylesheet" type="text/css" href="maven/framework.css"/>
+    <link rel="stylesheet" type="text/css" href="maven/bootstrap.css"/>
     <script src="js/knockout.js"></script>
     <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
 
     <style>
-        .sidebar {
-            margin-left: 20%;
-            width: 120%;
-        }
+
         #post-macro-container {
             box-sizing: border-box;
             color: rgb(102, 102, 102);
             height: 100%;
-            width: 800px;
+            /*width: 800px;*/
             border: 0px none rgb(102, 102, 102);
             font: normal normal normal normal 18px / normal Cardo;
             outline: rgb(102, 102, 102) none 0px;
@@ -30,7 +29,7 @@
             color: rgb(102, 102, 102);
             position: relative;
             text-align: left;
-            width: 750px;
+            /*width: 750px;*/
             /*perspective-origin: 375px 305px;*/
             /*transform-origin: 375px 305px;*/
             border-top: 0px none rgb(102, 102, 102);
@@ -237,8 +236,10 @@
             outline: rgb(102, 102, 102) none 0px;
         }/*#DIV_15*/
         .image-container {
-            margin-left: -10%;
-            display: block;
+            /*margin-left: 3%;*/
+            display: inline-block;
+            width: 110%;
+            margin-bottom: 15px;
         }
         #IMG_16 {
             box-sizing: border-box;
@@ -246,7 +247,7 @@
             display: block;
             text-align: left;
             vertical-align: middle;
-            min-width: 105%;
+            /*width: 105%;*/
             /*width: 110%;*/
             /*perspective-origin: 340px 157.5px;*/
             /*transform-origin: 340px 157.5px;*/
@@ -261,8 +262,9 @@
             color: rgb(102, 102, 102);
             height: 100%;
             text-align: left;
-            width: 680px;
             border: 0px none rgb(102, 102, 102);
+            margin-bottom: 15px;
+            line-height: 1.4em;
             font: normal normal normal normal 16px / normal Cardo;
             outline: rgb(102, 102, 102) none 0px;
         }/*#DIV_17, #DIV_37, #DIV_97*/
@@ -273,7 +275,8 @@
             height: 100%;
             overflow-wrap: break-word;
             text-align: left;
-            width: 680px;
+            /*line-height: 14px;*/
+            /*width: 680px;*/
             word-wrap: break-word;
             perspective-origin: 340px 62.5px;
             transform-origin: 340px 62.5px;
@@ -818,7 +821,7 @@
 <!-- Loader -->
 <div class="loader center dark">
     <div class="loader-content">
-        <img src="images/kevin-zeidler-logo-clear.png" width="138" height="25" alt="logo"><br>
+        <!--<img src="images/kevin-zeidler-logo-clear.png" width="138" height="25" alt="logo"><br>-->
         <span class="progress-container"><span class="progress"></span></span>
     </div>
     <script type="text/javascript">
@@ -936,7 +939,7 @@
 
             <!-- Begin Posts -->
             <div class="col-sm-8">
-                <div id="post-macro-container" data-bind="foreach: filteredPeople">
+                <div id="post-macro-container" data-bind="foreach: filteredPosts">
 
 
                     <div class="post-micro-container" data-bind="attr: {id: ID}">
@@ -964,12 +967,20 @@
                         <span class="image-container">
                             <img alt="" data-bind="attr: {src:img}" id="IMG_16" />
                             </span>
-                        <div id="DIV_17">
-                            <p id="P_18" data-bind="text: contentHead">
-                                
-                                <a href="http://maven.themes.tf/2014/12/17/standard-post-with-goodies/" id="A_19">Continue Reading…</a>
+                                <div id="DIV_17">
+                            <p data-bind="text: contentHead"></p>
+                                    </div>
+                            <!--ko: if: contentTail-->
+
+                            <div class="post-tail">
+                                <button data-bind="click: expandPreview, visible: !tailVisible()">Continue reading...</button>
+                                <div data-bind="html: contentTail, visible: tailVisible"></div>
+                            </div>
+                            <!-- /ko -->
                             </p>
-                        </div>
+                                <!--<a href="http://maven.themes.tf/2014/12/17/standard-post-with-goodies/" >Continue Reading…</a>-->
+                            <!--</p>-->
+                        <!--</div>-->
                     </div>
 
 
@@ -1092,25 +1103,6 @@
     }
 
 
-    var table, row, tags, monthStr, MMM;
-    table = [];
-    console.log("Now constructing a model from ", manifest);
-    for (i in manifest['posts']) {
-        row = [];
-        monthStr = manifest['posts'][i]['month' ];
-        MMM = monthStr.substring(0,3);
-        row.push(i,  manifest['posts'][i]['day'], MMM, (manifest['posts'][i]['month'] + " " + manifest['posts'][i]['year']),  manifest['posts'][i]['category'], manifest['posts'][i]['title'],manifest['posts'][i]['author'],manifest['posts'][i]['lede'], manifest['posts'][i]['image'],manifest['posts'][i]['content'][0],manifest['posts'][i]['content'][1],
-                 manifest['posts'][i]['tags' ].join());
-        table.push(row);
-    }
-    console.log("Model constructed. ", table);
-
-
-    function get(i, field) {
-        return manifest['posts'][i][field];
-    }
-
-
     // Generate an array of all the unique filters
     var dateFilters = new Set();
     manifest['posts'].forEach( function(o) { dateFilters.add(o.month + " " +  o.year); } );
@@ -1134,26 +1126,33 @@
 
 
 
+    var Post = function(data, idx) {
+        var self = this;
 
+        $.extend(self, {
+            ID: idx,
+            DD: data.day,
+            MMM: data.month.substring(0,3),
+            monthYear: data.month + " " + data.year,
+            flytitle: data.category,
+            headline: data.title,
+            author: data.author,
+            lede: data.lede,
+            img: data.image,
+            contentHead: data.content[0],
+            contentTail: data.content[1] || '',
+            tags: data.tags.join()
+        });
 
-
+        self.tailVisible = ko.observable(false);
+        self.expandPreview = function() {
+            self.tailVisible(true);
+        }
+    }
 
     var viewModel = function(){
         var self = this;
         self.posts = ko.observableArray();
-
-        self.appendRow = function(data, event) {
-            self.posts.push({ID: table[data][0], DD: table[data][1], MMM: table[data][2], monthYear: table[data][3], flytitle: table[data][4], headline: table[data][5], author: table[data][6], lede:table[data][7], img: table[data][8], contentHead: table[data][9], contentTail: table[data][10], tags: table[data][11]});
-            self.id = self.posts()[0]['ID'];
-            console.log("My id is ", self.id);
-
-        }
-        self.appendAll = function(data, event) {
-            for(i in data) {
-                self.appendRow(i);
-            }
-        }
-//        self.id = ko.observable(self.posts[0]);
 
         self.headers = [
             {title:'ID',sortPropertyName:'ID',  asc: true, active: true},
@@ -1230,7 +1229,7 @@
             self.activeFilter(model.filter);
         };
 
-        self.filteredPeople = ko.computed(function(){
+        self.filteredPosts = ko.computed(function(){
             var result;
             if(self.activeFilter()){
                 result = ko.utils.arrayFilter(self.posts(), self.activeFilter());
@@ -1240,29 +1239,21 @@
             return result.sort(self.activeSort());
         });
 
-        expandPreview = function(data,event) {
-            var target;
 
-            if (event.target) target = event.target;
-            else if (event.srcElement) target = event.srcElement;
-
-            if (target.nodeType == 3) // defeat Safari bug
-                target = target.parentNode;
-
-            target.parentNode.innerHTML = manifest['posts'][event.target.id]['content'][1];
+        self.loadManifest = function(manifest) {
+            self.posts(manifest.posts.map(function(data, i) {
+                return new Post(data, i);
+            }));
         }
 
-
-
         self.sort(self.headers[0]);
-
-
-
-
     }
+
     vm = new viewModel();
     ko.applyBindings(vm);
-    vm.appendAll(table);
+
+    vm.loadManifest(manifest);
+
 </script>
 
 
