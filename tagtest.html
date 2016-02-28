@@ -124,12 +124,14 @@
             display: inline-block;
             vertical-align: middle;
             transform: skewX(-20deg);
-            text-indent: -15px;
+            /*text-indent: -20px;*/
             letter-spacing: 0px;
             margin-left: -10px;
+            padding-left: -20px;
             line-height: 0em;
-            padding: 10px 50px 30px 25px;
-            margin-bottom: -20px;
+            box-sizing: content-box;
+            /*padding: 20px 20px 20px 20px;*/
+            margin-bottom: -10px;
 
         }
 
@@ -144,9 +146,10 @@
             font-size: 20px;
             box-sizing: content-box;
             vertical-align: middle;
-            padding: 0 0px;
+            /*margin-left: -15px;*/
+            /*padding: 0 0px;*/
             background: #CA4603 none no-repeat scroll 0 0 / auto;
-            box-shadow: 15px 0 0 #CA4603, -10px 0 0 #CA4603;
+            /*box-shadow: 15px 0 0 #CA4603, -10px 0 0 #CA4603;*/
 
             /*font: normal normal normal normal 58px / 64px NHaasGroteskDSPro-75Bd, 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
         }
@@ -259,7 +262,7 @@
             /*width: 110%;*/
             /*margin-bottom: 15px;*/
             margin-left: 2%;
-            margin-top: -10%;
+            margin-top: -5%;
             width: 110%;
         }
         #IMG_16 {
@@ -970,13 +973,20 @@
                         <!--END DATE SPAN-->
                         <div class="header">
                             <div class="flytitle">
-                                <h5 data-bind="text: flytitle"></h5>
+                                <h5 data-bind="html: $data.flytitle"></h5>
                             </div>
                             <div class="headline">
                                 <h4 data-bind="text: headline"></h4>
                             </div>
                             <span class="lede">
-                                <h5 data-bind="text: lede" class="inner-content-block"></h5>
+                                <div class="test"></div>
+                                    <h5 data-bind='text: lede, style: { backgroundColor :  $data.bg_color(), boxShadow : $data.myShadow() }' class="inner-content-block"></h5>
+                                <!--" +-->
+<!--//                                                         "style='box-shadow: 15px 0 0 '" + $(this).bg_color()  +-->
+<!--//                                                         "style='box-shadow: -10px 0 0 '" + $(this ).bg_color() +-->
+<!--//                                                         "class='inner-content-block'></h5>");-->
+<!--//                                    $(chameleonNode).insertAfter( $(".test").closest(".lede") );-->
+
                             </span>
                         </div>
                             <div id="DIV_10">
@@ -989,7 +999,7 @@
                             <img alt="" data-bind="attr: {src:img}" id="IMG_16" />
                             </span>
                                 <div id="DIV_17">
-                            <p data-bind="text: contentHead"></p>
+                            <p data-bind="html: $data.contentHead"></p>
                                     </div>
                             <!--ko if: contentTail-->
 
@@ -1149,6 +1159,7 @@
 
     var Post = function(data, idx) {
         var self = this;
+        self.flytitle=ko.observable();
 
         $.extend(self, {
             ID: idx,
@@ -1162,13 +1173,23 @@
             img: data.image,
             contentHead: data.content[0],
             contentTail: data.content[1] || '',
-            tags: data.tags.join()
+            tags: data.tags.join(),
+            color: data.color
         });
+
+
 
         self.tailVisible = ko.observable(false);
         self.expandPreview = function() {
             self.tailVisible(true);
         }
+        self.bg_color = ko.observable(data.color || '#CA4603');
+        self.myShadow = ko.computed(function() {
+
+            return ('10px 0 0 ' + data.color + ", -10px 0 0 " + data.color);
+        });
+
+        console.log("Self.myshadow is ", self.myShadow());
     }
 
     var viewModel = function(){
@@ -1187,7 +1208,9 @@
             {title: 'Image', sortPropertyName: 'img', asc: true, active: false},
             {title: 'Head', sortPropertyName: 'contentHead', asc: true, active: false},
             {title: 'Tail', sortPropertyName: 'contentTail', asc: true, active: false},
-            {title: 'Tags', sortPropertyName: 'tags', asc: true, active: false}
+            {title: 'Tags', sortPropertyName: 'tags', asc: true, active: false},
+            {title: 'Color', sortPropertyName: 'color', asc: true, active: false},
+
         ];
 
         self.filters = [
@@ -1200,7 +1223,9 @@
             {title:'March 2019', filter: function(item){return item.monthYear==("March 2019");}}
         ];
 
-        self.chronoFilters = [];
+
+
+            self.chronoFilters = [];
         self.contentFilters = [];
         self.combinedFilters = [];
         dateFilterArr.forEach(function(monthStr) {

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="maven/style.css"/>
+    <!-- First jQuery -->     <script src="js/jquery.js" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"/>
+    <!-- Then Knockout -->    <script src="js/knockout.js"></script>
+    <link rel="stylesheet" type="text/css" href="./maven/loader.css"/>
+    <link rel="stylesheet" type="text/css" href="./maven/framework.css"/>
+    <link rel="stylesheet" type="text/css" href="./maven/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./progressbar.css"/>
+    <link rel="stylesheet" type="text/css" href="./maven/bootstrap.css"/>
+
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="./maven/blue.css" title="blue" media="screen">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Cardo:400,400italic|Montserrat:700,400' rel='stylesheet' type='text/css'>
+
+
+</head>
+<body>
+
+<h1>People</h1>
+<div data-bind="template: 'peopleList'"></div>
+
+<script type="text/html" id="peopleList">
+    {{each people}}
+    <p>
+        <b>${name}</b> is ${age} years old
+    </p>
+    {{/each}}
+</script>
+
+
+
+<script type="text/javascript">
+    var viewModel = {
+        people: ko.observableArray([
+                                       { name: 'Rod', age: 123 },
+                                       { name: 'Jane', age: 125 },
+                                   ])
+    }
+    ko.applyBindings(viewModel);
+</script>
+
+
+
+<!-- Standard Post -->
+<div class="post image">
+    <span class="date">08<br><small>Jan</small></span>
+    <div class="post-title">
+        <h4><a href="blog-single.html">Standard post with goodies.</a></h4>
+        <div class="post-meta">
+            <h6>Posted by <a href="#">John Doe</a> / <a href="#">Standard</a></h6>
+        </div>
+    </div>
+    <div class="post-media">
+        <img src="images/blog/standard2.jpg" alt="">
+    </div>
+
+    <div class="post-body">
+        <p>Etiam in nulla arcu, ut vehicula velit. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate. Donec varius felis fermentum nisl imperdiet at molestie purus porta.</p>
+        <div>
+            <a href="#">Continue Reading...</a>
+        </div>
+    </div>
+</div><!-- END -->
+
+
+<script type="text/javascript">
+     // 2/22: It would appear we need to construct a model of the JSON object in order to filter that object on the client's side.
+     $.ajax({
+                url: "blogfeed-dev.json",
+                dataType: 'json',
+                success: function (res) {
+                    localStorage.setItem("dataCache", JSON.stringify(res));
+                }
+            });
+
+    var manifest, db;
+
+
+    if(localStorage.getItem("dataCache")) {
+        manifest = JSON.parse(localStorage.getItem("dataCache"));
+    }
+
+
+    var table, row, tags;
+    table = [];
+    console.log("Now constructing a model from ", manifest);
+    for (i in manifest['posts']) {
+        row = [];
+        row.push(i,  (manifest['posts'][i]['month'] + " " + manifest['posts'][i]['year']),  manifest['posts'][i]['category'], manifest['posts'][i]['title'],manifest['posts'][i]['lede'], manifest['posts'][i]['image'],manifest['posts'][i]['tags' ].join());
+        table.push(row);
+    }
+    console.log("Model constructed. ", table);
+
+     templatemap =
+
+    function get(i, field) {
+        return manifest['posts'][i][field];
+    }
+
+
+    // Generate an array of all the unique filters
+    var dateFilters = new Set();
+    manifest['posts'].forEach( function(o) { dateFilters.add(o.month + " " +  o.year); } );
+
+    var contentFilters = new Set();
+    manifest['posts' ].forEach( function(o) {
+        for (t in o['tags']) {
+            if (o['tags'][t]) {
+                contentFilters.add( o[ 'tags' ][ t ] );
+            }
+        }
+    });
+
+    var dateFilterArr = Array.from(dateFilters);
+    var contentFilterArr = Array.from(contentFilters);
+
+
+    // Append the unique filters to the divs
+    Array.from(dateFilters ).forEach(function (d) { $("<div>" + d + "</div>" ).insertAfter("#date-filters"); });
+    Array.from(contentFilters ).forEach( function ( tag ) { $( "<div>" + tag + "</div>" ).insertAfter( "#content-filters" ); });
+
+
+
+
+
+
+
+    var viewModel = function(){
+        var self = this;
+        self.posts = ko.observableArray();
+        self.appendRow = function(data, event) {
+            self.posts.push({ID: table[data][0], monthYear: table[data][1], flytitle: table[data][2], headline: table[data][3], lede:table[data][4], img: table[data][5], tags: table[data][6]});
+
+        }
+        self.appendAll = function(data, event) {
+            for(i in data) {
+                self.appendRow(i);
+            }
+        }
+
+        self.headers = [
+            {title:'ID',sortPropertyName:'ID', asc: true, active: false},
+            {title:'Publication Date',sortPropertyName:'monthYear', asc: true, active: false},
+            {title:'H2',sortPropertyName:'flytitle', asc: true, active: false },
+            {title:'H1',sortPropertyName: 'headline', asc: true, active: false },
+            {title: 'Lede', sortPropertyName: 'lede', asc: true, active: false},
+            {title: 'Image', sortPropertyName: 'img', asc: true, active: false},
+            {title: 'Tags', sortPropertyName: 'tags', asc: true, active: false}
+        ];
+
+        self.filters = [
+            {title:'Show All', filter: null},
+            {title:'Kittens', filter: function(item){return item.includes("kittens");}},
+            {title:'jQuery', filter: function(item){return item.tags.includes("jQuery");}},
+            {title:'Eels', filter: function(item){return item.tags.includes("eels"); }},
+            {title:'Show All', filter: null},
+            {title:'February 2016', filter: function(item){return item.monthYear==("February 2016");}},
+            {title:'March 2019', filter: function(item){return item.monthYear==("March 2019");}}
+        ];
+
+        self.chronoFilters = [];
+        self.contentFilters = [];
+        self.combinedFilters = [];
+        dateFilterArr.forEach(function(monthStr) {
+            self.chronoFilters.push(
+                    {title: monthStr, filter: function(item) {return item.monthYear==(monthStr); }}
+            );
+        });
+
+        contentFilterArr.forEach(function(contentTagStr) {
+            self.contentFilters.push(
+                    {title: contentTagStr, filter: function(item) { return item.tags.includes(contentTagStr); }}
+            );
+        });
+
+//        self.allFilters = Array.prototype.push.apply(self.chronoFilters, self.contentFilters);
+        var merged = [];
+        merged.push(self.chronoFilters);
+        merged.push(self.contentFilters);
+        self.combinedFilters = [].concat.apply([], merged);
+
+        console.log("Created filter " + self.combinedFilters);
+
+
+
+        self.activeSort = ko.observable(function(){return 0;}); //set the default sort
+        self.sort = function(header, event){
+            //if this header was just clicked a second time
+            if(header.active) {
+                header.asc = !header.asc; //toggle the direction of the sort
+            }
+            //make sure all other headers are set to inactive
+            ko.utils.arrayForEach(self.headers, function(item){ item.active = false; } );
+            //the header that was just clicked is now active
+            header.active = true;//our now-active header
+
+            var prop = header.sortPropertyName;
+            var ascSort = function(a,b){ return a[prop] < b[prop] ? -1 : a[prop] > b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
+            var descSort = function(a,b){ return a[prop] > b[prop] ? -1 : a[prop] < b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
+            var sortFunc = header.asc ? ascSort : descSort;
+
+            //store the new active sort function
+            self.activeSort(sortFunc);
+        };
+
+        self.activeFilter = ko.observable(self.filters[0].filter);//set a default filter
+        self.setActiveFilter = function(model,event){
+            self.activeFilter(model.filter);
+        };
+
+        self.filteredPeople = ko.computed(function(){
+            var result;
+            if(self.activeFilter()){
+                result = ko.utils.arrayFilter(self.posts(), self.activeFilter());
+            } else {
+                result = self.posts();
+            }
+            return result.sort(self.activeSort());
+        });
+
+
+
+    }
+    vm = new viewModel();
+    ko.applyBindings(vm);
+    vm.appendAll(table);
+</script>
+
+</body>
+</html>
