@@ -1,1083 +1,1449 @@
 <!DOCTYPE html>
-<!--[if lte IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html xmlns:graffiti="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><!--<![endif]-->
+<html lang="en">
 <head>
-	<meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Cardo:400,400italic|Montserrat:700,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="maven/style.css"/>
+    <link rel=stylesheet" type="text/css" href="maven/colors/blue.css"/>
+    <link rel="stylesheet" type="text/css" href="maven/framework.css"/>
+    <link rel="stylesheet" type="text/css" href="maven/bootstrap.css"/>
+    <script src="js/knockout.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
 
-	<title>Dev Blog. | KevinZeidler.com</title>
+    <style>
+        @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css);
 
-	<!-- Behavioral Meta Data -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        .sidebar {
+            margin-left: 30px;
+        }
 
-	<!-- Core Meta Data -->
-	<meta name="author" content="Kevin Zeidler">
-	<meta name="description" content="Dev Blog. | KevinZeidler.com.">
 
-	<!-- Open Graph Meta Data -->
-	<meta property="og:description" content="Dev Blog. | KevinZeidler.com">
-	<meta property="og:image" content="./images/me.jpg">
-	<meta property="og:site_name" content="Kevin Zeidler">
-	<meta property="og:title" content="Dev Blog. | KevinZeidler.com">
-	<meta property="og:type" content="Portfolio">
+        ul.inner-content-list {
 
-	<!-- Twitter Card Meta Data -->
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:site" content="@KevinZeidler">
-	<meta name="twitter:creator" content="@KevinZeidler">
-	<meta name="twitter:title" content="Dev Blog. | KevinZeidler.com">
-	<meta name="twitter:description" content="A blog about Web Development.">
-	<meta name="twitter:image" content="./images/me.jpg">
+            list-style: none;
+            margin-left: 0;
+            padding-left: 8%;
+            padding-right: 10%;
+            padding-bottom: 9px;
+            text-indent: -1em;
+            font-size: 14px;
+        }
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="favicon.png" type="image/png">
+        li.inner-content {
+            /*padding-left: 33.3%;*/
+            text-indent: -1.55em;
+            line-height: 18px;
+            -webkit-margin-before: .1em;
+            -webkit-margin-after: .3em;
+            -webkit-margin-start: 0em;
+            -webkit-margin-end: 0px;
+        }
 
-	<!-- Apple Touch Icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57-precomposed.png">
-
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-	<!-- Fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Cardo:400,400italic|Montserrat:700,400' rel='stylesheet' type='text/css'>
-
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="./maven/loader.css"/>
-	<link rel="stylesheet" type="text/css" href="./maven/framework.css"/>
-	<link rel="stylesheet" type="text/css" href="./maven/style.css"/>
-	<link rel="stylesheet" type="text/css" href="./progressbar.css"/>
-	<link rel="stylesheet" type="text/css" href="./maven/bootstrap.css"/>
-
-	<!-- Colors -->
-<link rel="stylesheet" type="text/css" href="./maven/blue.css" title="blue" media="screen">
-	<!--<link rel="alternate stylesheet" type="text/css" href="css/colors/red.css" title="red" media="screen">-->
-	<!--<link rel="alternate stylesheet" type="text/css" href="css/colors/green.css" title="green" media="screen">-->
-	<!--<link rel="alternate stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen">-->
-<!-- 	<link rel="alternate stylesheet" type="text/css" href="maven/colors/pink.css" title="pink" media="screen"> -->
-<!-- 	<link rel="alternate stylesheet" type="text/css" href="css/colors/orange.css" title="orange" media="screen">
-	<link rel="alternate stylesheet" type="text/css" href="css/colors/gray.css" title="gray" media="screen">
-	<link rel="alternate stylesheet" type="text/css" href="css/colors/purple.css" title="purple" media="screen">
-	<link rel="alternate stylesheet" type="text/css" href="css/colors/steel.css" title="steel" media="screen"> -->
-
-	<!--[if lt IE 9]>
-		<link rel="stylesheet" type="text/css" href="./css/ie.css" />
-	<![endif]-->
-
-	<!-- Javascript -->
-	<script src="./js/jquery.js"></script>
-	<script src="./js/modernizr.js"></script>
-	<script src="./js/progressbar.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<script src="./js/knockout.js"></script>
-
-	<style>
-
-		#myProgress {
-			width: 100%;
-			height: 30px;
-			background-color: #ddd;
-		}
-
-		#myBar {
-			background-color: #4CAF50;
-			width: 2%;
-			height: 30px;
-
-		}
-		.test-icon img {
-			align: right;
-			margin-left: 50%;
-			min-width: 7px;
-			max-width: 12px;
-		}
-
-	</style>
+        li.inner-content:before {
+            content: "➙";
+            color: #CA4603;
+            padding-right: 10px;
+        }
 
 
 
+        /*li {*/
+            /*font-family: 'Kreon';*/
+            /*font-weight: 400;*/
+            /*font-style: italic;*/
+            /*font-size: 15px;*/
+        /*}*/
+
+        #post-macro-container {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 100%;
+            /*width: 800px;*/
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_1*/
+
+        .post-micro-container {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            position: relative;
+            text-align: left;
+            /*width: 750px;*/
+            /*perspective-origin: 375px 305px;*/
+            /*transform-origin: 375px 305px;*/
+            border-top: 0px none rgb(102, 102, 102);
+            border-right: 0px none rgb(102, 102, 102);
+            border-bottom: 1px solid rgb(233, 233, 233);
+            border-left: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 50px;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 0px 0px 30px 70px;
+        }/*#DIV_2*/
+
+        #SPAN_3, #SPAN_21, #SPAN_44, #SPAN_61 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            display: block;
+            height: 62px;
+            left: 0px;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 0px;
+            width: 40px;
+            perspective-origin: 20px 31px;
+            transform-origin: 20px 31px;
+            border-top: 0px none rgb(102, 102, 102);
+            border-right: 0px none rgb(102, 102, 102);
+            border-bottom: 1px solid rgb(233, 233, 233);
+            border-left: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 28.8px / 23.04px Montserrat;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 0px 0px 10px;
+        }/*#SPAN_3, #SPAN_21, #SPAN_44, #SPAN_61*/
+
+        #A_4, #A_22, #A_45, #A_62 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 28.8px / 23.04px Montserrat;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#A_4, #A_22, #A_45, #A_62*/
+
+        #BR_5, #BR_23, #BR_46, #BR_63 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            text-align: center;
+            text-transform: uppercase;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 28.8px / 23.04px Montserrat;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#BR_5, #BR_23, #BR_46, #BR_63*/
+
+        #SMALL_6, #SMALL_24, #SMALL_47, #SMALL_64 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            text-align: center;
+            text-transform: uppercase;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 16.8px / 23.04px Montserrat;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#SMALL_6, #SMALL_24, #SMALL_47, #SMALL_64*/
+
+        .header {
+        }
+
+        .flytitle {
+            display: inline;
+            vertical-align: top;
+
+        }
+
+        .headline {
+            /*box-sizing: border-box;*/
+            color: rgb(102, 102, 102);
+            display: inline;
+            text-align: left;
+            vertical-align: top;
+            width: 680px;
+            /*border: 0px none rgb(102, 102, 102);*/
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_7, #DIV_25, #DIV_48, #DIV_65*/
+
+        .lede {
+            display: inline-block;
+            vertical-align: middle;
+            transform: skewX(-20deg);
+            /*text-indent: -20px;*/
+            letter-spacing: 0px;
+            margin-left: -10px;
+            padding-left: -20px;
+            line-height: 0em;
+            box-sizing: content-box;
+            /*padding: 20px 20px 20px 20px;*/
+            margin-bottom: -10px;
+        }
+
+        .inner-content-block {
+            font-family: "Open Sans Hebrew Condensed";
+            letter-spacing: 1px;
+            display: inline;
+            text-transform: uppercase;
+            font-weight: 200;
+            color: white;
+            letter-spacing: 0px;
+            font-size: 20px;
+            box-sizing: content-box;
+            vertical-align: middle;
+            /*margin-left: -15px;*/
+            /*padding: 0 0px;*/
+            background: #CA4603 none no-repeat scroll 0 0 / auto;
+            /*box-shadow: 15px 0 0 #CA4603, -10px 0 0 #CA4603;*/
+
+            /*font: normal normal normal normal 58px / 64px NHaasGroteskDSPro-75Bd, 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+        }
+
+        .chameleon-continue-link {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(0, 217, 236);
+            display: block;
+            height: 25px;
+            overflow-wrap: break-word;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            width: 566.656px;
+            word-wrap: break-word;
+            perspective-origin: 283.328px 12.5px;
+            transform-origin: 283.328px 12.5px;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(0, 217, 236);
+            font: normal normal normal normal 11px / 25.6px Montserrat;
+            margin: 25px 0px 0px;
+            outline: rgb(0, 217, 236) none 0px;
+            transition: all 0.2s ease 0s;
+
+        }
+
+        .tag-container {
+            display: inline-block;
+            vertical-align: middle;
+            transform: skewX(-20deg);
+            /*text-indent: -20px;*/
+            letter-spacing: 0px;
+            margin-left: -10px;
+            padding-left: -20px;
+            line-height: 0em;
+            box-sizing: content-box;
+            /*padding: 20px 20px 20px 20px;*/
+            margin-bottom: -10px;
+        }
+
+        .taglink {
+            font-family: "Open Sans Hebrew Condensed";
+            letter-spacing: 1px;
+            display: inline;
+            text-transform: uppercase;
+            font-weight: 200;
+            color: white;
+            letter-spacing: 0px;
+            font-size: 20px;
+            box-sizing: content-box;
+            vertical-align: middle;
+            /*margin-left: -15px;*/
+            /*padding: 0 0px;*/
+            background: #CA4603 none no-repeat scroll 0 0 / auto;
+            /*box-shadow: 15px 0 0 #CA4603, -10px 0 0 #CA4603;*/
+
+            /*font: normal normal normal normal 58px / 64px NHaasGroteskDSPro-75Bd, 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+        }
 
 
+
+        #H4_8, #H4_26, #H4_49, #H4_66 {
+            box-sizing: border-box;
+            color: rgb(23, 26, 28);
+            height: 36px;
+            letter-spacing: -2px;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 18px;
+            transform-origin: 340px 18px;
+            border: 0px none rgb(23, 26, 28);
+            font: normal normal bold normal 40px / 36px Montserrat;
+            margin: 20px 0px 6px;
+            outline: rgb(23, 26, 28) none 0px;
+        }/*#H4_8, #H4_26, #H4_49, #H4_66*/
+
+        #A_9, #A_27, #A_50, #A_67 {
+            background-position: 0px 50%;
+            /*box-sizing: border-box;*/
+            color: rgb(23, 26, 28);
+            letter-spacing: -2px;
+            text-align: left;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(23, 26, 28);
+            font: normal normal bold normal 40px / 36px Montserrat;
+            outline: rgb(23, 26, 28) none 0px;
+            transition: all 0.2s ease 0s;
+        }/*#A_9, #A_27, #A_50, #A_67*/
+
+        #DIV_10, #DIV_28, #DIV_51, #DIV_68 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 10px;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 5px;
+            transform-origin: 340px 5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_10, #DIV_28, #DIV_51, #DIV_68*/
+
+        #H6_11, #H6_29, #H6_52, #H6_69 {
+            box-sizing: border-box;
+            color: rgb(170, 170, 170);
+            height: 10px;
+            letter-spacing: 1.8px;
+            text-align: left;
+            text-transform: uppercase;
+            width: 680px;
+            perspective-origin: 340px 5px;
+            transform-origin: 340px 5px;
+            border: 0px none rgb(170, 170, 170);
+            font: normal normal normal normal 9px / 10.8px Montserrat;
+            margin: 20px 0px;
+            outline: rgb(170, 170, 170) none 0px;
+        }/*#H6_11, #H6_29, #H6_52, #H6_69*/
+
+        #A_12, #A_13, #A_30, #A_32, #A_53, #A_70 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(170, 170, 170);
+            letter-spacing: 1.8px;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(170, 170, 170);
+            font: normal normal normal normal 9px / 10.8px Montserrat;
+            outline: rgb(170, 170, 170) none 0px;
+            transition: all 0.2s ease 0s;
+        }/*#A_12, #A_13, #A_30, #A_32, #A_53, #A_70*/
+
+        #A_14, #A_31, #A_54, #A_71 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(170, 170, 170);
+            letter-spacing: 1.8px;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(170, 170, 170);
+            font: normal normal normal normal 9px / 10.8px Montserrat;
+            outline: rgb(170, 170, 170) none 0px;
+            transition: all 0.2s ease 0s;
+        }/*#A_14, #A_31, #A_54, #A_71*/
+
+        #DIV_15 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 315px;
+            position: relative;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 157.5px;
+            transform-origin: 340px 157.5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 33px;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_15*/
+        .image-container {
+            /*margin-left: 3%;*/
+            display: inline-block;
+            /*width: 110%;*/
+            vertical-align: top;
+            /*margin-bottom: 15px;*/
+            margin-left: 2%;
+            margin-top: -5%;
+            width: 110%;
+        }
+        #IMG_16 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            display: block;
+            text-align: left;
+            vertical-align: top;
+            /*width: 105%;*/
+            /*width: 110%;*/
+            /*perspective-origin: 340px 157.5px;*/
+            /*transform-origin: 340px 157.5px;*/
+            border: 0px none rgb(102, 102, 102);
+            border-radius: 4px 4px 4px 4px;
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#IMG_16*/
+
+        #DIV_17, #DIV_37, #DIV_97 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 100%;
+            text-align: left;
+            border: 0px none rgb(102, 102, 102);
+            margin-bottom: 15px;
+            line-height: 1.4em;
+            font: normal normal normal normal 16px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_17, #DIV_37, #DIV_97*/
+
+        #P_18, #P_38, #P_98 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 100%;
+            overflow-wrap: break-word;
+            text-align: left;
+            /*line-height: 14px;*/
+            /*width: 680px;*/
+            word-wrap: break-word;
+            perspective-origin: 340px 62.5px;
+            transform-origin: 340px 62.5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 16px / 25.6px Cardo;
+            margin: 20px 0px;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#P_18, #P_38, #P_98*/
+
+        #A_19, #A_42, #A_59, #A_100 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(0, 217, 236);
+            display: block;
+            height: 25px;
+            overflow-wrap: break-word;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            width: 680px;
+            word-wrap: break-word;
+            perspective-origin: 340px 12.5px;
+            transform-origin: 340px 12.5px;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(0, 217, 236);
+            font: normal normal normal normal 11px / 25.6px Montserrat;
+            margin: 25px 0px 0px;
+            outline: rgb(0, 217, 236) none 0px;
+            transition: all 0.2s ease 0s;
+        }/*#A_19, #A_42, #A_59, #A_100*/
+
+        #DIV_20 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 677.5px;
+            position: relative;
+            text-align: left;
+            width: 750px;
+            perspective-origin: 375px 338.75px;
+            transform-origin: 375px 338.75px;
+            border-top: 0px none rgb(102, 102, 102);
+            border-right: 0px none rgb(102, 102, 102);
+            border-bottom: 1px solid rgb(233, 233, 233);
+            border-left: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 50px;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 0px 0px 30px 70px;
+        }/*#DIV_20*/
+
+        #DIV_33 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 382.5px;
+            position: relative;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 191.25px;
+            transform-origin: 340px 191.25px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 33px;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_33*/
+
+        #DIV_34 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 382.5px;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 191.25px;
+            transform-origin: 340px 191.25px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_34*/
+
+        #DIV_35 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 382.5px;
+            position: relative;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 191.25px;
+            transform-origin: 340px 191.25px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 382.5px 0px 0px;
+        }/*#DIV_35*/
+
+        #IFRAME_36 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            display: block;
+            height: 382.5px;
+            left: 0px;
+            position: absolute;
+            text-align: left;
+            top: 0px;
+            width: 680px;
+            perspective-origin: 340px 191.25px;
+            transform-origin: 340px 191.25px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#IFRAME_36*/
+
+        #STRONG_39 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            overflow-wrap: break-word;
+            text-align: left;
+            word-wrap: break-word;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal bold normal 16px / 25.6px Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#STRONG_39*/
+
+        #A_40 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(23, 26, 28);
+            overflow-wrap: break-word;
+            text-align: left;
+            text-decoration: none;
+            word-wrap: break-word;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(23, 26, 28);
+            font: normal normal normal normal 16px / 25.6px Cardo;
+            outline: rgb(23, 26, 28) none 0px;
+            transition: all 0.2s ease 0s;
+        }/*#A_40*/
+
+        #BR_41 {
+            box-sizing: border-box;
+            color: rgb(23, 26, 28);
+            overflow-wrap: break-word;
+            text-align: left;
+            word-wrap: break-word;
+            border: 0px none rgb(23, 26, 28);
+            font: normal normal normal normal 16px / 25.6px Cardo;
+            outline: rgb(23, 26, 28) none 0px;
+        }/*#BR_41*/
+
+        #DIV_43 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 300px;
+            position: relative;
+            text-align: left;
+            width: 750px;
+            perspective-origin: 375px 150px;
+            transform-origin: 375px 150px;
+            border-top: 0px none rgb(102, 102, 102);
+            border-right: 0px none rgb(102, 102, 102);
+            border-bottom: 1px solid rgb(233, 233, 233);
+            border-left: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 50px;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 0px 0px 30px 70px;
+        }/*#DIV_43*/
+
+        #DIV_55 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            position: relative;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 0px;
+            transform-origin: 340px 0px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 33px;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_55*/
+
+        #DIV_56 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 150px;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 75px;
+            transform-origin: 340px 75px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 16px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_56*/
+
+        #P_57 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 100px;
+            overflow-wrap: break-word;
+            text-align: left;
+            width: 680px;
+            word-wrap: break-word;
+            perspective-origin: 340px 50px;
+            transform-origin: 340px 50px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 16px / 25.6px Cardo;
+            margin: 20px 0px;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#P_57*/
+
+        #P_58 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 25px;
+            overflow-wrap: break-word;
+            text-align: left;
+            width: 680px;
+            word-wrap: break-word;
+            perspective-origin: 340px 12.5px;
+            transform-origin: 340px 12.5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 16px / 25.6px Cardo;
+            margin: 20px 0px;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#P_58*/
+
+        #DIV_60 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 775px;
+            position: relative;
+            text-align: left;
+            width: 750px;
+            perspective-origin: 375px 387.5px;
+            transform-origin: 375px 387.5px;
+            border-top: 0px none rgb(102, 102, 102);
+            border-right: 0px none rgb(102, 102, 102);
+            border-bottom: 1px solid rgb(233, 233, 233);
+            border-left: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 50px;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 0px 0px 30px 70px;
+        }/*#DIV_60*/
+
+        #DIV_72 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 453px;
+            position: relative;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 226.5px;
+            transform-origin: 340px 226.5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 33px;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_72*/
+
+        #DIV_73 {
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 453px;
+            position: relative;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 226.5px;
+            transform-origin: 340px 226.5px;
+            background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+            border: 4px solid rgb(255, 255, 255);
+            border-radius: 4px 4px 4px 4px;
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 60px;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#DIV_73*/
+
+        #DIV_74 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 445px;
+            max-height: 2000px;
+            position: relative;
+            text-align: left;
+            width: 672px;
+            perspective-origin: 336px 222.5px;
+            transform-origin: 336px 222.5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+            overflow: hidden;
+            transition: all 1s ease 0s;
+        }/*#DIV_74*/
+
+        #UL_75 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 445px;
+            text-align: left;
+            width: 10752px;
+            z-index: 0;
+            perspective-origin: 5376px 222.5px;
+            transform: matrix(1, 0, 0, 1, -4032, 0);
+            transform-origin: 5376px 222.5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            list-style: none outside none;
+            margin: 0px;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 0px;
+            transition: all 0.6s ease 0s;
+        }/*#UL_75*/
+
+        #UL_75:after {
+            box-sizing: border-box;
+            clear: both;
+            color: rgb(102, 102, 102);
+            content: '"."';
+            display: block;
+            text-align: left;
+            visibility: hidden;
+            width: 10752px;
+            perspective-origin: 5376px 0px;
+            transform-origin: 5376px 0px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / 0px Cardo;
+            list-style: none outside none;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#UL_75:after*/
+
+        #LI_76, #LI_78, #LI_80, #LI_82, #LI_84, #LI_86, #LI_88, #LI_90 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            display: block;
+            float: left;
+            height: 445px;
+            width: 672px;
+            backface-visibility: hidden;
+            perspective-origin: 336px 222.5px;
+            transform-origin: 336px 222.5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            list-style: none outside none;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#LI_76, #LI_78, #LI_80, #LI_82, #LI_84, #LI_86, #LI_88, #LI_90*/
+
+        #IMG_77, #IMG_79, #IMG_83, #IMG_87, #IMG_91 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            display: block;
+            height: 445px;
+            max-width: 100%;
+            text-align: left;
+            vertical-align: middle;
+            width: 672px;
+            perspective-origin: 336px 222.5px;
+            transform-origin: 336px 222.5px;
+            border: 0px none rgb(102, 102, 102);
+            border-radius: 4px 4px 4px 4px;
+            font: normal normal normal normal 18px / normal Cardo;
+            list-style: none outside none;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#IMG_77, #IMG_79, #IMG_83, #IMG_87, #IMG_91*/
+
+        #IMG_81, #IMG_85 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            display: block;
+            height: 445px;
+            max-width: 100%;
+            text-align: left;
+            vertical-align: middle;
+            width: 672px;
+            perspective-origin: 336px 222.5px;
+            transform-origin: 336px 222.5px;
+            border: 0px none rgb(102, 102, 102);
+            border-radius: 4px 4px 4px 4px;
+            font: normal normal normal normal 18px / normal Cardo;
+            list-style: none outside none;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#IMG_81, #IMG_85*/
+
+        #IMG_89 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            display: block;
+            height: 445px;
+            max-width: 100%;
+            text-align: left;
+            vertical-align: middle;
+            width: 672px;
+            perspective-origin: 336px 222.5px;
+            transform-origin: 336px 222.5px;
+            border: 0px none rgb(102, 102, 102);
+            border-radius: 4px 4px 4px 4px;
+            font: normal normal normal normal 18px / normal Cardo;
+            list-style: none outside none;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#IMG_89*/
+
+        #UL_92 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            text-align: left;
+            width: 672px;
+            perspective-origin: 336px 0px;
+            transform-origin: 336px 0px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            list-style: none outside none;
+            margin: 0px;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 0px;
+        }/*#UL_92*/
+
+        #LI_93, #LI_95 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 0px;
+            width: 672px;
+            perspective-origin: 336px 0px;
+            transform-origin: 336px 0px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            list-style: none outside none;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#LI_93, #LI_95*/
+
+        #A_94 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+            display: block;
+            height: 40px;
+            left: -50px;
+            opacity: 0;
+            position: absolute;
+            text-align: left;
+            text-decoration: none;
+            text-shadow: rgba(255, 255, 255, 0.298039) 1px 1px 0px;
+            top: 222.5px;
+            width: 40px;
+            z-index: 10;
+            perspective-origin: 20px 20px;
+            transform-origin: 20px 20px;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgba(0, 0, 0, 0.8);
+            font: normal normal normal normal 18px / normal Cardo;
+            list-style: none outside none;
+            margin: -20px 0px 0px;
+            outline: rgba(0, 0, 0, 0.8) none 0px;
+            overflow: hidden;
+            transition: all 0.3s ease 0s;
+        }/*#A_94*/
+
+        #A_94:before {
+            box-sizing: border-box;
+            color: rgba(0, 0, 0, 0.8);
+            content: '""';
+            cursor: pointer;
+            display: inline-block;
+            height: 40px;
+            text-align: left;
+            text-shadow: rgba(255, 255, 255, 0.298039) 1px 1px 0px;
+            width: 25.7188px;
+            perspective-origin: 12.8594px 20px;
+            transform-origin: 12.8594px 20px;
+            border: 0px none rgba(0, 0, 0, 0.8);
+            font: normal normal normal normal 40px / 40px flexslider-icon;
+            list-style: none outside none;
+            outline: rgba(0, 0, 0, 0.8) none 0px;
+        }/*#A_94:before*/
+
+        #A_96 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+            display: block;
+            height: 40px;
+            opacity: 0;
+            position: absolute;
+            right: -50px;
+            text-align: right;
+            text-decoration: none;
+            text-shadow: rgba(255, 255, 255, 0.298039) 1px 1px 0px;
+            top: 222.5px;
+            width: 40px;
+            z-index: 10;
+            perspective-origin: 20px 20px;
+            transform-origin: 20px 20px;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgba(0, 0, 0, 0.8);
+            font: normal normal normal normal 18px / normal Cardo;
+            list-style: none outside none;
+            margin: -20px 0px 0px;
+            outline: rgba(0, 0, 0, 0.8) none 0px;
+            overflow: hidden;
+            transition: all 0.3s ease 0s;
+        }/*#A_96*/
+
+        #A_96:before {
+            box-sizing: border-box;
+            color: rgba(0, 0, 0, 0.8);
+            content: '""';
+            cursor: pointer;
+            display: inline-block;
+            height: 40px;
+            text-align: right;
+            text-shadow: rgba(255, 255, 255, 0.298039) 1px 1px 0px;
+            width: 25.7188px;
+            perspective-origin: 12.8594px 20px;
+            transform-origin: 12.8594px 20px;
+            border: 0px none rgba(0, 0, 0, 0.8);
+            font: normal normal normal normal 40px / 40px flexslider-icon;
+            list-style: none outside none;
+            outline: rgba(0, 0, 0, 0.8) none 0px;
+        }/*#A_96:before*/
+
+        #IMG_99 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 1px;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            text-align: left;
+            vertical-align: middle;
+            width: 1px;
+            word-wrap: break-word;
+            perspective-origin: 0.5px 0.5px;
+            transform-origin: 0.5px 0.5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 16px / 25.6px Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }/*#IMG_99*/
+
+
+    </style>
 </head>
-
 <body>
-	<!-- Loader -->
-	<div class="loader center dark">
-		<div class="loader-content">
-			<img src="images/kevin-zeidler-logo-clear.png" width="138" height="25" alt="logo"><br>
-			<span class="progress-container"><span class="progress"></span></span>
-		</div>
-		<script type="text/javascript">
-			$(window).load(function(){
-				$('.loader').delay(1000).fadeOut('slow');
-			});
-		</script>
-	</div><!-- END LOADER -->
-
-	<!-- Header -->
-	<header>
-		<!-- Logo -->
-		<div class="header-inner">
-			<a class="logo" href="#"><img src="images/kevin-zeidler-logo-clear.png" alt="logo" width="138" height="25"></a>
-		</div>
-
-		<!-- Menu Button -->
-		<div class="menu-button">
-			<span class="before"></span>
-			<span class="main"></span>
-			<span class="after"></span>
-		</div>
-	</header><!-- END Header -->
-
-	<!-- Navigation -->
-	<nav class="push-nav push-right" style="background-image: url(images/navigation.jpg);">
-		<!-- Logo -->
-		<div class="logo-nav"><a href="#"><img src="/images/kevin-zeidler-logo-clear.png" alt="logo" width="138" height="25"></a></div>
-		<div class="footer-nav">
-			<!-- Social -->
-			<ul class="social">
-				<li><a href="#"><i class="social-icon-behance"></i></a></li>
-				<li><a href="#"><i class="social-icon-twitter"></i></a></li>
-				<li><a href="#"><i class="social-icon-dribbble"></i></a></li>
-				<li><a href="#"><i class="social-icon-instagram"></i></a></li>
-			</ul>
-
-			<!-- Copyright -->
-			<h6>Copyright © 2016 Kevin Zeidler</h6>
-		</div>
-
-		<!-- Links -->
-		<ul class="navigation">
-			<li><a href="index.html#section1">Hello</a></li>
-			<li><a href="index.html#section2">About</a></li>
-			<li><a href="index.html#section5">Work</a></li>
-			<li><a href="index.html#section6">Team</a></li>
-			<li><a href="index.html#section9">Contact</a></li>
-		</ul>
-	</nav><!-- END Navigation -->
-
-	<!-- Main Wrap -->
-	<div class="navigation-overlay"></div>
-	<div id="wrap">
-
-		<!-- Hero -->
-		<section class="poster dark center padded-xl nav-trigger" style="background-image: url(images/lightningcat.jpg);" data-0="background-position: 0px 0px;" data-top-bottom="background-position: 0px 100px">
-
-			<!-- Hero Content -->
-			<div class="container">
-				<div class="col-xs-12 col-sm-10 col-sm-offset-1" data-0="opacity: 1;" data-top-bottom="opacity: 0;">
-					<h2>The blog.</h2>
-					<span class="separator"></span>
-					<h5>latest &amp; greatest news.</h5>
-				</div>
-			</div>
-		</section><!-- END Hero -->
-
-		<!-- Begin Blog Block -->
-		<section class="container">
-			<div class="row">
-
-				<!-- Begin Posts -->
-				<!--<div class="col-sm-8" id="post-macro">-->
-				<ul class="categories-widget">
-					<div class="row">
-						<div class="col-m-4">
-							<p>Filter posts by tag</p>
-							<div data-bind="foreach: combinedFilters">
-								<input type="button" data-bind="click: $parent.setActiveFilter, value: title"/>
-							</div>
-						</div>
-
-
-					</div>
-
-					<br/>
-
-
-					<table>
-						<thead>
-						<tr data-bind="foreach: headers">
-							<th data-bind="click: $parent.sort, text: title"></th>
-						</tr>
-						</thead>
-						<tbody data-bind="foreach: filteredPeople">
-						<div class="post image" id="text: ID">
-						<tr>
-							<td data-bind="text: ID"><div class="post-container"></div></td>
-							<td data-bind="text: monthYear"></td>
-							<td data-bind="text: flytitle"></td>
-							<td data-bind="text: headline"></td>
-							<td data-bind="text: lede"></td>
-							<td data-bind="text: img"></td>
-							<td data-bind="text: tags"></td>
-						</tr>
-						</div>
-						</tbody>
-					</table>
-					</ul>
-					<!-- Standard Post -->
-					<!--<ul class="categories-widget">-->
-					<!--</ul>-->
-
-
-
-
-					<!--<div class="post image" id="1">-->
-						<!--<div class="date-container"></div>-->
-						<!--<div class="post-title"></div>-->
-						<!--<div class="post-meta"></div>-->
-						<!--<div class="post-media" id="image"></div>-->
-
-						<!--<div class="post-container"></div>-->
-					<!--</div>&lt;!&ndash; END &ndash;&gt;-->
-
-
-					<!--<div class="post image" id="2">-->
-						<!--<div class="date-container"></div>-->
-						<!--<div class="post-title"></div>-->
-						<!--<div class="post-meta"></div>-->
-						<!--<div class="post-media" id="image"></div>-->
-
-						<!--<div class="post-container"></div>-->
-					<!--</div>&lt;!&ndash; END &ndash;&gt;-->
-
-
-					<!--<div class="post image" id="3">-->
-						<!--<div class="date-container"></div>-->
-						<!--<div class="post-title"></div>-->
-						<!--<div class="post-meta"></div>-->
-						<!--<div class="post-media" id="image"></div>-->
-
-						<!--<div class="post-container"></div>-->
-					<!--</div>&lt;!&ndash; END &ndash;&gt;-->
-
-					<!--<div class="post image" id="4">-->
-						<!--<div class="date-container"></div>-->
-						<!--<div class="post-title"></div>-->
-						<!--<div class="post-meta"></div>-->
-						<!--<div class="post-media" id="image"></div>-->
-
-						<!--<div class="post-container"></div>-->
-					<!--</div>&lt;!&ndash; END &ndash;&gt;-->
-
-					<!--<div class="navlinks">-->
-						<!--<div class="prev"></div>-->
-						<!--<div class="next"></div>-->
-					<!--</div>-->
-				</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-				<!-- Begin Sidebar -->
-				<div class="col-sm-4">
-					<div class="sidebar">
-
-						<!-- search widget -->
-						<div class="widget clearfix">
-							<form action="#" >
-								<input name="s" id="s" type="text" class="search" placeholder="Search.." value="" />
-								<input type="submit" value="Go" class="search-submit" />
-							</form>
-						</div><!-- END -->
-
-						<!-- text widget -->
-						<!--<div class="widget">-->
-							<!--<h5>TEXT WIDGET</h5>-->
-							<!--<div class="textwidget"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p></div>-->
-						<!--</div>&lt;!&ndash; END &ndash;&gt;-->
-
-						<div class="widget">
-							<h5>Blog Health</h5>
-							<span class="value" id="blogHealth" style="font: normal 40px 'Roboto'; " >0%</span>
-							<div id="myProgress">
-								<div id="myBar" data-percent-correct="100"></div>
-
-							</div>
-							<p style="font-size: 12px; color: gray;">A series of diagnostic tests to make sure everything's running smoothly.</p>
-						</div>
-
-						<div class="widget">
-							<h5>Unit Tests</h5>
-							<ul style="font-size: 12px;">
-								<div class="row">
-									<div class="col-xs-2 test-icon" id="ut1">
-										<!--<img class="test-icon" src="images/success.png" width="30%" height="30%">-->
-									</div>
-									<div class="col-xs-10 test-icon">
-										<li class="cat-item test-description"><a href="#">Did we get a valid JSON response?</a></li>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-2 test-icon" id="ut2">
-										<!--<img class="test-icon" src="images/success.png" width="30%" height="30%">-->
-									</div>
-									<div class="col-xs-10 test-icon">
-										<li class="cat-item test-description"><a href="#">Are there posts to display for the present view?</a></li>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-2 test-icon" id="ut3">
-										<!--<img class="test-icon" src="images/success.png" width="30%" height="30%">-->
-									</div>
-									<div class="col-xs-10">
-										<li class="cat-item test-description"><a href="#">Have we accumulated all the content tags in an array?</a></li>
-									</div>
-								</div>
-								</ul>
-							</div>
-								<!--<li class="cat-item"><a href="#">Are the posts displayed in reverse chronological order?</a> (6)</li>-->
-								<!--<li class="cat-item"><a href="#">Have we successfully generated an array of tags?</a> (12)</li>-->
-
-
-
-						<!-- END -->
-
-						<!-- categories widget -->
-						<div class="widget">
-							<h5>EXPOSED PIPES</h5>
-							<ul class="categories-widget">
-								<div data-bind="foreach: combinedFilters" style="font-size: 10px;">
-									<input type="button" data-bind="click: $parent.setActiveFilter, value: title"/>
-								</div>
-
-								<br/>
-
-								<table>
-									<thead>
-									<tr data-bind="foreach: headers">
-										<th data-bind="click: $parent.sort, text: title"></th>
-									</tr>
-									</thead>
-									<tbody data-bind="foreach: filteredPeople">
-									<tr>
-										<td data-bind="text: ID"></td>
-										<td data-bind="text: monthYear"></td>
-										<td data-bind="text: flytitle"></td>
-										<td data-bind="text: headline"></td>
-										<td data-bind="text: lede"></td>
-										<td data-bind="text: img"></td>
-										<td data-bind="text: tags"></td>
-									</tr>
-									</tbody>
-								</table>
-							</ul>
-							<!--<button data-bind="click: updateTag " id="refreshbutton">Refresh Tag</button>-->
-
-						</div><!-- END -->
-
-						<!--&lt;!&ndash; tagcloud widget &ndash;&gt;-->
-						<!--<div class="widget" id="tagCloud">-->
-							<!--<h5>TAGS</h5>-->
-							<!--<div class="tagcloud">-->
-							<!--</div>-->
-						<!--</div>&lt;!&ndash; END &ndash;&gt;-->
-
-						<!-- archives widget -->
-						<div class="widget widget-archive">
-							<h5>Archives</h5>
-							<div data-bind="foreach: chronoFilters">
-								<input type="button" data-bind="click: $parent.setActiveFilter, value: title"/>
-							</div>
-						</div>
-								<!--<li><a href="#">July 2013</a></li>-->
-								<!--<li><a href="#">June 2013</a></li>-->
-							<!-- END -->
-
-						<!-- recent comments widget -->
-						<!--<div class="widget widget-recent-comments">-->
-							<!--<h5>Recent Comments</h5>-->
-							<!--<ul id="recentcomments">-->
-								<!--<li class="recentcomments">Admin on <a href="#">Standard post with goodies.</a></li>-->
-								<!--<li class="recentcomments">Aether-Themes on <a href="#">Fluid video. Yeah we got that.</a></li>-->
-								<!--<li class="recentcomments">Admin on <a href="#">Gallery post with slider.</a></li>-->
-							<!--</ul>-->
-						<!--</div>&lt;!&ndash; END &ndash;&gt;-->
-
-						<!-- recent posts widget -->
-						<div class="widget widget-recent-entries">
-							<h5>Recent Posts</h5>
-
-
-						</div><!-- END -->
-
-					</div>
-				</div><!-- END -->
-
-			</div>
-		</section>
-		<!-- End Blog Block -->
-		<!-- End Blog Block -->
-
-		<!-- Begin Footer -->
-		<footer class="center black">
-			<div class="container">
-				<!-- Social -->
-				<div class="row">
-					<ul class="social col-xs-12">
-						<li><a href="#"><i class="social-icon-behance"></i></a></li>
-						<li><a href="#"><i class="social-icon-twitter"></i></a></li>
-						<li><a href="#"><i class="social-icon-dribbble"></i></a></li>
-						<li><a href="#"><i class="social-icon-instagram"></i></a></li>
-					</ul>
-				</div>
-
-				<!-- Copyright -->
-				<div class="row">
-					<div class="col-xs-12"><h6>Copyright © 2016 Kevin Zeidler</h6></div>
-				</div>
-			</div><!-- END Container -->
-		</footer><!-- END Footer -->
-
-        <script>
-
-//         <=====================Important=====================>
-//          hello, me.
-//
-//          please make sure the environment variable is correct
-//          before proceeding, especially after fetch/pull
-//          operations. (Key: 0 = dev, 1 = production server)
-
-            var my_env,
-					fp,
-					postsToFetch;
-
-            my_env = 0;
-
-            switch (my_env) {
-                	case 0:
-                    fp = "./blogfeed-dev.json";
-                    break;
-                case 1:
-                    fp = "./blogfeedv2.json";
-                    break;
+<!-- Loader -->
+<div class="loader center dark">
+    <div class="loader-content">
+        <!--<img src="images/kevin-zeidler-logo-clear.png" width="138" height="25" alt="logo"><br>-->
+        <span class="progress-container"><span class="progress"></span></span>
+    </div>
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('.loader').delay(1000).fadeOut('slow');
+        });
+    </script>
+</div><!-- END LOADER -->
+
+<!-- Header -->
+<header>
+    <!-- Logo -->
+    <div class="header-inner">
+        <a class="logo" href="#"><img src="images/kevin-zeidler-logo-clear.png" alt="logo" width="138" height="25"></a>
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-button">
+        <span class="before"></span>
+        <span class="main"></span>
+        <span class="after"></span>
+    </div>
+</header><!-- END Header -->
+
+<!-- Navigation -->
+<nav class="push-nav push-right" style="background-image: url(images/navigation.jpg);">
+    <!-- Logo -->
+    <div class="logo-nav"><a href="#"><img src="/images/kevin-zeidler-logo-clear.png" alt="logo" width="138" height="25"></a></div>
+    <div class="footer-nav">
+        <!-- Social -->
+        <ul class="social">
+            <li><a href="#"><i class="social-icon-behance"></i></a></li>
+            <li><a href="#"><i class="social-icon-twitter"></i></a></li>
+            <li><a href="#"><i class="social-icon-dribbble"></i></a></li>
+            <li><a href="#"><i class="social-icon-instagram"></i></a></li>
+        </ul>
+
+        <!-- Copyright -->
+        <h6>Copyright © 2016 Kevin Zeidler</h6>
+    </div>
+
+</nav>
+<div class="navigation-overlay"></div>
+<div id="wrap">
+
+    <!-- Hero -->
+    <section class="poster dark center padded-xl nav-trigger" style="background-image: url(images/lightningcat.jpg);" data-0="background-position: 0px 0px;" data-top-bottom="background-position: 0px 100px">
+
+        <!-- Hero Content -->
+        <div class="container">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1" data-0="opacity: 1;" data-top-bottom="opacity: 0;">
+                <h2>The blog.</h2>
+                <span class="separator"></span>
+                <h5>latest &amp; greatest news.</h5>
+            </div>
+        </div>
+    </section><!-- END Hero -->
+    <!-- Begin Blog Block -->
+    <!--<div class="row">-->
+    <!--<div class="col-xs-4">-->
+    <!--<div id="date-filters"></div>-->
+    <!--</div>-->
+    <!--<div class="col-xs-4">-->
+    <!--<div id="content-filters"></div>-->
+    <!--</div>-->
+    <!--<div class="col-xs-4">-->
+    <!--<div id="page-filters"></div>-->
+    <!--</div>-->
+
+    <!-- Begin Posts -->
+    <!--<div class="col-sm-8" id="post-macro">-->
+
+
+    <!--<tbody data-bind="foreach: filteredPeople">-->
+    <!--<tr>-->
+    <!--<td data-bind="text: ID"></td>-->
+    <!--<td data-bind="text: DD"></td>-->
+    <!--<td data-bind="text: MMM"></td>-->
+    <!--<td data-bind="text: monthYear"></td>-->
+    <!--<td data-bind="text: flytitle"></td>-->
+    <!--<td data-bind="text: headline"></td>-->
+    <!--<td data-bind="text: author"></td>-->
+    <!--<td data-bind="text: lede"></td>-->
+    <!--<td data-bind="text: img"></td>-->
+    <!--<td data-bind="text: contentHead"></td>-->
+    <!--<td data-bind="text: contentTail"></td>-->
+    <!--<td data-bind="text: tags"></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+
+    <!--<div class="post image">-->
+    <!--<span class="date">08<br><small>Jan</small></span>-->
+    <!--<div class="post-title">-->
+    <!--<h4><a href="blog-single.html">Standard post with goodies.</a></h4>-->
+    <!--<div class="post-meta">-->
+    <!--<h6>Posted by <a href="#">John Doe</a> / <a href="#">Standard</a></h6>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="post-media">-->
+    <!--<img src="images/blog/standard2.jpg" alt="">-->
+    <!--</div>-->
+
+    <!--<div class="post-body">-->
+    <!--<p>Etiam in nulla arcu, ut vehicula velit. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate. Donec varius felis fermentum nisl imperdiet at molestie purus porta.</p>-->
+    <!--<div>-->
+    <!--<a href="#">Continue Reading...</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>&lt;!&ndash; END &ndash;&gt;-->
+
+    <!--</table>-->
+    <!-- Begin Blog Block -->
+    <section class="container">
+        <div class="row">
+
+            <!-- Begin Posts -->
+            <div class="col-sm-8">
+                <div id="post-macro-container" data-bind="foreach: filteredPosts">
+
+
+                    <div class="post-micro-container" data-bind="attr: {id: ID}">
+                        <div class="plagiocephalic-helmet">
+                        <!--BEGIN DATE SPAN-->
+                        <span id="SPAN_3"> <a href="http://maven.themes.tf/2014/12/17/standard-post-with-goodies/" id="A_4"><span data-bind="text:DD"></span><br id="BR_5" /><small id="SMALL_6" data-bind="text: MMM"></small></a></span>
+                        <!--END DATE SPAN-->
+                        <div class="header">
+                            <div class="flytitle">
+                                <h5 data-bind="html: flytitle"></h5>
+                            </div>
+                            <div class="headline">
+                                <h4 data-bind="html: headline"></h4>
+                            </div>
+                            <span class="lede">
+                                <div class="test"></div>
+                                    <h5 data-bind='html: lede, style: { backgroundColor :  $data.bg_color(), boxShadow : $data.myShadow() }' class="inner-content-block"></h5>
+                                <!--" +-->
+<!--//                                                         "style='box-shadow: 15px 0 0 '" + $(this).bg_color()  +-->
+<!--//                                                         "style='box-shadow: -10px 0 0 '" + $(this ).bg_color() +-->
+<!--//                                                         "class='inner-content-block'></h5>");-->
+<!--//                                    $(chameleonNode).insertAfter( $(".test").closest(".lede") );-->
+
+                            </span>
+                             <span class="image-container">
+                            <img alt="" data-bind="attr: {src:img}" id="IMG_16" />
+                            </span>
+                        </div>
+                            <div id="DIV_10">
+                                <!--<h6 id="H6_11">-->
+                                    <!--<a href="http://maven.themes.tf/author/donagh/" title="Posts by Donagh" rel="author" id="A_12">Donagh</a> / <a href="http://maven.themes.tf/category/demo-articles/" title="View all posts in Demo Articles" id="A_13">Demo Articles</a>, <a href="http://maven.themes.tf/category/featured/" title="View all posts in Featured" id="A_14">Featured</a>-->
+                                <!--</h6>-->
+                            </div>
+                        </div>
+
+                                <div id="DIV_17">
+                            <p data-bind="html: $data.contentHead"></p>
+                                    </div>
+                            <!--ko if: contentTail-->
+
+                            <div class="post-tail">
+                                <a class="chameleon-continue-link" href="#" data-bind="click: expandPreview, visible: !tailVisible(), style: { color: $data.bg_color() }">Continue reading...</a>
+                                <div data-bind="html: contentTail, visible: tailVisible"></div>
+                            </div>
+                            <!-- /ko -->
+                            </p>
+                                <!--<a href="http://maven.themes.tf/2014/12/17/standard-post-with-goodies/" >Continue Reading…</a>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    </div>
+
+
+
+
+
+
+
+
+                <!--<div class="nullparent" data-bind="foreach: filteredPeople">-->
+                    <!--<div class="post image" data-bind="attr: {id: ID}"></div>-->
+                    <!--&lt;!&ndash;<div class="date-container">&ndash;&gt;-->
+                    <!--<span id="date"><span id="DD" data-bind="text: DD"></span><br id="BR_2" /><small id="SMALL_3" data-bind="text: MMM"> </small></span>-->
+                        <!--&lt;!&ndash;<span class="date"><span id = "SPAN_1" data-bind="text: DD"></span><br><small data-bind="text: MMM"></small></span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--<div class="post-title">-->
+                        <!--<h5 data-bind="text: flytitle"></h5>-->
+                        <!--<h1 data-bind="text: headline"</h1>-->
+                        <!--<h6 data-bind="text: lede"</h6>-->
+                    <!--</div>-->
+                    <!--<div class="post-media">-->
+                        <!--<div class="head">-->
+                            <!--<p>-->
+                                <!--<img data-bind="attr: {src: img}">-->
+                            <!--</p>-->
+                            <!--<p>-->
+                            <!--<div class="post-body" data-bind="text: contentHead"></div>-->
+                            <!--</p>-->
+                            <!--&lt;!&ndash; ko if: contentTail &ndash;&gt;-->
+                            <!--<p>-->
+                            <!--<div class="post-tail">-->
+                                <!--<button data-bind="attr: {id: ID}, click: expandPreview">Continue reading...</button></p>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /ko &ndash;&gt;-->
+
+
+                    <!--</div>-->
+
+                <!--</div>-->
+            </div>
+        </div>
+        <!--End Blog post column-->
+        <!-- Begin Blog sidebar column -->
+        <div class="col-sm-4">
+            <div class="sidebar">
+
+                <!-- Start search widget -->
+                <div class="widget clearfix">
+                    <form action="#" >
+                        <input name="s" id="s" type="text" class="search" placeholder="Search.." value="" />
+                        <input type="submit" value="Go" class="search-submit" />
+                    </form>
+                </div>
+                <!--End search widget-->
+
+                <!--Start filter widget -->
+                <div class="widget_tag_cloud">
+                    <h5>CATEGORIES</h5>
+                    <p>Filter posts by tag</p>
+                     <div data-bind="foreach: contentFilters" id="cloudcontainer">
+                        <!--The tag container generates the background and skews it-->
+                         <span class="tag-container" >
+
+                             <a class="inner-content-block" data-bind="attr:{href: ('#' + title)}, click: $parent.setActiveFilter, text: title, style: { backgroundColor: $parent.randomColor }" ></a><span class="tag-separator" style="font-size: 50px; color=gray">, &nbsp;</span>
+                             <span><script>console.log($(parent));</script></span>
+                        </span>
+                         <!--End tag container-->
+                     </div>
+                    <table>
+                        <thead>
+                        <tr data-bind="foreach: headers">
+                            <!--<th data-bind="click: $parent.sort, text: title"></th>-->
+                        </tr>
+                        </thead>
+                    </table>
+                </div><!--End cloud container-->
+                <!--End filter widget-->
+            <div>&nbsp;</div>
+
+            <div class="widget widget-recent-entries">
+                <h5>Archives</h5>
+                <ul data-bind="foreach: chronoFilters" id="archives">
+                    <li>
+                        <a href="#" data-bind="click: $parent.setActiveFilter, text: title"></a>
+                    </li>
+
+                </ul>
+
+            </div> <!-- End sidebar (1/2) -->
+            <!--there is no reason anything should be here-->
+        </div> <!--End sidebar (2/2> -->
+    </section>
+    <!--End blog block-->
+
+
+
+    <!-- Begin Footer -->
+    <footer class="center black">
+        <div class="container">
+            <!-- Social -->
+            <div class="row">
+                <ul class="social col-xs-12">
+                    <li><a href="#"><i class="social-icon-behance"></i></a></li>
+                    <li><a href="#"><i class="social-icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="social-icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="social-icon-instagram"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- Copyright -->
+            <div class="row">
+                <div class="col-xs-12"><h6>copyright © 2016 Kevin Zeidler</h6></div>
+            </div>
+        </div><!-- END Container -->
+    </footer><!-- END Footer -->
+
+</div><!-- END Main Wrap -->
+
+
+
+<script>
+    // 2/22: It would appear we need to construct a model of the JSON object in order to filter that object on the client's side.
+    $.ajax({
+               url: "blogfeed-dev.json",
+               dataType: 'json',
+               success: function (res) {
+                   localStorage.setItem("dataCache", JSON.stringify(res));
+               }
+           });
+
+    var manifest, db;
+
+
+    if(localStorage.getItem("dataCache", 60 * 1000)) {
+        manifest = JSON.parse(localStorage.getItem("dataCache"));
+    }
+
+
+    // Generate an array of all the unique filters
+    var dateFilters = new Set();
+    manifest['posts'].forEach( function(o) { dateFilters.add(o.month + " " +  o.year); } );
+
+    var contentFilters = new Set();
+    var chameleonColors = new Set();
+    manifest['posts' ].forEach( function(o) {
+        for (t in o['tags']) {
+            if (o['tags'][t]) {
+                contentFilters.add( o[ 'tags' ][ t ] );
             }
-
-
-
-			function getPostsForCurrentView(maxNum, view) {
-				// Return an array containing the IDs of the posts we need to load.
-				// 2/18: don't automatically load every post. instead, require callee to specify a view flag of 'all'
-				// todo: infer which posts to load based on the user's current URL
-				var ids;
-
-				switch (view) {
-					case "all":
-							// note the
-						ids = Array.apply( null, Array( maxNum + 1 ) ).map( function ( _, i ) {return i;} );
-						return ids;
-					default:
-						console.log(
-								"Warning: invalid view flag passed to getPostsForCurrentView. You must specify a view mode."
-						);
-					}
-				return ids;
-			}
-
-
-
-
-
-			function createPostContainerWithID(pid) {
-				var node = String("<div class=\"post image\" id=\"" + pid + "\">" +
-								  "<div class=\"date-container\"></div>" +
-								  "<div class=\"post-category\"></div>" +
-								  "<div class=\"post-title\"></div>" +
-								  "<div class=\"post-meta\"></div>" +
-								  "<div class=\"post-media\"></div>" +
-								  "<div class=\"post-container\"></div>" +
-								  "</div><!-- END -->");
-				return node;
-			}
-			function insertTagEngineDemo(tags) {
-
-				console.log( "DOM fully loaded and parsed" );
-
-				arr =
-						[];
-				console.log( "Attempting to append tags to #tags-demo. Current value: " + tags );
-				tags.forEach( function ( k, v ) {
-								  arr.push( k );
-					              arr.push( v );
-								  console.log( arr );
-							  }
-				);
-				initiateUnitTest(3, [arr]);
-				for ( i = 0; i < arr.length; i += 2) {
-					console.log(i);
-					$( "<a href='#" +
-					   arr[ i+1 ] +
-					   "' class='content-tag initial' id='tag" +
-					   i +
-					   "' data-freq='" +
-					   arr[i] +
-					   "' >" +
-					   arr[ i+1 ] +
-					   "</a>" ).click(function(e) {$(this ).addClass("focus" ).siblings().removeClass("focus"); $(this ).removeClass("blurred" ).siblings().addClass("blurred"); } )
-							.appendTo( $( '.tagcloud' ) );
-				}
-				var tags = document.getElementsByClassName("initial");
-
-
-			}
-
-
-
-
-            function getJSONValueOf( param, index ) {
-                return data.responseJSON[ 'posts' ][ index ][ param ];
+        }
+        if (o['color']) {
+            chameleonColors.add( o[ 'color']);
             }
-
-            function sortProperties(obj)
-            {
-                // convert object into array
-                var sortable=[];
-                for(var key in obj)
-                    if(obj.hasOwnProperty(key))
-                        sortable.push([key, obj[key]]); // each item is an array in format [key, value]
-
-                // sort items by value
-                sortable.sort(function(a, b)
-                              {
-                                  return a[1]-b[1]; // compare numbers
-                              });
-                return sortable; // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
-            }
+    });
 
 
-            function quoteattr( s, preserveCR ) {
-                // For sanitizing strings.
-                preserveCR = preserveCR ? '&#13;' : '\n';
-                return ('' + s
-                ) /* Forces the conversion to string. */
-                        .replace( /&/g, '&amp;' ) /* This MUST be the 1st replacement. */
-                        .replace( /'/g, '&apos;' ) /* The 4 other predefined entities, required. */
-                        .replace( /"/g, '&quot;' )
-                        .replace( /</g, '&lt;' )
-                        .replace( />/g, '&gt;' )
-                        /*
-                         You may add other replacements here for HTML only
-                         (but it's not necessary).
-                         Or for XML, only if the named entities are defined in its DTD.
-                         */
-                        .replace( /\r\n/g, preserveCR )
-                        /* Must be before the next replacement. */
-                        .replace( /[\r\n]/g, preserveCR );
-            }
-			function initiateUnitTest(test, argarr) {
-				var success,
-					failed;
-				success = ($('<img src = "./images/success.png" style="min-width: 15px;">'));
-				failed = ($('<img src = "./images/failed.png" style="min-width: 15px;" >'));
-				switch (test) {
-					case 1:
-						if (argarr[0 ].length > 0) {
-							ret = success;
-						} else {
-							ret = failed;
-						}
-						return ret.appendTo("#ut1");
-					case 2: // are there actually posts to display for the present view?
-						if (argarr[0 ].length > 0) {
-							ret = success;
-						}
-						else {
-							ret = failed;
-						}
-						return ret.appendTo("#ut2");
+    var dateFilterArr = Array.from(dateFilters);
+    var contentFilterArr = Array.from(contentFilters);
+    var chameleonColorScheme = Array.from(chameleonColors);
 
 
-					case 3: // is our content tag engine accumulating at least some tags?
-						if (argarr[0 ].length > 0) { ret = success; }
-						else { ret = failed;}
-						return ret.appendTo("#ut3");
-				}
-
-
-			}
-            function generateTemplateString(
-                    typeOfNode, argarr ) {
-                var target = String(),
-                    dynode = String();
-                target     = typeOfNode.concat( ", " +
-                                                argarr.length
-                );
-                switch ( target ) {
-                    case 'date, 2':
-                        console.log( "hooray" );
-                        dynode = dynode.concat( '<span class=\"date\">',
-                                                argarr[ 0 ],
-                                                '<br><small>',
-                                                argarr[ 1 ],
-                                                '</small></span>'
-                        );
-                        return dynode;
-                    case 'content-head, 7':
-                        if ( hasNextParagraph( argarr[ 0 ] ) ) {
-                            dynode = dynode.concat( '<div class="head"><p><img src="',
-                                                    argarr[ 1 ],
-                                                    '"></p><p>',
-                                                    argarr[ 0 ][ 0 ],
-                                                    '</p></div><div class="dynode" data-pid="',
-													argarr[ 3 ],
-													'" id="dynode',
-                                                    argarr[ 3 ],
-                                                    '"><p>Continue reading...</p></div>');
-//
-//							);
-                        }
-                        else {
-                            dynode = dynode.concat( '<div class="head"><img src="',
-                                                    argarr[ 1 ],
-                                                    '"><p>',
-                                                    argarr[ 0 ][ 0 ],
-                                                    '</p></div>'
-                            );
-
-                        }
-                        console.log( "Content node created. Now appending ", dynode );
-                        return dynode;
-                    case 'content-tail, 2':
-                        console.log( 'Now appending ', argarr[ 1 ] );
-                        dynode = dynode.
-							   concat( '<p>',
-									   argarr[ 1 ],
-									   '</p >'
-                        );
-                        return dynode;
-
-					case 'recent-posts, 1':
-						dynode = dynode.concat('<li><a href="#">',
-											   argarr[0],
-											   '</a>');
+    // Append the unique filters to the divs
+//    Array.from(dateFilters ).forEach(function (d) { $("<div>" + d + "</div>" ).insertAfter("#date-filters"); });
+//    Array.from(contentFilters ).forEach( function ( tag ) { $( "<div>" + tag + "</div>" ).insertAfter( "#content-filters" ); });
+//    Array.from(chameleonColors ).forEach( function ( c ) { $( "<div style='color: " +  c + "';>" + c + "</div>" ).insertAfter("#cloudcontainer"); });
 
 
 
 
-                    default:
-                        console.log(
-                                "Value to match is " + target
-                        );
-                        break;
-                }
-            }
+    var Post = function(data, idx) {
+        var self = this;
+        self.flytitle=ko.observable();
 
-            function hasNextParagraph( head ) {
-                if ( head[ 1 ] ) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }
-
-var callback;
-callback = function ( data ) {
-	initiateUnitTest(1, [data]);
-
-	console.log( "Initiating load sequence" )
-};
-
-$.getJSON( fp, callback );
+        $.extend(self, {
+            ID: idx,
+            DD: data.day,
+            MMM: data.month.substring(0,3),
+            monthYear: data.month + " " + data.year,
+            flytitle: data.category,
+            headline: data.title,
+            author: data.author,
+            lede: data.lede,
+            img: data.image,
+            contentHead: data.content[0],
+            contentTail: data.content[1] || '',
+            tags: data.tags.join(),
+            color: data.color
+        });
 
 
 
+        self.tailVisible = ko.observable(false);
+        self.expandPreview = function() {
+            self.tailVisible(true);
+        }
+        self.bg_color = ko.observable(data.color || '#CA4603');
+        self.myShadow = ko.computed(function() {
 
-// 2/22: It would appear we need to construct a model of the JSON object in order to filter that object on the client's side.
-$.ajax({
-	       url: "./blogfeed-dev.json",
-		   dataType: 'json',
-		   success: function (res) {
-			localStorage.setItem("dataCache", JSON.stringify(res));
-			}
-});
+            return ('10px 0 0 ' + data.color + ", -10px 0 0 " + data.color);
+        });
 
-var manifest, db;
+        console.log("Self.myshadow is ", self.myShadow());
 
+        self.getChameleonColor = ko.computed(function() {
+            console.log("Returning a random chameleon color...");
+            var ret = chameleonColors[Math.floor(Math.random() * chameleonColors.length)];
+            console.log("How about ", ret , "?");
+            return ret;
+        });
+    }
 
-if(localStorage.getItem("dataCache")) {
-	manifest = JSON.parse(localStorage.getItem("dataCache"));
-}
+    var viewModel = function(colors){
+        var self = this;
+        self.colors = colors;
+        self.posts = ko.observableArray();
 
+        self.headers = [
+            {title:'ID',sortPropertyName:'ID',  asc: true, active: true},
+            {title:'DD', sortPropertyName:'DD', asc: true, active: false},
+            {title: 'MMM', sortPropertyName: 'MMM', asc: true, active: false},
+            {title:'Publication Date',sortPropertyName:'monthYear', asc: true, active: false},
+            {title:'H2',sortPropertyName:'flytitle', asc: true, active: false },
+            {title:'H1',sortPropertyName: 'headline', asc: true, active: false },
+            {title: 'Author', sortPropertyName: 'author', asc: true, active: false},
+            {title: 'Lede', sortPropertyName: 'lede', asc: true, active: false},
+            {title: 'Image', sortPropertyName: 'img', asc: true, active: false},
+            {title: 'Head', sortPropertyName: 'contentHead', asc: true, active: false},
+            {title: 'Tail', sortPropertyName: 'contentTail', asc: true, active: false},
+            {title: 'Tags', sortPropertyName: 'tags', asc: true, active: false},
+            {title: 'Color', sortPropertyName: 'color', asc: true, active: false},
 
-	var table, row, tags;
-	table = [];
-	console.log("Now constructing a model from ", manifest);
-	for (i in manifest['posts']) {
-		row = [];
-		row.push(i,  (manifest['posts'][i]['month'] + " " + manifest['posts'][i]['year']),  manifest['posts'][i]['category'], manifest['posts'][i]['title'],manifest['posts'][i]['lede'], manifest['posts'][i]['image'],manifest['posts'][i]['tags' ].join());
-		table.push(row);
-	}
-	console.log("Model constructed. ", table);
+        ];
 
-
-function get(i, field) {
-	return manifest['posts'][i][field];
-}
-
-//var viewModel = function() {
-//	var self    = this;
-//	self.posts =
-//			ko.observableArray( [ {
-//									ID: table[ 0 ][ 0 ],
-//									monthYear: table[ 0 ][ 1 ],
-//									flytitle: table[ 0 ][ 2 ],
-//									headline: table[ 0 ][ 3 ],
-//									lede: table[ 0 ][ 4 ],
-//									img: table[ 0 ][ 5 ],
-//									tags: table[ 0 ][ 6 ]
-//								},
-//									{
-//										ID: table[ 1 ][ 0 ],
-//										monthYear: table[ 1 ][ 1 ],
-//										flytitle: table[ 1 ][ 2 ],
-//										headline: table[ 1 ][ 3 ],
-//										lede: table[ 1 ][ 4 ],
-//										img: table[ 1 ][ 5 ],
-//										tags: table[ 1 ][ 6 ]
-//									}]
-//			);
-//
-//	self.headers = [
-//		{title:'ID',sortPropertyName:'ID', asc: true},
-//		{title:'Publication Date',sortPropertyName:'monthYear', asc: true},
-//		{title:'H2',sortPropertyName:'flytitle', asc: true},
-//		{title:'H1', sortPropertyName:'headline',asc: true},
-//		{title:'Lede', sortPropertyName: 'lede', asc: true},
-//		{title:'Image', sortPropertyName: 'img', asc: true},
-//		{title:'Tags', sortPropertyName: 'tags', asc: true}
-//	];
-//	self.filters = [
-//		{title:'Show All', filter: null},
-//		{title:'Only jQuery', filter: function(item){return item.tags.includes('jQuery');}},
-//		{title:'Only kittens', filter: function(item){return item.tags.includes('kittens');}}
-//			];
-//	self.activeSort = self.headers[0]; //set the default sort
-//	self.sort = function(header, event){
-//		//if this header was just clicked a second time
-//		if(self.activeSort === header) {
-//			header.asc = !header.asc; //toggle the direction of the sort
-//		} else {
-//			self.activeSort = header; //first click, remember it
-//		}
-//		var prop = self.activeSort.sortPropertyName;
-//		var ascSort = function(a,b){ return a[prop] < b[prop] ? -1 : a[prop] > b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
-//		var descSort = function(a,b){ return a[prop] > b[prop] ? -1 : a[prop] < b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
-//		var sortFunc = self.activeSort.asc ? ascSort : descSort;
-//		self.posts.sort(sortFunc);
-//	};
-//	self.activeFilter = ko.observable(self.filters[0].filter);
-//	self.filteredPosts = ko.computed(function(){
-//		if(self.activeFilter()){
-//			return ko.utils.arrayFilter(self.posts(), self.activeFilter());
-//		} else {
-//			return self.posts();
-//		}
-//	});
-//	self.setActiveFilter = function(model,event){
-//		self.activeFilter(model.filter);
-//	};
-//}
-//ko.applyBindings(new viewModel());
-//
-//console.log("db value is ", db);
+        self.filters = [
+            {title:'Show All', filter: null},
+            {title:'Kittens', filter: function(item){return item.includes("kittens");}},
+            {title:'jQuery', filter: function(item){return item.tags.includes("jQuery");}},
+            {title:'Eels', filter: function(item){return item.tags.includes("eels"); }},
+            {title:'Show All', filter: null},
+            {title:'February 2016', filter: function(item){return item.monthYear==("February 2016");}},
+            {title:'March 2019', filter: function(item){return item.monthYear==("March 2019");}}
+        ];
 
 
 
-$.getJSON( fp,
-		   function ( data ) {
-			   var i,
-				   tagCounter,
-				   current;
-			   tagCounter = new Map();
-			   for ( i in data[ 'posts' ] ) {
-				   for ( tag in data[
-						   'posts' ][ i ][ 'tags' ] ) {
-					   current = tagCounter[ tag ];
-					   current = data[ 'posts' ][ i ][ 'tags' ][ tag ];
-					   if ( tagCounter.has( String( current ) ) ) {
-						   v = tagCounter.get( String( current ) );
-						   tagCounter.set( String( current ), v + 1 );
-					   }
-					   else {
-						   tagCounter.set( String( current ), 1 );
-					   }
-				   }
-			   }
-
-			   var sortedTags = sortProperties(tagCounter);
-			   console.log("The tags are:" +  sortedTags);
-			   insertTagEngineDemo(tagCounter);
-
-                       }
-
+        self.chronoFilters = [];
+        self.contentFilters = [];
+        self.combinedFilters = [];
+        dateFilterArr.forEach(function(monthStr) {
+            self.chronoFilters.push(
+                    {title: monthStr, count: function(item) { return item.month.includes("Feb"); }, filter: function(item) {return item.monthYear==(monthStr); }}
             );
-			function generateDateArchives(jsonResponse) {
-				for (i in jsonResponse['posts']) {
-					console.log( "now generating date archives from ", jsonResponse[ 'posts' ][ i ]['month'], jsonResponse[ 'posts' ][ i ]['year']  );
-
-//					$('<li>', jsonResponse, [ "posts" ][ i ]["month"], jsonResponse[ "posts" ][ i ]["year"], '</li>').appendTo("#date-archives");
-
-				}
-			}
-            $.getJSON( fp , function ( data ) {
-						   generateDateArchives(data);
-                           var postArray    = [];
-                           var
-
-                               dateLinks    = new Set();
-                           var
-                               contentLinks = new Map();
-                           var chronoLinks  = new Set();    //                var tags = {"byDate": dateLinks,
-                           //                            "byType": contentLinks, //                            "byIndex": chronoLinks};
-                           var MMM,
-                               DD,
-                               postID,
-                               postDate,
-                               postID,
-                               postTitle,
-							   postCategory,
-                               postLede,
-                               postHasImage,
-                               postImage,
-                               postHasImageCaption,
-                               postImageCaption,
-                               postHasLede,
-                               postLede,
-                               postHasBody,
-                               postContainer,
-                               postAuthor,
-                               postTags,
-                               postTemplate,
-                               postMonth,
-                               postYear,
-                               postPermanentURL,
-                               postIsExtensible;
-                           var len = data['posts' ].length;
-						   postsToFetch = getPostsForCurrentView(len, 'all');
-						   initiateUnitTest(2, [postsToFetch]);
-
-				           for (i = postsToFetch.length-1; i > 0-1; i--) {
-
-								console.log("Now creating post " + i);
-								$(createPostContainerWithID(i)).appendTo("#post-macro");
-							}
-                           for ( var i in postsToFetch ) {
-							   // Here we create the complete HTML representation of the post from the JSON document and append it to the DOM.
+        });
 
 
-                               console.log( "Creating a new DOM node." );
-
-                               console.log( i, data[ 'posts' ][ i ] );
-                               MMM              = data[ 'posts' ][ i ][ 'month' ].slice( 0, 3 );
-                               DD  = data[ 'posts' ][ i ][ 'day' ];
-                               postMonth = data[ 'posts' ][ i ][ 'month' ];
-                               postYear  = data[ 'posts' ][ i ][ 'year ' ];
-                               postID    = data[ 'posts' ][ i ][ 'id' ];
-							   postCategory = data[ 'posts' ][ i ][ 'category' ];
-                               postTitle = data[ 'posts' ][ i ][ 'title' ];
-                               postLede  = data[ 'posts' ][ i ][ 'lede' ];
-                               postImage = data[ 'posts' ][ i ][ 'image' ];
-                               postContainer = data[ 'posts' ][ i ][ 'content' ];
-                               postTags      = data[ 'posts' ][ i ][ 'tags' ];
-                               postTemplate  = data[ 'posts' ][ i ][ 'displayoption' ];
-                               postPermanentURL = "/todo.html";
-                               postImageCaption = "Here's a placeholder caption.";
-                               postIsExtensible = hasNextParagraph( postContainer );
-
-							   // Insert the date
-                               $( generateTemplateString( 'date', [ DD, MMM ] ) ).insertAfter( '.post#' + i + ' .date-container');
-
-							   // Insert the category
-							   $( '<h5>' + postCategory + '</h5>' ).insertAfter( '.post#' + i + ' .post-category');
-
-							   // Insert the title
-                               $( '<h4>' + postTitle + '</h4>' ).insertAfter( '.post#' + i + ' .post-title');
-
-                               $( '<h6 id="lede">' + postLede + '</h6>' ).insertAfter( '.post#' + i + ' .post-meta');
-
-                               $( generateTemplateString( 'content-head',
-                                                          [
-                                                              postContainer,
-                                                              postImage,
-                                                              postImageCaption,
-                                                              postID,
-                                                              postPermanentURL,
-                                                              postTemplate,
-                                                              postIsExtensible
-                                                          ]
-                                  )
-                               ).insertAfter( '.post#' + i + ' .post-container' );
-
-							   if (postIsExtensible) {
-								   console.log("I think ", postID, "is an extensible post. Should I go ahead and append a dynode?");
-								   var nodeID = "div#dynode" + postID + ".dynode";
-								   $(nodeID).click( function () {
-									   tail = data[ 'posts' ][$(this).attr("data-pid") ][ 'content' ][ 1 ];
-												var
-														someText =
-																generateTemplateString( 'content-tail', [ $(this).attr("data-pid")  , tail ] );
-												var newDiv       = $
-												( "<div>" ).
-														   append( someText ).click( function () {
-																						 console.log( "click!" );
-																					 }
-												);
-												$(
-														this
-												).append( newDiv );
-											}
-									);
-							   }
 
 
-                           }
-
-                       }
+        contentFilterArr.forEach(function(contentTagStr) {
+            self.contentFilters.push(
+                    {title: contentTagStr,
+                        filter: function(item) { return item.tags.includes(contentTagStr); }}
             );
+        });
 
-            // Generate links for our navigation pages
+//        self.allFilters = Array.prototype.push.apply(self.chronoFilters, self.contentFilters);
+        var merged = [];
+        merged.push(self.chronoFilters);
+        merged.push(self.contentFilters);
+        self.combinedFilters = [].concat.apply([], merged);
 
-
-            //
-            //        postArray.map(function (obj) {
-            //            dateLinks.add(obj['month'] + " " + obj['year']);
-            //        });
-            //
-            //        console.log(dateLinks);
-            //
-            //        postArray.map(function (obj) {
-
-
-            //            obj['tags'].map(function (topic) {
-            //                contentTags.add(topic);
-            //            });
-            //        });
-            //
-            //        for (i = 0; i < posts.length; i++) {
-            //            if (i % 5 === 0) {
-            //        		intervalTags.add(i);
-            //            }
-            //        }
-
-            document.addEventListener(
-                    "DOMContentLoaded", function ( event ) {
-                        console.log(
-                                "DOM fully loaded and parsed"
-                        );
-
-
-                        $.getJSON(
-//								// todo: inspect whether the string at data[ 'posts' ][ 0 ][ 'content' ][ '1' ] is empty, and if not, insert the link to "continue reading" automatically
-                                fp, function ( data ) {
-                                    var
-                                            tail;
+        console.log("Created filter " + self.combinedFilters);
 
 
 
-//                                    $( "#dynode0" ).click(
-//
-//                                            function () {
-//												tail = data[ 'posts' ][ 0 ][ 'content' ][ 1 ];
-//                                                var
-//                                                        someText =
-//                                                                generateTemplateString( 'content-tail', [ 0, tail ] );
-//                                                var newDiv       = $
-//                                                ( "<div>" ).
-//                                                           append( someText ).click( function () {
-//                                                                                         alert( "click!" );
-//                                                                                     }
-//                                                );
-//                                                $(
-//                                                        this
-//                                                ).append( newDiv );
-//                                            }
-//                                    );
+        self.activeSort = ko.observable(function(){return 0;}); //set the default sort
+        self.sort = function(header, event){
+            //if this header was just clicked a second time
+            if(header.active) {
+                header.asc = !header.asc; //toggle the direction of the sort
+            }
+            //make sure all other headers are set to inactive
+            ko.utils.arrayForEach(self.headers, function(item){ item.active = false; } );
+            //the header that was just clicked is now active
+            header.active = true;//our now-active header
 
-//									$( "#dynode2" ).click(
-//
-//											function () {
-//												tail = data[ 'posts' ][ 2 ][ 'content' ][ 1 ];
-//												var
-//														someText =
-//																generateTemplateString( 'content-tail', [ 2, tail ] );
-//												var newDiv       = $
-//												( "<div>" ).
-//														   append( someText ).click( function () {
-//																						 alert( "click!" );
-//																					 }
-//												);
-//												$(
-//														this
-//												).append( newDiv );
-//											}
-//									);
-//
-//									$( "#dynode4" ).click(
-//											function () {
-//												tail = data[ 'posts' ][ 4 ][ 'content' ][ 1 ];
-//												var
-//														someText =
-//																generateTemplateString( 'content-tail', [ 4, tail ] );
-//												var newDiv       = $
-//												( "<div>" ).
-//														   append( someText ).click( function () {
-//																						 alert( "click!" );
-//																					 }
-//												);
-//												$(
-//														this
-//												).append( newDiv );
-//											}
-//									);
+            var prop = header.sortPropertyName;
+            var ascSort = function(a,b){ return a[prop] < b[prop] ? -1 : a[prop] > b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
+            var descSort = function(a,b){ return a[prop] > b[prop] ? -1 : a[prop] < b[prop] ? 1 : a[prop] == b[prop] ? 0 : 0; };
+            var sortFunc = header.asc ? ascSort : descSort;
 
+            //store the new active sort function
+            self.activeSort(sortFunc);
+        };
 
-									setTimeout(function() {
-										move();
-									}, 2000);
-									}
+        self.activeFilter = ko.observable(self.filters[0].filter);//set a default filter
+        self.setActiveFilter = function(model,event){
+            self.activeFilter(model.filter);
+        };
 
-                        );
+        self.color = ko.observable(self.colors[0] || 'red');
+        self.randomColor = ko.computed(function() {
+            var i = manifest['length'];
+            return manifest['posts'][6]['color'];
+        });
 
-
-                    }
-            );
+        self.filteredPosts = ko.computed(function(){
+            var result;
+            if(self.activeFilter()){
+                result = ko.utils.arrayFilter(self.posts(), self.activeFilter());
+            } else {
+                result = self.posts();
+            }
+            return result.sort(self.activeSort());
+        });
 
 
 
-        </script>
+        self.loadManifest = function(manifest) {
+            self.posts(manifest.posts.map(function(data, i) {
+                return new Post(data, i);
+            }));
+        }
+
+        self.sort(self.headers[0]);
+    }
+
+    vm = new viewModel(chameleonColorScheme);
+    ko.applyBindings(vm);
+
+    vm.loadManifest(manifest);
+
+</script>
 
 
-        <div class= "modern-browser" >
-                 < div; class= "modern-container center dark" >
-                     < img; src="/images/kevin-zeidler-logo-clear.png"; alt= "logo" >
-                                                                   < h1 > Welcome.; I'm Kevin.; It's my; site alright.< / h1 >
-                            < span; class= "separator" > < / span >
-                          < p > Unfortunately, I'm unable to support the web browser you're using. Why don't you have yourself an upgrade and come back?<br></p>
-                                         < a;; href="http://www.google.com/chrome/"; target="_blank"; class= "button" > download;chrome < / a >
-                                                                                                   </div >
-                                                                                                   <!-- END IE 8 PAGE -->
-
-	<!-- Javascript -->
-		<script src="/js/revok.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/retina.js"; type="text/javascript"; charset= "utf-8" ></script>
-	<script src="js/navigation.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/plugins.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
-
-
-
-	<script src="js/styleswitch.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
