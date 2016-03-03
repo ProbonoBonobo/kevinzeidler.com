@@ -1,0 +1,182 @@
+{
+   "0": {
+      "date" : "2016-02-05",
+      "name" : "Chris R.",
+      "avatar" : "//s3-media2.fl.yelpcdn.com/photo/aV2x4qoNF1u2ARxTZFrqFg/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "La Jolla, CA",
+      "rating" : "5.0",
+      "content" : "These gentlemen were extremely professional. Highly communicative, arrived on-time, provided a very reasonable price, and exceeded my expectations for getting the job done well and in a short amount of time.  Would recommend these guys to anyone looking to get a phone repaired!"
+   },
+   "1": {
+      "date" : "2016-01-25",
+      "name" : "Jacob N.",
+      "avatar" : "//s3-media4.fl.yelpcdn.com/photo/tDqxF9RR8NIiVMKwYOe0-g/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "Vista, CA",
+      "rating" : "5.0",
+      "content" : "Jacob came out and repaired my phone where I was. Which was great. YAY!Super nice guy and would recommend him to anyone!"
+   },
+   "2": {
+      "date" : "2015-11-27",
+      "name" : "Shaon R.",
+      "avatar" : "//s3-media2.fl.yelpcdn.com/photo/nNF2Ur_M6k1-bH1BeARcqA/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "Salt Lake City, UT",
+      "rating" : "5.0",
+      "content" : "Awesome guys: Jacob and DevinThese guys came out on short notice. Called on the morning on black Friday and they answered and actually waited 30 mins at the located for us to finish shopping at MCAS Miramar. They were very polite and professional.  Thank you for all you guys did for us. IPhone repair san diego"
+   },
+   "3": {
+      "date" : "2016-02-05",
+      "name" : "Valerie J.",
+      "avatar" : "//s3-media3.fl.yelpcdn.com/photo/x87IsAyKBV76sadEpPmclw/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "Jacob came to my office and replaced my iphone screen in 15 minutes. He did a good job and was pleasant and professional."
+   },
+   "4": {
+      "date" : "2016-02-06",
+      "name" : "Kelly K.",
+      "avatar" : "//s3-media2.fl.yelpcdn.com/photo/YTNLpLnUZa-vREsSnmRkpw/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "I would give them 10 stars if I could.  They replaced my screen and LCD on my iPad.  I had an initial glitch with the repair but Devin bent over backwards to make it right and to do it quickly.   Very honest, professional and fast service.  I can't recommend them highly enough."
+   },
+   "5": {
+      "date" : "2016-02-06",
+      "name" : "Keung P.",
+      "avatar" : "//s3-media4.fl.yelpcdn.com/photo/Z8c-DdGx8V-5N5Q_jbmC3w/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "Great service! Devin and Jacob were both very nice and helpful! I recommend this service to everyone! Fixed the broken iPhone in less than 10 minutes!"
+   },
+   "6": {
+      "date" : "2016-01-31",
+      "name" : "Kevin Z.",
+      "avatar" : "//s3-media4.fl.yelpcdn.com/photo/mZddBwBth3iKdqh238HM-A/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "Brooklyn, NY",
+      "rating" : "5.0",
+      "content" : "Awesome dudes. Punctual, speedy, and my phone looks as good as new. I was so glad to learn there's an alternative to going to the Apple store. This was so much better than dealing with mall parking!"
+   },
+   "7": {
+      "date" : "2016-01-18",
+      "name" : "Kristin S.",
+      "avatar" : "//s3-media3.fl.yelpcdn.com/photo/Qe_oucCxRxnY3O-U9R_XXw/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "Torrey Hills, San Diego, CA",
+      "rating" : "5.0",
+      "content" : "These guys were great! Very professional and honest! Came out today and replaced two iPad screens in less than an hour. Got a discount for two. Hopefully won't need then again but will call on them again if I do."
+   },
+   "8": {
+      "date" : "2016-01-08",
+      "name" : "Patch M.",
+      "avatar" : "//s3-media2.fl.yelpcdn.com/photo/z8xgv2Mfe-rk6h304SdMUg/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "Spring Valley, CA",
+      "rating" : "5.0",
+      "content" : "Absolutely amazing service! :) Jacob did an amazing job on fixing our ipads and iphone. Jacob and Omar is very friendly and very polite. Will definitely recommend them to all my friends. And will definitely call them when I need to have my gadgets fix. Thanks guys!"
+   },
+   "9": {
+      "date" : "2016-01-08",
+      "name" : "Christina G.",
+      "avatar" : "//s3-media4.fl.yelpcdn.com/photo/TqO6FVu8YHPnaGatTGfl7g/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "Another great job! I will continue to use them for my iphone mishaps. Thanks Jacob! (for some reason I thought your name was Jesus from the last time I used your services...my bad)"
+   },
+   "10": {
+      "date" : "2015-11-17",
+      "name" : "Sibyl L.",
+      "avatar" : "//s3-media4.fl.yelpcdn.com/photo/MqYPHaAtRiF5tihFA9xJiw/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "Bonita, CA",
+      "rating" : "5.0",
+      "content" : "I chose Mobile iPhone Repair because I had called another company the day before and they did not show up nor bother to call. Jacob was very courteous on the phone, gave me same day service and even texted me that he would be 15 minutes late. Nice young man.  Our company iphone's broken screen is fixed and my boss is happy.  I would gladly recommend this company.Sibyl L.Ribomed Biotechnologies, IncMolecular Detection Technologies"
+   },
+   "11": {
+      "date" : "2015-11-03",
+      "name" : "Tawny T.",
+      "avatar" : "//s3-media4.fl.yelpcdn.com/photo/4WMF_wt2hDllViGZskqyaw/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "These guys have a great set up. I cracked my phone terribly which is pretty upsetting. They made fixing it easy. As a busy person with my own business it was especially nice that they were able to come to my office while I worked and fix my phone in less than 30 minutes while I was getting other things done.Their pricing was also reasonable for this service compared to the offers I found online. I would definitely recommend them!"
+   },
+   "12": {
+      "date" : "2016-01-01",
+      "name" : "chi v.",
+      "avatar" : "//s3-media4.fl.yelpcdn.com/photo/9q5FZ2tr40jopn-ld7jQDQ/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "Omg thank you so much Jacob . He saved my life .. I thought my phone completely broke can't turn on and can't get any calls or text . I called around on New Year and nobody open or pick up phone . So I found him on Yelp and he did pick up phone and show me to restart the phone without have to pay money .. Save $100 .. I'm so happy . Will call Jacob in the future when I need anything . Trust this company"
+   },
+   "13": {
+      "date" : "2015-10-19",
+      "name" : "Malia P.",
+      "avatar" : "//s3-media1.fl.yelpcdn.com/photo/v04XtQMFGfTnQe_q_qJY2g/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "I dropped my ipad and the cracked the screen. Augh! I looked at yelp and yelp recommended Mobile iphone and ipad screen repair. I can see why. Devin and Jacob came to my rescue! They came straight to my workplace and had it fixed in no time, seriously in the time it took for me to get back to the office and make a few phone calls they were already done. They were very professional and easy going. They even installed a tempered glass that will be less prone to cracking than the glass I had before. They have a guarantee on their work so if there are any issues with the screen (as long as it's not cracked) they will fix it! Jacob even recommended a better case for me so that it will protect the ipad better. Awesome five star service! I will recommend them to everyone."
+   },
+   "14": {
+      "date" : "2016-01-16",
+      "name" : "Sarah I.",
+      "avatar" : "//s3-media1.fl.yelpcdn.com/photo/SKTMlWV-4YE_XlE4YL6EUg/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "Convenient and quick!! In all my years of iPhones, I cracked my screen for the first time :(. I used the help of Yelp to find a mobile iPhone repair and this one had the best reviews and A LOT of them! He came the same day I text him, he came to my job to repair my screen, incredibly nice guy and all was done in about 20 minutes. Awesome service!"
+   },
+   "15": {
+      "date" : "2015-10-30",
+      "name" : "Jessica C.",
+      "avatar" : "//s3-media2.fl.yelpcdn.com/photo/Q2S-j9sVQvRBj_4MuOJ6gA/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "Great work & service!I dropped my phone a couple days ago and ended up with white stripes down the right side. Although the LCD screen was intact, the touchscreen was malfunctioning to a point where the phone was unusable. Jacob and Devin were able to fix it in less than 30 minutes! Both were very personable and professional. I would definitely recommend them to a friend. Their mobile service is fast and efficient, and best of all, they save you time by coming to you! Thanks again guys!"
+   },
+   "16": {
+      "date" : "2015-07-08",
+      "name" : "Miranda Z.",
+      "avatar" : "//s3-media3.fl.yelpcdn.com/photo/giQKAkCzU-InyGnCsAarlw/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "Chula Vista, CA",
+      "rating" : "5.0",
+      "content" : "Gabriel's service is very fast, professional, and convenient. I called & left a voicemail. He got back to me promptly and we set up an appt for the next day. He met me at the mall in fashion valley making it easy for me because I was shopping there. Within 15 minutes, my iphone screen was brand new!! Plus the screen is of excellent quality so i'm impressed and it cost me waaay less than what i had expected. I was also worried because i didn't have cash but he takes cards too. My only concern was that my iphone was so messed up (the edges around the screen were bent) that the screen was not fitting properly. After he took extra time and effort to make sure it fit, it was kind of popping out after and the iphone wouldn't detect touch but i fixed the problem by getting a good case that pushed the screen in and now i don't have any problems with it! I couldn't be happier with the results, and I definitely recommend this service to anyone who needs their screen repaired! Thanks Gabe !!"
+   },
+   "17": {
+      "date" : "2016-01-18",
+      "name" : "Erik P.",
+      "avatar" : "//s3-media4.fl.yelpcdn.com/photo/V37QgNE96CPOmINI0OC1yQ/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "Very professional, personable- came back to fine tune a iPhone 6- very efficient way to handle this common problem- I can see why this is the top rated i pad repair service in SD"
+   },
+   "18": {
+      "date" : "2016-01-12",
+      "name" : "Allen S.",
+      "avatar" : "//s3-media1.fl.yelpcdn.com/photo/n5-S-LVJrnVSKoNFPY53Tw/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "Union City, CA",
+      "rating" : "5.0",
+      "content" : "Great service that took about five minutes on a table in my apartment. The final product looks great and my phone looks brand new. Service was really friendly and quick and i would recommend it to anyone who want a quick fix for a broken screen. They come to you! Also they have the cheapest price i could find for an iphone 6 screen repair."
+   },
+   "19": {
+      "date" : "2015-12-30",
+      "name" : "Gina K.",
+      "avatar" : "//s3-media3.fl.yelpcdn.com/photo/YoJum3uRHhBxvJn7zGXHZQ/60s.jpg",
+      "starsprite": "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png' width='84'>",
+      "city" : "San Diego, CA",
+      "rating" : "5.0",
+      "content" : "Great job, quick, convenient. I was able to make an appointment that fit in my schedule the next day- they came to my work, were super fast and nice, and even worked outside in the cold because I couldn't find them table space inside! If only I had known it was this easy before! They even threw in a new protective cover for my iPhone 6. I will definitely call them again if/when something happens to my iPad or iPhone again!"
+   }
+}
