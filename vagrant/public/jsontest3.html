@@ -14,16 +14,47 @@
     <style>
         #wrapper {
             text-align: left;
-            margin-left: 10px
+            margin-left: 10px;
+            margin-right: 5px;
         }
-    </style>
+		#avatar {
+			box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 4px 0px;
+			box-sizing: border-box;
+			display: block;
+			float: left;
+			height: 100px;
+			width: 100px;
+			/*perspective-origin: 50px 50px;*/
+			/*transform-origin: 50px 50px;*/
+			font: normal normal normal normal 14px / 21px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			margin: 0px 7px 0px 0px;
+		}
+		#reviewer-name {
+			font: normal normal bold normal 14px / 21px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		}
+
+		img#stars {
+			padding-bottom: 2px;
+			vertical-align: top;
+			margin-bottom: 3px;
+			margin-top: 3px;
+			width: 90px;
+		}
+		.rating {
+
+		}
+
+
+
+
+	</style>
 </head>
 <body style="background-image: url('img/iphone-wireframe.png');  background-repeat: no-repeat; background-size: 100%  position: relative;">
 
 
 	<div style="width: 259px; height: 460px; margin-top: 139px;  margin-left: 486px; position: relative; text-align: center; background-color: white;">
 		<div class="widget-header" style="opacity:1.0">
-			<p style="position: relative; text-align: center; font-family: 'TradeGothicLTStd-BdCn20', 'HelveticaNeue',sans-serif; font-size: 24px;" class='title'"><img src="img/widget-banner.png" width="259"></p>
+			<p style="position: relative; text-align: center; font-family: 'TradeGothicLTStd-BdCn20', 'HelveticaNeue',sans-serif; font-size: 24px;" class='title'><img src="img/widget-banner.png" width="259"></p>
 			
 		</div>
 		<div class="widget-body">
@@ -32,7 +63,7 @@
 				<div class= "avatar"></div>
 				<div class="name"></div>
 				<div class="date"></div>
-				<div class="rating"></div>
+				<div class="rating" width='100px' height='30px'></div>
 				<div class="city"></div>
 				<div class ="content" style="text-align: left"></div>
 			</div>
@@ -48,11 +79,13 @@
 			function randRange (max) {
 				return Math.floor(Math.random()*max+1);
 			}
-			$.getJSON( "reviews.json", function( data ) {
-				var r1 = randRange(19);
-				$("<div>"+data[r1]['name']+ ", "+data[r1]['city'] + "</div>").insertAfter(".name");
-				$("<img src =\""+data[r1]['avatar']+"\">").insertAfter(".avatar");
-				$("<img id=\"stars\" src ='img/5-stars-red.png'>").insertAfter(".rating");
+			$.getJSON( "filteredv2.json", function( data ) {
+				console.log(data);
+				var r1 = randRange(data.length - 1);
+				console.log(r1);
+				$("<div id='reviewer-name'>"+data[r1]['name']+ ", "+data[r1]['city'] + "</div>").insertAfter(".name");
+				$("<img src =\""+data[r1]['avatar']+"\" id='avatar'>").insertAfter(".avatar");
+				$("<img id=\"stars\" src ='img/stars_5.png' >").insertAfter(".rating");
 				$("<div>"+data[r1]['content']+"</div>").insertAfter(".content");
 			});
 		</script>
