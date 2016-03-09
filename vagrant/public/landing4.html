@@ -68,11 +68,11 @@
 
 
                     transform: rotateX(54deg) rotateZ(-46deg) translate3d(0,0,-2000px);
-                    animation: slideInUp 1s;
-                    animation-delay: 1s;
+                    /*animation: slideInUp 1s;*/
+                    /*animation-delay: 1s;*/
                     transform-style: preserve-3d;
                     animation-fill-mode: forwards;
-                    transition: transform 0.8s;
+                    /*transition: transform 0.8s;*/
                     transition-timing-function: ease-out;
 
                 }
@@ -95,21 +95,21 @@
 
                 }
 
-                @keyframes calliPhone {
+                @keyframes ring {
                     10%, 90% {
-                        transform: rotateX(54deg) rotateZ(-46deg) scale(1) translate3d(-1px, 0, 0);
+                        transform: rotateX(54deg) rotateZ(-46deg) scale(1) translate3d(-1px, 0px, 0px);
                     }
 
                     20%, 80% {
-                        transform: rotateX(54deg) rotateZ(-46deg) scale(1) translate3d(2px, 0, 0);
+                        transform: rotateX(54deg) rotateZ(-46deg) scale(1) translate3d(2px, 0px, 0);
                     }
 
                     30%, 50%, 70% {
-                        transform: rotateX(54deg) rotateZ(-46deg) scale(1) translate3d(-4px, 0, 0);
+                        transform: rotateX(54deg) rotateZ(-46deg) scale(1) translate3d(-4px, 0px, 0px);
                     }
 
                     40%, 60% {
-                        transform: rotateX(54deg) rotateZ(-46deg) scale(1) translate3d(4px, 0, 0);
+                        transform: rotateX(54deg) rotateZ(-46deg) scale(1) translate3d(4px, 0px, 0);
                 }}
 
 
@@ -881,7 +881,7 @@
         <!--<img src="img/shattered-overlay2.gif">-->
         <!--</div>-->
 
-    <div id="iphone" class="animable">
+    <div id="iphone">
 
 
         <div id="shadow"></div>
@@ -1012,11 +1012,14 @@
     </div>
 </div>
 </div><!--End of header-->
-<!--<script>-->
-    <!--&lt;!&ndash;$('#iphone' ).css({'transform': ' rotateX(54deg) rotateZ(-46deg) scale(1) translate3d(0,0,0),',&ndash;&gt;-->
-                          <!--&lt;!&ndash;'transition': 'transform 0.8s'}&ndash;&gt;-->
-    <!--&lt;!&ndash;);&ndash;&gt;-->
-<!--&lt;!&ndash;</script>&ndash;&gt;-->
+<script>
+
+    $('div#iphone' ).css({ "transform": "rotateX(54deg) rotateZ(-46deg) translate3d(0,0,0px)", "transition" : "transform 1s" }).delay(1000);
+    $('div#iphone' ).css({ "animation": "ring .5s 3s infinite linear"} ).delay(3000);
+
+    console.log("hello");
+</script>
+
 
 </body>
 </html>
