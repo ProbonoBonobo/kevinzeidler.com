@@ -853,9 +853,46 @@
                 }
 
                 #inner-iphone-text {
-                    position: absolute;
+                    display: inline;
+                    width: 60%;
+                    position: relative;
                     z-index: 1000;
+                    color: white;
+                    top: 0px;
+                    left: 25px;
+                    top-margin: -26px;
+                    float: top;
+                    vertical-align: top;
+                    font-family: 'Helvetica';
                 }
+
+                #callbox {
+                    display: inline;
+                    position: absolute;
+                    width: 90%;
+                    vertical-align: text-top;
+                    width: auto;
+                    top: 150px;
+                    float: top;
+                    font-size: 36px;
+                }
+                #caller-photo {
+                    display: inline;
+                    position: relative;
+                    width: auto;
+                    float: right;
+                    height: 100%;
+                    width: 0px;
+                    vertical-align: top;
+                    margin-top: -34px;
+                    padding-top: 0px;
+                }
+                #caller-info {
+                    text-indent: 15px;
+                    font-size: 18px;
+                }
+
+
 
 
 
@@ -1001,7 +1038,9 @@
 
 
                 </span>
-            <div id="inner-iphone-text" style="z-index:1000;">Jacob iPhone Guy</div>
+            <div id="callbox">
+                <div id="inner-iphone-text" style="z-index:1000;"></div>
+                <!--<div id="caller-photo"></div>-->
             <div id="slide"></div>
 
             </div>
@@ -1016,6 +1055,14 @@
 
     $('div#iphone' ).css({ "transform": "rotateX(54deg) rotateZ(-46deg) translate3d(0,0,0px)", "transition" : "transform 1s" }).delay(1000);
     $('div#iphone' ).css({ "animation": "ring .5s 3s infinite linear"} ).delay(3000);
+    window.setTimeout(function() {$('div#inner-iphone-text' ).html("iPhone Repair <br><span id=\'caller-info\'>" +
+                                                                   " Mobile</span></div><div id=\'caller-photo\'>" +
+                                                                   "<img src=\"img/me-circlehead.gif\" " +
+                                                                   " width=\'90px\' height=\'90px\'>");
+
+
+        }, 3000);
+
 
     console.log("hello");
 </script>
