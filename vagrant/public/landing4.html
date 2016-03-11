@@ -6,6 +6,7 @@
             <title>Title</title>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
             <script src="js/main.js"></script>
+            <link rel="stylesheed" href="css/bootstrap.css">
             <link rel="stylesheet" href="iphone.css">
 
     <style>
@@ -44,7 +45,7 @@
                     background-size: cover;
                     width: 100%;
                     height: 100%;
-                    overflow: hidden;
+                    /*overflow: hidden;*/
                     padding-top: 000px;
 
                 }
@@ -919,11 +920,11 @@
 
                 #modal {
                     position: absolute;
-                    width: 130px;
-                    height: 200px;
-                    margin-top: 550px;
+                    width: 100px;
+                    height: 400px;
+                    margin-top: 450px;
                     margin-left: 200px;
-                    background: url(img/tap-icon2.png);
+                    background: url(img/tapicon-white.svg);
                     background-size: 100% 100%;
                     transform: rotateZ(45deg) translateZ(200px) rotateX(180deg);
                     index: 999;
@@ -943,9 +944,20 @@
                         transform: rotateZ(45deg) translateZ(100px) rotateX(180deg);
                         opacity: .8;
                         visibility:visible}
+                }
+
+                .container {
+                    min-width: 100%;
+                    height: auto;
+                    position: relative;
 
 
                 }
+        header {
+            height: 100%;
+            position:relative;
+
+        }
 
 
 
@@ -1105,7 +1117,23 @@
 
     </div>
 </div>
+
+
 </div><!--End of header-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            Here's the product lineup
+        </div>
+        <div class="col-md-4">
+            Here's the sidebar
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
 <script>
 
     window.setTimeout(function() {$('div#iphone' ).css({ "transform": "rotateX(54deg) rotateZ(-46deg) translate3d(0,0,0px)", "transition" : "transform 1s" })}, 1000);
@@ -1125,21 +1153,19 @@
                                        'transition': "transform 1s"}); } );
 
 
-    window.setTimeout(function() {$('#top-nav' ).html(" San Diego Mobile Phone Repair"); }, 2000);
-    window.setTimeout(function() {$('#top-nav' ).html("e San Diego Mobile Phone Repair"); }, 2100);
-    window.setTimeout(function() {$('#top-nav' ).html("are San Diego Mobile Phone Repair"); }, 2200);
-    window.setTimeout(function() {$('#top-nav' ).html("re San Diego Mobile Phone Repair"); }, 2300);
-    window.setTimeout(function() {$('#top-nav' ).html(" are San Diego Mobile Phone Repair"); }, 2400);
-    window.setTimeout(function() {$('#top-nav' ).html("e are San Diego Mobile Phone Repair"); }, 2500);
-    window.setTimeout(function() {$('#top-nav' ).html("Hello we are San Diego Mobile Phone Repair"); }, 2600);
+//    window.setTimeout(function() {$('#top-nav' ).html(" San Diego Mobile Phone Repair"); }, 2000);
+//    window.setTimeout(function() {$('#top-nav' ).html("e San Diego Mobile Phone Repair"); }, 2100);
+//    window.setTimeout(function() {$('#top-nav' ).html("are San Diego Mobile Phone Repair"); }, 2200);
+//    window.setTimeout(function() {$('#top-nav' ).html("re San Diego Mobile Phone Repair"); }, 2300);
+//    window.setTimeout(function() {$('#top-nav' ).html(" are San Diego Mobile Phone Repair"); }, 2400);
+//    window.setTimeout(function() {$('#top-nav' ).html("e are San Diego Mobile Phone Repair"); }, 2500);
+//    window.setTimeout(function() {$('#top-nav' ).html("Hello we are San Diego Mobile Phone Repair"); }, 2600);
 
 
-    window.setTimeout(function() {$('#iphone').append("<span id=\"modal\"></span>"); }, 5000);
+    window.setTimeout(function() {$('#iphone').append("<span id=\"modal\"></span>"); }, 4000);
 
 
     console.log("hello");
 </script>
 
-
-</body>
 </html>
