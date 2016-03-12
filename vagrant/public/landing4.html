@@ -6,8 +6,11 @@
             <title>Title</title>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
             <script src="js/main.js"></script>
-            <link rel="stylesheed" href="css/bootstrap.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js"></script>
+            <link rel="stylesheet" href="css/bootstrap.css">
             <link rel="stylesheet" href="iphone.css">
+
+            <link rel="stylesheet" type="text/css" href="yelpwidget.css"/>
 
     <style>
                 /* notes to self:
@@ -45,15 +48,18 @@
                     background-size: cover;
                     width: 100%;
                     height: 100%;
-                    /*overflow: hidden;*/
+                    width:100%;
+                    height:100%;
+                    overflow: hidden;
                     padding-top: 000px;
 
                 }
                 html,body {
-                    height: 100%;
                     margin: 0;
                     padding: 0;
-                    overflow: hidden;
+                    padding-top: 0px;
+                    height: 100%;
+                    /*overflow: hidden;*/
                 }
 
                 #wrapper {
@@ -925,7 +931,7 @@
                     margin-top: 450px;
                     margin-left: 200px;
                     background: url(img/tapicon-white.svg);
-                    background-size: 100% 100%;
+                    background-size: 100% 150%;
                     transform: rotateZ(45deg) translateZ(200px) rotateX(180deg);
                     index: 999;
                     display: inline-block;
@@ -934,22 +940,65 @@
 
                 }
 
+                #contact-animation {
+                    index: 998;
+                    position: absolute;
+                    width: 100px;
+                    height: 98px;
+                    margin-top: 538px;
+                    margin-left: 241.5px;
+                    background-image: url(img/ripple-v2.png);
+                    background-size: 100% 100%;
+                    display: inline-block;
+                    opacity: 0;
+                    transform: translateZ(1px);
+                    animation: ETFinger 4s infinite linear;
+
+                }
+
+
                 @keyframes tapFinger {
                     0%, 25%{-webkit-transform: rotateZ(45deg) translateZ(400px) rotateX(180deg);
-                        transform: rotateZ(45deg) translateZ(400px) translateX(10px) rotateX(180deg);
+                        transform: rotateZ(45deg) translateZ(400px) translateX(10px) scaleY(1.2) rotateX(180deg);
                         opacity: 0;
                         visibility:visible}
 
                     75%, 100%{-webkit-transform: rotateZ(45deg) translateZ(100px) rotateX(180deg);
-                        transform: rotateZ(45deg) translateZ(100px) rotateX(180deg);
+                        transform: rotateZ(45deg) translateZ(15px) translateX(2px) scaleY(1.2) rotateX(180deg);
                         opacity: .8;
                         visibility:visible}
                 }
+
+                @keyframes ETFinger {
+
+                    0%, 75% {
+                        opacity: 0;
+                        transform: translateZ(1px) scale(0.01);
+                    }
+
+                    87.5% {
+                        opacity: .4;
+                        transform: translateZ(1px) scale(0.75);
+                    }
+
+                    100% {
+                        transform: translateZ(1px) scale(1.25);
+                        opacity: 0;
+                    }
+                }
+
+                .col-xs-8 > * {
+                    max-width: 100%;
+
+                }
+
+
 
                 .container {
                     min-width: 100%;
                     height: auto;
                     position: relative;
+                    background: white;
 
 
                 }
@@ -958,6 +1007,128 @@
             position:relative;
 
         }
+
+        .iphone-lineup {
+            height: 300px;
+
+        }
+
+                #iphone5 {
+                    background: url("img/iphone5-flat.jpg");
+                    max-width: 100%;
+                    height: 100%;
+                    padding: 10px;
+                    background-size: cover;
+
+
+                }
+
+        #iphone5c {
+            /*background: url('img/iphone5c-flat.jpg');*/
+            background: url('img/iphone5c-tilted.jpg');
+            max-width: 100%;
+            height: 100%;
+            padding: 10px;
+            background-size: cover;
+
+
+        }
+
+        #iphone6 {
+            background: url('http://www.pixeden.com/media/k2/items/cache/flat-psd-iphone-6-6s-mockup-L.jpg');
+            max-width: 100%;
+            height: 100%;
+            padding: 10px;
+            background-size: cover;
+
+
+        }
+
+        #iphone6plus {
+            background: url('http://cdn.iofferphoto.com/img/item/590/515/553/o_iphone-6-plus-gold-circles-clear-skin-soft-case-640b.jpg');
+            max-width: 100%;
+            height: 100%;
+            padding: 10px;
+            background-size: cover;
+        }
+
+                 #widget-content {
+                     text-align: left;
+                     margin-left: 10px;
+                     margin-right: 5px;
+                 }
+                #avatar {
+                    box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 4px 0px;
+                    box-sizing: border-box;
+                    display: block;
+                    float: left;
+                    height: 100px;
+                    width: 100px;
+                    /*perspective-origin: 50px 50px;*/
+                    /*transform-origin: 50px 50px;*/
+                    font: normal normal normal normal 14px / 21px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    margin: 0px 7px 0px 0px;
+                }
+                #reviewer-name {
+                    font: normal normal bold normal 14px / 21px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                }
+
+                img#stars {
+                    padding-bottom: 2px;
+                    vertical-align: top;
+                    margin-bottom: 3px;
+                    margin-top: 3px;
+                    width: 90px;
+                }
+                .rating {
+
+                }
+
+                .icon {
+                    display: inline;
+                    height: 64px;
+                    width: 64px;
+                    position: absolute;
+                    background-size: contain;
+                }
+                #icon1 {
+                    background-image: url('img/icon-smartphone-repair.png');
+                }
+                #icon2 {
+                    background-image: url('img/icon-mobile-map.png');
+                }
+                #icon3 {
+                    background-image: url('img/icon-guarantee.png');
+                }
+
+
+                .bullet {
+
+                    display: block;
+                    position: relative;
+                    padding-left: 20px;
+                    vertical-align: top;
+                }
+
+                .icon {
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    vertical-align: text-top;
+                }
+                
+
+                .business-info {
+                    height: auto;
+                    position: relative;
+                    margin-left: 65px;
+                    margin-top:30px;
+                    vertical-align: middle;
+                    padding-top: auto;
+                }
+
+
+
 
 
 
@@ -1121,18 +1292,94 @@
 
 </div><!--End of header-->
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            Here's the product lineup
-        </div>
-        <div class="col-md-4">
-            Here's the sidebar
-        </div>
-    </div>
-</div>
+<div class="container" id="section2">
+    <span class="business-info">
+        <h1>We're a San Diego iPhone repair company.</h1>
+        <div class="description-of-services">
+            <div class="bullet">
+                <span id="icon1" class="icon"></span><p class="business-info">We replace broken iPhone screens, SIM cards, and batteries. </p>
+            </div>
+            <div class="bullet">
+                <span id="icon2" class="icon"></span><p class="business-info">We come to you—anywhere in the greater San Diego area! </p>
+            </div>
+            <div class="bullet">
+                <span id="icon3" class="icon"></span><p class="business-info">We guarantee our work. If you have any issues with your repair, please let us know within 30 days. If we're not able to resolve it on the spot, we'll give you a full refund.
 
-</div>
+        </span>
+
+    <div class="row">
+        <div class="col-md-8" id="services">
+            <h2>We fix the following products:</h2>
+            <div class="row iphone-lineup">
+                <div class="col-xs-6" id="iphone5">
+                    iPhone 5/5s Repairs
+                 </div>
+                 <div class="col-xs-6" id="iphone5c">
+                     iPhone 5c Repairs
+                </div>
+                <!--<div class="col-xs-12" id="row1">-->
+                    <!--<img src="img/iPhone-5s-Vector>-->
+                    <!--</div>-->
+            </div>
+            <div class="row iphone-lineup">
+                 <div class="col-xs-6" id="iphone6">
+                     iPhone 6 Repairs
+                </div>
+                 <div class="col-xs-6" id="iphone6plus">
+                     iPhone 6 Plus Repairs
+                </div>
+            <!--<div class="row">-->
+                <!--<div class="col-xs-6" id="iphone6">-->
+                    <!--<img src="img/iphone6-tilted3.png">-->
+                <!--</div>-->
+                <!--<div class="col-xs-6" id="iphone6plus">-->
+                    <!--<img src="img/iphone6plus-tilted.jpg">-->
+                <!--</div>-->
+            <!--</div>-->
+
+        </div>
+            </div>
+        <div class="col-md-4" id="yelpwidget" style="background-image: url('img/iphone-wireframe.png');  min-height: 700px; background-repeat: no-repeat; background-size: 100% 100%;"> This is the sidebar</div>
+                <div style="width: 16%; height: 425px; margin-top: 140px;  margin-left: 75.3%; position: relative; text-align: center; background-color: white; box-shadow 3px 3px 1em white;">
+                    <div class="widget-header" style="opacity:1.0; position: absolute; margin-top: 0px; ">
+                        <p style="position: relative; text-align: center; font-family: 'TradeGothicLTStd-BdCn20', 'HelveticaNeue',sans-serif; font-size: 24px;" class='title'><img src="img/widget-banner.jpg" width="259"></p>
+
+
+                    <div class="widget-body" >
+
+                        <div id="widget-content" class="data-wrapper">
+                            <div class= "avatar"></div>
+                            <div class="name"></div>
+                            <div class="date"></div>
+                            <div class="rating" width='100px' height='30px'></div>
+                            <div class="city"></div>
+                            <div class ="content" style="text-align: left"></div>
+
+
+
+    </div>
+
+
+
+
+    <script>
+        function randRange (max) {
+            return Math.floor(Math.random()*max+1);
+        }
+        $.getJSON( "filteredv2.json", function( data ) {
+            console.log(data);
+            var r1 = randRange(data.length - 1);
+            console.log(r1);
+            $("<div id='reviewer-name'>"+data[r1]['name']+ ", "+data[r1]['city'] + "</div>").insertAfter(".name");
+            $("<img src =\""+data[r1]['avatar']+"\" id='avatar'>").insertAfter(".avatar");
+            $("<img id=\"stars\" src ='img/stars_5.png' >").insertAfter(".rating");
+            $("<div>"+data[r1]['content']+"</div>").insertAfter(".content");
+        });
+    </script>
+
+
+
+
 </body>
 <script>
 
@@ -1162,7 +1409,8 @@
 //    window.setTimeout(function() {$('#top-nav' ).html("Hello we are San Diego Mobile Phone Repair"); }, 2600);
 
 
-    window.setTimeout(function() {$('#iphone').append("<span id=\"modal\"></span>"); }, 4000);
+    window.setTimeout(function() {$('#iphone').append("<span id=\"modal\"></span><span id=\"contact-animation\"></span>"); }, 2000);
+
 
 
     console.log("hello");
