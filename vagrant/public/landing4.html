@@ -9,6 +9,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js"></script>
             <link rel="stylesheet" href="css/bootstrap.css">
             <link rel="stylesheet" href="iphone.css">
+            <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400' rel='stylesheet' type='text/css'>
 
             <link rel="stylesheet" type="text/css" href="yelpwidget.css"/>
 
@@ -18,11 +19,14 @@
                 Perspective transforms (From / To):
                 Default 3d perspective / Orthogonal to view: */
 
+
                 @font-face {
                     font-family: Helvetica;
                     src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/164210/HelveticaNeue-UltraLight.otf) format('TrueType');
                     font-weight: 300;
                 }
+
+
 
                 body {
                     font-family: 'Helvetica', sans-serif;
@@ -1103,28 +1107,40 @@
 
 
                 .bullet {
-
+                    height: 48px;
                     display: block;
                     position: relative;
-                    padding-left: 20px;
-                    vertical-align: top;
+                    padding-left: 0px;
+                    vertical-align: middle;
                 }
 
                 .icon {
                     position: absolute;
-                    width: 40px;
-                    height: 40px;
-                    vertical-align: text-top;
+                    width: 48px;
+                    height: 48px;
+                    vertical-align: middle;
                 }
-                
+
 
                 .business-info {
                     height: auto;
-                    position: relative;
+                    /*position: absolute;*/
                     margin-left: 65px;
                     margin-top:30px;
                     vertical-align: middle;
                     padding-top: auto;
+                }
+
+
+                h1 {
+                    font-family: Montserrat;
+                    font-weight: 900;
+                    letter-spacing: .1px;
+                }
+                h2 {
+                    font-family: Montserrat;
+                    font-weight: 900;
+                    letter-spacing: .1px;
                 }
 
 
@@ -1303,10 +1319,11 @@
                 <span id="icon2" class="icon"></span><p class="business-info">We come to you—anywhere in the greater San Diego area! </p>
             </div>
             <div class="bullet">
-                <span id="icon3" class="icon"></span><p class="business-info">We guarantee our work. If you have any issues with your repair, please let us know within 30 days. If we're not able to resolve it on the spot, we'll give you a full refund.
+                <span id="icon3" class="icon"></span><p class="business-info">We guarantee our work. If you have any issues with your repair, please let us know within 30 days. If we're not able to resolve it on the spot, we'll give you a full refund.</p>
 
+        </div>
+            </div>
         </span>
-
     <div class="row">
         <div class="col-md-8" id="services">
             <h2>We fix the following products:</h2>
