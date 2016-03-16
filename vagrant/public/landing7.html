@@ -1107,9 +1107,7 @@
         .icon {
             width: 50px;
             height: 50px;
-            position: absolute;
-            background-size: contain;
-            float: left;
+            background-size: 100% 100$;
         }
         #icon1 {
             background-image: url('img/icon-smartphone-repair.png');
@@ -1308,29 +1306,71 @@
             /*transform-origin: 50px 50px;*/
             /*font: normal normal normal normal 14px / 21px 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
             margin: 0px 7px 0px 0px;
+            margin-bottom: 1.5px;
+            margin-top: 2px;
+            border-radius: 5px;
         }
-        #person {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-weight: 600;
-            font-size: 11px;
+        /*#person {*/
+            /*font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;*/
+            /*font-size: 14px;*/
 
+        /*}*/
+
+
+        /*#person {*/
+            /*font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;*/
+            /*font-weight: 300;*/
+            /*font-size: 11px;*/
+
+        /*}*/
+
+        #location {
+            font-weight: bold;
         }
 
 
-        #person {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-weight: 300;
-            font-size: 11px;
-
-        }
-
-        #star-rating {
-           width: 50px;
-            max-width: 100px;
-        }
-        #review-headline {
+        #review-headline > a {
             width: 100%;
             padding-bottom: 10px;
+        }
+
+        #review-date-inner {
+            font-style: italic;
+            font-size: 9px;
+            top: 0;
+            left: 0;
+            width: auto;
+            height: 15px;
+            margin-left: 10px;
+
+        }
+        #reviewer-infobox {
+            font-size: 14px;
+            margin-bottom: 3px;
+
+
+        }
+
+        #location, #person {
+            font-family: 'Helvetica Neue', 'Helvetica';
+        }
+        #stars {
+            width: 99px;
+        }
+
+        #review-content {
+
+            margin-top: 1px;
+
+        }
+        .review-body {
+            font-size: 14px;
+            letter-spacing: normal;
+            top: 0;
+
+            left: 0;
+            margin-top: 0px;
+
         }
 
         /*#review-macro {*/
@@ -1449,6 +1489,35 @@
             margin-top: 32%;
             float: right;
         }
+        #burst-12 {
+            background: red;
+            width: 80px;
+            height: 80px;
+            position: relative;
+            text-align: center;
+        }
+        #burst-12:before, #burst-12:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 80px;
+            width: 80px;
+            background: red;
+        }
+        #burst-12:before {
+            -webkit-transform: rotate(30deg);
+            -moz-transform: rotate(30deg);
+            -ms-transform: rotate(30deg);
+            -o-transform: rotate(30deg);
+        }
+        #burst-12:after {
+            -webkit-transform: rotate(60deg);
+            -moz-transform: rotate(60deg);
+            -ms-transform: rotate(60deg);
+            -o-transform: rotate(60deg);
+        }
+
 
 
 
@@ -1461,10 +1530,9 @@
             left: 0;
             background-color: white;
             width: 216px;
-            font-family: 'Helvetica Neue';
-            font-weight: 400;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
             letter-spacing: normal;
-            font-size: 12px;
+            font-size: 14px;
             height: 426.5px;
             width: 216px;
             margin-top: -2%;
@@ -1479,17 +1547,157 @@
             padding: 0 0 0 0;
 
         }
-        #review-headline >img {
+        #review-headline > a > img {
             width: 105%;
             margin-left: -2.5%;
             margin-top: -5%
         }
         .iphone-lineup {
             height: 850px;
+
+            margin-bottom: 25px;
         }
-        .iphone-lineup> p {
+
+        .iphone-lineup > span > p {
+            text-align: center;
+            font-size: 22px;
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+
+        .iphone-lineup > span:hover {
+            font-weight: bold;
+            color: #2C9DDF;
+
+        }
+        #map {
+            height: 90%;
+        }
+
+        /*#maps-widget {*/
+            /*width: 400px;*/
+            /*height: 233px;*/
+            /*top: 0;*/
+            /*left: 0;*/
+            /*right: 0;*/
+            /*margin-left: auto;*/
+            /*margin-right: auto;*/
+        /*}*/
+        .maps-widget > h4{
+            font-family: 'Montserrat';
+            font-weight: 900;
+            font-size: 30px;
+            left: 0;
+            top: 0;
+            width: 300px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: -25px;
+
+        }
+        /*#maps-widget > h4 {*/
+            /*font-family: 'Montserrat';*/
+            /*font-weight: 900;*/
+            /*font-size: 26px;*/
+            /*letter-spacing: .1px;*/
+        /*}*/
+
+        /*#maps-widget {*/
+            /*padding: 5% 7% 5% 5%;*/
+            /*margin-top: -10%;*/
+            /*text-align: center;*/
+
+            /*left: 0px;*/
+            /*top: 0px;*/
+            /*right: 0px;*/
+            /*bottom: 0px;*/
+            /*margin-right: auto;*/
+            /*margin-left: auto;*/
+        /*}*/
+        /*#maps-container {*/
+            /*max-height: 300px;*/
+            /*right: 0;*/
+            /*margin-right: 5%;*/
+            /*margin-left: 5%;*/
+            /*width: 90%;*/
+            /*height: 315px;*/
+            /*position: absolute;*/
+            /*background: rgba(240,240,240, .7);*/
+            /*top: 0%;*/
+            /*bottom: 0;*/
+            /*display: inline-block;*/
+        /*}*/
+
+
+        /*#yelpwidget {*/
+            /*margin-top: 300px;*/
+            /*margin-right: -*/
+        /*}*/
+
+
+        #maps-widget > h4 {
+            width: 100%;
+            margin-top: 8px;
+            font-family: 'Montserrat';
+            font-weight: 900;
+            font-size: 26px;
+            letter-spacing: .1px;
             text-align: center;
         }
+
+        #maps-widget {
+            padding: 0px 0px 0px 0px;
+            width: 97%;
+            height: 80%;
+            left: 5px;
+            top: 5px;
+            right: 5px;
+            bottom: 5px;
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-right: auto;
+        }
+
+
+        #maps-container {
+            padding: 20px 20px 20px 20px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: auto;
+
+            margin-top: -7%;
+            width: 100%;
+
+
+            position: absolute;
+            background: rgba(240,240,240, .7);
+            display: inline-block;
+        }
+        #map {
+            margin-top: 50px;
+        }
+
+        #yelpwidget {
+            margin-top:290px;
+            padding: 0px 0px 0px 0px;
+            right: 0;
+            margin-right: 20%;
+            bottom: 0;
+        }
+
+        .right {
+            padding: 30px 30px 30px 30px;
+            margin: 15px 15px 15px 15px;
+        }
+
+
         /*#section2 {*/
             /*width: 100%;*/
             /*height: 100%;*/
@@ -1675,45 +1883,76 @@
 </div><!--End of header-->
 
 <div class="container">
-    <div class="row" id="services">
-        <!--<div class="col-lg-12" id="responsive-table">-->
+    <!--<div class="description-of-services grid">-->
+        <div class="row">
+            <div class="col-xs-12">
+            <h1>We're a San Diego iPhone repair company.</h1>
+                <div class="row" id="about-section"></div>
 
-            <h1 class="page-header">Blurb.</h1>
+                    <div class="col-xs-2" class="icons">
+                        <div class="icon">
+                        <img src="img/icon-smartphone-repair.png" width="60" height="60">
+                            </div>
+                        <div class="icon">
+                        <img src="img/icon-mobile-map.png" width="60" height="60">
+                            </div>
+                        <div class="icon">
+                        <img src="img/icon-guarantee.png" width="60" height="60">
+                            </div>
+
+                    </div>
+                    <div class="col-xs-10" class="blurbs">
+                        <div class="blurb">We replace broken iPhone screens, SIM cards, and batteries.</div>
+                         <div class="blurb">We come to you—anywhere in the greater San Diego area!</div>
+                        <div class="blurb">We guarantee our work. If you have any issues with your repair, please let us know within 30 days. If we're not able to resolve it on the spot, we'll give you a full refund.</div>
+                    </div>
+                    </div>
+            </div>
+    </div>
+
+
+<div class="container">
+
+
+
+        <h1 class="page-header">Blurb.</h1>
         <div class="col-md-7">
             <div class="row services-row">
         <div class="col-xs-6 iphone-lineup">
-
+            <span>
                 <img class="img-responsive" src="img/iphone6s-rosegold.jpeg">
                 <p>iPhone 6/6s</p>
+            </span>
 
         <!--</div>-->
         <!--<div class="col-md-6 col-xs-6 thumb">-->
-
-                <img class="img-responsive" src="img/iphone6s-plus.jpeg" alt="">
-                <p>iPhone 6s Plus</p>
+           <span>
+                <img class="img-responsive" src="img/iphone5-scaled.jpg" alt="">
+                <p>iPhone 5/5s</p>
+                </span>
 
         <!--</div>-->
         <!--<div class="col-md-6 col-xs-6 thumb">-->
-
-                <img class="img-responsive" src="img/iphone5c-scaled.jpg" alt="">
-                <p>iPhone 5c</p>
+            <span>
+                <img class="img-responsive" src="img/ipad-air2.jpg" alt="">
+                <p>iPad Air</p>
+                </span>
 
         </div>
         <div class="col-xs-6 iphone-lineup">
-                <img class="img-responsive" src="img/iphone5-scaled.jpg" alt="">
-                <p>iPhone 5/5s</p>
 
-        <!--</div>-->
-        <!--<div class="col-md-6 col-xs-6 thumb">-->
-
-                <img class="img-responsive" src="img/ipad-air2.jpg" alt="">
-                <p>iPad Air</p>
-
-        <!--</div>-->
-        <!--<div class="col-md-6 col-xs-6 thumb">-->
-
+            <span>
+                <img class="img-responsive" src="img/iphone6s-plus.jpeg" alt="">
+                <p>iPhone 6s Plus</p>
+                </span>
+              <span>
+                <img class="img-responsive" src="img/iphone5c-scaled.jpg" alt="">
+                <p>iPhone 5c</p>
+                </span>
+            <span>
                 <img class="img-responsive" src="img/ipad-mini3.jpg" alt="">
                 <p>iPad Mini</p>
+                </span>
 
         </div>
 
@@ -1724,18 +1963,26 @@
         <div class="col-md-5">
             <div class="row">
             <div class="col-md-12 right">
-                <div id="yelpwidget">
-                <!--<div class="widget-header" style="opacity:1.0">-->
-                    <!--&lt;!&ndash;<p style="position: relative; text-align: center; font-family: 'TradeGothicLTStd-BdCn20', 'HelveticaNeue',sans-serif; font-size: 24px;" class='title'></p>&ndash;&gt;-->
+                <div id="maps-container">
+                <div id="maps-widget">
+                    <h4>Service radius</h4>
+                <div id="map"></div>
+                </div>
+                    </div>
 
-                <!--</div>-->
+
+
+                <div id="yelpwidget">
                 <div class="widget-body">
 
+
+
                     <div id="data-wrapper">
-                        <div id="review-headline"><img src="img/widget-banner.png"></div>
+                        <div id="review-headline"><a href="http://www.yelp.com/biz/mobile-iphone-repair-ipad-screen-repair-san-diego-24"><img src="img/widget-banner.png"></a></div>
+
                         <div id="reviewer-avatar"></div>
-                        <div id="reviewer-name"></div>
                         <div id="review-date"></div>
+                        <div id="reviewer-name"></div>
                         <div id="star-rating" width='100px' height='30px'></div>
                         <div id="city"></div>
                         <div id ="review-content" style="text-align: left"></div>
@@ -1746,6 +1993,7 @@
         </div>
         </div>
         </div>
+
     </div>
     <!--</div>-->
 
@@ -1846,6 +2094,70 @@
     <!--</div>-->
 
 
+<script>
+
+    // This example creates a simple polygon representing the Bermuda Triangle.
+    // When the user clicks on the polygon an info window opens, showing
+    // information about the polygon's coordinates.
+
+    var map;
+    var infoWindow;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: {lat: 32.715786, lng: -117.158340},
+            mapTypeId: google.maps.MapTypeId.TERRAIN
+        });
+
+        // Define the LatLng coordinates for the polygon.
+        var triangleCoords = [
+            {lat: 32.70, lng: -117.18},
+            {lat: 32.10, lng: -117.1},
+            {lat: 32.90, lng: -117.135}
+        ];
+
+        // Construct the polygon.
+        var bermudaTriangle = new google.maps.Polygon({
+            paths: triangleCoords,
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35
+        });
+        bermudaTriangle.setMap(map);
+
+        // Add a listener for the click event.
+        bermudaTriangle.addListener('click', showArrays);
+
+        infoWindow = new google.maps.InfoWindow;
+    }
+
+    /** @this {google.maps.Polygon} */
+    function showArrays(event) {
+        // Since this polygon has only one path, we can call getPath() to return the
+        // MVCArray of LatLngs.
+        var vertices = this.getPath();
+
+        var contentString = '<b>Bermuda Triangle polygon</b><br>' +
+                'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
+                '<br>';
+
+        // Iterate over the vertices.
+        for (var i =0; i < vertices.getLength(); i++) {
+            var xy = vertices.getAt(i);
+            contentString += '<br>' + 'Coordinate ' + i + ':<br>' + xy.lat() + ',' +
+                    xy.lng();
+        }
+
+        // Replace the info window's content and position.
+        infoWindow.setContent(contentString);
+        infoWindow.setPosition(event.latLng);
+
+        infoWindow.open(map);
+    }
+</script>
 </body>
 <script>
 
@@ -1869,10 +2181,11 @@
 
 //        console.log(data[r1]["name"]);
         console.log("Today's random number is: ", r1);
+        $("<div id=\"review-date-inner\">"+data[r1]['date']+"</div>").insertAfter("#review-date");
         $("<div id='reviewer-infobox'><span id='person'>" + data[r1]['name'] +  ", </span><span id='location'>" + data[r1]['city'] + "</span></div>").insertAfter("#reviewer-name");
         $("<img src =\""+data[r1]['avatar']+"\" id='avatar'>").insertAfter("#reviewer-avatar");
         $("<img id=\"stars\" src ='img/YelpStars5.png' >").insertAfter("#star-rating");
-        $("<div>"+data[r1]['content']+"</div>").insertAfter("#review-content");
+        $("<p class=\"review-body\">"+data[r1]['content']+"</p>").insertAfter("#review-content");
     });
 
 
@@ -1907,8 +2220,10 @@
     window.setTimeout(function() {$('#iphone').append("<span id=\"modal\"></span><span id=\"contact-animation\"></span>"); }, 2000);
 
 
-
-    console.log("hello");
 </script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc3V4dOnoxsLX14R5_-PAMj0OP0xbHnyA&callback=initMap">
+</script>
+
 
 </html>
