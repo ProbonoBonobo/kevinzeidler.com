@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--OH LOOK A CHANGE-->
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -11,7 +10,7 @@
     <link rel="stylesheet" href="iphone.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="yelpwidget.css"/>
 
@@ -1854,10 +1853,22 @@
      function randRange (max) {
          return Math.floor(Math.random()*max+1);
      }
-    $.getJSON( "filteredv2.json", function( data ) {
-        console.log(data);
-        var r1 = randRange(data.length - 1);
-        console.log(r1);
+    data = $.getJSON( "responsev2.json", function( data ) {
+        console.log( data );
+
+        var size = Object.keys( data ).length;
+        var r1   = randRange( size - 1 );
+        for ( var i = 0; i < size; i++ ) {
+            var obj = data[ i ];
+            for ( var key in obj ) {
+                var attrName  = key;
+                var attrValue = obj[ key ];
+                console.log( "data[", i, "][", attrName, "] => ", attrValue );
+            }
+        }
+
+//        console.log(data[r1]["name"]);
+        console.log("Today's random number is: ", r1);
         $("<div id='reviewer-infobox'><span id='person'>" + data[r1]['name'] +  ", </span><span id='location'>" + data[r1]['city'] + "</span></div>").insertAfter("#reviewer-name");
         $("<img src =\""+data[r1]['avatar']+"\" id='avatar'>").insertAfter("#reviewer-avatar");
         $("<img id=\"stars\" src ='img/YelpStars5.png' >").insertAfter("#star-rating");
