@@ -26,7 +26,7 @@ function br2nl($buff='') {
 
 function unescape($buff='') {
 //	echo "Before: " . $buff;
-	$buff = preg_replace('"', "\&quot;", $buff);
+	$buff = preg_replace('"', "&quot;", $buff);
 	$buff = trim($buff);
 //	echo "After: " . $buff;
 	return $buff;
@@ -218,7 +218,7 @@ if($review_obj->length > 0) {
 
 			//but actually what we really want is JSON, which we can simply echo to stdout
 			echo "      {\n\"id\" : \"", $ctr, "\",\n";
-			echo "      \"date\" : \"", $date, "\",\n";
+			echo "      \"date\" : \"", substr($date,1), "\",\n";
 			echo "      \"name\" : \"", $name, "\",\n";
 			echo "      \"avatar\" : \"", $avatar, "\",\n";
 			echo "      \"starsprite\": \"", $GLOBALS['STARIMG'], "\",\n";
