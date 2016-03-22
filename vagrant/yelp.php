@@ -153,4 +153,3 @@ $options = getopt("", $longopts);
 $term = $options['term'] ?: '';
 $location = $options['location'] ?: '';
 query_api($term, $location);
-?>

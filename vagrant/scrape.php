@@ -17,6 +17,11 @@ $STARIMG = "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-
 $scraped = file_get_contents("http://www.yelp.com/biz/mobile-iphone-repair-ipad-screen-repair-san-diego-24");
 $DOM = new DOMDocument();
 
+// we'll need this to preserve the formatting of the reviews
+
+
+
+
 // Defining the basic cURL function
 function curl($url) {
     $ch = curl_init();  // Initialising cURL
@@ -27,6 +32,7 @@ function curl($url) {
     print sprintf("%s", $data);
     return $data;   // Returning the data from the function    
 }
+
 
 
 
@@ -55,7 +61,8 @@ $dates = $scraped_xpath->query($GLOBALS['QUERY']['date']);
 
 if($review_obj->length > 0){  
 	$ctr = 0;
-	echo "{\n";
+
+	echo "[\n";
 
     // since index(obj) <=> identity(obj), the value of obj[key] is simply the current index of Arr[key]
     foreach($review_obj as $pat){
@@ -68,6 +75,14 @@ if($review_obj->length > 0){
         $date = $dates->item($ctr)->nodeValue;
         $avatar = $avatars->item($ctr)->nodeValue;
 
+        //sanitize the input
+        $content = filter_var($content, FILTER_SANITIZE_STRING);
+
+        //rewrite the avatar URL to the higher resolution version
+        $avatar = substr($avatar, 0, -7) . "ms.jpg";
+
+
+
         //and push
         $review_list[] = array('date' => $date,
         					   'name' => $name, 
@@ -76,9 +91,10 @@ if($review_obj->length > 0){
         					   'rating' => $rating,
         					   'stars' => $GLOBALS['STARIMG'], 
         					   'content' => $content);
+
         
         //but actually what we really want is JSON, which we can simply echo to stdout 
-        echo "   \"", $ctr,"\": {\n";
+        echo "      {\n\"id\" : \"", $ctr, "\",\n";
         echo "      \"date\" : \"", $date, "\",\n";
 		echo "      \"name\" : \"", $name, "\",\n";
 		echo "      \"avatar\" : \"", $avatar, "\",\n";
@@ -86,6 +102,7 @@ if($review_obj->length > 0){
 		echo "      \"city\" : \"", $city, "\",\n";
 		echo "      \"rating\" : \"", $rating, "\",\n";
 		echo "      \"content\" : \"", $content, "\"\n";
+		echo "      \"formattedContent\" : \"", $content, "\"\n";
 		if ($ctr == 19) {
 			// drop comma from last element of JSON table
 			// todo: write a valid predicate test for this condition instead of assuming a fixed array of 20 elements
@@ -96,8 +113,8 @@ if($review_obj->length > 0){
 
         $ctr += 1;
     }
-    print_r($review_list);
-    echo "}";
+//    print_r($review_list);
+    echo "]";
 }
 
 

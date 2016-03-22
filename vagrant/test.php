@@ -181,7 +181,7 @@ if($review_obj->length > 0) {
 
 		//rewrite the avatar URL to the higher resolution version
 
-		if (substr($avatar, 0, -7) == "60s.jpg") {
+		if (substr($avatar, -7) == "60s.jpg") {
 			$avatar = substr($avatar, 0, -7) . "ms.jpg";
 		}
 
@@ -210,6 +210,7 @@ if($review_obj->length > 0) {
 		$content = str_replace('"', "&quot;", $content);
 
      	$content = str_replace("\n\n", "\n", $content);
+
 		$weightedLength = strlen(str_replace("\\n", "                                    ",  $content));
 
 		if (($rating == "5") & ($weightedLength < 500)) {
@@ -223,7 +224,7 @@ if($review_obj->length > 0) {
 			echo "      \"starsprite\": \"", $GLOBALS['STARIMG'], "\",\n";
 			echo "      \"city\" : \"", $city, "\",\n";
 			echo "      \"rating\" : \"", $rating, "\",\n";
-			echo "      \"content\" : ", json_encode(nl2br($content));
+			echo "      \"content\" : ", json_encode(substr(nl2br($content),8));
 
 //		echo "      \"formattedContent\" : \"", $content, "\"\n";
 			if ($ctr == 19) {
