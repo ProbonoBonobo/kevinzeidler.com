@@ -1,10 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" src="/vagrant/public/css/bootstrap-responsive.css">
+    <link rel="stylesheet" src="maven/style.css">
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+
+
+        .thumbnails { margin: 25px 10px 0px 10px; overflow: hidden; min-height: 1800px;}
+
+        .thumbnail { width: 100%; display: inline;}
+        .thumbnail-pair img {
+            width: 45%;
+            min-height: 66%;
+        }
+        .thumbnail-giant img {
+            /*position: relative;*/
+            min-height: 90%;
+            min-width: 80%;
+            max-height: 90%;
+            max-width: 80%;
+
+
+        }
+        .thumbnail-pair {
+            top: 0px;
+            left: 0px;
+            min-height: 400px;
+            display: inline;
+            background-color: white;
+            z-index: 2;
+            min-width: 57%;
+
+        }
+        .thumbnail-giant {
+            top: 0px;
+            margin-top: 1200px;
+            float:right;
+            padding-left: -120px;
+            overflow: hidden;
+        }
+        .thumbnail-pair > .left-image {
+            left: 0px;
+            float: left;
+
+        }
+        .thumbnail-pair > .right-image {
+            left: 0px;
+            float: right;
+
+        }
+
+        .left-image {
+            margin-top: 5px;
+            width: 50%;
+
+
+        }
+
+
+
+        .right-image {
+            margin-top: 5px;
+            width: 50%;
+            right: 0px;
+            float: right;
+        }
+
+
+        span > img {
+            min-height: 100%;
+            min-width: 100%;
+        }
+
+        .thumbnail .overlay {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: %;
+            background: rgba(0,0,0,.7);
+            opacity: 0;
+            z-index: 1;
+            border: 20px solid rgba(0,0,0,.15);
+            -webkit-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            -moz-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            -ms-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            -o-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+        }
+
+
+        .thumbnail .left-overlay {
+            position: absolute;
+            display: inline-block;
+            width: 45%;
+            height: 85%;
+            background: rgba(0,0,0,.7);
+            opacity: 0;
+            z-index: 1;
+            border: 20px solid rgba(0,0,0,.15);
+            -webkit-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            -moz-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            -ms-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            -o-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            z-index: 2;
+        }
+        .thumbnail .right-overlay {
+            position: absolute;
+            display: inline-block;
+            width: 45%;
+            height: 85%;
+            left: 50%;
+
+
+            background: rgba(0,0,0,.7);
+            opacity: 0;
+            z-index: 1;
+            border: 20px solid rgba(0,0,0,.15);
+            -webkit-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            -moz-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            -ms-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            -o-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            z-index: 2;
+        }
+
+        .left-image:hover .left-overlay {
+            opacity: 1;
+        }
+        .right-image:hover .right-overlay {
+            opacity: 1;
+        }
+        /* Responsive */
+
+        @media (min-width: 1024px) {
+            .filters {display: block;}
+            .thumbnails {
+                min-height: 511px;
+                margin: 30px 20px 0px 20px;
+            }
+            .thumbnail { width: 51%;
+                height: 33%;
+                min-height: 130.33px;
+            }
+            .thumbnail-giant {
+                margin-top: 0px;
+                width: 50%;
+                min-height: 900px;
+                max-height: 900px;
+                overflow: hidden;
+            }
+            .thumbnail-pair {
+                background-color: white;
+                opacity: 1;
+                min-width: 57%;
+                min-height: 300px;
+                z-index: 2;
+
+            }
+            /*.thumbnail-pair > * {*/
+                /*min-height: 300px;*/
+                /*max-height: 300px;*/
+            /*}*/
+            .thumbnail-giant > img {
+                right: 0px;
+                left: 100px;
+                margin-left: auto;
+                position: relative;
+                margin-right: -60px;
+                height:100%;
+                width: 100%;
+                min-width: 650px;
+                min-height: 800px;
+                transform: translateX(-10%) translateY(5%);
+                z-index: 1
+            }
+
+            .project-info { margin-top: -40px; }
+        }
+        @media (min-width: 1200px) {
+
+        }
+
+        @media (min-width: 1400px) {
+            .thumbnails { margin: 50px 60px 0px 60px; }
+        }
+        body {
+            background: #fff;
+            color: #666666;
+            font: normal 18px 'Cardo', serif;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        img {
+            vertical-align: middle;
+            min-height: 200px;
+        }
+
+        a { text-decoration: none; }
+
+        a, video { outline: 0; }
+        button:focus { outline: 0; }
+
+        a:active, a:visited {
+            border: none;
+            outline: none;
+        }
+
+        .modern-browser { display: none; }
+
+        ::selection { background: #171a1c; color: #fff; }
+        ::-moz-selection { background: #171a1c; color: #fff; }
+
+
+        /* =Typography
+        -------------------------------------------------------------- */
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: #171a1c;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin: 15px 0 15px 0;
+        }
+
+        h6 {
+            color: #171a1c;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            margin: 15px 0 15px 0;
+        }
+
+        .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 { color: #fff; }
+        .black h1, .black h2, .black h3, .black h4, .black h5, .black h6 { color: #fff; }
+        h1, h2, h3, h4 { letter-spacing: -0.05em; }
+        h5, h6 { text-transform: uppercase; letter-spacing: 0.2em }
+        h1 { line-height: 0.9em; }
+        h2, h3, h4 { line-height: 0.9em; }
+        h5, h6 { line-height: 1.2em; }
+
+        h1 { font-size: 55px; }
+        h2 { font-size: 35px; }
+        h3 { font-size: 80px; }
+        h4 { font-size: 30px; }
+        h5 { font-size: 10px; }
+        h6 { font-size: 9px; }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            h1 { font-size: 100px; }
+            h2 { font-size: 80px; }
+            h4 { font-size: 40px; }
+        }
+        @media (min-width: 992px) {
+        }
+
+        @media (min-width: 1200px) {
+            h1, h2, h3, h4, h5, h6 { margin: 20px 0 20px 0; }
+            h1 { font-size: 150px; }
+            h2 { font-size: 100px; }
+            h3 { font-size: 80px; }
+            h4 { font-size: 40px; }
+            h5 { font-size: 12px; }
+            h6 { font-size: 9px; }
+        }
+
+        /* Common */
+        p {
+            font-size: 16px;
+            line-height: 1.6em;
+            margin: 15px 0 15px 0;
+        }
+
+        .dark h5 { text-transform: none;
+            letter-spacing: 0.0em;
+            font-family: "Montserrat-Thin";
+            font-size: 24px;
+            font-weight: 200;
+        }
+        .dark p { color: #d1d1d1; }
+        .black p { color: #888888; }
+        .accent p { color: #171a1c; }
+        p.sub-heading { font-size: 20px; }
+        .dark p.sub-heading { color: #fff; }
+        .black p.sub-heading { color: #fff; }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+        }
+        @media (min-width: 992px) {
+
+        }
+
+        @media (min-width: 1200px) {
+            p {
+                font-size: 18px;
+                margin: 20px 0 20px 0;
+            }
+            p.sub-heading { font-size: 25px; }
+        }
+
+    </style>
 </head>
 <body>
+
+<section id="section5" class="center padded nb">
+    <div class="container">
+        <!-- Title -->
+        <!--<div class="row">-->
+            <!--<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="0.3s">-->
+                <!--<h4>About me.</h4>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<p>It is a long established <a href="blog.html">blog</a> that a reader will be distracted by the <a href="/ichabod/ichabod-demo.html">jQuery slideshow widget</a> of a page when looking at its layout. The <a href="register-machine.html">register machine</a> of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>-->
+
+<!-- Filters -->
+<!--<div class="row">-->
+    <!--<ul class="col-xs-12 filters">-->
+        <!--<li data-filter="*" class="is-checked wow fadeInUp" data-wow-delay="0.5s">All</li>-->
+        <!--<li data-filter=".branding" class="wow fadeInUp" data-wow-delay="0.8s">Branding</li>-->
+        <!--<li data-filter=".web-design" class="wow fadeInUp" data-wow-delay="1s">Web Design</li>-->
+        <!--<li data-filter=".print" class="wow fadeInUp" data-wow-delay="1.2s">Print</li>-->
+    <!--</ul>-->
+<!--</div>-->
+</div><!-- END Container -->
+
+<div class="thumbnails dark">
+    <div class="thumbnail thumbnail-pair" style="clear:both;">
+
+        <!--<div class="project-info">-->
+            <!--<a class="button dark" href="portfolio-single.html">Moveo Miami</a>-->
+        <!--</div>-->
+        <span class="left-image">
+            <div class="left-overlay"></div>
+            <img src="vagrant/public/img/iphone5c-blue.jpg" alt="thumbnail" />
+        </span>
+        <span class="right-image">
+
+        <div class="right-overlay"></div>
+            <img src="vagrant/public/img/iphone5s-flat.jpeg" alt="thumbnail" />
+        </span>
+    </div>
+
+
+
+    <!--<div class="thumbnail branding">-->
+        <!--<div class="overlay"></div>-->
+        <!--<div class="project-info">-->
+            <!--<a class="button dark" href="portfolio-single.html">Vertex Auto</a>-->
+        <!--</div>-->
+      <!---->
+    <!--</div>-->
+
+    <div class="thumbnail thumbnail-pair">
+
+
+        <!--&lt;!&ndash;<div class="project-info">&ndash;&gt;-->
+            <!--<a class="button dark" href="portfolio-single.html">Jason Wu</a>-->
+        <!--</div>-->
+        <span class="left-image">
+            <div class="left-overlay"></div>
+            <img src="vagrant/public/img/iphone6s-rosegold.jpeg" alt="thumbnail" />
+        </span>
+        <span class="right-image">
+            <div class="right-overlay"></div>
+            <img src="vagrant/public/img/iphone6s-plus.jpeg" alt="thumbnail" />
+        </span>
+    </div>
+
+    <!--<div class="thumbnail print">-->
+        <!--<div class="overlay"></div>-->
+        <!--<div class="project-info">-->
+            <!--<a class="button dark" href="portfolio-single.html">The Roxy Hotel</a>-->
+        <!--</div>-->
+       <!---->
+    <!--</div>-->
+    <div class="thumbnail thumbnail-pair">
+
+
+        <!--<div class="project-info">-->
+            <!--<a class="button dark" href="portfolio-single.html">The Roxy Hotel</a>-->
+        <!--</div>-->
+        <span class="left-image">
+            <div class="left-overlay"></div>
+            <img src="vagrant/public/img/ipad-mini3.jpg" alt="thumbnail" />
+        </span>
+        <span class="right-image">
+
+        <div class="right-overlay"></div>
+            <img src="vagrant/public/img/ipad-air2.jpg" alt="thumbnail" />
+        </span>
+
+    </div>
+    <div class="thumbnail-giant">
+        <div class="overlay"></div>
+        <!--<div class="project-info">-->
+            <!--<a class="button dark" href="portfolio-single.html">Alexis Bittar</a>-->
+        <!--</div>-->
+        <img src="vagrant/public/img/iphone-wireframe2.jpg" alt="thumbnail--width-2" />
+    </div>
+</div>
+    </section>
+
+
+<script src="js/easy.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/isotope.js"></script>
+<script>
+    function initialize() {
+        (function () {
+                    function contentCenter() {
+                        var hero                    = $( '.hero' ),
+                            windowHeight            = $( window ).height(),
+                            heroHeight              = windowHeight,
+                            navigation              = $( '.navigation' ),
+                            navigationHeight        = navigation.height(),
+                            parentHeight            = $( '.push-nav' ).height(),
+                            topMargin               = (parentHeight - navigationHeight
+                                                      ) / 2,
+                            heroContent             = $( '.hero-content' ),
+                            contentHeight           = heroContent.height(),
+                            topContentMargin        = (heroHeight - contentHeight
+                                                      ) / 2,
+                            fullScreenHeight        = $( '.full-screen' ).height(),
+                            fullScreenContent       = $( '.full-screen-content' ),
+                            fullScreenContentHeight = fullScreenContent.height(),
+                            fullScreenContentMargin = ( fullScreenHeight - fullScreenContentHeight
+                                                      ) / 2;
+
+                        navigation.css( {
+                                            "margin-top": topMargin + "px"
+                                        }
+                        );
+
+                        hero.css( {
+                                      height: heroHeight + "px"
+                                  }
+                        );
+
+                        heroContent.css( {
+                                             "margin-top": topContentMargin + "px"
+                                         }
+                        );
+
+                        fullScreenContent.css( {
+                                                   "margin-top": fullScreenContentMargin + "px"
+                                               }
+                        );
+                    }
+
+                    $( window ).on( "resize", contentCenter );
+                    $( document ).on( "ready", contentCenter );
+                }
+        )();
+
+        var wow = new WOW();
+        wow.init();
+
+        $( '.thumbnail' ).hover( function () {
+                                     $( this ).children( '.project-info' ).toggleClass( "visible" );
+                                 }
+        );
+    }
+
+    $(document).ready(function(){
+
+        initialize();
+
+    });
+
+    $(window).load(function(){
+    //ISOTOPE
+    var $container = $('.thumbnails').isotope({
+                                                  itemSelector: '.thumbnail', columnWidth: '800'
+                                              });
+    // filter items on button click
+    $('.filters').on( 'click', 'li', function() {
+        var filterValue = $(this).attr('data-filter');
+        $container.isotope({ filter: filterValue });
+    });
+
+    // change is-checked class on buttons
+    $('.filters').each( function( i, buttonGroup ) {
+        var $buttonGroup = $( buttonGroup );
+        $buttonGroup.on( 'click', 'li', function() {
+            $buttonGroup.find('.is-checked').removeClass('is-checked');
+            $( this ).addClass('is-checked');
+        });
+    });
+
+    });
+
+    //SINGLE PROJECT RESIZINGS
+    (function() {
+        function devicesResizing(){
+            var devicesContainer = $('.devices-container'),
+                devicesContainerHeight = $('.devices-container').outerHeight() - 240,
+                devices = $('.devices');
+
+            devices.css({
+                            "top": devicesContainerHeight + "px"
+                        });
+
+            devicesContainer.css({
+                                     "margin-bottom": devices.outerHeight() - 240 + "px"
+                                 });
+        }
+
+        $(window).on("load", devicesResizing);
+        $(window).on("resize", devicesResizing);
+    })();
+</script>
+
 
 </body>
 </html>

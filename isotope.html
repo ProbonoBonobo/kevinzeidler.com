@@ -1,0 +1,116 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <style>
+        .grid figure {
+            float: left;
+            background: #17A781;
+            width: 20%;
+
+            margin: 0 2px 4px;
+        }
+        .grid- .item-w2 {
+            width: 40%;
+            min-width: 300px;
+        }
+        .grid .item-h2 {
+            min-height: 800px;
+            background: #7CB744;
+        }
+        .grid .item-h3 {
+            height: 800px;
+            background: #38B5E5;
+        }
+        .isotope .isotope-item {
+            -webkit-transition-duration: 0.8s;
+            -moz-transition-duration: 0.8s;
+            transition-duration: 0.8s;
+            -webkit-transition-property: -webkit-transform, opacity;
+            -moz-transition-property: -moz-transform, opacity;
+            transition-property: transform, opacity;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="grid">
+    <figure class="item item-w2 item-h2">
+        <figcaption>Item 3</figcaption>
+    </figure>
+    <figure class="item">
+        <figcaption>Item 1</figcaption>
+    </figure>
+    <figure class="item">
+        <figcaption>Item 2</figcaption>
+    </figure>
+
+    <figure class="item">
+        <figcaption>Item 4</figcaption>
+    </figure>
+
+    <figure class="item">
+        <figcaption>Item 5</figcaption>
+    </figure>
+    <figure class="item">
+        <figcaption>Item 6</figcaption>
+    </figure>
+    <figure class="item">
+        <figcaption>Item 7</figcaption>
+    </figure>
+
+</div>
+
+
+<script>
+
+    (function ($) {
+        var $container = $('.grid'),
+            colWidth = function () {
+                var w = $container.width(),
+                    columnNum = 1,
+                    columnWidth = 0;
+                if (w > 1200) {
+                    columnNum  = 4;
+                } else if (w > 900) {
+                    columnNum  = 3;
+                } else if (w > 600) {
+                    columnNum  = 3;
+                } else if (w > 300) {
+                    columnNum  = 1;
+                }
+                columnWidth = Math.floor(w/columnNum);
+                $container.find('.item').each(function() {
+                    var $item = $(this),
+                        multiplier_w = $item.attr('class').match(/item-w(\d)/),
+                        multiplier_h = $item.attr('class').match(/item-h(\d)/),
+                        width = multiplier_w ? columnWidth*multiplier_w[1]-4 : columnWidth-4,
+                        height = multiplier_h ? columnWidth*multiplier_h[1]*0.5-4 : columnWidth*0.5-4;
+                    $item.css({
+                                  width: width,
+                                  height: height
+                              });
+                });
+                return columnWidth;
+            },
+            isotope = function () {
+                $container.isotope({
+                                       resizable: false,
+                                       itemSelector: '.item',
+                                       masonry: {
+                                           columnWidth: colWidth(),
+                                           gutterWidth: 4
+                                       }
+                                   });
+            };
+        isotope();
+        $(window).smartresize(isotope);
+    }(jQuery));
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+</body>
+</html>
