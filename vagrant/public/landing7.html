@@ -19,7 +19,6 @@
     <!--&lt;!&ndash;<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">&ndash;&gt;-->
     <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
     <link rel="stylesheet" href="css/animate.css">
--->
     <!--<link href="css/framework.css" rel="stylesheet">-->
     <!--<script src="js/modernizr.js" type="text/javascript"></script>-->
 
@@ -50,7 +49,7 @@
             margin-bottom: 300px;
         }
 
-        }
+
 
         /*#top-nav {*/
             /*z-index: 1000;*/
@@ -496,6 +495,8 @@
             font-weight: 300;
             color: #fff;
             overflow: hidden;
+            transition: opacity 1s ease-in;
+            transition-delay: 0.5s;
         }
 
         .big-canvas {
@@ -929,6 +930,7 @@
 
             background: url('img/iphone-call-screen-shattered.gif');
             background-size: 100% 100%;
+            transition: all 2s;
 
 
 
@@ -1166,6 +1168,8 @@
             min-width: 100%;
             position: relative;
             background: white;
+            overflow: hidden;
+            display: block;
 
 
         }
@@ -1174,6 +1178,7 @@
             position:relative;
 
         }
+
 
         .iphone-lineup {
             height: 300px;
@@ -1201,15 +1206,15 @@
 
         }
 
-        #iphone6 {
-            background: url('http://www.pixeden.com/media/k2/items/cache/flat-psd-iphone-6-6s-mockup-L.jpg');
-            max-width: 100%;
-            height: 100%;
-            padding: 10px;
-            background-size: cover;
+        /*#iphone6 {*/
+            /*background: url('http://www.pixeden.com/media/k2/items/cache/flat-psd-iphone-6-6s-mockup-L.jpg');*/
+            /*max-width: 100%;*/
+            /*height: 100%;*/
+            /*padding: 10px;*/
+            /*background-size: cover;*/
 
 
-        }
+        /*}*/
 
         #iphone6plus {
             background: url('http://cdn.iofferphoto.com/img/item/590/515/553/o_iphone-6-plus-gold-circles-clear-skin-soft-case-640b.jpg');
@@ -1255,6 +1260,7 @@
             width: 50px;
             height: 50px;
             background-size: 100% 100%;
+            margin-left: 15px;
         }
         #icon1 {
             background-image: url('img/icon-smartphone-repair.png');
@@ -1307,10 +1313,9 @@
         .blurb {
             height: 100px;
 
-            top: 0;
-            left: 0;
+
             width: 100%;
-            margin-left: 0px;
+
             position: relative;
             vertical-align: middle;
             padding-top: 5px;
@@ -1318,7 +1323,16 @@
             font-family: 'Helvetica', sans-serif;
             font-weight: 300;
 
+            top: 0px;
+            left: 30px !important;
+            margin-left: 30px;
+
         }
+        .blurbs{
+            left: 0px;
+            padding-left: 30px;
+        }
+
         .intro-blurb {
             position: absolute;
             margin-left: 20%;
@@ -1662,7 +1676,11 @@
 
         }
         #map {
-            height: 90%;
+            height: 200px;
+            margin-right: 15px;
+            bottom: 0;
+            left: 0px;
+
         }
 
 
@@ -1681,28 +1699,24 @@
         }
 
 
-        #maps-widget > h4 {
-            width: 100%;
-            margin-top: 8px;
-            font-family: 'Montserrat';
-            font-weight: 900;
-            font-size: 26px;
-            letter-spacing: .1px;
-            text-align: center;
-        }
+        /*#maps-widget > h4 {*/
+            /*width: 100%;*/
+            /*margin-top: 8px;*/
+            /*font-family: 'Montserrat';*/
+            /*font-weight: 900;*/
+            /*font-size: 26px;*/
+            /*letter-spacing: .1px;*/
+            /*text-align: center;*/
+        /*}*/
 
         #maps-widget {
             padding: 0px 0px 0px 0px;
             width: 97%;
-            height: 80%;
+            height: 400px;
             left: 5px;
             top: 5px;
             right: 5px;
             bottom: 5px;
-            margin-left: auto;
-            margin-top: auto;
-            margin-bottom: auto;
-            margin-right: auto;
         }
 
 
@@ -1712,21 +1726,10 @@
             bottom: 0;
             right: 0;
             left: 0;
-            height: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: auto;
-
-            margin-top: -7%;
-            width: 100%;
-
-
+            height: 440px;
             position: absolute;
             background: rgba(240,240,240, .7);
-            display: inline-block;
-        }
-        #map {
-            margin-top: 50px;
+            display: block;
         }
 
         #yelpwidget {
@@ -1793,21 +1796,38 @@
         }
         body {
             /* Margin bottom by footer height */
-            margin-bottom: 60px;
+            margin-bottom: 300px;
         }
         .footer {
+
             position: absolute;
             bottom: 0;
             width: 100%;
             /* Set the fixed height of the footer here */
-            height: 300px;
+            min-height: 300px;
             background-color: #f5f5f5;
         }
         .footer-container {
             width: auto;
-            max-width: 680px;
+            /*max-width: 680px;*/
+            height: 250px;
             padding: 0 15px;
         }
+
+        .header-inner {
+            position: absolute;
+            height: 66px;
+            width: 100%;
+            background: #000;
+            top: 0px;
+            margin-top: 0px;
+
+        }
+
+        h1 {
+            letter-spacing: -1px;
+        }
+
 
 
 
@@ -1843,9 +1863,7 @@
 
 
     <div id="wrapper">
-        <!--<div id="shattered-overlay">-->
-        <!--<img src="img/shattered-overlay2.gif">-->
-        <!--</div>-->
+
 
 
         <div id="iphone" >
@@ -1854,7 +1872,7 @@
 
             <div id="shadow"></div>
             <div id="side"></div>
-            <!--<span id="rounded-edges"></span>-->
+
             <div id="lines">
                 <div>
                     <div>
@@ -1941,10 +1959,7 @@
                     slide to unlock
                 </div>
 
-                <!--<div id="cta">-->
-                    <!--&lt;!&ndash;<img src="img/call-button.png" width="100%">&ndash;&gt;-->
-                <!--</div>-->
-                    <!--<div class="screen-container">-->
+
 
                     <div id="visible-screen">
 
@@ -2001,73 +2016,75 @@
 
 
 
-<!--<div id='green-button'>-->
 
 
 
 
-<div class="container" >
-    <!--<div class="description-of-services grid">-->
-        <div class="row">
-            <div class="col-xs-12" id="about-section">
-            <h1>We're a San Diego iPhone repair company.</h1>
-                <div class="row blurb">
+<!--<div class="container" >-->
+    <!--&lt;!&ndash;<div class="description-of-services grid">&ndash;&gt;-->
 
-                    <div class="col-xs-1" class="icons">
-                        <div class="icon">
-                        <img src="img/icon-smartphone-repair.png" width="80" height="80">
-                            </div>
-                        </div>
-                        <div class="col-xs-11" class="blurbs">
-                            <div class="blurb">We replace broken iPhone screens, SIM cards, and batteries.</div>
-                            </div>
-                </div>
-                <div class="row blurb">
+                        <!--</div>-->
+                        <!--<div class="icon">-->
 
-                    <div class="col-xs-1" class="icons">
-                        <div class="icon">
-                            <img src="img/icon-mobile-map.png" width="80" height="80">
-                        </div>
-                    </div>
-                    <div class="col-xs-11" class="blurbs">
-                        <div class="blurb">We come to you—anywhere in the greater San Diego area!</div>
-                    </div>
-                </div>
-                <div class="row blurb">
+                            <!--</div>-->
+                        <!--<div class="icon">-->
 
-                    <div class="col-xs-1" class="icons">
-                        <div class="icon">
-                            <img src="img/icon-guarantee.png" width="80" height="80">
-                        </div>
-                    </div>
-                    <div class="col-xs-11" class="blurbs">
-                        <div class="blurb">We guarantee our work. If you have any issues with your repair, please let us know within 30 days. If we're not able to resolve it on the spot, we'll give you a full refund.</div>
-                    </div>
-                </div>
-                        </div>
-                        <div class="icon">
+                            <!--</div>-->
 
-                            </div>
-                        <div class="icon">
-
-                            </div>
-
-                    </div>
+                    <!--</div>-->
 
 
 
-                    </div>
+                    <!--</div>-->
 
 <div class="container">
+    <div class="row">
+        <div class="col-xs-12" id="about-section">
+            <h1>We're a San Diego iPhone repair company.</h1>
+            <div class="row">
+
+                <div class="col-xs-1" class="icons">
+                    <div class="icon">
+                        <img src="img/icon-smartphone-repair.png" width="80" height="80">
+                    </div>
+                </div>
+                <div class="col-xs-11" class="blurbs">
+                    <div class="blurb">We replace broken iPhone screens, SIM cards, and batteries.</div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xs-1" class="icons">
+                    <div class="icon">
+                        <img src="img/icon-mobile-map.png" width="80" height="80">
+                    </div>
+                </div>
+                <div class="col-xs-11" class="blurbs">
+                    <div class="blurb">We come to you—anywhere in the greater San Diego area!</div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xs-1" class="icons">
+                    <div class="icon">
+                        <img src="img/icon-guarantee.png" width="80" height="80">
+                    </div>
+                </div>
+                <div class="col-xs-11" class="blurbs">
+                    <div class="blurb">We guarantee our work. If you have any issues with your repair, please let us know within 30 days. If we're not able to resolve it on the spot, we'll give you a full refund.</div>
+                </div>
+            </div>
+    <div class="row" id="services-section">
 
 
 
 
         <h1 class="page-header">Blurb.</h1>
+
         <div class="col-md-7">
             <div class="row services-row">
         <div class="col-xs-6 iphone-lineup">
-            <span>
+            <span id="iphone6">
                 <img class="img-responsive" src="img/iphone6s-rosegold.jpeg">
                 <p>iPhone 6/6s</p>
             </span>
@@ -2111,12 +2128,7 @@
         <div class="col-md-5">
             <div class="row" id="rightcol">
             <div class="col-md-12 right">
-                <!--<div id="maps-container">-->
-                <!--<div id="maps-widget">-->
-                    <!--<h4>Service radius</h4>-->
-                <!--<div id="map"></div>-->
-                <!--</div>-->
-                    <!--</div>-->
+
 
 
 
@@ -2140,13 +2152,28 @@
             </div>
         </div>
         </div>
+        </div>
 
-<footer class="footer">
+
+
+<div class="footer">
+    <div id="footer-text">
+        <h4>We come to you!</h4>
+        <p>We proudly serve the greater San Diego County area, including: Kearny Mesa, Miramar, Mission Valley, Hillcrest, North Park, La Mesa, La Jolla, Pacific Beach, Carmel Valley, Del Mar, Scripps Ranch, Poway, Rancho Bernardo.</p>
+        </div>
     <div class="footer-container">
+
+        <div id="maps-widget">
+        <h4>Service radius</h4>
+        <div id="map"></div>
+        <p></p>
         <p class="text-muted">Place sticky footer content here.</p>
+            </div>
+        <!--</div>-->
     </div>
-</footer>
     </div>
+    </div>
+
     <!--</div>-->
 
 
@@ -2333,6 +2360,8 @@
             }
         }
 
+
+
         console.log("Today's random number is: ", r1);
         $("<div id=\"review-date-inner\">"+data[r1]['date']+"</div>").insertAfter("#review-date");
         $("<div id='reviewer-infobox'><span id='person'>" + data[r1]['name'] +  ", </span><span id='location'>" + data[r1]['city'] + "</span></div>").insertAfter("#reviewer-name");
@@ -2345,33 +2374,41 @@
 var notDone = true;
 var clicked = false;
 window.setTimeout(function() { $('div#wrapper' ).css('visibility', 'visible')}, 1500);
-$("div#iphone" ).click(function() {
 
-    if (notDone) {
+     $(document ).ready(function() {
+             $( document ).scroll( function () {
+                                       if ( notDone ) {
+                                           window.setTimeout(function() {
 //        $( "<div id=\'call-screen\'></div>" ).insertAfter( $( "#visible-screen" ) );
 
-        $( "#broken" ).remove();
+                                           $( "#broken" ).remove();
 
-        $( 'div#inner-iphone-text' ).html( "iPhone Repair <br><span id=\'caller-info\'>" +
-                                           " Mobile</span></div><div id=\'caller-photo\'>" +
-                                           "<img src=\"img/me-circlehead.gif\" " +
-                                           " width=\'90px\' height=\'90px\'></div>"
-        );
-        $( 'div#iphone' ).css( { "animation": "ring .5s 0s infinite linear" } );
-        $( '#top-bar' ).css( {
-                                 'visibility': 'visible',
-                                 'z-index': '990'
-                             }
-        );
+                                           $( 'div#inner-iphone-text' ).html( "iPhone Repair <br><span id=\'caller-info\'>" +
+                                                                              " Mobile</span></div><div id=\'caller-photo\'>" +
+                                                                              "<img src=\"img/me-circlehead.gif\" " +
+                                                                              " width=\'90px\' height=\'90px\'></div>"
+                                           );
+                                           $( 'div#iphone' ).css( { "animation": "ring .5s 0s infinite linear" } );
+                                           $( '#top-bar' ).css( {
+                                                                    'visibility': 'visible',
+                                                                    'z-index': '990'
+                                                                }
+                                           );
 
-        $( "<div id=\'green-button\'></div>" ).insertAfter( $( "#call-screen" ) );
-        window.setTimeout(function() { if (!clicked) {
-            $("<div id=\'modal\'></div>").insertBefore($("#callbox"));
-        }}, 1500);
-        notDone=false;
-    }
-});
+                                           $( "<div id=\'green-button\'></div>" ).insertAfter( $( "#call-screen" ) );
+                                           window.setTimeout( function () {
+                                                                  if ( !clicked ) {
+                                                                      $( "<div id=\'modal\'></div>" ).insertBefore( $( "#callbox" ) );
+                                                                  }
+                                                              }, 1500
+                                           ); }, 1000);
+                                           notDone =
+                                                   false;
+                                       }
+                                   }
+             );
 
+     });
 
         $( 'div#call-screen' ).hover( function () {
             $( "div#green-button, div#modal" ).click( function () {
@@ -2381,18 +2418,19 @@ $("div#iphone" ).click(function() {
                                                           $( "div#iphone" ).removeAttr( 'style' );
                                                           $( '#screen' ).css( {
                                                                                   'background': 'linear-gradient(coral, lightblue)',
-                                                                                  'opacity': '.5'
+                                                                                  'opacity': '1'
                                                                               }
                                                           );
 
-                                                          $( '#call-screen' ).css( {
-                                                                                       'opacity': '0',
-                                                                                       'animation': 'jello 3s'
+                                                          $( 'div#call-screen' ).css( {
+                                                                                       'animation': 'jello 1s',
+                                                                                        'transform' : 'scaleX(0.01) scaleY(0.01)',
+                                                                                        'opacity': '0'
                                                                                    }
                                                           );
 
                                                           $( '#callbox' ).remove();
-                                                          $( '#green-button' ).css( 'opacity', '0' );
+                                                          $( '#green-button' ).remove();
                                                           $( '#home' ).css( 'visibility', 'visible' );
                                                           $( '#modal' ).remove();
 
@@ -2402,14 +2440,13 @@ $("div#iphone" ).click(function() {
         });
 
 
-
 </script>
 <!--<script src="js/maven.js"></script>-->
 <!--<script src="js/plugins.js"></script>-->
 <!--<script src="js/navigation.js"></script>-->
-<!--<script async defer-->
-        <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc3V4dOnoxsLX14R5_-PAMj0OP0xbHnyA&callback=initMap">-->
-<!--</script>-->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc3V4dOnoxsLX14R5_-PAMj0OP0xbHnyA&callback=initMap">
+</script>
 
 </body>
 
