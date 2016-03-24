@@ -1,0 +1,678 @@
+/*!
+ * Start Bootstrap - Freelancer Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    overflow-x: hidden;
+}
+
+p {
+    font-size: 20px;
+}
+
+p.small {
+    font-size: 16px;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+    outline: 0;
+    color: #35AEE3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+hr.star-light,
+hr.star-primary {
+    margin: 25px auto 30px;
+    padding: 0;
+    max-width: 250px;
+    border: 0;
+    border-top: solid 5px;
+    text-align: center;
+}
+
+hr.star-light:after,
+hr.star-primary:after {
+    content: "\f005";
+    display: inline-block;
+    position: relative;
+    top: -.8em;
+    padding: 0 .25em;
+    font-family: FontAwesome;
+    font-size: 2em;
+}
+
+hr.star-light {
+    border-color: #fff;
+}
+
+hr.star-light:after {
+    color: #fff;
+    background-color: #3575C5;
+}
+
+hr.star-primary {
+    border-color: #2c3e50;
+}
+
+hr.star-primary:after {
+    color: #2c3e50;
+    background-color: #fff;
+}
+
+.img-centered {
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    color: #fff;
+    background: url('../img/clouds-09.jpg') center no-repeat;
+    background-size: 100% auto;
+    min-height: 800px;
+}
+/* with text */
+/*header .container {*/
+    /*padding-top: 200px;*/
+    /*padding-bottom: 100px;*/
+/*}*/
+
+header .wrapper {
+    padding-top: 620px;
+}
+
+header img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+header .intro-text {
+    padding-top: 620px;
+}
+
+header .intro-text .name {
+    display: block;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+header .intro-text .skills {
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+@media(max-width:768px) {
+    header {
+        top: 0px;
+        margin-top: 0px;
+        padding-top: 0px;
+        background-size: 150%;
+    }
+}
+
+@media(min-width:768px) {
+    header {
+        top: 0px;
+        margin-top: 0px;
+        padding-top: 0px;
+        background-size: 150%;
+    }
+    header .container {
+        padding-top: 300px;
+        padding-bottom: 100px;
+    }
+
+    header .intro-text .name {
+        font-size: 4.75em;
+    }
+
+    header .intro-text .skills {
+        font-size: 1.75em;
+    }
+}
+
+@media(min-width:768px) {
+
+    .navbar-fixed-top {
+        padding: 5px 0;
+        -webkit-transition: padding .3s;
+        -moz-transition: padding .3s;
+        transition: padding .3s;
+
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        font-size: 2em;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
+    }
+
+    .navbar-fixed-top.navbar-shrink {
+
+        background: url('../img/apple-metallic-texture.jpg');
+        padding: 5px 0;
+        min-height: 40px;
+
+    }
+
+    .navbar-fixed-top.navbar-shrink .navbar-brand {
+
+        font-size: 1.5em;
+    }
+     nav.navbar-shrink > div > div.navbar-header.page-scroll > a > span > h1{
+        background: -webkit-linear-gradient(#ffffff,#ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+         animation: easeInUp .5s ease-in-out;
+         transform: scale3d(.7,.7,.7);
+         transition: all .4s ease-in-out;
+         font-weight: 400;
+
+    }
+}
+
+.navbar {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    background: rgba(53,117,197,.8);
+
+
+
+
+}
+
+.navbar-shrink {
+    transition: all 2s ease-in;
+    text-align: center;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+
+}
+.navbar-shrink > * {
+    transition: all 1s ease-in;
+}
+
+
+/*.navbar-shrink >div >div > a >.fauxlogo {*/
+
+/*margin-left: auto;*/
+/*margin-right: auto;*/
+/*top:0px;*/
+/*left: 0px;*/
+/*margin-top: -20px;*/
+/*position: absolute;*/
+/*width:  100%;*/
+    /*transition: all 1s ease-in;*/
+    /*z-index: 999;*/
+
+/*}*/
+h1 {
+    line-height: 50px;
+    font-size: 30px;
+}
+
+.navbar a:focus {
+    outline: 0;
+    /*background: -webkit-linear-gradient(#FF325F, #FF583D);*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+}
+
+.navbar .navbar-nav {
+    letter-spacing: 1px;
+}
+
+.navbar .navbar-nav li a:focus {
+    outline: 0;
+    background: -webkit-linear-gradient(#FF325F, #FF583D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.navbar-default .navbar-nav>.active>a {
+    color: #13B28A;
+    /*background: -webkit-linear-gradient(#FF325F, #FF583D);*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+}
+
+.fauxlogo > h1 > img {
+    width: 70px;
+    margin-top: -10px;
+}
+
+.navbar-default,
+.navbar-inverse {
+    border: 0;
+}
+
+section {
+    padding: 100px 0;
+}
+
+section h2 {
+    margin: 0;
+    font-size: 3em;
+}
+
+section.success {
+    color: #fff;
+    background: #3575C5;
+}
+#widget-container {
+    background: url('../img/mockup-xl.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    height: 1000px;
+    min-width: 100%;
+    max-width: 100%;
+
+}
+.letterbox {
+
+}
+
+#rotd-header {
+    margin-top: -20px;
+}
+
+
+section.success a,
+section.success a:hover,
+section.success a:focus,
+section.success a:active,
+section.success a.active {
+    outline: 0;
+}
+
+@media(max-width:767px) {
+    section {
+        padding: 75px 0;
+    }
+
+    /*section.rotd {*/
+        /*background-size: contain;*/
+
+    /*}*/
+
+    section.first {
+        padding-top: 75px;
+    }
+}
+
+
+@media(min-width:1323px) {
+    #widget-container {
+        height:1200px;
+    }
+    div#data-wrapper {
+
+        position: absolute;
+        height: 426.5px;
+        width: 365px;
+        text-align: left;
+        top:250px;
+        margin-top: 50px;
+        left: 30%;
+        margin-left: 80px;
+        padding-left: 40px;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        color: #000;
+        letter-spacing: normal;
+        font-size: 14px;
+
+
+    }
+
+    img#stars {
+        width: 120px;
+        margin-bottom: 8px;
+    }
+
+    #avatar {
+        margin-right: 10px;
+        margin-top: 2px;
+        margin-left: 1px;
+    }
+    img#stars {
+        width: 120px;
+        margin-bottom: 5px;
+    }
+    #review-headline > a > img {
+        width: 102%;
+        margin-bottom: 5px;
+    }
+}
+#iphone-screen-repairs .iphone-screen-repairs-item {
+    right: 0;
+    margin: 0 0 15px;
+}
+
+#iphone-screen-repairs .iphone-screen-repairs-item .iphone-screen-repairs-link {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+#iphone-screen-repairs .iphone-screen-repairs-item .iphone-screen-repairs-link .caption {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: rgba(55,176,229,.9);
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .5s;
+    transition: all ease .5s;
+}
+
+#iphone-screen-repairs .iphone-screen-repairs-item .iphone-screen-repairs-link .caption:hover {
+    opacity: 1;
+}
+
+#iphone-screen-repairs .iphone-screen-repairs-item .iphone-screen-repairs-link .caption .caption-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 20px;
+    margin-top: -12px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+}
+
+#iphone-screen-repairs .iphone-screen-repairs-item .iphone-screen-repairs-link .caption .caption-content i {
+    margin-top: -12px;
+}
+
+#iphone-screen-repairs .iphone-screen-repairs-item .iphone-screen-repairs-link .caption .caption-content h3,
+#iphone-screen-repairs .iphone-screen-repairs-item .iphone-screen-repairs-link .caption .caption-content h4 {
+    margin: 0;
+}
+
+#iphone-screen-repairs * {
+    z-index: 2;
+}
+
+@media(min-width:767px) {
+    #iphone-screen-repairs .iphone-screen-repairs-item {
+        margin: 0 0 30px;
+    }
+}
+
+.btn-outline {
+    margin-top: 15px;
+    border: solid 2px #fff;
+    font-size: 20px;
+    color: #fff;
+    background: 0 0;
+    transition: all .3s ease-in-out;
+}
+
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active,
+.btn-outline.active {
+    border: solid 2px #fff;
+    color: #35AEE3;
+    background: #fff;
+}
+
+.floating-label-form-group {
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #eee;
+}
+
+.floating-label-form-group input,
+.floating-label-form-group textarea {
+    z-index: 1;
+    position: relative;
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+    border-radius: 0;
+    font-size: 1.5em;
+    background: 0 0;
+    box-shadow: none!important;
+    resize: none;
+}
+
+.floating-label-form-group label {
+    display: block;
+    z-index: 0;
+    position: relative;
+    top: 2em;
+    margin: 0;
+    font-size: .85em;
+    line-height: 1.764705882em;
+    vertical-align: middle;
+    vertical-align: baseline;
+    opacity: 0;
+    -webkit-transition: top .3s ease,opacity .3s ease;
+    -moz-transition: top .3s ease,opacity .3s ease;
+    -ms-transition: top .3s ease,opacity .3s ease;
+    transition: top .3s ease,opacity .3s ease;
+}
+
+.floating-label-form-group:not(:first-child) {
+    padding-left: 14px;
+    border-left: 1px solid #eee;
+}
+
+.floating-label-form-group-with-value label {
+    top: 0;
+    opacity: 1;
+}
+
+.floating-label-form-group-with-focus label {
+    color: #35AEE3;
+}
+
+form .row:first-child .floating-label-form-group {
+    border-top: 1px solid #eee;
+}
+
+footer {
+    color: #fff;
+}
+
+footer h3 {
+    margin-bottom: 30px;
+}
+
+footer .footer-above {
+    padding-top: 50px;
+    background-color: #2c3e50;
+}
+
+footer .footer-col {
+    margin-bottom: 50px;
+}
+
+footer .footer-below {
+    padding: 25px 0;
+    background-color: #233140;
+}
+
+.btn-social {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 20px;
+    line-height: 45px;
+}
+
+.btn:focus,
+.btn:active,
+.btn.active {
+    outline: 0;
+}
+
+.scroll-top {
+    z-index: 1049;
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    width: 50px;
+    height: 50px;
+}
+
+.scroll-top .btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.scroll-top .btn:focus {
+    outline: 0;
+}
+
+.iphone-screen-repairs-modal .modal-content {
+    padding: 100px 0;
+    min-height: 100%;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+    background-clip: border-box;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.iphone-screen-repairs-modal .modal-content h2 {
+    margin: 0;
+    font-size: 3em;
+}
+
+.iphone-screen-repairs-modal .modal-content img {
+    margin-bottom: 30px;
+}
+
+.iphone-screen-repairs-modal .modal-content .item-details {
+    margin: 30px 0;
+}
+
+.iphone-screen-repairs-modal .close-modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 75px;
+    height: 75px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.iphone-screen-repairs-modal .close-modal:hover {
+    opacity: .3;
+}
+
+.iphone-screen-repairs-modal .close-modal .lr {
+    z-index: 1051;
+    width: 1px;
+    height: 75px;
+    margin-left: 35px;
+    background-color: #2c3e50;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.iphone-screen-repairs-modal .close-modal .lr .rl {
+    z-index: 1052;
+    width: 1px;
+    height: 75px;
+    background-color: #2c3e50;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.iphone-screen-repairs-modal .modal-backdrop {
+    display: none;
+    opacity: 0;
+}
+
+/*section#rotd .success > .container {*/
+    /*background: url('../img/mockup-xl.jpg');*/
+    /*background-repeat: no-repeat;*/
+    /*min-height: 800px;*/
+    /*margin-left: 0px !important;*/
+    /*margin-right: 0px !important;*/
+    /*min-width: 100%;*/
+/*}*/
+#rotd-header {
+    margin-top: -75px;
+}
+
+#rotd {
+    padding-top: 111px;
+    padding-bottom: 0px;
+}
+
+.static-caption {
+    padding: 5px 10px;
+    text-align: center;
+}
+.fauxlogo {
+    position: absolute;
+}
+nav > .container  {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.textlogo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+}
+.navbar-brand {
+    top: -20px;
+    margin-top: -20px;
+    position: absolute;
+    width: 100%;
+    left: 25%;
+    margin: 0 auto;
+
+}
+
+#iconlogo {
+    background: url('../img/iphone-repair-icon.gif') center center no-repeat;
+    position: absolute;
+    height: 50px;
+    width: 50%;
+    min-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    background-size: 50px 50px;
+    color: rgba(0,0,0,0);
+    transition: all .3s ease-out;
+}
