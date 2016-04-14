@@ -8,6 +8,11 @@ body {
     overflow-x: hidden;
 }
 
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
 p {
     font-size: 20px;
 }
@@ -118,82 +123,83 @@ header .intro-text .skills {
     font-weight: 300;
 }
 
-@media(max-width:768px) {
-    header {
-        top: 0px;
-        margin-top: 0px;
-        padding-top: 0px;
-        background-size: 150%;
-    }
-}
+/*@media(min-width: 0px) {*/
+    /*header {*/
+        /*top: 0px;*/
+        /*margin-top: 0px;*/
+        /*padding-top: 0px;*/
+        /*background-size: 150%;*/
+    /*}*/
+/*}*/
 
-@media(min-width:768px) {
-    header {
-        top: 0px;
-        margin-top: 0px;
-        padding-top: 0px;
-        background-size: 150%;
-    }
-    header .container {
-        padding-top: 300px;
-        padding-bottom: 100px;
-    }
+/*@media(min-width:0px) {*/
+    /*header {*/
+        /*top: 0px;*/
+        /*margin-top: 0px;*/
+        /*padding-top: 0px;*/
+        /*background-size: 150%;*/
+    /*}*/
+    /*header .container {*/
+        /*padding-top: 300px;*/
+        /*padding-bottom: 100px;*/
+    /*}*/
 
-    header .intro-text .name {
-        font-size: 4.75em;
-    }
+    /*header .intro-text .name {*/
+        /*font-size: 4.75em;*/
+    /*}*/
 
-    header .intro-text .skills {
-        font-size: 1.75em;
-    }
-}
+    /*header .intro-text .skills {*/
+        /*font-size: 1.75em;*/
+    /*}*/
+/*}*/
 
-@media(min-width:768px) {
+/*@media(min-width:768px) {*/
 
-    .navbar-fixed-top {
-        padding: 5px 0;
-        -webkit-transition: padding .3s;
-        -moz-transition: padding .3s;
-        transition: padding .3s;
+    /*.navbar-fixed-top {*/
+        /*padding: 5px 0;*/
+        /*!*-webkit-transition: padding .3s;*!*/
+        /*!*-moz-transition: padding .3s;*!*/
+        /*!*transition: padding .3s;*!*/
 
-    }
+    /*}*/
 
-    .navbar-fixed-top .navbar-brand {
-        font-size: 2em;
-        -webkit-transition: all .3s;
-        -moz-transition: all .3s;
-        transition: all .3s;
-    }
+    /*.navbar-fixed-top .navbar-brand {*/
+        /*font-size: 2em;*/
+        /*-webkit-transition: all .3s;*/
+        /*-moz-transition: all .3s;*/
+        /*transition: all .3s;*/
+    /*}*/
 
-    .navbar-fixed-top.navbar-shrink {
+    /*.navbar-fixed-top.navbar-shrink {*/
 
-        background: url('../img/apple-metallic-texture.jpg');
-        padding: 5px 0;
-        min-height: 40px;
+        /*background: url('../img/apple-metallic-texture.jpg');*/
+        /*padding: 5px 0;*/
+        /*min-height: 40px;*/
+        /*max-height: 100px;*/
 
-    }
+    /*}*/
 
-    .navbar-fixed-top.navbar-shrink .navbar-brand {
+    /*.navbar-fixed-top.navbar-shrink .navbar-brand {*/
 
-        font-size: 1.5em;
-    }
-     nav.navbar-shrink > div > div.navbar-header.page-scroll > a > span > h1{
-        background: -webkit-linear-gradient(#ffffff,#ffffff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-         animation: easeInUp .5s ease-in-out;
-         transform: scale3d(.7,.7,.7);
-         transition: all .4s ease-in-out;
-         font-weight: 400;
+        /*font-size: 1.5em;*/
+    /*}*/
+     /*nav.navbar-shrink > div > div.navbar-header.page-scroll > a > span > h1{*/
+        /*background: -webkit-linear-gradient(#ffffff,#ffffff);*/
+        /*-webkit-background-clip: text;*/
+        /*-webkit-text-fill-color: transparent;*/
+         /*animation: easeInUp .5s ease-in-out;*/
+         /*transform: scale3d(.7,.7,.7);*/
+         /*transition: all .4s ease-in-out;*/
+         /*font-weight: 400;*/
 
-    }
-}
+    /*}*/
+/*}*/
 
 .navbar {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
-    background: rgba(53,117,197,.8);
+    background: url('../img/apple-metallic-texture.jpg');
 
 
 
@@ -243,16 +249,25 @@ h1 {
 
 .navbar .navbar-nav li a:focus {
     outline: 0;
-    background: -webkit-linear-gradient(#FF325F, #FF583D);
+    /*background: -webkit-linear-gradient(#FF325F, #FF583D);*/
+    background-size: 103% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .navbar-default .navbar-nav>.active>a {
-    color: #13B28A;
+    /*color: #13B28A;*/
+    background: rgba(255,50,95,1);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff325f', endColorstr='#13b28a', GradientType=1 );
     /*background: -webkit-linear-gradient(#FF325F, #FF583D);*/
+    border-radius: 5px;
     /*-webkit-background-clip: text;*/
     /*-webkit-text-fill-color: transparent;*/
+}
+
+.navbar-right {
+    float: right;
+    margin-right: 0;
 }
 
 .fauxlogo > h1 > img {
@@ -414,11 +429,6 @@ section.success a.active {
     z-index: 2;
 }
 
-@media(min-width:767px) {
-    #iphone-screen-repairs .iphone-screen-repairs-item {
-        margin: 0 0 30px;
-    }
-}
 
 .btn-outline {
     margin-top: 15px;
@@ -663,16 +673,71 @@ nav > .container  {
 
 }
 
-#iconlogo {
-    background: url('../img/iphone-repair-icon.gif') center center no-repeat;
-    position: absolute;
-    height: 50px;
-    width: 50%;
-    min-width: 500px;
+/*#iconlogo {*/
+    /*background: url('../img/logo-blk.gif') center center no-repeat;*/
+    /*position: absolute;*/
+    /*height: 50px;*/
+    /*width: 50%;*/
+    /*min-width: 500px;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*margin-top: 60px;*/
+    /*background-size: 50px 50px;*/
+    /*color: rgba(0,0,0,0);*/
+/*}*/
+/*nav > .container > div {*/
+    /*float: right;*/
+/*}*/
+
+
+.page-scroll {
+    margin-top: -0px;
+    top:0;
+}
+
+#bs-example-navbar-collapse-1 > ul.img-list > li {
+    float: left;
+    margin-left: -200px;
+}
+#page-top > nav {
+    width: 830px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 60px;
-    background-size: 50px 50px;
-    color: rgba(0,0,0,0);
-    transition: all .3s ease-out;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.navbar-right {
+    width: 840px;
+    position: absolute;
+    margin-left: -15px;
+}
+#top-gradient {
+    height: 4px;
+    background: -moz-linear-gradient(left, rgba(255,50,95,1) 0%, rgba(146,127,255,1) 48%, rgba(19,178,138,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,50,95,1)), color-stop(48%, rgba(146,127,255,1)), color-stop(100%, rgba(19,178,138,1)));
+    background: -webkit-linear-gradient(left, rgba(255,50,95,1) 0%, rgba(146,127,255,1) 48%, rgba(19,178,138,1) 100%);
+    background: -o-linear-gradient(left, rgba(255,50,95,1) 0%, rgba(146,127,255,1) 48%, rgba(19,178,138,1) 100%);
+    background: -ms-linear-gradient(left, rgba(255,50,95,1) 0%, rgba(146,127,255,1) 48%, rgba(19,178,138,1) 100%);
+    background: linear-gradient(to right, rgba(255,50,95,1) 0%, rgba(146,127,255,1) 48%, rgba(19,178,138,1) 100%);
+}
+nav .container {
+    height: 60px;
+}
+
+.navbar-default .navbar-nav>.active> #navlink1 {
+    background: linear-gradient(to right, rgba(19,178,138,1) -75%, rgba(146,127,255,1) 150%);
+    border-radius: 0px 0px 5px 5px
+}
+
+.navbar-default .navbar-nav>.active> #navlink2 {
+    background: linear-gradient(to right, rgba(146, 127, 255, 1) 0%, rgba(19, 178, 138, 1) 175%);
+    border-radius: 0px 0px 5px 5px
+}
+.navbar-default .navbar-nav>.active> #navlink3 {
+    background: linear-gradient(to right, rgba(19, 178, 138, 1) -75%, rgba(146, 127, 255, 1)  150%);
+    border-radius: 0px 0px 5px 5px
+}
+.navbar-default .navbar-nav>.active> #navlink4 {
+    background: linear-gradient(to right, rgba(146, 127, 255, 1) 0%, rgba(255,50,95,1) 150%);
+    border-radius: 0px 0px 5px 5px
 }
