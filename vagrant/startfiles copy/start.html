@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+
+	<meta charset="utf-8">
+
+	<!-- Put your title here! -->
+	<title>Girl Develop It!</title>
+
+	<!-- Stylesheet -->
+	<link href="style.css" rel="stylesheet">
+
+	<!-- Favicon -->
+    <link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	
+	<!-- All JavaScript at the bottom -->
+	
+</head>
+
+<body>
+
+	<header>
+		<img src="images/logo-header.png" style="margin-left: auto; margin-right: auto;">
+	</header> 
+
+	<div id="main" class="row">
+
+		<div id="content" class="span12">
+
+			   <h1 class="pinkBorder">Girl Develop It</h1>
+
+			   <img src="images/logo.png" style="float: right; height: 300px;">
+			  
+		       <h2 class="pinkBorder">WHO WE ARE</h2>
+		       		<p class="pinkBorder">Girl Develop It is a nonprofit organization that exists to provide affordable and judgment-free opportunities for women interested in learning web and software development. Through in-person classes and community support, Girl Develop It helps women of diverse backgrounds achieve their technology goals and build confidence in their careers and their every day lives.</p>
+
+		       	<h2 >OUR VISION</h2>
+		       		<p>Our vision is to create a network of empowered women who feel confident in their abilities to code and build beautiful web and mobile applications. By teaching women around the world from diverse backgrounds to learn software development, we can help women improve their careers and confidence in their everyday lives.</p>
+
+		       	<h2>OUR VALUES</h2>
+		       		<p>We are committed to making sure women of all races, education levels, income and upbringing can build confidence in their skill set to develop web and mobile applications. Our goal is to provide powerful hands-on programs to women seeking professional help in software development and create basic to advanced web and mobile applications.</p>
+
+		       	<h2>OUR STORY</h2>
+		       		<p class="blueBorder">“Girl, Develop It!” began as a call to action for women, by women who were tired of the low representation of women in tech, and wanted to make a difference.</p>
+
+		       		<p class="blueBorder">The organization was founded in New York City in 2010 by Vanessa Hurst and Sara Chipps. Today, Girl Develop It chapters are building strong, empowered communities in 53 cities, representing 55,000+ members nationwide who are changing their lives through learning to code with us.</p>
+
+			    <!-- Contact Form -->		
+				<form action="sendmail.php" method="post" id="contactform">
+		
+					<fieldset class="row">
+		
+						<legend><h3>Contact Us :)</h3></legend>
+		
+						<p>
+							<label for="your-name">Your Name</label>
+							<input type="text" name="name" id="your-name" class="input-xlarge">
+						</p>
+		
+						<p>
+							<label for="your-email">Your Email <span class="required">(required)</span></label>
+							<input type="email" name="email" id="your-email" class="input-xlarge" required>
+						</p>
+		
+						<p>
+							<label for="your-message">Your Message <span class="required">(required)</span></label><br>
+							<textarea name="message" cols="50" rows="10" id="your-message" class="input-xxlarge" required placeholder="What do you want to say?"></textarea>
+						</p>
+		
+						<p>
+							<input type="submit" name="submit" class="primary" value="Send Message" disabled>
+						</p>
+		
+						<p hidden id="response"></p>
+		
+					</fieldset>
+		
+				</form>
+
+		</div> <!-- #content -->
+
+	</div> <!-- #main -->
+
+	<footer id="footer" role="contentinfo">
+		<p>Copyright &copy; 2016 <a href="#">Girl Develop It</a></p>
+	</footer>
+
+	<!-- Import jQuery Code here -->
+
+
+
+
+
+</body>
+</html>

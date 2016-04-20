@@ -764,3 +764,39 @@ nav .container {
     padding-left: 25px;
     font-size: 12px;
 }
+
+.navicon {
+    margin-left:10px;
+    width: 100px;
+    margin-top: -54px;
+}
+
+@media(min-width:1000px) {
+    #page-top > nav {
+        width: 1000px;
+    }
+
+    .navbar-right {
+        width: 1000px;
+        margin-left: -60px;
+        margin-right: auto;
+    }
+}
+
+
+@media(max-width:999px) {
+    #page-top > nav  {
+        width:100%;
+    }
+    .navbar-right {
+        width: 100%;
+        margin-left: -60px;
+        margin-right: auto;
+    }
+
+    #header {
+        background-size: contain;
+    }
+
+
+}
