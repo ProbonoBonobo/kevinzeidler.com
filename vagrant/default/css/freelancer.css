@@ -88,7 +88,7 @@ header {
     text-align: center;
     color: #fff;
     background: url('../img/clouds-09.jpg') center no-repeat;
-    background-size: 100% auto;
+    background-size: 100% 100%;
     min-height: 800px;
 }
 /* with text */
@@ -321,64 +321,63 @@ section.success a.active {
     outline: 0;
 }
 
-@media(max-width:767px) {
-    section {
-        padding: 75px 0;
-    }
+/*@media(max-width:767px) {*/
+    /*section {*/
+        /*padding: 75px 0;*/
+    /*}*/
 
-    /*section.rotd {*/
-        /*background-size: contain;*/
+    /*!*section.rotd {*!*/
+        /*!*background-size: contain;*!*/
+
+    /*!*}*!*/
+
+    /*section.first {*/
+        /*padding-top: 75px;*/
+    /*}*/
+/*}*/
+
+/*@media(min-width:1323px) {*/
+    /*#widget-container {*/
+        /*height:1200px;*/
+    /*}*/
+    /*div#data-wrapper {*/
+
+        /*position: absolute;*/
+        /*height: 426.5px;*/
+        /*width: 365px;*/
+        /*text-align: left;*/
+        /*top:250px;*/
+        /*margin-top: 50px;*/
+        /*left: 30%;*/
+        /*margin-left: 80px;*/
+        /*padding-left: 40px;*/
+        /*font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;*/
+        /*color: #000;*/
+        /*letter-spacing: normal;*/
+        /*font-size: 14px;*/
+
 
     /*}*/
 
-    section.first {
-        padding-top: 75px;
-    }
-}
+    /*img#stars {*/
+        /*width: 120px;*/
+        /*margin-bottom: 8px;*/
+    /*}*/
 
-
-@media(min-width:1323px) {
-    #widget-container {
-        height:1200px;
-    }
-    div#data-wrapper {
-
-        position: absolute;
-        height: 426.5px;
-        width: 365px;
-        text-align: left;
-        top:250px;
-        margin-top: 50px;
-        left: 30%;
-        margin-left: 80px;
-        padding-left: 40px;
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-        color: #000;
-        letter-spacing: normal;
-        font-size: 14px;
-
-
-    }
-
-    img#stars {
-        width: 120px;
-        margin-bottom: 8px;
-    }
-
-    #avatar {
-        margin-right: 10px;
-        margin-top: 2px;
-        margin-left: 1px;
-    }
-    img#stars {
-        width: 120px;
-        margin-bottom: 5px;
-    }
-    #review-headline > a > img {
-        width: 102%;
-        margin-bottom: 5px;
-    }
-}
+    /*#avatar {*/
+        /*margin-right: 10px;*/
+        /*margin-top: 2px;*/
+        /*margin-left: 1px;*/
+    /*}*/
+    /*img#stars {*/
+        /*width: 120px;*/
+        /*margin-bottom: 5px;*/
+    /*}*/
+    /*#review-headline > a > img {*/
+        /*width: 102%;*/
+        /*margin-bottom: 5px;*/
+    /*}*/
+/*}*/
 #iphone-screen-repairs .iphone-screen-repairs-item {
     right: 0;
     margin: 0 0 15px;
@@ -771,32 +770,96 @@ nav .container {
     margin-top: -54px;
 }
 
-@media(min-width:1000px) {
-    #page-top > nav {
-        width: 1000px;
-    }
+/*@media(min-width:1000px) {*/
+    /*#page-top > nav {*/
+        /*width: 1000px;*/
+    /*}*/
 
-    .navbar-right {
-        width: 1000px;
-        margin-left: -60px;
-        margin-right: auto;
-    }
-}
+    /*.navbar-right {*/
+        /*max-width: 1000px;*/
+        /*margin-left: -60px;*/
+        /*margin-right: auto;*/
+    /*}*/
+/*}*/
 
 
-@media(max-width:999px) {
+
     #page-top > nav  {
         width:100%;
+        max-width: 1000px;
     }
     .navbar-right {
         width: 100%;
         margin-left: -60px;
         margin-right: auto;
-    }
-
-    header {
-         background-size: 100% 100%;
+        max-width: 10000px;
     }
 
 
+
+
+header {
+    background-size: 100% 100%;
+}
+
+.success {
+    height: auto;
+    padding-top: 133px;
+    padding-bottom: 133px;
+}
+#rotd-header {
+    margin-top: -90px;
+}
+
+
+#iphone-screen-repairs > div > * > * > a > img {
+    width: 200%;
+
+}
+
+.img-responsive {
+    height: 330px;
+    transform: scale3d(1.85,1,1);
+    min-width: 100%;
+    min-height: 100%;
+}
+
+div > * > .iphone-screen-repairs-item {
+    height: 500px;
+}
+
+@media(max-width: 1200px) {
+    .img-responsive {
+        transform: scale3d(1.85, 0.85, 1);
+    }
+}
+
+@media(max-width:1000px) {
+    .img-responsive {
+        transform: scale3d(1.85, 1, 1);
+    }
+}
+@media(max-width: 770px) {
+    .img-responsive {
+        transform: scale3d(1.60,1,1);
+
+    }
+
+    #iphone-screen-repairs > div {
+        height: 2550px;
+        margin-top: 0px;
+    }
+    #iphone-screen-repairs > div > * > * {
+
+        height: 400px;
+    }
+
+    .text-center {
+        max-height: 100px;
+    }
+
+    #rotd-header > h2 {
+        width: 100%;
+        white-space: nowrap;
+    }
 }
