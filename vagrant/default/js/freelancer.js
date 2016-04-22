@@ -6,16 +6,16 @@
 
 
 
-// jQuery for page scrolling feature - requires jQuery Easing plugin
-//$(function() {
-//    $('body').on('click', '.page-scroll a', function(event) {
-//        var $anchor = $(this);
-//        $('html, body').stop().animate({
-//            scrollTop: $($anchor.attr('href')).offset().top
-//        }, 1000, 'easeInOutExpo');
-//        event.preventDefault();
-//    });
-//});
+ //jQuery for page scrolling feature - requires jQuery Easing plugin
+$(function() {
+    $('body').on('click', '.page-scroll a', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top
+        }, 6000, 'easeInOutExpo');
+        event.preventDefault();
+    });
+});
 
 // Floating label headings for the contact form
 $(function() {
@@ -28,12 +28,12 @@ $(function() {
     });
 });
 
-// Highlight the top nav as scrolling occurs
-//$('body').scrollspy({
-//    target: '.navbar-fixed-top',
-//    offset: window.innerHeight /2
-//} );
-//
+ //Highlight the top nav as scrolling occurs
+$('body').scrollspy({
+    target: '.navbar-right',
+    offset: window.innerHeight /2
+} );
+
 //// Closes the Responsive Menu on Menu Item Click
 //$('.navbar-collapse ul li a').click(function() {
 //    $('.navbar-toggle:visible').click();

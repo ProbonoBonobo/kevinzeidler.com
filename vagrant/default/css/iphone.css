@@ -1025,8 +1025,7 @@ h1 {
     }
 
     #modal-helper {
-        -webkit-transform: translateZ(0px);
-        -webkit-transform: translate3d(0,0,0);
+        -webkit-transform: translateZ(0px) translate3d(0,0,0);
         -webkit-perspective: 1000px;
         transform: translateZ(0px) translate3d(0,0,0);
         perspective: 1000px;
@@ -1100,14 +1099,14 @@ ul.img-list li:hover img {
     /*transition: transform 1s;*/
     /*transform: scale3d(2,2,1) translateX(-40px);*/
 /*}*/
-span.text-content span {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-transition: opacity 500ms;
-    -moz-transition: opacity 500ms;
-    -o-transition: opacity 500ms;
-    transition: opacity 500ms;
-}
+/*span.text-content span {*/
+    /*display: table-cell;*/
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
+    /*-webkit-transition: opacity 500ms;*/
+    /*-moz-transition: opacity 500ms;*/
+    /*-o-transition: opacity 500ms;*/
+    /*transition: opacity 500ms;*/
+/*}*/
 
 
