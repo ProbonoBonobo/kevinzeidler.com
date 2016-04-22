@@ -671,6 +671,20 @@ body {
 
 
 }
+#nav, .tinynav1 {
+    height: 50px;
+    font-family: Arial;
+    font-size: 12px;
+    width: 100%;
+    height: 0;
+    z-index: 999;
+    margin-top: 25px;
+    top: 0px;
+    display: none;
+}
+
+
+
 /*#yelpwidget > div {*/
     /*right: 0;*/
     /*bottom: 0;*/
@@ -838,12 +852,26 @@ h1 {
     display: none;
 
 }
+.logo {
+    display: none;
+}
+
 
 /* styles for mobile */
 @media screen and (max-width: 600px) {
     #mobile-page-container {
         overflow-x: hidden;
         /*position: fixed;*/
+    }
+    .logo {
+        display: block;
+        width:60px;
+        margin-left: auto;
+        margin-right: auto;
+        position:relative;
+        bottom:30px;
+       float: left;
+        visibility: visible;
     }
 
     /*html {*/
@@ -991,17 +1019,12 @@ h1 {
     /*margin-left: 0;*/
 /*}*/
 
-.logo {
-    width:60px;
-    margin-left: auto;
-    margin-right: auto;
-    position:relative;
-    bottom:30px;
-    left:0px;
-}
+
+
 
 
 #bs-example-navbar-collapse-1 {
+    top: -5px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
