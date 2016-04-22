@@ -861,6 +861,8 @@ h1 {
 @media screen and (max-width: 600px) {
     #mobile-page-container {
         overflow-x: hidden;
+        overflow-y: scroll;
+       -webkit-overflow-scrolling:touch;
         /*position: fixed;*/
     }
     .logo {
