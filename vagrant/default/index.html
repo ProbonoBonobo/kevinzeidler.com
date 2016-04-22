@@ -4,10 +4,12 @@
 <head>
 
     <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
 
     <title>San Diego Mobile Phone Repairs</title>
@@ -28,7 +30,16 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
+    <script src="js/TinyNav.js/tinynav.js"></script>
+    <script>
+        document.documentElement.className = "js";
+        // TinyNav.js
+        $(function () {
+            $('#nav').tinyNav();
+        });
+    </script>
     <style>
         #map {
             height: 200px;
@@ -100,38 +111,55 @@
 </head>
 
 <body id="page-top" class="index">
+<div id="mobile-page-container">
+
+
 
     <!-- Navigation -->
+
     <nav class="navbar navbar-default navbar-fixed-top visible">
         <div id="top-gradient"></div>
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--<div id="iconlogo"><h1>San Diego Mobile Phone Repair</h1></div>-->
 
-            </div>
+        <div class="container" id="responsive-nav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <!--<div class="navbar-header page-scroll">-->
+                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+                    <!--<span class="sr-only">Toggle navigation</span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                <!--</button>-->
+                <!--&lt;!&ndash;<div id="iconlogo"><h1>San Diego Mobile Phone Repair</h1></div>&ndash;&gt;-->
+
+            <!--</div>-->
+            <span class="logo">
+                    <a href="http://www.kevinzeidler.com/vagrant/default"><img src="img/splattericon.png" width="100"></a>
+                </span>
+            <ul id="nav">
+                <li class="selected">
+                    <a href="#page-top">Quick Links</a>
+                </li>
+                <li><a href="#iphone-screen-repairs">Services</a></li>
+                <li><a href="#featured-review">Latest Review</a></li>
+                <li><a href="#page-scroll">Contact</a></li>
+                <li><a href="#neighborhood-map">Service Boundaries</a></li>
+            </ul>
 
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="fuckyou" id="bs-example-navbar-collapse-1">
                 <!--<ul class="img-list">-->
                     <!--<li>-->
                         <!--<a href="#page-top">-->
-                            <!--<img src="img/logo-coral.gif" width="200"  />-->
+                            <!--&lt;!&ndash;<img src="img/logo-coral.gif" width="200"  />&ndash;&gt;-->
                             <!--<span class="text-content"><span>San Diego Mobile Phone Repair</span></span>-->
                         <!--</a>-->
                     <!--</li>-->
                 <!--</ul>-->
+
+
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
+
 
                     <li class="page-scroll">
                         <a href="#iphone-screen-repairs" id="navlink1">Screen Replacements</a>
@@ -139,21 +167,23 @@
                     <li class="page-scroll">
                         <a href="#featured-review" id="navlink2">Latest Review</a>
                     </li>
-                    <li class="navicon">
-                        <a href="#page-top&"><img src="img/splattericon.png" width="100"></a>
+                    <li class="navicon page-scroll">
+                        <a href="http://www.kevinzeidler.com/vagrant/default"><img src="img/splattericon.png" width="100"></a>
                     </li>
                     <li class="page-scroll">
                         <a href="#contact-us" id="navlink3">Make An Appointment</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#neighborhood-map" id="navlink4">Areas We Serve</a>
+                        <a href="#neighborhood-map" id="navlink4">Service Boundaries</a>
                     </li>
                 </ul>
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
+
 
     <!-- Header -->
     <header>
@@ -251,6 +281,8 @@
                     <!--</div>-->
             <div class="row">
                 <div class="col-lg-12">
+
+
                 </div>
             </div>
         </div>
@@ -273,7 +305,7 @@
                                 <i class="fa fa-search-plus fa-3x">iPhone 5/5s</i>
                             </div>
                         </div>
-                        <img src="img/iphone5-scaled.png" class="img-responsive" alt="">
+                        <img src="img/iphone5-600x630.jpg" class="img-responsive" alt="">
                         <p class="static-caption">iPhone 5/5s</p>
                     </a>
 
@@ -285,7 +317,7 @@
                                 <i class="fa fa-search-plus fa-3x">iPhone 5c</i>
                             </div>
                         </div>
-                        <img src="img/iphone5c.png" class="img-responsive" alt="">
+                        <img src="img/iphone5c-600x630.jpg" class="img-responsive" alt="">
                         <p class="static-caption">iPhone 5c</p>
                     </a>
                 </div>
@@ -296,7 +328,7 @@
                                 <i class="fa fa-search-plus fa-3x">iPhone 6/6s</i>
                             </div>
                         </div>
-                        <img src="img/iphone6s.gif" class="img-responsive" alt="">
+                        <img src="img/iphone6s-plus-600x630.jpg" class="img-responsive" alt="">
                         <p class="static-caption">iPhone 6/6s</p>
                     </a>
                 </div>
@@ -307,7 +339,7 @@
                                 <i class="fa fa-search-plus fa-3x">iPhone 6+</i>
                             </div>
                         </div>
-                        <img src="img/iphone-6splus.png" class="img-responsive" alt="">
+                        <img src="img/iphone6s-600x630.jpg" class="img-responsive" alt="">
                         <p class="static-caption">iPhone 6 Plus</p>
                     </a>
                 </div>
@@ -318,7 +350,7 @@
                                 <i class="fa fa-search-plus fa-3x">iPad Air</i>
                             </div>
                         </div>
-                        <img src="img/ipad-air3.png" class="img-responsive" alt="">
+                        <img src="img/ipad-air2-600x630.jpg" class="img-responsive" alt="">
                         <p class="static-caption">iPad Air</p>
                     </a>
                 </div>
@@ -329,7 +361,7 @@
                                 <i class="fa fa-search-plus fa-3x">iPad Mini</i>
                             </div>
                         </div>
-                        <img src="img/ipad-mini3.png" class="img-responsive" alt="">
+                        <img src="img/ipad-mini2-600x630.jpg" class="img-responsive" alt="">
                         <p class="static-caption">iPad Mini</p>
                     </a>
                 </div>
@@ -344,9 +376,13 @@
                 <div class="col-lg-12 text-center" id="rotd-header">
                     <h2>Review of The Day</h2>
                     <hr class="star-light" style="border-top: solid 0px; visibility: hidden">
-                    <div class="letterbox">
-                    <div id="yelpwidget">
-                        <div class="widget-body">
+                </div>
+                    <!--<div class="letterbox">-->
+                    <!--<div id="yelpwidget">-->
+                        <!--<div class="widget-body">-->
+                            <div class="outer">
+                                <div class="inner">Calculus? Whaa?</div>
+                            </div>
 
 
 
@@ -359,13 +395,13 @@
                                 <div id="star-rating" width='100px' height='30px'></div>
                                 <div id="city"></div>
                                 <div id ="review-content" style="text-align: left"></div>
-                            </div>
-                        </div>
-                    </div>
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                         </div>
                 </div>
                 <!--</div>-->
-            </div>
+            <!--</div>-->
 
             <!--<div class="row">-->
                 <!--<div class="col-lg-4 col-lg-offset-2">-->
@@ -1007,19 +1043,44 @@
 //            );
 //
 //        });
+
     </script>
 
 
     <!-- jQuery -->
+
+    <script>
+        if (window.jQuery){
+            offset = window.innerHeight/4;
+//            console.log("Sup I'm jQuery. Alright let's offset dis shit.");
+
+            $('#data-wrapper' ).css('left', (window.innerWidth/2)-118);
+
+            $( window ).resize(function() {
+                var dy = (window.innerWidth/2)-118;
+                console.log("Resize handler called.");
+                console.log("window.innerHeight: " + window.innerWidth);
+                console.log("offset: ", dy);
+                $( "#data-wrapper" ).css('left', dy);
+            });
+//
+//            $("#nav").tinyNav({
+//                                  active: 'selected', // String: Set the "active" class
+//                                  header: 'Navigation', // String: Specify text for "header" and show header instead of the active item
+//                                  indent: '- ', // String: Specify text for indenting sub-items
+//                                  label: '' // String: Sets the <label> text for the <select> (if not set, no label will be added)
+//                              });
+        }
+    </script>
 
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>-->
     <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
+    <!--<script src="js/cbpAnimatedHeader.js"></script>-->
 
 
     <!-- Contact Form JavaScript -->
@@ -1029,10 +1090,11 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
 
+
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc3V4dOnoxsLX14R5_-PAMj0OP0xbHnyA&callback=initMap">
     </script>
-
+</div>
 </body>
 
 </html>
