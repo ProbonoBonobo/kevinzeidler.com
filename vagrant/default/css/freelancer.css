@@ -856,12 +856,12 @@ header {
         width: 100%;
         white-space: nowrap;
     }
-    nav {
-        position: absolute;
-    }
-    .scroll-top, .navbar-fixed-top {
-        position: absolute;
-    }
+    /*nav {*/
+        /*position: absolute;*/
+    /*}*/
+    /*.scroll-top, .navbar-fixed-top {*/
+        /*position: absolute;*/
+    /*}*/
 }
 
 .navbar-default {

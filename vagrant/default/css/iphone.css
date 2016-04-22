@@ -694,17 +694,17 @@ body {
     /*float: right;*/
 /*}*/
 
-.outer {
-    width: 1px; /* Or zero, or something very small */
-    margin: auto;
-    overflow: visible;
-    background: red; /* A color just for debug */
-}
-.inner {
-    margin-left: 20px;
-    background: yellow; /* A color just for debug */
-    width: 100px;
-}
+/*.outer {*/
+    /*width: 1px; !* Or zero, or something very small *!*/
+    /*margin: auto;*/
+    /*overflow: visible;*/
+    /*background: red; !* A color just for debug *!*/
+/*}*/
+/*.inner {*/
+    /*margin-left: 20px;*/
+    /*background: yellow; !* A color just for debug *!*/
+    /*width: 100px;*/
+/*}*/
 
 #data-wrapper {
     /*padding-left: 5px;*/
@@ -869,8 +869,9 @@ h1 {
         height: 100%;
         overflow-x: hidden;
         overflow-y: scroll;
+        -webkit-overflow-scrolling:touch;
 
-        min-height: 6999px;
+        /*min-height: 6999px;*/
         /*position: fixed;*/
     }
     .logo {
