@@ -867,6 +867,8 @@ h1 {
     /*}*/
     #mobile-page-container {
         height: 100%;
+        min-height: 6999px;
+        /*position: fixed;*/
         overflow-x: hidden;
         overflow-y: scroll;
         -webkit-overflow-scrolling:touch;
@@ -911,7 +913,10 @@ h1 {
     }
 
     #iphone-screen-repairs {
-        height:4000px;
+       /*position: fixed;*/
+        min-height: 3000px;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling:touch;
     }
     #nav {
         font-size: 18px;
