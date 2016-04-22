@@ -120,7 +120,7 @@
     <nav class="navbar navbar-default navbar-fixed-top visible">
         <div id="top-gradient"></div>
 
-        <div class="container" id="responsive-nav">
+        <div class="container page-scroll" id="responsive-nav">
             <!-- Brand and toggle get grouped for better mobile display -->
             <!--<div class="navbar-header page-scroll">-->
                 <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
@@ -550,7 +550,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        <!--</div>-->
         <div class="footer-below">
             <div class="container">
                 <div class="row">
@@ -1049,18 +1049,25 @@
 
     <script>
         if (window.jQuery){
-            offset = window.innerHeight/4;
-//            console.log("Sup I'm jQuery. Alright let's offset dis shit.");
 
-            $('#data-wrapper' ).css('left', (window.innerWidth/2)-118);
 
-            $( window ).resize(function() {
-                var dy = (window.innerWidth/2)-118;
+            var dy = (window.innerWidth/2)-118;
+
+
+
+            $('#data-wrapper' ).css('left', dy);
+
+            $(window).resize(function() {
+
                 console.log("Resize handler called.");
                 console.log("window.innerHeight: " + window.innerWidth);
                 console.log("offset: ", dy);
                 $( "#data-wrapper" ).css('left', dy);
             });
+            if (window.innerWidth < 600 && $('header')) {
+                $('header').remove();
+            }
+
 //
 //            $("#nav").tinyNav({
 //                                  active: 'selected', // String: Set the "active" class

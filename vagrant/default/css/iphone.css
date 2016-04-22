@@ -861,14 +861,15 @@ h1 {
 
 /* styles for mobile */
 @media screen and (max-width: 600px) {
-    body, #page-top {
+    /*body, #page-top {*/
 
-        -webkit-overflow-scrolling:touch;
-    }
+        /*-webkit-overflow-scrolling:touch;*/
+    /*}*/
     #mobile-page-container {
-        overflow-x: hidden;
-
         height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
         min-height: 6999px;
         /*position: fixed;*/
     }
@@ -906,6 +907,10 @@ h1 {
     }
     #nav, .js #nav {
         display: none;
+    }
+
+    #iphone-screen-repairs {
+        height: 100%;
     }
     #nav {
         font-size: 18px;
@@ -1012,11 +1017,19 @@ h1 {
     }
     header, #bs-example-navbar-collapse-1 {
         display: none;
-        visibility: hidden;
+        /*visibility: hidden;*/
     }
     #data-wrapper {
         position: relative;
         margin-left: -10px;
+    }
+
+    #modal-helper {
+        -webkit-transform: translateZ(0px);
+        -webkit-transform: translate3d(0,0,0);
+        -webkit-perspective: 1000px;
+        transform: translateZ(0px) translate3d(0,0,0);
+        perspective: 1000px;
     }
 }
 
@@ -1082,11 +1095,11 @@ ul.img-list li:hover img {
     /*opacity: 0;*/
 /*}*/
 
-ul.img-list li:hover span.text-content {
-    opacity: 1;
-    transition: transform 1s;
-    transform: scale3d(2,2,1) translateX(-40px);
-}
+/*ul.img-list li:hover span.text-content {*/
+    /*opacity: 1;*/
+    /*transition: transform 1s;*/
+    /*transform: scale3d(2,2,1) translateX(-40px);*/
+/*}*/
 span.text-content span {
     display: table-cell;
     text-align: center;
