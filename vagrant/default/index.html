@@ -43,7 +43,7 @@
     <style>
         #map {
             height: 200px;
-            margin-right: 15px;
+            margin: 15px;
             bottom: 0;
             left: 0px;
         }
@@ -147,7 +147,7 @@
 
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="fuckyou" id="bs-example-navbar-collapse-1">
+            <!--<div class="fuckyou" id="bs-example-navbar-collapse-1">-->
                 <!--<ul class="img-list">-->
                     <!--<li>-->
                         <!--<a href="#page-top">-->
@@ -158,7 +158,7 @@
                 <!--</ul>-->
 
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="navbar nav">
 
 
                     <li class="page-scroll">
@@ -178,11 +178,15 @@
                     </li>
                 </ul>
 
-            </div>
+            <!--</div>-->
             <!-- /.navbar-collapse -->
         </div>
+
         <!-- /.container-fluid -->
+
     </nav>
+
+
 
 
     <!-- Header -->
@@ -1048,25 +1052,56 @@
     <!-- jQuery -->
 
     <script>
-        if (window.jQuery){
+        if (window.jQuery) {
 
 
-            var dy = (window.innerWidth/2)-118;
+//            var dy = (window.innerWidth / 2
+//                     ) - 118;
+
+
+            $( '#data-wrapper' ).css( 'left', (window.innerWidth/2)-118 );
+//            $(".navbar-center" ).css('left',  (window.innerWidth/2-300));
 
 
 
-            $('#data-wrapper' ).css('left', dy);
+            // i guess we'll manually compute the position of the navlinks
+//            var kidnum;
+//            $('ul.navbar-center').children().each(function() {
+//                console.log("Moving child ", kidnum);
+//                $(this ).css('left', (window.innerWidth/(kidnum+1)-5));
+//            });
+//            $('#navlink1' ).css('left', '15px');
+//            $('#navlink2' ).css('left', '215px');
+//            $('.navicon' ).css('left','420px');
+//            $('#navlink3' ).css('left', '520px');
+//            $('#navlink4' ).css('left', '735px');
+            $( window ).resize( function () {
 
-            $(window).resize(function() {
+                                    console.log( "Resize handler called." );
+                                    console.log( "window.innerWidth: " + window.innerWidth);
+                                    console.log( "offset: ", (window.innerWidth/2) -118);
+                                    $( "#data-wrapper" ).css( 'left',  (window.innerWidth/2) -118);
+//                                    $(".navbar-center" ).css('left',  (window.innerWidth/2)-320);
 
-                console.log("Resize handler called.");
-                console.log("window.innerHeight: " + window.innerWidth);
-                console.log("offset: ", dy);
-                $( "#data-wrapper" ).css('left', dy);
-            });
-            if (window.innerWidth < 760) {
-                $('header').remove();
-            }
+                                    if ( window.innerWidth < 760 ) {
+                                        $( 'header' ).css( 'visibility', 'hidden' );
+                                    }
+                                    else {
+                                        $( 'header' ).css( 'visibility', 'visible' );
+                                    }
+
+                                    // i guess we'll manually compute the position of the navlinks
+                                    var kidnum=0;
+//                                    $('ul.navbar-center').children().each(function() {
+//                                        console.log("Moving child ", kidnum, "to ",(window.innerWidth/4)*kidnum);
+//                                        $(this ).css('left', (0+kidnum)*(window.innerWidth/10));
+//                                        kidnum +=1;
+//                                        return kidnum;
+//                                    });
+
+                                }
+            );
+        }
 
 //
 //            $("#nav").tinyNav({
@@ -1075,7 +1110,7 @@
 //                                  indent: '- ', // String: Specify text for indenting sub-items
 //                                  label: '' // String: Sets the <label> text for the <select> (if not set, no label will be added)
 //                              });
-        }
+
     </script>
 
 

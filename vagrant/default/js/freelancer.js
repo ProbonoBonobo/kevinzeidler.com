@@ -12,7 +12,7 @@ $(function() {
         var $anchor = $(this);
         $('html, body').stop().animate({
             scrollTop: $($anchor.attr('href')).offset().top
-        }, 6000, 'easeInOutExpo');
+        }, 100, 'easeInOutExpo');
         event.preventDefault();
     });
 });
@@ -30,8 +30,8 @@ $(function() {
 
  //Highlight the top nav as scrolling occurs
 $('body').scrollspy({
-    target: '.navbar-right',
-    offset: window.innerHeight /2
+    target: '.page-scroll',
+    offset: window.innerHeight/2
 } );
 
 //// Closes the Responsive Menu on Menu Item Click

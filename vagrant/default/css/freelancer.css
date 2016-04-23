@@ -265,10 +265,10 @@ h1 {
     /*-webkit-text-fill-color: transparent;*/
 }
 
-.navbar-right {
-    float: right;
-    margin-right: 0;
-}
+/*.navbar-right {*/
+    /*float: right;*/
+    /*margin-right: 0;*/
+/*}*/
 
 .fauxlogo > h1 > img {
     width: 70px;
@@ -653,7 +653,7 @@ footer .footer-below {
 }
 nav > .container  {
     max-width: 870px;
-    margin: 0 auto;
+    margin: auto auto;
 }
 
 .textlogo {
@@ -699,16 +699,18 @@ nav > .container  {
     margin-left: -200px;
 }
 #page-top > nav {
-    width: 840px;
+    width: 870px;
     margin-left: auto;
     margin-right: auto;
+
     /*border-radius: 0px 0px 5px 5px;*/
 }
 
-.navbar-right {
-    width: 840px;
-    position: absolute;
-    margin-left: -20px;
+.navbar-center {
+    width: 870px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #top-gradient {
@@ -723,6 +725,9 @@ nav > .container  {
 nav .container {
     height: 60px;
 }
+/*nav .ul {*/
+    /*white-space: nowrap;*/
+/*}*/
 
 .navbar-default .navbar-nav>.active> #navlink1 {
     background: linear-gradient(to right, rgba(19,178,138,1) -75%, rgba(146,127,255,1) 150%);
@@ -757,17 +762,58 @@ nav .container {
     padding-left: 12.5%;
 }
 
-#navlink1, #navlink2, #navlink3, #navlink4 {
-    margin-left: 20px;
-    padding-left: 25px;
-    font-size: 12px;
-}
+/*#navlink1, #navlink2, #navlink3, #navlink4, .navicon {*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*!*padding-left: 10px;*!*/
+    /*font-size: 12px;*/
+    /*position: absolute;*/
+    /*width: 200px;*/
+/*}*/
+
 
 .navicon {
-    margin-left:10px;
-    width: 100px;
-    margin-top: -54px;
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
 }
+
+ul > li {
+    position: absolute;
+    top: 0px;
+    margin-top: 0px;
+    margin-top: 10px;
+    max-width: 200px;
+    display: block;
+    width: 200px;
+
+}
+
+#navlink1 {
+    left: 5px;
+    top: 0px;
+}
+
+#navlink2 {
+    left: 10%;
+    top: 0px;
+}
+
+#navlink3 {
+    left: 30%;
+    top: 0px;
+}
+#navlink {
+
+    left: 40%;
+}
+
+/*.navicon {*/
+    /*margin-left:10px;*/
+    /*width: 100px;*/
+    /*margin-top: -54px;*/
+/*}*/
 
 /*@media(min-width:1000px) {*/
     /*#page-top > nav {*/
@@ -783,16 +829,16 @@ nav .container {
 
 
 
-    #page-top > nav  {
-        width:100%;
-        max-width: 1000px;
-    }
-    .navbar-right {
-        width: 100%;
-        margin-left: -60px;
-        margin-right: auto;
-        max-width: 1000px;
-    }
+    /*#page-top > nav  {*/
+        /*width:100%;*/
+        /*max-width: 1000px;*/
+    /*}*/
+    /*.navbar-center {*/
+        /*width: 100%;*/
+        /*margin-left: -60px;*/
+        /*margin-right: auto;*/
+        /*max-width: 1000px;*/
+    /*}*/
 
 
 
@@ -828,17 +874,17 @@ header {
     /*height: 500px;*/
 /*}*/
 
-@media(max-width: 1200px) {
-    .img-responsive {
-        /*transform: scale3d(1.85, 0.85, 1);*/
-    }
-}
+/*@media(max-width: 1200px) {*/
+    /*.img-responsive {*/
+        /*!*transform: scale3d(1.85, 0.85, 1);*!*/
+    /*}*/
+/*}*/
 
-@media(max-width:1000px) {
-    .img-responsive {
-        /*transform: scale3d(1.85, 1, 1);*/
-    }
-}
+/*@media(max-width:1000px) {*/
+    /*.img-responsive {*/
+        /*!*transform: scale3d(1.85, 1, 1);*!*/
+    /*}*/
+/*}*/
 @media(max-width: 770px) {
 
 
