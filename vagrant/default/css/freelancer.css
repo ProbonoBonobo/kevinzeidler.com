@@ -1302,3 +1302,13 @@ ul > li.styleC {
 .iphone-screen-repairs-item {
     height: 500px;
 }
+
+.modal-content h3 {
+    font-family: 'Helvetica';
+    font-size: 45px;
+    text-transform: unset;
+}
+.iphone-screen-repairs-modal {
+    height: 90%;
+    max-height: 90%;
+}
