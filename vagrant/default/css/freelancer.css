@@ -985,9 +985,10 @@ div#desktop-nav {
 
 
 .navbar-brand {
-    transform: translateX(-50%) scale3d(2.5,2.5,1);
+    transform: translateX(-41%);
     left: 50%;
     position: absolute;
+
 
 }
 
@@ -998,8 +999,8 @@ div#desktop-nav {
     margin-top: 5px;
 }
 .navbar-brand>img {
-    height: 100%;
-    width: auto;
+    height: 250%;
+    margin-top: -45px;
     /*padding: 7px 14px;*/
 
     transform: translateX(7px);
