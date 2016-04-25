@@ -1148,6 +1148,7 @@ transform: translateX(-5px);
         max-width: 100%;
         overflow-x: hidden;
         overflow-y: scroll;
+
     }
     .geo {
         left: 0px;
@@ -1234,7 +1235,7 @@ transform: translateX(-5px);
 #mobile-page-container {
     width: 100%;
     max-width: 100%;
-    min-height: 5900px;
+    min-height: 3000px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -1284,6 +1285,7 @@ ul > li.styleC {
     position: relative;
     margin-right: auto;
     margin-left: auto;
+    background: white;
 
 }
 .success h2 {
