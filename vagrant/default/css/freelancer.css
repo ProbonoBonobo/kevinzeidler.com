@@ -1106,6 +1106,13 @@ transform: translateX(-5px);
 
 }
 
+@media (min-width: 1200px) {
+    #data-wrapper {
+        top: 56px !important;
+    }
+}
+
+
 @media (min-width: 991px) {
     .navbar {
         min-width: 875px;
