@@ -1117,6 +1117,8 @@ transform: translateX(-5px);
 }
 
 @media (max-width: 660px) {
+
+
     h2 {
         font-size: 35px !important;
     }
@@ -1127,7 +1129,7 @@ transform: translateX(-5px);
         height: 400px !important;
     }
     .navbar-brand > img {
-        transform: translateX(-110%);
+        transform: translateX(-115%) translateY(-7.5px);
     }
     #iphone-screen-repairs {
         height: 1600px !important;
@@ -1321,3 +1323,15 @@ ul > li.styleC {
     max-height: 90%;
 }
 
+h2 {
+    font-weight: 900;
+}
+
+.navbar-fixed-bottom {
+    background: rgba(12,12,12,.7);
+    height: 100px;
+}
+#ctc > a> img {
+    max-width: 100%;
+    transform: translateY(4px);
+}

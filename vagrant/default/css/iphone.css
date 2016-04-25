@@ -671,17 +671,17 @@ body {
 
 
 }
-/*#nav, .tinynav1 {*/
-    /*height: 50px;*/
-    /*font-family: Arial;*/
-    /*font-size: 12px;*/
-    /*width: 300px;*/
-    /*height: 0;*/
-    /*z-index: 999;*/
-    /*margin-top: 25px;*/
-    /*top: 0px;*/
-    /*display: none;*/
-/*}*/
+#nav, .tinynav {
+    height: 50px;
+    font-family: Arial;
+    font-size: 12px;
+    width: 300px;
+    height: 0;
+    z-index: 999;
+    margin-top: 25px;
+    top: 0px;
+    display: none;
+}
 
 /*li.page-scroll {}*/
 
@@ -844,14 +844,14 @@ h1 {
 /*}*/
 /* styles for desktop */
 
-/*.tinynav {*/
-    /*display: none;*/
-    /*margin-bottom: 60px;*/
-    /*font-size: 16px;*/
-    /*width: auto;*/
-    /*top: 15px;*/
-    /*margin-top: 10px;*/
-/*}*/
+.tinynav {
+    display: none;
+    margin-bottom: 60px;
+    font-size: 16px;
+    width: auto;
+    top: 15px;
+    margin-top: 10px;
+}
 /*#nav > li {*/
     /*display: none;*/
 
@@ -904,15 +904,6 @@ h1 {
         /*!*max-width: 600px;*!*/
         /*!*overflow: hidden;*!*/
     /*!*}*!*/
-    /*.tinynav, .js .tinynav {*/
-        /*display: block;*/
-        /*position: absolute;*/
-        /*margin-left: 115px;*/
-        /*width: 50%;*/
-    /*}*/
-    /*#nav, .js #nav {*/
-        /*display: none;*/
-    /*}*/
 
     /*#iphone-screen-repairs {*/
        /*!*position: fixed;*!*/
