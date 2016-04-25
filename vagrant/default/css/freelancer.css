@@ -1109,22 +1109,42 @@ transform: translateX(-5px);
     .navbar li {
         width: 175px;
     }
+
+
 }
 
-@media screen {
+@media (max-width: 660px) {
     h2 {
         font-size: 35px !important;
     }
     #iphone-screen-repairs > div > div > div > a > p {
         font-size: 25px;
     }
+    .iphone-screen-repairs-item {
+        height: 400px !important;
+    }
+    #iphone-screen-repairs {
+        height: 1600px !important;
+    }
 
-    .navbar {
-        width: 100%;
+    .scroll-top .btn {
+        display: none;
+    }
+
+    #data-wrapper {
+        top:0px !important;
+        margin-top: -130px !important;
+    }
+
+
+
+    .navbar-default {
+        width: 100% !important;
         max-width: 100%;
+        position: fixed;
     }
     #mobile-page-container {
-        width: 100%;
+        width: 100% !important;
         max-width: 100%;
         overflow-x: hidden;
         overflow-y: scroll;
@@ -1160,7 +1180,6 @@ transform: translateX(-5px);
         margin-top: -20px;
 
     }
-
 
 
 }
@@ -1213,10 +1232,11 @@ transform: translateX(-5px);
 }
 
 #mobile-page-container {
-    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
     min-height: 5900px;
-    x-overflow: hidden;
-    y-overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .static-caption {
@@ -1278,4 +1298,7 @@ ul > li.styleC {
     margin-left: auto;
     margin-right: auto;
 
+}
+.iphone-screen-repairs-item {
+    height: 500px;
 }
