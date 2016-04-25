@@ -117,31 +117,68 @@
 
     <!-- Navigation -->
 
-    <div class="navbar navbar-default">
+    <!--<div class="navbar navbar-default">-->
+        <!--<div id="top-gradient"></div>-->
 
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content"> <span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-                <!--</button>-->
-                <a class="navbar-brand" href="#"></a>
+        <!--<div class="container-fluid">-->
+            <!--<div class="navbar-header">-->
+                <!--&lt;!&ndash;<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content"> <span class="icon-bar"></span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="icon-bar"></span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="icon-bar"></span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                <!--<a class="navbar-brand" href="#"></a>-->
 
+            <!--</div>-->
+            <!--<div class="collapse navbar-collapse" id="mynavbar-content">-->
+
+                <!--<ul class="nav navbar-nav">-->
+
+                    <!--<li class="left-nav active"><a href="#iphone-screen-repairs">Screen Repairs</a></li>-->
+                    <!--<li class="left-nav"><a href="#featured-review" id="navlink1">Reviews</a></li>-->
+                <!--</ul>-->
+
+                    <!--<li class="centered"><span id="navicon"><img src="img/splattericon.png" width="150"></span></li>-->
+                <!--<ul class="nav navbar-nav right-align">-->
+                    <!--<li class="right-nav"><a href="#contact-us" id="navlink3">Contact Us</a></li>-->
+                    <!--<li class="right-nav"><a href="#neighborhood-map" id="navlink4">Service Map</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div id="top-gradient"></div>
+
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="img/splattericon.png"  alt="San Diego Mobile Phone Repair">
+                    </a>
+                </div>
+
+
+
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="#iphone-screen-repairs">Repairs</a></li>
+                        <li><a href="#featured-review">Reviews</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#contact-us">Contact</a></li>
+                        <li><a href="#neighborhood-map">Map</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
             </div>
-            <div class="collapse navbar-collapse" id="mynavbar-content">
-
-                <ul class="nav navbar-nav">
-
-                    <li class="left-nav active"><a href="#">Home</a></li>
-                    <li class="left-nav"><a href="#about" id="navlink1">About</a></li>
-                    <li class="centered"><img src="img/splattericon.png" width="150"></li>
-                    <li class="right-nav"><a href="#contact" id="navlink3">Contact</a></li>
-                    <li class="right-nav"><a href="#map" id="navlink4">Feedback</a></li>
-                </ul>
-            </div>
-        </div>
+            <!--/.container-fluid -->
+        </nav>
     </div>
-
 
 
     <!-- Header -->
@@ -439,7 +476,7 @@
                     <div class="col-xs-12">
                     <h3>Areas We Serve</h3>
                     <div class="multicolumn">We are a mobile iPhone repair service. We're based in the Kearny Mesa part of San Diego, CA, but we're happy to drive to you&mdash;anywhere within the city of San Diego! Our goal is to make your life better and more convenient. We are proud to serve the following neighborhoods:</div>
-                        <div class="row">
+                        <div class="row" id="regions">
                             <div class="col-xs-4">
                         <ul>
                             <li><span class="geoicon styleA odd">Balboa Park area</span></li>
@@ -1013,26 +1050,26 @@
 
 
 
-            $('#data-wrapper' ).css('left', (window.innerWidth/2)-118);
+            $('#data-wrapper' ).css('left', (window.innerWidth/2)-132);
 
             // center the nav
-            if (window.innerWidth >= 768) {
-                $('.navbar' ).css('left', window.innerWidth/2-($('.navbar' ).width()/2)-15);
-//                $('.navicon-centered' ).css('margin-left', window.innerWidth/2-250);
-            }
-
-
-
+//            if (window.innerWidth >= 768) {
+////                $('.navbar' ).css('left', (window.innerWidth/2)-384-384);
+////                $('.navicon-centered' ).css('margin-left', window.innerWidth/2-250);
+//            }
+//
+//
+//
             $(window).resize(function() {
 
                 console.log("Resize handler called.");
                 console.log("window.innerHeight: " + window.innerWidth);
                 console.log("offset: ", (window.innerWidth/2)-118);
-                $( "#data-wrapper" ).css('left', (window.innerWidth/2)-118);
-                if (window.innerWidth >= 768) {
-                    $('.navbar' ).css('left', window.innerWidth/2-($('.navbar' ).width()/2));
-//                    $('.navicon-centered' ).css('margin-left', window.innerWidth/2-250);
-                }
+                $( "#data-wrapper" ).css('left', (window.innerWidth/2)-132);
+//                if (window.innerWidth >= 768) {
+////                    $('.navbar' ).css('left', window.innerWidth/2-($('.navbar' ).width()/2));
+//                    $('#data-wrat' ).css('margin-left', window.innerWidth/2-250);
+//                }
             });
             if (window.innerWidth < 760) {
                 $('header').css('display', 'none')
