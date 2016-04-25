@@ -29,8 +29,8 @@ $(function() {
 });
 
  //Highlight the top nav as scrolling occurs
-$('body').scrollspy({
-    target: '.navbar-right',
+$('#page-top').scrollspy({
+    target: '#navlinks',
     offset: window.innerHeight /2
 } );
 

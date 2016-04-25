@@ -117,10 +117,10 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-default navbar-fixed-top visible">
-        <div id="top-gradient"></div>
+    <nav class="navbar navbar-default navbar-fixed-top ">
 
-        <div class="container page-scroll" id="responsive-nav">
+
+        <div class="container page-scroll hidden" id="mobile-nav">
             <!-- Brand and toggle get grouped for better mobile display -->
             <!--<div class="navbar-header page-scroll">-->
                 <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
@@ -144,10 +144,11 @@
                 <li><a href="#page-scroll">Contact</a></li>
                 <li><a href="#neighborhood-map">Service Boundaries</a></li>
             </ul>
+            </div>
 
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="fuckyou" id="bs-example-navbar-collapse-1">
+            <!--<div class="fuckyou" id="bs-example-navbar-collapse-1">-->
                 <!--<ul class="img-list">-->
                     <!--<li>-->
                         <!--<a href="#page-top">-->
@@ -157,8 +158,10 @@
                     <!--</li>-->
                 <!--</ul>-->
 
+        <div class="page-scroll text-center visible" id="desktop-nav">
+            <div id="top-gradient"></div>
+                <ul class="nav navbar-right navbar-nav" id="navlinks">
 
-                <ul class="nav navbar-nav navbar-right">
 
 
                     <li class="page-scroll">
@@ -177,10 +180,10 @@
                         <a href="#neighborhood-map" id="navlink4">Service Boundaries</a>
                     </li>
                 </ul>
-
             </div>
+
             <!-- /.navbar-collapse -->
-        </div>
+
         <!-- /.container-fluid -->
     </nav>
 
@@ -1051,21 +1054,20 @@
         if (window.jQuery){
 
 
-            var dy = (window.innerWidth/2)-118;
 
 
 
-            $('#data-wrapper' ).css('left', dy);
+            $('#data-wrapper' ).css('left', (window.innerWidth/2)-118);
 
             $(window).resize(function() {
 
                 console.log("Resize handler called.");
                 console.log("window.innerHeight: " + window.innerWidth);
-                console.log("offset: ", dy);
-                $( "#data-wrapper" ).css('left', dy);
+                console.log("offset: ", (window.innerWidth/2)-118);
+                $( "#data-wrapper" ).css('left', (window.innerWidth/2)-118);
             });
             if (window.innerWidth < 760) {
-                $('header').remove();
+                $('header').css('display', 'none')
             }
 
 //
