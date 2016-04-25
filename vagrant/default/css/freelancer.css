@@ -38,6 +38,7 @@ h6 {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
+    letter-spacing: -1.2px;
 }
 
 hr.star-light,
@@ -1001,6 +1002,7 @@ div#desktop-nav {
 .navbar-brand>img {
     height: 250%;
     margin-top: -45px;
+
     /*padding: 7px 14px;*/
 
     transform: translateX(7px);
@@ -1123,6 +1125,9 @@ transform: translateX(-5px);
     }
     .iphone-screen-repairs-item {
         height: 400px !important;
+    }
+    .navbar-brand > img {
+        transform: translateX(-110%);
     }
     #iphone-screen-repairs {
         height: 1600px !important;
@@ -1315,3 +1320,4 @@ ul > li.styleC {
     height: 90%;
     max-height: 90%;
 }
+
