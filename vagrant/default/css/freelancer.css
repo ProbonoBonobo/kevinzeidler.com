@@ -84,6 +84,7 @@ hr.star-primary:after {
 }
 
 header {
+
     text-align: center;
     color: #fff;
     background: url('../img/clouds-09.jpg') center no-repeat;
@@ -206,16 +207,16 @@ header .intro-text .skills {
 
 }
 
-.navbar-shrink {
-    transition: all 2s ease-in;
-    text-align: center;
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
+/*.navbar-shrink {*/
+    /*transition: all 2s ease-in;*/
+    /*text-align: center;*/
+    /*!*margin-left: auto;*!*/
+    /*!*margin-right: auto;*!*/
 
-}
-.navbar-shrink > * {
-    transition: all 1s ease-in;
-}
+/*}*/
+/*.navbar-shrink > * {*/
+    /*transition: all 1s ease-in;*/
+/*}*/
 
 
 /*.navbar-shrink >div >div > a >.fauxlogo {*/
@@ -265,13 +266,13 @@ h1 {
     /*-webkit-text-fill-color: transparent;*/
 }
 
-.navbar-right {
-    float: right;
-    margin-right: auto;
-    margin-left: auto;
-    max-height: 65px;
-    background: url('../img/apple-metallic-texture.jpg');
-}
+/*.navbar-right {*/
+    /*float: right;*/
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
+    /*max-height: 65px;*/
+    /*background: url('../img/apple-metallic-texture.jpg');*/
+/*}*/
 
 .fauxlogo > h1 > img {
     width: 70px;
@@ -724,9 +725,9 @@ footer .footer-below {
     background: linear-gradient(to right, rgba(255,50,95,1) 0%, rgba(146,127,255,1) 48%, rgba(19,178,138,1) 100%);
 }
 
-nav .container {
-    height: 60px;
-}
+/*nav .container {*/
+    /*height: 60px;*/
+/*}*/
 
 .navbar-default .navbar-nav>.active> #navlink1 {
     background: linear-gradient(to right, rgba(19,178,138,1) -75%, rgba(146,127,255,1) 150%);
@@ -866,8 +867,7 @@ header {
 }
 
 .navbar-default {
-    max-height: 65px;
-    background: none;
+    background: url('../img/apple-metallic-texture.jpg');
 }
 
 div#desktop-nav {
@@ -875,5 +875,60 @@ div#desktop-nav {
     left: 200px;
     margin-left: auto;
     margin-right: auto;
-
 }
+
+.navbar {
+    border-radius: 0px;
+    margin-bottom: 0px;
+    max-width: 800px;
+    width: 800px;
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+    .navbar {
+        left: 50% !important;
+        margin-left: -400px;
+        position: fixed;
+        z-index: 9999 !important;
+    }
+
+    .navbar-brand {
+        display: none;
+    }
+
+    .navbar {
+        padding: 0px;
+        max-height: 75px;
+        text-align: center;
+    }
+    .left-nav {
+
+        width: 20%;
+        min-width: 100px;
+    }
+
+    #mynavbar-content, ul.nav {
+        width: 800px !important;
+        padding: 0px;
+        min-width: 800px;
+    }
+    .right-nav {
+        width: 20%;
+        min-width: 100px;
+    }
+    .centered {
+        margin-top: -45px;
+        /*left: 0px;*/
+        /*margin-left: -75px;*/
+        /*position: absolute;*/
+        /*display: block;*/
+        /*margin-top: -45px;*/
+    }
+}
+
+

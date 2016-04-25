@@ -117,75 +117,31 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-default navbar-fixed-top ">
+    <div class="navbar navbar-default">
 
-
-        <div class="container page-scroll hidden" id="mobile-nav">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <!--<div class="navbar-header page-scroll">-->
-                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
-                    <!--<span class="sr-only">Toggle navigation</span>-->
-                    <!--<span class="icon-bar"></span>-->
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content"> <span class="icon-bar"></span>-->
                     <!--<span class="icon-bar"></span>-->
                     <!--<span class="icon-bar"></span>-->
                 <!--</button>-->
-                <!--&lt;!&ndash;<div id="iconlogo"><h1>San Diego Mobile Phone Repair</h1></div>&ndash;&gt;-->
+                <a class="navbar-brand" href="#"></a>
 
-            <!--</div>-->
-            <span class="logo">
-                    <a href="http://www.kevinzeidler.com/vagrant/default"><img src="img/splattericon.png" width="100"></a>
-                </span>
-            <ul id="nav">
-                <li class="selected">
-                    <a href="#page-top">Quick Links</a>
-                </li>
-                <li><a href="#iphone-screen-repairs">Services</a></li>
-                <li><a href="#featured-review">Latest Review</a></li>
-                <li><a href="#page-scroll">Contact</a></li>
-                <li><a href="#neighborhood-map">Service Boundaries</a></li>
-            </ul>
             </div>
+            <div class="collapse navbar-collapse" id="mynavbar-content">
 
+                <ul class="nav navbar-nav">
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <!--<div class="fuckyou" id="bs-example-navbar-collapse-1">-->
-                <!--<ul class="img-list">-->
-                    <!--<li>-->
-                        <!--<a href="#page-top">-->
-                            <!--&lt;!&ndash;<img src="img/logo-coral.gif" width="200"  />&ndash;&gt;-->
-                            <!--<span class="text-content"><span>San Diego Mobile Phone Repair</span></span>-->
-                        <!--</a>-->
-                    <!--</li>-->
-                <!--</ul>-->
-
-        <div class="page-scroll text-center visible" id="desktop-nav">
-            <div id="top-gradient"></div>
-                <ul class="nav navbar-right navbar-nav" id="navlinks">
-
-
-
-                    <li class="page-scroll">
-                        <a href="#iphone-screen-repairs" id="navlink1">Screen Replacements</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#featured-review" id="navlink2">Latest Review</a>
-                    </li>
-                    <li class="navicon page-scroll">
-                        <a href="http://www.kevinzeidler.com/vagrant/default"><img src="img/splattericon.png" width="100"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact-us" id="navlink3">Make An Appointment</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#neighborhood-map" id="navlink4">Service Boundaries</a>
-                    </li>
+                    <li class="left-nav active"><a href="#">Home</a></li>
+                    <li class="left-nav"><a href="#about" id="navlink1">About</a></li>
+                    <li class="centered"><img src="img/splattericon.png" width="150"></li>
+                    <li class="right-nav"><a href="#contact" id="navlink3">Contact</a></li>
+                    <li class="right-nav"><a href="#map" id="navlink4">Feedback</a></li>
                 </ul>
             </div>
+        </div>
+    </div>
 
-            <!-- /.navbar-collapse -->
-
-        <!-- /.container-fluid -->
-    </nav>
 
 
     <!-- Header -->
@@ -1059,12 +1015,24 @@
 
             $('#data-wrapper' ).css('left', (window.innerWidth/2)-118);
 
+            // center the nav
+            if (window.innerWidth >= 768) {
+                $('.navbar' ).css('left', window.innerWidth/2-($('.navbar' ).width()/2)-15);
+//                $('.navicon-centered' ).css('margin-left', window.innerWidth/2-250);
+            }
+
+
+
             $(window).resize(function() {
 
                 console.log("Resize handler called.");
                 console.log("window.innerHeight: " + window.innerWidth);
                 console.log("offset: ", (window.innerWidth/2)-118);
                 $( "#data-wrapper" ).css('left', (window.innerWidth/2)-118);
+                if (window.innerWidth >= 768) {
+                    $('.navbar' ).css('left', window.innerWidth/2-($('.navbar' ).width()/2));
+//                    $('.navicon-centered' ).css('margin-left', window.innerWidth/2-250);
+                }
             });
             if (window.innerWidth < 760) {
                 $('header').css('display', 'none')
