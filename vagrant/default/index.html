@@ -79,6 +79,7 @@
             vertical-align: top;
             margin-top: -34px;
             padding-top: 0px;
+
         }
 
 
@@ -174,12 +175,12 @@
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="#iphone-screen-repairs">Repairs</a></li>
-                        <li><a href="#featured-review">Reviews</a></li>
+                        <li id="navlink1"><a href="#iphone-screen-repairs">Repairs</a></li>
+                        <li id="navlink2"><a href="#featured-review">Reviews</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#contact-us">Contact</a></li>
-                        <li><a href="#neighborhood-map">Map</a></li>
+                        <li id="navlink3"><a href="#contact-us">Contact</a></li>
+                        <li id="navlink4"><a href="#neighborhood-map">Map</a></li>
                     </ul>
                 </div>
 
@@ -242,6 +243,8 @@
                                 </div>
                                 <div id="speaker"></div>
                                 <div id="screen">
+
+
                                     <div id="reminder" style="visibility: hidden">
                                         <div></div>
                                         <div>Fixed by Jacob :)</div>
@@ -276,10 +279,11 @@
                                 </div>
                                 <div id="home">
                                     <div></div>
-                                </div>
-                                <div id="congratulations" style="visibility: hidden">haha success lol</div>
+                                    <div id="caller-photo" style="visibility: hidden" class="broken"><img src="img/circlehead.gif" width="85px" height="85px"></div>
+
 
                             </div>
+                                <div id="congratulations" style="visibility: hidden">haha success lol</div>
 
                         </div>
                     </div>
@@ -295,6 +299,7 @@
                 </div>
             </div>
         </div>
+            </div>
     </header>
 
     <!-- iphone-screen-repairs Grid Section -->
@@ -859,108 +864,142 @@
     <script>
         var notDone = true;
         var clicked = false;
-        window.setTimeout(function() { $('div#iphone-wrapper' ).css('visibility', 'visible')}, 2000);
-        $("<img src='img/iphone-outer7.gif' id='outer-screen' class='broken' width='100%' height='100%'>" ).insertAfter("#front-cover");
-        $("<img src='img/dead-emoji-screen.gif' id='init-screen' class='broken' width='100%' height='100%'>" ).prependTo("#screen");
+        if (jQuery) {
+            window.setTimeout( function () { $( 'div#iphone-wrapper' ).css( 'visibility', 'visible' )}, 2000 );
+            $( "<img src='img/iphone-outer7.gif' id='outer-screen' class='broken' width='100%' height='100%'>" )
+                    .insertAfter( "#front-cover" );
+            $( "<img src='img/dead-emoji-screen.gif' id='init-screen' class='broken' width='100%' height='100%'>" )
+                    .prependTo( "#screen" );
 
 
-        window.setTimeout(function() {
-            $("<img src='img/iphone-call-screen-shattered.gif' id='call-screen' width='100%' height='100%'>" ).insertAfter("#init-screen");
-            $("#init-screen" ).remove();
-            $("<div id=\'callbox\' class='broken'>Jacob iPhone<br><small>Guy</small>" +
-              "<img id='photo' src=\'img/circlehead.gif\' width='85px' height='85px'>" +
-              "</div>").insertAfter("#time");
-            $("#callbox" ).css({'position': 'absolute',
-            'top': '70px',
-            'width': '390px',
-            'left': '-68px',
-                'line-height': '36px',
-            'font-size': '38px',
-                               'font-weight':"300"});
-            $("#time" ).remove();
-            $("#date" ).html("Mobile" ).css({"left": "28px",
-                                            "top":"152px",
-                                            "font-size":"14px"});
+            window.setTimeout( function () {
+                                   $( "<img src='img/iphone-call-screen-shattered.gif' id='call-screen' width='100%' height='100%'>" )
+                                           .insertAfter( "#init-screen" );
+                                   $( "#init-screen" ).remove();
+                                   $( "<div id=\'callbox\' class='broken'>Jacob iPhone<br><small>Guy</small>" +
+                                      "</div>"
+                                   ).insertAfter( "#time" );
+                                   $( "#caller-photo" ).css( 'visibility', 'visible' );
+                                   $( "#callbox" ).css( {
+                                                            'position': 'absolute',
+                                                            'top': '70px',
+                                                            'width': '390px',
+                                                            'left': '-68px',
+                                                            'line-height': '36px',
+                                                            'font-size': '38px',
+                                                            'font-weight': "300"
+                                                        }
+                                   );
+                                   $( "#time" ).remove();
+                                   $( "#date" ).html( "Mobile" ).css( {
+                                                                          "left": "28px",
+                                                                          "top": "152px",
+                                                                          "font-size": "14px"
+                                                                      }
+                                   );
 
-            $('#photo' ).css({'position': 'absolute',
-                             'float': 'right',
-                             'top' : '0px',
-                             'left': '315px'});
-            $('#iphone' ).css({'animation': 'ring .5s ease-in-out infinite'});
-            $("<div id='modal-helper' class='broken'></div>").insertAfter("#iphone");
-                       $("div#modal-helper" ).css({
-                                        "background": "url('img/tapicon-white.svg')",
-                                        "background-size": "100% 100%",
-                                        "height": "100px",
-                                        "width": "100px",
-                                        "top": "300px",
-                                        "left": "300px",
-                                        "z-index": "999",
-                                        "margin-left" : "320px",
-                                        "margin-top" : "-120px",
-                                         "animation": "tapFinger 4s ease-in-out infinite",
-                                                      "position": "absolute"});
+                                   $( '#photo' ).css( {
+                                                          'position': 'absolute',
+                                                          'float': 'right',
+                                                          'top': '0px',
+                                                          'left': '315px'
+                                                      }
+                                   );
+                                   $( '#iphone' ).css( { 'animation': 'ring .5s ease-in-out infinite' } );
+                                   $( "<div id='modal-helper' class='broken'></div>" ).insertAfter( "#iphone" );
+                                   $( "div#modal-helper" ).css( {
+                                                                    "background": "url('img/tapicon-white.svg')",
+                                                                    "background-size": "100% 100%",
+                                                                    "height": "100px",
+                                                                    "width": "100px",
+                                                                    "top": "300px",
+                                                                    "left": "300px",
+                                                                    "z-index": "999",
+                                                                    "margin-left": "320px",
+                                                                    "margin-top": "-120px",
+                                                                    "animation": "tapFinger 4s ease-in-out infinite",
+                                                                    "position": "absolute"
+                                                                }
+                                   );
 
-            $("div#iphone" ).click(function() {
-                var brokenshit = document.getElementsByClassName('broken' );
-                $('#call-screen' ).css({'transform': 'scale3d(2,2,1)',
-                                       'opacity': '0'});
-                if (brokenshit) {
-                    while ( brokenshit[ 0 ] ) {
-                        brokenshit[ 0 ].parentNode.removeChild( brokenshit[ 0 ] );
-                    }
-                    $( "#front-cover" ).css( {
-                                                 "visibility": "visible",
-                                                 "transform": "scale3d(1.029,1.011,1)"
-                                             }
-                    ); //<- thank firefox for that one
-                    $( "#iphone" ).css( "animation", "none" );
-                    $( "#date" ).remove();
+                                   $( "div#iphone" ).click( function () {
+                                                                var brokenshit = document.getElementsByClassName( 'broken' );
+                                                                $( '#call-screen' ).css( {
+                                                                                             'transform': 'scale3d(2,2,1)',
+                                                                                             'opacity': '0'
+                                                                                         }
+                                                                );
+                                                                if ( brokenshit ) {
+                                                                    while ( brokenshit[ 0 ] ) {
+                                                                        brokenshit[ 0 ].parentNode.removeChild( brokenshit[ 0 ] );
+                                                                    }
+                                                                    $( "#front-cover" ).css( {
+                                                                                                 "visibility": "visible",
+                                                                                                 "transform": "scale3d(1.029,1.011,1)"
+                                                                                             }
+                                                                    ); //<- thank firefox for that one
+                                                                    $( "#iphone" ).css( "animation", "none" );
+                                                                    $( "#date" ).remove();
 
-                }
-                window.setTimeout( function () {
-                    $( "#congratulations" ).css( { "visibility": "visible",
-                                                   "transform": "scale3d(2,2,3)"} );
-                }, 1200);
-
-
-            });
-
-
-
-
-
-
-        }, 6000);
+                                                                }
+                                                                window.setTimeout( function () {
+                                                                                       $( "#congratulations" ).css( {
+                                                                                                                        "visibility": "visible",
+                                                                                                                        "transform": "scale3d(2,2,3)",
+                                                                                                                        "opacity": "1"
+                                                                                                                    }
+                                                                                       );
+                                                                                   }, 1200
+                                                                );
 
 
-        function randRange (max) {
-            return Math.floor(Math.random()*max+1);
-        }
+                                                            }
+                                   );
 
-        data = $.getJSON( "responsev3.json", function( data ) {
-            console.log( data );
 
-            var size = Object.keys( data ).length;
-            var r1   = randRange( size - 1 );
-            for ( var i = 0; i < size; i++ ) {
-                var obj = data[ i ];
-                for ( var key in obj ) {
-                    var attrName  = key;
-                    var attrValue = obj[ key ];
-                    console.log( "data[", i, "][", attrName, "] => ", attrValue );
-                }
+                               }, 3000
+            );
+
+
+            function randRange( max ) {
+                return Math.floor( Math.random() * max + 1 );
             }
 
+            data =
+                    $.getJSON( "responsev3.json", function ( data ) {
+                                   console.log( data );
+
+                                   var size = Object.keys( data ).length;
+                                   var r1   = randRange( size - 1 );
+                                   for ( var i = 0; i < size; i++ ) {
+                                       var obj = data[ i ];
+                                       for ( var key in obj ) {
+                                           var attrName = key;
+                                           var attrValue = obj[ key ];
+                                           console.log( "data[", i, "][", attrName, "] => ", attrValue );
+                                       }
+                                   }
 
 
-            console.log("Today's random number is: ", r1);
-            $("<div id=\"review-date-inner\">"+data[r1]['date']+"</div>").insertAfter("#review-date");
-            $("<div id='reviewer-infobox'><span id='person'>" + data[r1]['name'] +  ", </span><span id='location'>" + data[r1]['city'] + "</span></div>").insertAfter("#reviewer-name");
-            $("<img src =\""+data[r1]['avatar']+"\" id='avatar'>").insertAfter("#reviewer-avatar");
-            $("<img id=\"stars\" src ='img/YelpStars5.jpg' >").insertAfter("#star-rating");
-            $("<p class=\"review-body\">"+data[r1]['content']+"</p>").insertAfter("#review-content");
-        });
+                                   console.log( "Today's random number is: ", r1 );
+                                   $( "<div id=\"review-date-inner\">" + data[ r1 ][ 'date' ] + "</div>" ).insertAfter(
+                                           "#review-date"
+                                   );
+                                   $( "<div id='reviewer-infobox'><span id='person'>"
+                                      + data[ r1 ][ 'name' ]
+                                      + ", </span><span id='location'>"
+                                      + data[ r1 ][ 'city' ]
+                                      + "</span></div>"
+                                   ).insertAfter( "#reviewer-name" );
+                                   $( "<img src =\"" + data[ r1 ][ 'avatar' ] + "\" id='avatar'>" )
+                                           .insertAfter( "#reviewer-avatar" );
+                                   $( "<img id=\"stars\" src ='img/YelpStars5.jpg' >" ).insertAfter( "#star-rating" );
+                                   $( "<p class=\"review-body\">" + data[ r1 ][ 'content' ] + "</p>" ).insertAfter(
+                                           "#review-content"
+                                   );
+                               }
+                    );
+        }
 
 //        function checkForChanges()
 //        {
@@ -1031,7 +1070,8 @@
 //                                                                                 "<img src=\"img/me-circlehead.gif\" " +
 //                                                                                 " width=\'90px\' height=\'90px\'></div>"
 //                                              );
-//                                              $( 'div#iphone' ).css( { "animation": "ring .5s 0s infinite linear" } );
+//                                              $( 'div#iphone' ).css( {
+        // "animation": "ring .5s 0s infinite linear" } );
 //                                              $( '#top-bar' ).css( {
 //                                                                       'visibility': 'visible',
 //                                                                       'z-index': '990'
