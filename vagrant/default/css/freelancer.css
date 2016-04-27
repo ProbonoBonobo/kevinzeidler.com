@@ -434,7 +434,7 @@ section.success a.active {
 }
 
 #iphone-screen-repairs .iphone-screen-repairs-item .iphone-screen-repairs-link .caption .caption-content i {
-    font-family: 'Helvetica';
+    font-family: 'HelveticaNeue LT 25 UltLight', 'Helvetica Neue', 'Helvetica', sans-serif;
     margin-top: -12px;
 }
 
@@ -1328,7 +1328,7 @@ ul > li.styleC {
 }
 
 .modal-content h3 {
-    font-family: 'Helvetica';
+    font-family: "HelveticaNeue LT 25 UltLight", "Helvetica Neue", "Helvetica", "Arial";
     font-size: 45px;
     text-transform: unset;
 }
@@ -1437,4 +1437,9 @@ h2 {
     animation-name: rubberBand;
     animation-duration: 1s;
     animation-iteration-count: 1;
+}
+.modal-body h3 {
+    text-transform: none;
+    letter-spacing: normal;
+    font-family:  "Helvetica CE 35 Thin", "HelveticaNeue LT 25 UltLight",  "Helvetica Neue", "Helvetica", sans-serif;
 }

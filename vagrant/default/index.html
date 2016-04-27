@@ -234,7 +234,7 @@
                                 <div></div>
                             </div>
                             <div id="front">
-                                <div id="front-cover" style="display: none"></div>
+                                <div id="front-cover"  style="visibility: hidden"></div>
                                 <div id="camera">
                                     <div></div>
                                 </div>
@@ -250,8 +250,8 @@
                                     <div id="time">12:42</div>
                                     <div id="date">Saturday, January 4</div>
                                     <div id="bottom" style="visibility: hidden"></div>
-                                    <div id="top" style="visibility: hidden"></div>
-                                    <div id="slide" style="z-index: 900">
+                                    <div id="top"  style="visibility: hidden"></div>
+                                    <div id="slide" cstyle="z-index: 900">
                                         <div></div>
                                         slide to unlock
                                     </div>
@@ -903,8 +903,10 @@
                     while ( brokenshit[ 0 ] ) {
                         brokenshit[ 0 ].parentNode.removeChild( brokenshit[ 0 ] );
                     }
+                    $( "#front-cover" ).css({"visibility": "visible",
+                                             "transform": "scale3d(1.029,1.011,1)"});
                     $( "#iphone" ).css( "animation", "none" );
-                    $("#date" ).remove();
+                    $( "#date" ).remove();
                     $("<div id='congratulations'><h1>You clicked the phone!</h1></div>" ).prependTo("#screen");
 
                 }
