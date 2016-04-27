@@ -16,8 +16,7 @@ function initializeMaven() {
                 $('.header-inner').addClass('scrolled');
             } else {
                 $('.header-inner').removeClass('scrolled');
-            };
-
+            }
             navButton.css({
                               "top": navButtonMargin + "px"
                           });
@@ -270,7 +269,7 @@ function initializeMaven() {
     //RESPONSIVE VIDEO
     jQuery(".container").fitVids();
 
-};
+}
 /* END ------------------------------------------------------- */
 
 /* =Document Ready Trigger

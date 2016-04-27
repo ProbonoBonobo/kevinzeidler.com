@@ -53,4 +53,4 @@ function get(nodeType) {
 			  }).appendTo( "body" );
 
 
-		}
+		};

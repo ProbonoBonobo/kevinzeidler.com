@@ -337,12 +337,12 @@
 
 				var hemiLight = new THREE.HemisphereLight(0x0000ff, 0x00ff00, .6);
 				cubeArray = [];
-				maxY = new Array();
-				dx = new Array();
-				dz = new Array();
-				xRotation = new Array();
-				yRotation = new Array();
-				zRotation = new Array();
+				maxY = [];
+				dx = [];
+				dz = [];
+				xRotation = [];
+				yRotation = [];
+				zRotation = [];
 
 				initializeFinale(10,-200, 0);
 				console.log(dx, maxY);
@@ -397,7 +397,7 @@
 				scene.add( plane );
 
 				// Hang a classy painting on the wall perpendicular to the camera (parallel to z-axis)
-				var imgurl = 'http://i.imgur.com/LKi1Eir.jpg' //DEV ONLY 'cause localhost objects to loading images from fileserver
+				var imgurl = 'http://i.imgur.com/LKi1Eir.jpg'; //DEV ONLY 'cause localhost objects to loading images from fileserver
 				THREE.ImageUtils.crossOrigin = '';
 				var texture = THREE.ImageUtils.loadTexture(imgurl);
 				var material = new THREE.MeshBasicMaterial({   
@@ -455,7 +455,7 @@
 				colors = [1197936, 1197936, 13256195, 14461702, 12919556, 12919556, 14461702, 14461702, 13256195, 13256195, 1216917, 13256195];
 
 				var xUnits = 800;
-				var xSkew = 1.2
+				var xSkew = 1.2;
 
 				var width = (xUnits * xSkew) / numCubes;
 
@@ -464,7 +464,7 @@
 					var hexIndex = randRange(0, colors.length);
 					var object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial() );
 					for ( var i = 0; i < geometry.faces.length; i += 1) {
-						var hex = randRange(0,colors.length) 
+						var hex = randRange(0,colors.length);
 						geometry.faces[ i ].color.setHex( colors[hex] );
 					}
 
@@ -672,7 +672,7 @@
 				plane.position.z += .04 + cube.position.z*.01;
 				plane.position.x = cube.position.x;
 			
-				plane.rotation.x += 0.00001
+				plane.rotation.x += 0.00001;
 				if (t < 200) {
 					axes = axeHelper(t*t*.05);	
 				}

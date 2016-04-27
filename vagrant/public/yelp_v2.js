@@ -9,7 +9,7 @@
 				  console.log(items);
 				  return items;
 			});
-			$(items[0]).appendTo("#name")
-		
+			$(items[0]).appendTo("#name");
 
-	});
+
+	})

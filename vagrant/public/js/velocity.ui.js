@@ -743,7 +743,7 @@ return function (global, window, document, undefined) {
 
                         callbackOriginal && callbackOriginal.call(elements, elements);
                         Velocity(currentCall);
-                    }
+                    };
 
                     if (nextCall.o) {
                         nextCall.o = $.extend({}, nextCallOptions, options);

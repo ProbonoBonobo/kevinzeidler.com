@@ -37,12 +37,12 @@ var viewModel = function(){
     self.appendRow = function(data, event) {
         self.posts.push({ID: table[data][0], monthYear: table[data][1], flytitle: table[data][2], headline: table[data][3], lede:table[data][4], img: table[data][5], tags: table[data][6]});
 
-    }
+    };
     self.appendAll = function(data, event) {
         for(i in data) {
             self.appendRow(i);
         }
-    }
+    };
 
     self.headers = [
         {title:'ID',sortPropertyName:'ID', asc: true, active: false},
@@ -98,6 +98,6 @@ var viewModel = function(){
         }
         return result.sort(self.activeSort());
     });
-}
+};
 vm = new viewModel();
 ko.applyBindings(vm);

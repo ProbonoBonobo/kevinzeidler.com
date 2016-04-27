@@ -12,36 +12,36 @@
 	<link rel="stylesheet" type="text/css" href="yelpwidget.css"></link>
 	</script>
 </head>
-<body style="background-image: url('img/iphone-jumbotron2.jpg');  background-repeat: no-repeat; background-size: 100% 120%; position: relative;">
+<body; style= "background-image: url('img/iphone-jumbotron2.jpg');  background-repeat: no-repeat; background-size: 100% 120%; position: relative;" >
 
 
-	<div style="width: 600px; height: 400px; margin-top: 10%;  margin-left: 10px; position: relative; text-align: center; background-color: white;">
-		<div class="widget-header" style="opacity:1.0">
-			<p style="position: relative; float: center; text-align: middle; font-family: 'TradeGothicLTStd-BdCn20', 'HelveticaNeue',sans-serif; font-size: 24px; class='title'"><img src="img/widget-banner.png"></p>
-			
-		</div>
-		<div class="widget-body">
+			  < div; style= "width: 600px; height: 400px; margin-top: 10%;  margin-left: 10px; position: relative; text-align: center; background-color: white;" >
+				 < div; class="widget-header"; style= "opacity:1.0" >
+											< p; style= "position: relative; float: center; text-align: middle; font-family: 'TradeGothicLTStd-BdCn20', 'HelveticaNeue',sans-serif; font-size: 24px; class='title'" > < img; src= "img/widget-banner.png" > < / p >
 
-			<div id="wrapper" class="data-wrapper">
-				<div class= "avatar"></div>
-				<div class="name"></div>
-				<div class="date"></div>
-				<div class="rating"></div>
-				<div class="city"></div>
-				<div class="content"</div>
-			</div>
-		</div>
-		</div>
-		</div>
-		</div>
+																																																 </div >
+																																																 < div; class= "widget-body" >
 
-
+					 < div; id="wrapper"; class= "data-wrapper" >
+									   < div; class= "avatar" > < / div >
+							 < div; class= "name" > < / div >
+							 < div; class= "date" > < / div >
+							 < div; class= "rating" > < / div >
+							 < div; class= "city" > < / div >
+							 < div; class= "content" < / div >
+							 </div >
+							 </div >
+							 </div >
+							 </div >
+							 </div >
 
 
-	<script>
-			function randRange (max) {
+
+
+							 < script >
+							 function randRange (max) {
 				return Math.floor(Math.random()*max+1);
-			}
+			};
 			$.getJSON( "reviews.json", function( data ) {
 				var r1 = randRange(19);
 				$("<div>"+data[r1]['name']+ ", "+data[r1]['city'] + "</div>").insertAfter(".name");

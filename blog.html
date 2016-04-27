@@ -1305,7 +1305,7 @@
         self.tailVisible = ko.observable(false);
         self.expandPreview = function() {
             self.tailVisible(true);
-        }
+        };
         self.bg_color = ko.observable(data.color || '#CA4603');
         self.myShadow = ko.computed(function() {
 
@@ -1320,7 +1320,7 @@
             console.log("How about ", ret , "?");
             return ret;
         });
-    }
+    };
 
     var viewModel = function(colors){
         var self = this;
@@ -1432,10 +1432,10 @@
             self.posts(manifest.posts.map(function(data, i) {
                 return new Post(data, i);
             }));
-        }
+        };
 
         self.sort(self.headers[0]);
-    }
+    };
 
     vm = new viewModel(chameleonColorScheme);
     ko.applyBindings(vm);
