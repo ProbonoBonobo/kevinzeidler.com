@@ -972,19 +972,19 @@
             }
 
             data =
-                    $.getJSON( "responsev3.json", function ( data ) {
-                                   console.log( data );
+                    $.getJSON( "../test4.json", function ( data ) {
+                        console.log(data);
 
-                                   var size = Object.keys( data ).length;
-                                   var r1   = randRange( size - 1 );
-                                   for ( var i = 0; i < size; i++ ) {
-                                       var obj = data[ i ];
-                                       for ( var key in obj ) {
-                                           var attrName = key;
-                                           var attrValue = obj[ key ];
-                                           console.log( "data[", i, "][", attrName, "] => ", attrValue );
-                                       }
-                                   }
+                        var size = Object.keys(data).length;
+                        var r1 = 0;
+                        for (var i = 0; i < size; i++) {
+                            var obj = data[i];
+                            for (var key in obj) {
+                                var attrName = key;
+                                var attrValue = obj[key];
+                                console.log("data[", i, "][", attrName, "] => ", attrValue);
+                            }
+                        }
 
 
                                    console.log( "Today's random number is: ", r1 );
@@ -1000,7 +1000,7 @@
                                    $( "<img src =\"" + data[ r1 ][ 'avatar' ] + "\" id='avatar'>" )
                                            .insertAfter( "#reviewer-avatar" );
                                    $( "<img id=\"stars\" src ='img/YelpStars5.jpg' >" ).insertAfter( "#star-rating" );
-                                   $( "<p class=\"review-body\">" + data[ r1 ][ 'content' ] + "</p>" ).insertAfter(
+                                   $( "<p class=\"review-body\">" + data[ r1 ][ 'review' ] + "</p>" ).insertAfter(
                                            "#review-content"
                                    );
                                }

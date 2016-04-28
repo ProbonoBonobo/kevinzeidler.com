@@ -4,8 +4,8 @@
 $QUERY = array();
 $QUERY['review'] = "//div[@class='review review--with-sidebar']";
 $QUERY['name'] = "//div[@class='review review--with-sidebar']//a[@class='user-display-name']";
-$QUERY['avatar'] = "//img[contains(@src,'60s.jpg') and contains(@src, '/photo/') or contains(@src,'default_avatars')]/@src";
-$QUERY['city'] = "//li[contains(@class,'user-location')]/*";
+$QUERY['avatar'] = "//div[@class='review review--with-sidebar']//div[@class='media-avatar']//img/@src";
+$QUERY['city'] = "//div[@class='review review--with-sidebar']//li[@class='user-location']/b";
 $QUERY['rating'] = "//div[@class='review review--with-sidebar']//meta[@itemprop = 'ratingValue']/@content";
 $QUERY['content'] = "//div[@class='review review--with-sidebar']//p[@itemprop='description']";
 $QUERY['date'] = "//div[@class='review review--with-sidebar']//meta[@itemprop='datePublished']/@content";
@@ -15,7 +15,6 @@ $STARIMG = "<img alt='5.0 star rating' class='offscreen' height='303' src='//s3-
 
 // go get the raw HTML of the yelp page
 $scraped = file_get_contents("http://www.yelp.com/biz/mobile-iphone-repair-ipad-screen-repair-san-diego-24");
-//$scraped = file_get_contents("./scraped.html");
 $DOM = new DOMDocument();
 
 // we'll need this to preserve the formatting of the reviews
@@ -80,14 +79,7 @@ if($review_obj->length > 0){
         $content = filter_var($content, FILTER_SANITIZE_STRING);
 
         //rewrite the avatar URL to the higher resolution version
-//		echo "\n\n\nNow inspecting ", substr($avatar, -7),"\n\n\n";
-//		echo "strcmp returns: ", strcmp(substr($avatar, -7), "60s.jpg");
-
-		if(strcmp(substr($avatar, -7), "60s.jpg") !== 0) {
-			$avatar = "img/anon.jpg";
-		} else {
-			$avatar = "http://". substr($avatar, 2, -7). "ms.jpg";
-		}
+        $avatar = substr($avatar, 0, -7) . "ms.jpg";
 
 
 
@@ -109,7 +101,7 @@ if($review_obj->length > 0){
 		echo "      \"starsprite\": \"", $GLOBALS['STARIMG'], "\",\n";
 		echo "      \"city\" : \"", $city, "\",\n";
 		echo "      \"rating\" : \"", $rating, "\",\n";
-		echo "      \"content\" : \"", $content, "\",\n";
+		echo "      \"content\" : \"", $content, "\"\n";
 		echo "      \"formattedContent\" : \"", $content, "\"\n";
 		if ($ctr == 19) {
 			// drop comma from last element of JSON table
