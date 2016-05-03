@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/jquery.js"></script>
+    <link href="vagrant/public/css/dashboard.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Dashboard. | KevinZeidler.com</title>
+    </head>
+<body>
+
+
+        <!--Instructions for use:
+                1. Tests are grouped by file (so "scraped.html"s tests and "index.html"s tests aren't conflated). Selecting
+                   the appropriate file group is easy. The ID's just the filename.
+
+                   ==================* Important *================
+                   |   Before appending a test to this document, |
+                   |   always make sure that the parent element  |
+                   |   exists. If it doesn't, create the parent. |
+                   ===============================================
+
+
+
+                   -->
+
+        <h1>Unit Tests</h1>
+        <div id="root">
+            <div id="http://potemkinvillage.local/vagrant/scrape.php">
+                <h2>scraped.html</h2>
+                <table class="subroot">
+                    <tr data-href="url://unittests/link-to-file">
+                        <td></td>
+                        <td>Timestamp</td>
+                        <td># of Tests</td>
+                        <td>Passed</td>
+                        <td>Failed</td>
+                        <td>Score</td>
+                        <td>Grade</td>
+                    </tr>
+                    <tr data-href="/unittests/link-to-file">
+
+                            <td>1</td>
+                            <td>May 1, 2016 at 5:20PM</td>
+                            <td>8</td>
+                            <td>5</td>
+                            <td>3</td>
+                            <td>63%</td>
+                            <td>D-</td>
+                    </tr>
+                    <tr data-href="/unittests/link-to-file">
+
+                            <td>1</td>
+                            <td>May 1, 2016 at 5:23PM</td>
+                            <td>8</td>
+                            <td>6</td>
+                            <td>2</td>
+                            <td>75%</td>
+                            <td>C</td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+<script>
+    jQuery(document).ready(function($) {
+        $("tr").children().click(function() {
+            window.document.location = $(this).data("href");
+        });
+    });
+</script>
+</body>
+</html>

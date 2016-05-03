@@ -3,18 +3,38 @@
 // THE KEYRING
 // Not an array of queries, but an array of arrays of queries. Like so:
 
-$KEYRING = array('name' 	 => array("//meta[contains(@itemprop,'author')]/@content",
-                                        "//div[@class='review review--with-sidebar']//a[@class='user-display-name']",
-	                     				"//a[@class='user-display-name']"),
-                 'city'      => array("//meta[contains(@itemprop, \"author\")]"),
-	             'avatar'    => array("//img[contains(@src,'60s.jpg') and contains(@src, '/photo/') or contains(@src,'default_avatars')]/@src"),
+// $KEYRING = array('name' 	 => array("//meta[contains(@itemprop,'author')]/@content",
+//                                        "//div[@class='review review--with-sidebar']//a[@class='user-display-name']",
+//	                     				"//a[@class='user-display-name']"),
+//                 'city'      => array("//div[@class='review review--with-sidebar']//b[contains(.,',')]"),
+//	             'avatar'    => array("//img[contains(@src,'60s.jpg') and contains(@src, '/photo/') or contains(@src,'default_avatars')]/@src"),
+//
+//                 'rating'    => array("//div[contains(@itemtype, \"http://schema.org/Rating\")]/div/i[contains(@class, 'star-img') and contains(@title, 'star rating')]/img/@alt",
+//                                      "//div[@class='review review--with-sidebar']//meta[@itemprop = 'ratingValue']/@content",
+//						              "//div[@itemprop='reviewRating']/div/meta[@itemprop='ratingValue']/@content"),
+//                 'content'   => array("//div[@class='review review--with-sidebar']//p[@itemprop='description']"),
+//                 'date'      => array("//meta[contains(@itemprop,'datePublished')]/@content",
+//                                      "//div[@class='review review--with-sidebar']//meta[@itemprop='datePublished']/@content"));
 
-                 'rating'    => array("//div[contains(@itemtype, \"http://schema.org/Rating\")]/div/i[contains(@class, 'star-img') and contains(@title, 'star rating')]/img/@alt",
-                                      "//div[@class='review review--with-sidebar']//meta[@itemprop = 'ratingValue']/@content",
-						              "//div[@itemprop='reviewRating']/div/meta[@itemprop='ratingValue']/@content"),
-                 'content'   => array("//div[@class='review review--with-sidebar']//p[@itemprop='description']"),
-                 'date'      => array("//meta[contains(@itemprop,'datePublished')]/@content",
-                                      "//div[@class='review review--with-sidebar']//meta[@itemprop='datePublished']/@content"));
+
+
+
+
+$in=file_get_contents("queries.json");
+$queryobj=json_decode($in);
+$KEYRING = array();
+foreach ($queryobj as $daddy => $kids) {
+    $KEYRING[$daddy] = array();
+    foreach ($kids as $kid) {
+        array_push($KEYRING[$daddy], $kid);
+    }
+}
+var_dump($KEYRING);
+$fp = fopen('results.json', 'w');
+fwrite($fp, json_encode($KEYRING, JSON_FORCE_OBJECT));
+fclose($fp);
+
+
 
 $scraped = file_get_contents("scraped.html");
 $PARTITIONED = array('html' => array(range(0,19)),
@@ -53,6 +73,8 @@ if(!empty($scraped)) { //if any html is actually returned
     $DOM->encoding = 'UTF-8';
     $htm = $DOM->saveXML();
     $scraped_xpath = new DOMXPath($DOM); //load the DOM into a convenient database-like representation
+    $x = $scraped_xpath->query("//div[@class='review review--with-sidebar']//b[contains(.,',')]");
+
 
 
 //    foreach ($KEYRING['partition'] as $partition_function) {
@@ -187,22 +209,27 @@ $json = array();
 
     foreach ($KEYRING as $field => $value) {
 //        echo "value is" . "$value";
-        echo "field is" . "$field";
+//        echo "field is" . "$field";
 
         foreach ($KEYRING[$field] as $querystring) {
             $xpath_results = $scraped_xpath->query($querystring);
-            echo "\n Query: " . $querystring;
-            $json[$querystring] = array();
-            echo "\n Result: ";
-            $ctr = 0;
 
-            foreach ($xpath_results as $res) {
-                $json[$ctr][$field] = $xpath_results->item($ctr)->nodeValue;
-                print $xpath_results->item($ctr)->nodeValue . "\n";
-                $ctr++;
-            }
+
+//            echo "\n Query: " . $querystring;
+            $json[$querystring] = array();
+//            echo "\n Result: ";
+            $ctr = 0;
             if ($xpath_results->length == 20) {
-                echo "succss\n\n             ";
+                echo "success\n\n             ";
+                foreach ($xpath_results as $res) {
+
+//                $results_are_nodes = strcmp(gettype($xpath_results), "DOMNodeList") !== 0;
+//                var_dump($res);
+//                var_dump($results_are_nodes);
+                    $json[$ctr][$field] = $xpath_results->item($ctr)->nodeValue;
+//                print $xpath_results->item($ctr)->nodeValue . "\n";
+                    $ctr++;
+                }
                 break;
             } else {
                 echo "boo\n\n      ";
@@ -210,100 +237,16 @@ $json = array();
             }
         }
     }
-//
-//
-//        $extracted = array("names" => $scraped_xpath->query($GLOBALS['KEYRING']['name'][0]),
-//            "ratings" => $scraped_xpath->query($GLOBALS['KEYRING']['rating'][0]),
-//            "contents" => $scraped_xpath->query($GLOBALS['KEYRING']['content'][0]),
-//            "cities" => $scraped_xpath->query($GLOBALS['KEYRING']['city'][0]),
-//            "avatars" => $scraped_xpath->query($GLOBALS['KEYRING']['avatar'][0]),
-//            "dates" => $scraped_xpath->query($GLOBALS['KEYRING']['date'][0]));
-//
-//
-//        $names = $extracted['names'];
-//        $rating = $extracted['ratings'];
-//        $cities = $extracted['cities'];
-//        $content = $extracted['contents'];
-//        $avatars = $extracted['avatars'];
-//        $dates = $extracted['dates'];
-//
-//	foreach ($names as $name) {
-//		print $name->nodeValue;
-//	}
-//
-//        foreach (range(0, 19) as $obj) {
-//            echo $names[$obj]->nodeValue;
-//            echo $rating[$obj]->nodeValue;
-//            echo $cities[$obj]->nodeValue;
-//            echo $content[$obj]->nodeValue;
-//            echo $avatars[$obj]->nodeValue;
-//        }
-////	echo "[\n";
-//
-//         since index(obj) <=> identity(obj), the value of obj[key] is simply the current index of Arr[key]
-//        foreach ($extracted as $pat) {
-//
-//            //so just refocus data selectors on the current element of our data arrays
-//            $name = $names->item($ctr)->nodeValue;
-//            $rating = $ratings->item($ctr)->nodeValue;
-//            $city = $cities->item($ctr)->nodeValue;
-//            $content = $contents->item($ctr)->nodeValue;
-//            $date = $dates->item($ctr)->nodeValue;
-//            $avatar = $avatars->item($ctr)->nodeValue;
-//
-//            //sanitize the input
-//            $content = filter_var($content, FILTER_SANITIZE_STRING);
-//
-//            //rewrite the avatar URL to the higher resolution version
-////		echo "\n\n\nNow inspecting ", substr($avatar, -7),"\n\n\n";
-////		echo "strcmp returns: ", strcmp(substr($avatar, -7), "60s.jpg");
-//
-//            if (strcmp(substr($avatar, -7), "60s.jpg") !== 0) {
-//                $avatar = "img/anon.jpg";
-//            } else {
-//                $avatar = "http://" . substr($avatar, 2, -7) . "ms.jpg";
-//            }
-//
-//
-//            //and push
-//            $review_list[] = array('date' => $date,
-//                'name' => $name,
-//                'city' => $city,
-//                'avatar' => $avatar,
-//                'rating' => $rating,
-//                'content' => $content);
-//
-//
-//            but actually what we really want is JSON, which we can simply echo to stdout
-//        echo "      {\n\"id\" : \"", $ctr, "\",\n";
-//        echo "      \"date\" : \"", $date, "\",\n";
-//		echo "      \"name\" : \"", $name, "\",\n";
-//		echo "      \"avatar\" : \"", $avatar, "\",\n";
-//		echo "      \"starsprite\": \"", $GLOBALS['STARIMG'], "\",\n";
-//		echo "      \"city\" : \"", $city, "\",\n";
-//		echo "      \"rating\" : \"", $rating, "\",\n";
-//		echo "      \"content\" : \"", $content, "\",\n";
-//		echo "      \"formattedContent\" : \"", $content, "\"\n";
-//		if ($ctr == 19) {
-//			// drop comma from last element of JSON table
-//			// todo: write a valid predicate test for this condition instead of assuming a fixed array of 20 elements
-//			echo "   }\n";
-//		} else {
-//			echo "   },\n";
-//		}
-//
-//        $ctr += 1;
-//    }
-////    print_r($review_list);
-//    echo "]";
-//}
-//
 
 
+echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-            $json = json_encode($json);
-            print $json;
-            $ctr += 1;
+var_dump($scraped_xpath->query($KEYRING["city"][0]));
+$json = json_encode($json);
+var_dump($json);
+//var_dump($json);
+//print $json;
+
 
 
 
