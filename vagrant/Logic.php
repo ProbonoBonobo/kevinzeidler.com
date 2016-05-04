@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * Created by PhpStorm.
  * User: kevinzeidler
@@ -7,53 +8,38 @@
  * Time: 8:41 PM
  */
 
-$isGreen;
+
 
 
 class Logic
 {
-    private $changed = false;
-    private $opcode = 0;
+    public $op;
+    public $changed;
 
 
-    function __construct() {
+
+    function __construct()
+    {
         print "Now booting. . .\n";
+        $this->changed = false;
+        $this->op = 0;
+
     }
 
-    public static function opcode() {
-        if ($opcode) {
-            echo $opcode;
+    public static function opcode()
+    {
+        if ($op) {
+            echo $op;
         } else {
             echo 'unset';
         }
     }
 
-}
-
-
-
-class Semaphore {
-    private $target = $activeRegister;
-    private $isLocked = false;
-
-    function __construct($activeRegister) {
-
-    }
-
-    function static function currentTarget() {
-        return $target;
-    }
-
-    public static function probe() {
-        // true if the target register is locked
-        return !($isLocked == false);
+    public static function sayHello() {
+        echo "Hello";
     }
 }
 
-$semaphoreA = new Semaphore($r1);
-$semaphoreB = new Semaphore($r2);
-
-$control = new Logic();
 
 //class OtherSubClass extends BaseClass {
 //    // inherits BaseClass's constructor
@@ -68,4 +54,4 @@ $control = new Logic();
 //
 //// In BaseClass constructor
 //$obj = new OtherSubClass();
-//?>
+//
