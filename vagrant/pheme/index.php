@@ -30,7 +30,7 @@ function isArray(what) {
 }
  $.getJSON( "myScore.json", function( data ) {
    var title = "<h2>"+data[0]+"</h2>";
-   var env = "<code>"+data["Code"]+"</code>";
+   var env = "<code>"+data[1]+"</code>";
 //    $("#root-testing-header").prepend(title);
 //     $("#root-testing-header").prepend(env);
         $.each(data, function(k,v) {

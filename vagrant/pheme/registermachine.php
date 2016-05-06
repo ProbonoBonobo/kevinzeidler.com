@@ -12,6 +12,8 @@ include 'Semaphore.php';
 
 
 
+
+
 function init()
 {
 
@@ -25,6 +27,8 @@ function init()
 //
 //    $A = new Semaphore("A");
 //    $B = new Semaphore("B");
+
+
 
 
     function archive()
@@ -142,33 +146,58 @@ function init()
         return $semaphore->quickInspect();
     }
 
-    $f = fopen('skeleton2.json', 'r');
-    $content = fread($f, 1000);
-    $jsonized = json_decode($content, "FALSE");
-//    var_dump($content);
-//    var_dump($jsonized);
-//    foreach ($content[0] as $phase) {
-//        echo $jsonized[0];
-//        echo $jsonized["Code"];
-//    eval($jsonized["Code"]);
-    foreach ($jsonized as $field) {
-        echo $field[0];
-        echo $field[1];
-        foreach($field[2] as $rownum =>$value) {
-            echo $field[2][$rownum][1];
-            eval($field[1]);
-            $field[2][$rownum][4] = eval($field[2][$rownum][2]);
-            echo "Field 3 is: " . $field[2][$rownum][3];
-            echo "Field 4 is: " . $field[2][$rownum][4];
-            return $field[2][$rownum][5] = (strcmp($field[2][$rownum][3], $field[2][$rownum][4]) !==0) ? "PASS" : "FAIL";
-
-
-
-        }
+    function hasSideEffects($result) {
+        // Operations that have side effects are those that return an object (like $pheme)
+        return ($result == "\$pheme") ? true : false;
     }
-            $out = fopen('myScore.json', 'w');
-        fwrite($out, json_encode($jsonized));
-        fclose($out);
+
+    $semA = new Semaphore("A");
+    $semA->isKnown("true");
+
+    $f = fopen('skeleton2.json', 'r');
+    $content = fread($f, 100000);
+    $jsonized = json_decode($content, "TRUE");
+    foreach ($jsonized[0] as $field) {
+        echo $field[0] . "\n";
+        echo "Checking that '" . $field[1] . "' has been registered for execution...";
+        echo "\n";
+        if (true && $semA->isKnown($field[1])) {
+            echo "Verified. \nExecuting '" . $field[1] . "'  \n";
+            eval($field[1]);
+            foreach ($field[2] as $rownum => $value) {
+                $testIndex = $field[2][$rownum][0];
+                $testDescription = $field[2][$rownum][1];
+                $testExpression = $field[2][$rownum][2];
+                $expectedResult = "" . $field[2][$rownum][3];
+                if (
+
+
+                // package the expression and expected value into a one-line macroexpr that always returns either true
+                // or false, never anything else
+                $binarySafeExecutable = "return ( (" . $testExpression . ")==" . $field[2][$rownum][3] . ") ? true : false;";
+                $field[2][$rownum][5] = eval($binarySafeExecutable) ? "PASS" : "FAIL";
+                $field[2][$rownum][4] = eval("return " . " $testExpression" . ";");
+                $result = $field[2][$rownum][4];
+
+
+
+                echo "\n";
+                echo "Unmodified expression         : " . $testExpression . "\n";
+                echo "Binary-safe macroexpansion    : " . $binarySafeExecutable . "\n";
+                echo "Value required to return true : " . $expectedResult . "\n";
+                echo "Value received                : " . $result . "\n";
+                echo "Value to write                : " . $field[2][$rownum][5] . "\n";
+//                $field[2][$rownum][5] = (strcmp($field[2][$rownum][4], $expectedResult) !== 0)) ? "FAIL" : "PASS";
+//
+
+            }
+        }
+
+            $out = fopen('myScore.json', 'wb');
+            fwrite($out, json_encode($field));
+            fclose($out);
+
+    }
 //    }
 
 }
