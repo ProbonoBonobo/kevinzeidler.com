@@ -10,58 +10,104 @@ class Semaphore
 {
 
     public $target;
-    private $regA, $regB, $regC;
+    public $regA, $regB, $regC;
     private $isLocked;
+    public $name;
+    public $depth;
+    public $theEmptyString, $theEmptyList;
+    public $ret;
 
-    function Semaphore($r1, $r2, $r3, $targ='0', $isLocked=false) {
-        echo "Constructing semaphore. . .\n";
-
-        $this->regA = $r1;
-        $this->regB = $r2;
-        $this->regC = $r3;
-
-
-
-        $this->target = 0;
-        $this->isLocked = $isLocked;
+    function Semaphore($name, $depth=0, $isLocked=false, $r1="theEmptyString", $r2="theEmptyList", $r3="theEmptyList", $targ=0) {
+//        echo "Constructing semaphore '" . $name . "' at depth " . $depth . ". . . \n";
+            $this->name = $name;
+            $this->depth = $depth;
+            $this->isLocked = $isLocked;
+            $this->regA = $r1;
+            $this->regB = $r2;
+            $this->regC = $r3;
+            $this->target = $targ;
 
 
     }
+
+    public function isEmpty($reg) {
+        // we define emptiness a little differently than PHP
+        switch ($reg) {
+            case 'regA':
+                // Interesting. I think this HAS to be resolved to either true or false in the context of
+                // this function. If it isn't, it doesn't get resolved in the macro body either
+                return (strcmp($this->get('regA'), "theEmptyString") !== 0) ? 0: 1;
+            case 'regB':
+                return (strcmp($this->get('regB'), "theEmptyList") !== 0) ? 0 : 1;
+            case 'regC':
+                return (strcmp($this->get('regC'), "theEmptyList") !== 0) ? 0 : 1;
+            }
+        }
 
 
 
     private function val() {
-        $ret = array($this->regA, $this->regB, $this->regC);
+        $ret = array("0" => $this->regA, "1" => $this->regB, "2" => $this->regC);
         return $ret;
     }
 
     public function get($request) {
-
+        $ret = "";
             switch ($request) {
+                case 'name' :
+                    $ret = $this->name;
+                    return $ret;
+                case 'depth':
+                    return "root";
+
                 case 'currentValue':
                     $ret = $this->curr();
                     return $ret;
-                case 'currentTarget' :
-                    return $this->target;
-                case 'all':
-                    return $this->val();
+                case 'currentTarget':
+                    $ret = $this->target;
+                    return $ret;
                 case 'color':
                     return ($this->isLocked) ? 'red' : 'green';
-                case 'regA' || 0:
-                    return $this->regA;
-                case 'regB' || 1:
-                    return $this->regB;
-                case 'regC' || 2:
-                    return $this->regC;
+                case 'regA':
+                    $ret .= $this->regA;
+                    return $ret;
+                case 'regB':
+//                    $ret = "";
+//                    if (is_array($this->regB) && count($this->regB) > 0) {
+//                        $ret .= "( ";
+//                        foreach ($this->regB as $datum) {
+//                            $ret .= " " . $datum->valueOf . " ";
+//                        }
+//                        $ret .= ") ";
+//                        return $ret;
+//                    } else {
+                        $ret .= $this->regB;
+                        return $ret;
+//
+                case 'regC':
+                    $ret = "";
+//                    if (is_array($this->regC) && count($this->regC) > 0) {
+//                        $ret .= "( ";
+//                        foreach ($this->regC as $datum) {
+//                            $ret .= " " . $datum->valueOf . " ";
+//                        }
+//                        $ret .= ") ";
+//                        return $ret;
+//                    } else {
+                        $ret .= $this->regC;
+                        return $ret;
+
                 default:
-                    echo $request . " is not a valid argument to get.\n";
+                    trigger_error($request . " is not a valid argument to get.\n", E_USER_WARNING);
             }
+        return ret;
     }
 
     private function curr() {
         // Private utility method for converting the 'target' index to a pointer
         $myVal = $this->val();
-        return $myVal[$this->target];
+        $currentIndex = $this->target;
+        return $myVal[$currentIndex];
     }
 
 
@@ -79,7 +125,7 @@ class Semaphore
     public function inspect($property) {
         switch($property) {
             case 'empty':
-                $ret = array(empty($this->regA), empty($this->regB), empty($this->regC));
+                $ret = array(isEmpty($this->regA), isEmpty($this->regB), isEmpty($this->regC));
 
         }
     }
@@ -89,10 +135,10 @@ class Semaphore
         // notempty, empty, empty
         //
         $ret = 0;
-        $ret += (!($this->isLocked)) ? 0 : 1;
-        $ret += (empty($this->regA)) ? 0 : 2;
-        $ret += (empty($this->regB)) ? 0 : 4;
-        $ret += (empty($this->regC)) ? 0 : 8;
+        $ret += ($this->isLocked) ? 1 : 0;
+        $ret += ($this->isEmpty('regA')) ? 0 : 2;
+        $ret += ($this->isEmpty('regB')) ? 0 : 4;
+        $ret += ($this->isEmpty('regC')) ? 0 : 8;
         return $ret;
     }
 
@@ -135,7 +181,8 @@ class Semaphore
             case 3:
                 // precondition: regA is nonempty and locked. target is 1
                 $this->regB = $val;
-                $this-> target += 1;
+                $this->target += 1;
+                $this->isLocked = false;
                 $success=true;
                 // postcondition: regA, regB are nonempty. regB is unlocked. target is 2.
 
@@ -166,30 +213,41 @@ class Semaphore
                 //
                 //               "proceed" in this context might mean several things. reduce
                 //
-                echo "\n\nNot yet implemented.\n";
-                echo "But here's what it would look like if we added them to an array.\n";
-                $this->regC =  array('car' => $this->regA, 'cdr' => $this->regB);
-                echo $this->get($this->regC) .  "\nYou could explore the status codes of impossible cases\n";
-                echo "that would be uniquely triggered, should you hypothetically elect to flush regA and regB right now.\n\n";
-                echo "Maybe the '", $val, "' parameter could be a test of regC's sanity.\n";
-                $success = true;
+                $env = array();
+               $this->regC = array_push($env, $this->regC);
+               $this->regC;
                 break;
             case 8:
                 // precondition: only regC is nonempty. It is also unlocked.
-                echo "Not yet implemented: Case 10\n";
+                echo "Not yet implemented: Case 8\n";
                 break;
             case 9:
-                // precondition: only regC is nonempty. It is locked. regA and regB have both been flushed.
+                // precondition: only regC is nonempty. It is locked.
                 echo "Not yet implemented: Case 9\n";
                 break;
+            case 10:
+                // pc: regC and regA nonempty and unlocked
+                echo "Not yet implemented: Case 10\n";
+                break;
+            case 11:
+                // pc: regC and regA nonempty and locked
+                echo "Not yet implemented: Case 11\n";
+                break;
+            case 12:
+                // pc: regC and regB nonempty and unlocked
+                echo "Not yet implemented: Case 12\n";
+                break;
+            case 13:
+                // pc: regC and regB nonempty and locked
+                echo "Not yet implemented: Case 13\n";
+                break;
+            case 14:
+                // pc: all registers have stuff, but it's currently unlocked
+                echo "Not yet implemented: Case 14\n";
 
             case 15:
-                echo "Not yet implemented\n";
-                echo "This is the case where regA, regB, and regC are not only nonempty, but locked. \n";
-                echo "This likely means we want to keep regC and return the pointer to regA. \n";
-                $this->regB=null;
-                $this->regA=null;
-                $this->target=0;
+                // pc: all registers have stuff, and it's locked
+                echo "Not yet implemented: Case 15\n";
                 break;
 
 

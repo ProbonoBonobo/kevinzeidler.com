@@ -218,6 +218,28 @@
       <!--</script>-->
       <!--<div id="map" class="clearfix"></div>-->
 
+<script>
+    $.getJSON( "myScore.json", function( data ) {
+        var tbl_body = "";
+        $.each(data, function() {
+            var tbl_row = "";
+            $.each(this, function(k,v) {
+                console.log("Now searching: " + k, v);
+            });
+//            $.each
+//            var section_title = data[0];
+//            var env = data[1];
+//            console.log(section_title, env);
+//            tbl_body += "<h2>"+section_title+"</h2><br><code>"+env+"</code><td>";
+//            var tbl_row = "";
+//            $.each(this[2],function(k,v) {
+//                tbl_row += "<td>"+v+"</td>";
+//            });
+            tbl_body = "<tr>"+tbl_row+"</tr>";
+        });
+        $("#root-testing-container").append(tbl_body);
+    });
+</script>
 </function>
 </script>
 </script>
