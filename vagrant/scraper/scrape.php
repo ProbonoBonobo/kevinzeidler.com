@@ -17,7 +17,7 @@ fclose($fp);
 
 
 
-$scraped = file_get_contents("./cached/yelp.html");
+$scraped = file_get_contents("./cached/new.html");
 
 
 // instantiate the object model
