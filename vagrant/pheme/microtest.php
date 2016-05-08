@@ -37,7 +37,7 @@ if (strcmp($expectedResult, $result2) == 0) {
     echo "They're different.";
 }
 
-echo "\n\nTest of bitwise comparison statements\n\n";
+echo "\n\nTest of bitwise, binary-safe comparison statements\n\n";
 $exp1 = "'something' && 'foo'";
 $exp2 = $exp1 . "==true";
 $exp3 = "return (" . $exp2 . ") ? true : false";
@@ -56,6 +56,43 @@ echo "Expr5: " . $exp5 . "\n";
 echo "Result: " . eval($exp5 . ";") . "\n";
 echo "Expr6: " . $exp6 . "\n";
 echo "Result: " . eval($exp6 . ";") . "\n";
+
+
+echo"\n\n\nSigned Binary string test:\n";
+$signedBinary = pack('n',0111);
+function convertTo64bitBinary($bin){
+    $bitmask = "000000000000000000000000000000000000000000000000000000000000000";
+    $bin = "" . $bin;
+    for ($i=0; $i< 64; $i++) {
+        $bin .= $bitmask[$i] ^ $bin[$i];
+    }
+    return $bin;
+}
+
+
+function bindec2($bin)
+{
+    if (strlen($bin) == 64 && $bin[0] == '1') {
+        for ($i = 0; $i < 64; $i++) {
+            $bin[$i] = $bin[$i] == '1' ? '0' : '1';
+        }
+
+        return (bindec($bin) + 1) * -1;
+    }
+    return bindec($bin);
+}
+
+$arr = array("not empty", "not empty", "empty");
+$binArr = "";
+//foreach ($arr as $varContainer) {
+//    $binArr .= ($arr !== "empty") ? "1" : "0";
+//}
+echo "binArr is now: " . $binArr;
+$zeroPadded = sprintf("%'064d\n", 19339399393923939943);
+
+echo $zeroPadded$
+
+
 ///usr/local/Cellar/php56/5.6.21/bin/php /Users/kevinzeidler/rhizome/mohole/public/vagrant/pheme/microtest.php
 //Comparing 1 and 1: They're different.
 //Comparing 0 and 1: They're the same.

@@ -36,7 +36,7 @@ fclose($fp);
 
 
 
-$scraped = file_get_contents("scraped.html");
+$scraped = file_get_contents("cached.html");
 $PARTITIONED = array('html' => array(range(0,19)),
 				     'xpath' => array(range(0,19)),
 	                 'dom' => array(range(0,19)),
@@ -238,12 +238,14 @@ $json = array();
         }
     }
 
+//
+//echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-var_dump($scraped_xpath->query($KEYRING["city"][0]));
+//var_dump($scraped_xpath->query($KEYRING["city"][0]));
 $json = json_encode($json);
-var_dump($json);
+$out = fopen('test6.json', 'w');
+fwrite($out, $json);
+fclose($out);
 //var_dump($json);
 //print $json;
 

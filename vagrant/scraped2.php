@@ -263,23 +263,11 @@ if(!empty($scraped)) { //if any html is actually returned
 //    echo "]";
 //}
 
-			$output = json_enode($review_list);
+			$output = json_encode($review_list);
             echo $output;
 			$ctr += 1;
 		}
 	}
-
-
-//function zeroDay($dateObj) {
-//    echo (~$dateObj == $dateObj);
-//}
-//zeroDay(time());
-
-//foreach ($PARTITIONED as $field => $value ) {
-//    foreach ($PARTITIONED[$field] as $v) {
-//        print $field . $v;
-//    }
-//}
 
 
 

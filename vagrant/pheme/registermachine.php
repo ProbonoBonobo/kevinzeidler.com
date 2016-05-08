@@ -146,7 +146,7 @@ function init()
         return $semaphore->quickInspect();
     }
 
-    function hasSideEffects($result) {
+    function isDynamic($result) {
         // Operations that have side effects are those that return an object (like $pheme)
         return ($result == "\$pheme") ? true : false;
     }
@@ -169,7 +169,12 @@ function init()
                 $testDescription = $field[2][$rownum][1];
                 $testExpression = $field[2][$rownum][2];
                 $expectedResult = "" . $field[2][$rownum][3];
-                if (
+                if (isDynamic($expectedResult)) {
+                    echo "" . $testExpression . " appears to be a non-static expression. I'll try to explode it";
+                    eval($testExpression . ";");
+                    $field[2][$rownum][5] = "N/A";
+                    $field[2][$rownum][4] = var_dump($expectedResult);
+                } else {
 
 
                 // package the expression and expected value into a one-line macroexpr that always returns either true
@@ -191,6 +196,7 @@ function init()
 //
 
             }
+        }
         }
 
             $out = fopen('myScore.json', 'wb');

@@ -136,18 +136,34 @@
         "5" : "^ 0"
       },
       {
+              "0" : "13",
+              "1" : "Current target should still be regA.",
+              "2" : "$pheme->get('currentTargetName')",
+              "3" : "'regA'",
+              "4" : "",
+              "5" : "^ 0"
+            },
+      {
         "0" : "14",
         "1" : "Add something else to it.",
-        "2" : "$pheme->push('5')",
-        "3" : "false",
+        "2" : "$pheme->push('subtract')",
+        "3" : "$pheme",
         "4" : "",
         "5" : "^ 0"
       },
       {
+                    "0" : "13",
+                    "1" : "Target remains the same.",
+                    "2" : "$pheme->get('currentTargetName')",
+                    "3" : "'regA'",
+                    "4" : "",
+                    "5" : "^ 0"
+                  },
+      {
         "0" : "15",
-        "1" : "The value of regA remains the same.",
-        "2" : "$pheme->get(regA)",
-        "3" : "'add'",
+        "1" : "The value of regA is now 'subtract'.'",
+        "2" : "$pheme->get('regA')",
+        "3" : "'subtract'",
         "4" : "",
         "5" : "^ 0"
       },
@@ -169,7 +185,7 @@
       },
       {
         "0" : "16",
-        "1" : "The binary view is probably more informative though:",
+        "1" : "The binary view is more informative though",
         "2" : "bin($pheme)",
         "3" : "10",
         "4" : "",
@@ -180,7 +196,7 @@
         "0" : "17",
         "1" : "A red semaphore must be flushed or locked before proceeding. Try locking it.",
         "2" : "$pheme->lock()",
-        "3" : "true",
+        "3" : "$pheme",
         "4" : "",
         "5" : "^ 0"
       },
@@ -189,7 +205,7 @@
         "0" : "18",
         "1" : "Successful lock operations always add 1 to the current status code.",
         "2" : "statusCode($pheme)",
-        "3" : "true",
+        "3" : "3",
         "4" : "",
         "5" : "^ 0"
       },
@@ -198,7 +214,7 @@
         "0" : "18",
         "1" : "And the new binary representation thus becomes...",
         "2" : "bin($pheme)",
-        "3" : "true",
+        "3" : "11",
         "4" : "",
         "5" : "^ 0"
       },
@@ -215,7 +231,7 @@
         "0" : "20",
         "1" : "We may now resume adding stuff to the semaphore.",
         "2" : "$pheme->push('5')",
-        "3" : "true",
+        "3" : "$pheme",
         "4" : "",
         "5" : "^ 0"
       },
@@ -223,13 +239,13 @@
         "0" : "21",
         "1" : "regB is an array, so we can push multiple values to it. Push another number.",
         "2" : "$pheme->push('3289')",
-        "3" : "true",
+        "3" : "$pheme",
         "4" : "",
         "5" : "^ 0"
       },
       {
         "0" : "19",
-        "1" : "Notice its color is still green, meaning you could keep going.",
+        "1" : "Its color should remain green",
         "2" : "$pheme->get('color')",
         "3" : "'green'",
         "4" : "",
@@ -255,14 +271,14 @@
         "0" : "21",
         "1" : "Try locking it.",
         "2" : "$pheme->lock()",
-        "3" : "true",
+        "3" : "$pheme",
         "4" : "",
         "5" : "^ 0"
       },
       {
         "0" : "21",
         "1" : "regB should be an array of 2 numbers",
-        "2" : "$pheme->get('regB')",
+        "2" : "is_array($pheme->get('regB'))",
         "3" : "true",
         "4" : "",
         "5" : "^ 0"
@@ -272,7 +288,7 @@
         "0" : "21",
         "1" : "Now push!",
         "2" : "$pheme->push('equals')",
-        "3" : "true",
+        "3" : "$pheme",
         "4" : "",
         "5" : "^ 0"
       }

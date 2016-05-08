@@ -1,0 +1,76 @@
+array(6) {
+  'name' =>
+  array(3) {
+    [0] =>
+    string(45) "//meta[contains(@itemprop,'author')]/@content"
+    [1] =>
+    string(74) "//div[@class='review review--with-sidebar']//a[@class='user-display-name']"
+    [2] =>
+    string(31) "//a[@class='user-display-name']"
+  }
+  'city' =>
+  array(1) {
+    [0] =>
+    string(63) "//div[@class='review review--with-sidebar']//b[contains(.,',')]"
+  }
+  'avatar' =>
+  array(1) {
+    [0] =>
+    string(102) "//img[contains(@src,'60s.jpg') and contains(@src, '/photo/') or contains(@src,'default_avatars')]/@src"
+  }
+  'rating' =>
+  array(3) {
+    [0] =>
+    string(135) "//div[contains(@itemtype, "http://schema.org/Rating")]/div/i[contains(@class, 'star-img') and contains(@title, 'star rating')]/img/@alt"
+    [1] =>
+    string(85) "//div[@class='review review--with-sidebar']//meta[@itemprop = 'ratingValue']/@content"
+    [2] =>
+    string(74) "//div[@itemprop='reviewRating']/div/meta[@itemprop='ratingValue']/@content"
+  }
+  'content' =>
+  array(1) {
+    [0] =>
+    string(71) "//div[@class='review review--with-sidebar']//p[@itemprop='description']"
+  }
+  'date' =>
+  array(2) {
+    [0] =>
+    string(52) "//meta[contains(@itemprop,'datePublished')]/@content"
+    [1] =>
+    string(85) "//div[@class='review review--with-sidebar']//meta[@itemprop='datePublished']/@content"
+  }
+}
+<div class="outer">
+        <h2>Variables</h2>
+            <span class="vartable">$KEYRING</span>
+            <span class="vartable">$PARTITIONED</span>
+            <span class="vartable">$OUTPUT</span>
+</div>success
+
+             success
+
+             success
+
+             success
+
+             success
+
+             success
+
+             
+Notice: Undefined index: HTTP_HOST in /Users/kevinzeidler/rhizome/mohole/public/vagrant/scrape.php on line 242
+
+Call Stack:
+    0.0012     247928   1. {main}() /Users/kevinzeidler/rhizome/mohole/public/vagrant/scrape.php:0
+
+
+Notice: Undefined index: REQUEST_URI in /Users/kevinzeidler/rhizome/mohole/public/vagrant/scrape.php on line 242
+
+Call Stack:
+    0.0012     247928   1. {main}() /Users/kevinzeidler/rhizome/mohole/public/vagrant/scrape.php:0
+
+http://class DOMNodeList#112 (1) {
+  public $length =>
+  int(20)
+}
+string(16164) "{"\/\/meta[contains(@itemprop,'author')]\/@content":[],"0":{"name":"Juelz T.","city":"San Diego, CA","avatar":"\/\/s3-media1.fl.yelpcdn.com\/photo\/n5hmZqtn73Sl0d1fMg52zA\/60s.jpg","rating":"5.0 star rating","content":"\n                                    There is no worst way to start a weekend... It is Saturday morning and you drop your new phone and completely shatter your phone! :(\n                                    When I first started to search for a repair provider, I came to discover that they were not available, have run out of the supplies, or simply don't respond. \u00a0On the contrary to that, Jacob with Mobile iPhone iPad screen repair was our light at the end of the tunnel. We need our phone repaired today, and he is able to accommodate and fit us in!\n                                    Once we meet up, with Jacob, he's amazing! He is friendly, professional, and fast! He did an amazing job repairing our phone!!\n                                    So if you find your"...

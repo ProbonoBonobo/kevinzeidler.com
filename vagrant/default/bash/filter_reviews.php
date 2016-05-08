@@ -56,7 +56,7 @@ function reviewPassesInspection($output) {
 }
 
 function inputPassesSanityCheck($obj) {
-    fore
+    return true;
 }
 
 function build_sorter($key) {

@@ -10,6 +10,10 @@ function curl($url) {
     return $data;   // Returning the data from the function
 }
 
-echo curl("http://www.yelp.com/biz/mobile-iphone-repair-ipad-screen-repair-san-diego-24");
+$cached = file_get_contents("http://www.yelp.com/biz/mobile-iphone-repair-ipad-screen-repair-san-diego-26");
+echo $cached;
+//$out = fopen('cached.html', 'w');
+//fwrite($out, $cached);
+//fclose($out);
 
 ?>

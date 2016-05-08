@@ -108,7 +108,11 @@ class Semaphore
                         return "The target pointer is in a strange place.";
                      }
                 case 'color':
-                    return ($this->isLocked) ? $ret .= 'green' : $ret .='red';
+                    if ($this->target == 0) {
+                        return ($this->isLocked) ? 'green' : 'red';
+                    } elseif ($this->target == 2 || 3) {
+                        return ($this->isLocked) ? 'red' : 'green';
+                    }
                 case 'regA':
                     $ret .= $this->regA;
                     return $ret;
@@ -202,6 +206,10 @@ class Semaphore
         return $this->atom2Action($this->regA, $this->regB);
     }
 
+    private function isPrimitiveReducer($arg) {
+        return ($arg == "equals") ? true : false;
+    }
+
 
 
 
@@ -211,112 +219,104 @@ class Semaphore
         $status = $this->quickInspect();
         echo " Now attempting to push " . $val . " to " . $this->get('currentTargetName');
         echo " Current status is: " . $status . ". \n";
-        switch ($status) {
-           // The following status codes can't currently be true: 1, 2, 3, 4, 5, 6, 7
-
-
-            case 0:
-                // precondition: semaphore is empty. target is 0.
-                $this->regA = $val;
-                $this->target += 1;
-
-                return true;
+        if ($this->isLocked==true) {
+            switch ($status) {
+                case 0:
+                    // precondition: semaphore is empty. target is 0.
+                    $this->regA = $val;
+                    return true;
                 // postcondition: regA nonempty and unlocked. target is 1.
 
-            case 1:
+                case 1:
 
-                // precondition: regA is empty yet somehow locked
-                // postcondition: fatal error
+                    // precondition: regA is empty yet somehow locked
+                    // postcondition: fatal error
+                    return false;
+
+                case 2:
+                    // precondition: regA is nonempty and unlocked. target is 0.
+                    $this->regA = $val;
+                    return true;
+
+                case 3:
+                    // precondition: regA is nonempty. target is 1
+                    $this->regB = array();
+                    array_push($this->regB, $val);
+                    return true;
+                // postcondition: regA, regB are nonempty.
+
+                case 4:
+                    // precondition: impossible scenario
+                    return false;
+                case 5:
+                    // precondition: impossible scenario
+                    return false;
+                case 6:
+                    // precondition: regA, regB are nonempty and regB is unlocked. Target is 2.
+                    //
+                    // postcondition: I suppose in this case it may be best to keep pushing to the second register
+                    //                to accommodate vararg functions
+
+                    if ($this->isPrimitiveReducer($val)) {
+                        $this->regC = [$this->atom2action($this->regA, $this->regB)];
+
+                    }
+                    array_push($this->regB, $val);
+                    return true;
+
+
+                case 7:
+                    // precondition: regA, regB are nonempty, locked, and loaded. Target is 2.
+                    //
+                    //               This should probably trigger evaluation of the regA/regB pair.
+                    //
+                    //               The '$val' parameter *~might~* be useful as a reference to one or more constraints
+                    //               the result must satisfy in order to proceed.
+                    //
+                    //               "proceed" in this context might mean several things. reduce?
+                    //
+                    $this->regC = array();
+                    array_push($this->regC, $this->atom2Action($this->regA, $this->regB));
+                    //              ($this->autoEval($val)==true) ? $this->isLocked = true : $this->isLocked = false;
+                    return true;
+
+
+                case 8:
+                    // precondition: only regC is nonempty. It is also unlocked.
+                    echo "Not yet implemented: Case 8\n";
+                    break;
+                case 9:
+                    // precondition: only regC is nonempty. It is locked.
+                    echo "Not yet implemented: Case 9\n";
+                    break;
+                case 10:
+                    // pc: regC and regA nonempty and unlocked
+                    echo "Not yet implemented: Case 10\n";
+                    break;
+                case 11:
+                    // pc: regC and regA nonempty and locked
+                    echo "Not yet implemented: Case 11\n";
+                    break;
+                case 12:
+                    // pc: regC and regB nonempty and unlocked
+                    echo "Not yet implemented: Case 12\n";
+                    break;
+                case 13:
+                    // pc: regC and regB nonempty and locked
+                    echo "Not yet implemented: Case 13\n";
+                    break;
+                case 14:
+                    // pc: all registers have stuff, but it's currently unlocked
+                    return false;
+
+                case 15:
+                    // pc: all registers have stuff, and it's locked
+                    return $this->regC;
+
+
+            } else {
                 return false;
-
-            case 2:
-                // precondition: regA is nonempty and unlocked. target is 0.
-                return false;
-                // postcondition: no change. must lock or flush first. target is 0.
-
-            case 3:
-                // precondition: regA is nonempty and locked. target is 1
-                $this->regB = array();
-                array_push($this->regB, $val);
-
-                $this->isLocked = false;
-                return true;
-                // postcondition: regA, regB are nonempty. regB is unlocked. target is 2.
-
-            case 4:
-                // precondition: impossible scenario
-                return false;
-            case 5:
-                // precondition: impossible scenario
-//                echo "Error: Impossible scenario.\n";
-//                echo "Reason: This is the impossible case in which regB is nonempty, but the value of regA has\n";
-//                echo "somehow been flushed. Additionally, regB is locked.\n";
-                return false;
-            case 6:
-                // precondition: regA, regB are nonempty and regB is unlocked. Target is 2.
-//
-                // postcondition: I suppose in this case it may be best to keep pushing to the second register
-                //                to accommodate vararg functions
-
-                array_push($this->regB, $val);
-                $this->isLocked = false;
-                return true;
-
-
-            case 7:
-                // precondition: regA, regB are nonempty, locked, and loaded. Target is 2.
-                //
-                //               This should probably trigger evaluation of the regA/regB pair.
-                //
-                //               The '$val' parameter *~might~* be useful as a reference to one or more constraints
-                //               the result must satisfy in order to proceed.
-                //
-                //               "proceed" in this context might mean several things. reduce?
-                //
-               $this->regC = array();
-
-               array_push($this->regC, $this->atom2Action($this->regA, $this->regB));
-               $this->target += 1;
-
-
-//               ($this->autoEval($val)==true) ? $this->isLocked = true : $this->isLocked = false;
-              return true;
-
-
-            case 8:
-                // precondition: only regC is nonempty. It is also unlocked.
-                echo "Not yet implemented: Case 8\n";
-                break;
-            case 9:
-                // precondition: only regC is nonempty. It is locked.
-                echo "Not yet implemented: Case 9\n";
-                break;
-            case 10:
-                // pc: regC and regA nonempty and unlocked
-                echo "Not yet implemented: Case 10\n";
-                break;
-            case 11:
-                // pc: regC and regA nonempty and locked
-                echo "Not yet implemented: Case 11\n";
-                break;
-            case 12:
-                // pc: regC and regB nonempty and unlocked
-                echo "Not yet implemented: Case 12\n";
-                break;
-            case 13:
-                // pc: regC and regB nonempty and locked
-                echo "Not yet implemented: Case 13\n";
-                break;
-            case 14:
-                // pc: all registers have stuff, but it's currently unlocked
-                return false;
-
-            case 15:
-                // pc: all registers have stuff, and it's locked
-                return $this->regC;
-
-
-
+            }
 
 
         }
