@@ -975,7 +975,7 @@
             }
 
             data =
-                    $.getJSON( "../test4.json", function ( data ) {
+                    $.getJSON( "../scraper/mostrecent.json", function ( data ) {
                         console.log(data);
 
                         var size = Object.keys(data).length;
@@ -1000,7 +1000,7 @@
                                       + data[ r1 ][ 'city' ]
                                       + "</span></div>"
                                    ).insertAfter( "#reviewer-name" );
-                                   $( "<img src =\"" + data[ r1 ][ 'avatar' ] + "\" id='avatar'>" )
+                                   $( "<img src =\"" + data[ r1 ][ 'HDAvatar' ] + "\" id='avatar'>" )
                                            .insertAfter( "#reviewer-avatar" );
                                    $( "<img id=\"stars\" src ='img/YelpStars5.jpg' >" ).insertAfter( "#star-rating" );
                                    $( "<p class=\"review-body\">" + data[ r1 ][ 'review' ] + "</p>" ).insertAfter(

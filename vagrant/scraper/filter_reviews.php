@@ -31,6 +31,13 @@ function isFiveStars($rating) {
     return (strcmp($rating, "5.0") !== 1);
 }
 
+function getHDAvatar($currentURI)
+{
+    $hdURI = "http://" . substr($currentURI, 2, -7) . "ls.jpg";
+    return $hdURI;
+}
+
+
 function build_sorter($key) {
     return function ($a, $b) use ($key) {
         return strnatcmp($b[$key], $a[$key]);
@@ -42,7 +49,7 @@ foreach ($json as $value) {
     // Use $field and $value here
 
     foreach ($json[$ctr] as $field) {
-
+        getHDAvatar($json[$ctr]['avatar'], $ctr);
 
         $review = $json[$ctr]['content'];
         $rating = $json[$ctr]['rating'];
@@ -50,6 +57,7 @@ foreach ($json as $value) {
         $avatar = $json[$ctr]['avatar'];
         $city = $json[$ctr]['city'];
         $name = $json[$ctr]['name'];
+        $HDAvatar = getHDAvatar($avatar);
 
         if (!$review || !$rating || !$date || !$avatar || !$city) {
             echo "o shit there a problem wit yo shit";
@@ -61,7 +69,8 @@ foreach ($json as $value) {
                 'review' => $review,
                 'name' => $name,
                 'avatar' => $avatar,
-                'city' => $city));
+                'city' => $city,
+                'HDAvatar' => $HDAvatar));
 
         } else {
 

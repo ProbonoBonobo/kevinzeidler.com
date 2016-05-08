@@ -27,7 +27,7 @@ $scraped = file_get_contents("./cached/new.html");
 if(!empty($scraped)) { //if any html is actually returned
     $DOM = new DOMDocument('1.0', 'UTF-8');
     $DOM->preserveWhiteSpace = true;
-    $DOM->loadHTMLFile("./cached/yelp.html"); //reconstitute the DOM from html
+    $DOM->loadHTMLFile("./cached/new.html"); //reconstitute the DOM from html
     $DOM->formatOutput = true;
     $DOM->encoding = 'UTF-8';
     $htm = $DOM->saveXML();
