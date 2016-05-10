@@ -16,7 +16,7 @@ fwrite($fp, json_encode($KEYRING, JSON_FORCE_OBJECT));
 fclose($fp);
 
 
-
+// This is the output location of the wget cronjob. Don't change it.
 $scraped = file_get_contents("./cached/new.html");
 
 
@@ -40,10 +40,8 @@ if(!empty($scraped)) { //if any html is actually returned
     foreach ($KEYRING as $category => $value) {
         foreach ($KEYRING[$category] as $querystring) {
             $xpath_results = $scraped_xpath->query($querystring);
-            $json[$querystring] = array();
             $reviewIndex = 0;
             if ($xpath_results->length == 20) {
-                array_push($success, $category);
                 foreach ($xpath_results as $res) {
                     $json[$reviewIndex][$category] = $xpath_results->item($reviewIndex)->nodeValue;
                     $reviewIndex++;

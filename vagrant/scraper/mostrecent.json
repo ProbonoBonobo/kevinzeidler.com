@@ -13,7 +13,7 @@
         "name": "Jessica D.",
         "avatar": "\/\/s3-media3.fl.yelpcdn.com\/assets\/srv0\/yelp_styleguide\/20983a63ea50\/assets\/img\/default_avatars\/user_60_square.png",
         "city": "San Diego, CA",
-        "HDAvatar": "img\/anon.jpg"
+        "HDAvatar": ".\/img\/anon.jpg"
     },
     {
         "date": "2016-04-29",

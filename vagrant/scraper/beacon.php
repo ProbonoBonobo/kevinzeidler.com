@@ -22,7 +22,7 @@ function init() {
     else {
         $recent = file_get_contents('mostrecent.json', 'r');
 //        mail('sandiegophonerepairs@gmail.com', "You have a new review on Yelp!", "To view, go to http://kevinzeidler.com/vagrant/default. You could also read the raw JSON below*. \n(Note: If the review is less than 5 stars, it won't appear below -- or on the site.)\n\n\n" . $recent);
-        mail('kzeidler@gmail.com', "You have a new review on Yelp!", "To view, go to http://kevinzeidler.com/vagrant/default. You could also read the raw JSON below.\n\n\n" . $recent . "\n\nPublic key: ExG%:u'LFfuj-9~*%YH!N#^FET}z93hF");
+        mail('kzeidler@gmail.com', "You have a new review on Yelp!", "To view, go to http://kevinzeidler.com/vagrant/default. You could also read the raw JSON below.\n\n\n========== Top 3: ==========\n" . $recent . "\n===========================\n\n\n========== Scraped: ==========\n" . $new . "\n===========================\n\n\nPublic key: ExG%:u'LFfuj-9~*%YH!N#^FET}z93hF");
         $stale = fopen('./old.json', 'w');
         fwrite($stale, $new);
         fclose($stale);
