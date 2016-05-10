@@ -20,8 +20,9 @@ $maxLength = 550;
 $filtered = [];
 $json = json_decode($f,true);
 
-
+echo $json;
 $ctr = 0;
+echo $ctr;
 
 function shortEnough($review) {
     return (strlen($review) < 550);
@@ -33,6 +34,16 @@ function isFiveStars($rating) {
 
 function getHDAvatar($currentURI)
 {
+    // the HD avatar is located in the same place as the low-res avatar, but
+    // called "ls.jpg" instead of "60s.jpg"
+
+    if (substr($currentURI, -18) == 'user_60_square.png') {
+        // One exception: if the user doesn't have an avatar, the URI will
+        // end in "user_60_square.png" and have no HD version. in that case,
+        // route to a local HD copy of the anonymous avatar
+        return "./img/anon.jpg";
+    }
+
     $hdURI = "http://" . substr($currentURI, 2, -7) . "ls.jpg";
     return $hdURI;
 }
@@ -47,6 +58,7 @@ function build_sorter($key) {
 foreach ($json as $value) {
 
     // Use $field and $value here
+    echo $value;
 
     foreach ($json[$ctr] as $field) {
         getHDAvatar($json[$ctr]['avatar'], $ctr);
@@ -88,4 +100,4 @@ usort($filtered, build_sorter('date'));
 $out = fopen('mostrecent.json', 'w');
 fwrite($out, json_encode(array_slice($filtered,0,3), JSON_PRETTY_PRINT));
 fclose($out);
-
+?>
