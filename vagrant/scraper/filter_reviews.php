@@ -86,6 +86,6 @@ foreach ($json as $value) {
 usort($filtered, build_sorter('date'));
 
 $out = fopen('mostrecent.json', 'w');
-fwrite($out, json_encode(array_slice($filtered,0,3)));
+fwrite($out, json_encode(array_slice($filtered,0,3), JSON_PRETTY_PRINT));
 fclose($out);
 

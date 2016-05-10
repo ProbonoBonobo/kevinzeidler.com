@@ -56,7 +56,7 @@ if(!empty($scraped)) { //if any html is actually returned
 }
 
 
-$json = json_encode($json);
+$json = json_encode($json, JSON_PRETTY_PRINT);
 $out = fopen('results.json', 'w');
 fwrite($out, $json);
 fclose($out);
