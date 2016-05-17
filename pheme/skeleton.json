@@ -1,0 +1,2 @@
+{"0": "Basic semaphore operations.", "Code" : "$pheme = new Semaphore(\'pheme\');\n", "Tests" : {"0": {"0" : "0", "1" : "create a semaphore.", "2" :  "return (isset($pheme)) ? 1: 0;", "3":  "1", "4": "", "5": ""},
+  "1" : {"0": "1", "1": "Each should have 3 memory registers.", "2" : "return $pheme->get('regA') && $pheme->get('regB') && $pheme->get('regC');", "3": "1", "4": "", "5": "pass" }}}

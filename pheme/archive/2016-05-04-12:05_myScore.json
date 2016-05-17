@@ -1,0 +1,2 @@
+{"0": {"0" : "0", "1" : "Create a semaphore.", "2" :  "$pheme = new Semaphore('pheme')", "3":  "(isSet($pheme)) ? 1 : 0;", "4":  "(isSet($pheme)) ? 1 : 0;", "5": "pass"},
+  "1" : {"0": "1", "1": "Put something in it.", "2" : "look($pheme);", "3": "Th ? 1 : 0;", "4": "Th ? 1 : 0;" "5": "pass" }}

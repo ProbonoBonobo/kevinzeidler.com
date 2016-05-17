@@ -1,0 +1,301 @@
+{
+  "0" :
+  [{
+    "0" : "Basic semaphore operations.",
+    "1" : "$pheme = new Semaphore('pheme');",
+    "2" :
+    [
+      {
+        "0" : "null",
+        "1" : "Sanity check: True assertions pass (should PASS)",
+        "2" : "true",
+        "3" : "1",
+        "4" : "^ 0",
+        "5" : "^ 0"
+      },
+
+      {
+        "0" : "null",
+        "1" : "Sanity check: False assertions fail (should FAIL)",
+        "2" : "false",
+        "3" : "1",
+        "4" : "^ 0",
+        "5" : "^ 0"
+      },
+
+      {
+        "0" : "0",
+        "1" : "Create a semaphore.",
+        "2" : "isset($pheme)",
+        "3" : "1",
+        "4" : "^ 0",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "1",
+        "1" : "A semaphore has 3 memory registers.",
+        "2" : "$pheme->get('regA') && $pheme->get('regB') && $pheme->get('regC')",
+        "3" : "1",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "2",
+        "1" : "The first register is always a string.",
+        "2" : "is_string($pheme->get('regA'))",
+        "3" : "1",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "3",
+        "1" : "Always. Even when the register is empty.",
+        "2" : "$pheme->get('regA')",
+        "3" : "'theEmptyString'",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "4",
+        "1" : "If the register contains 'theEmptyString', then it's empty.",
+        "2" : "$pheme->isEmpty('regA')",
+        "3" : "true",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "5",
+        "1" : "The second register is a string *only* when it is empty.",
+        "2" : "$pheme->get('regB')",
+        "3" : "'theEmptyList'",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "6",
+        "1" : "This is also presumed to be true for the third register.",
+        "2" : "$pheme->get('regC')",
+        "3" : "'theEmptyList'",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "7",
+        "1" : "Semaphores therefore must implement the idea of 'emptiness' differently from the underlying PHP.",
+        "2" : "$pheme->isEmpty('regB')",
+        "3" : "true",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "8",
+        "1" : "This should never be true.",
+        "2" : "empty($pheme->get('regB'))",
+        "3" : "false",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "9",
+        "1" : "Empty semaphores are identified by a status code of 0.",
+        "2" : "statusCode($pheme)",
+        "3" : "0",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "10",
+        "1" : "There is an alternate view mode that will come in handy later.",
+        "2" : "bin($pheme)",
+        "3" : "0",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "11",
+        "1" : "The target register is initially set to regA.",
+        "2" : "$pheme->get('currentTargetName')",
+        "3" : "'regA'",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "12",
+        "1" : "Let's add something to the semaphore.",
+        "2" : "$pheme->push('add')",
+        "3" : "$pheme",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "13",
+        "1" : "Semaphore pushes the value to the target register.",
+        "2" : "$pheme->get('regA')",
+        "3" : "'add'",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+              "0" : "14",
+              "1" : "Current target should still be regA.",
+              "2" : "$pheme->get('currentTargetName')",
+              "3" : "'regA'",
+              "4" : "",
+              "5" : "^ 0"
+            },
+      {
+        "0" : "15",
+        "1" : "Add something else to it.",
+        "2" : "$pheme->push('subtract')",
+        "3" : "$pheme",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+                    "0" : "16",
+                    "1" : "Target remains the same.",
+                    "2" : "$pheme->get('currentTargetName')",
+                    "3" : "'regA'",
+                    "4" : "",
+                    "5" : "^ 0"
+                  },
+      {
+        "0" : "17",
+        "1" : "The value of regA is now 'subtract'.'",
+        "2" : "$pheme->get('regA')",
+        "3" : "'subtract'",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "18",
+        "1" : "Why? Notice the semaphore is red. It flipped its color when we added something to it.",
+        "2" : "$pheme->get('color')",
+        "3" : "'red'",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "19",
+        "1" : "It also has a cool new status code.",
+        "2" : "statusCode($pheme)",
+        "3" : "2",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "20",
+        "1" : "The binary view is more informative though",
+        "2" : "bin($pheme)",
+        "3" : "10",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      
+      {
+        "0" : "21",
+        "1" : "A red semaphore must be flushed or locked before proceeding. Try locking it.",
+        "2" : "$pheme->lock()",
+        "3" : "$pheme",
+        "4" : "",
+        "5" : "^ 0"
+      },
+
+      {
+        "0" : "18",
+        "1" : "Successful lock operations always add 1 to the current status code.",
+        "2" : "statusCode($pheme)",
+        "3" : "3",
+        "4" : "",
+        "5" : "^ 0"
+      },
+
+      {
+        "0" : "18",
+        "1" : "And the new binary representation thus becomes...",
+        "2" : "bin($pheme)",
+        "3" : "11",
+        "4" : "",
+        "5" : "^ 0"
+      },
+
+      {
+        "0" : "19",
+        "1" : "Lock operations also flip the color. ",
+        "2" : "$pheme->get('color')",
+        "3" : "'green'",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "20",
+        "1" : "We may now resume adding stuff to the semaphore.",
+        "2" : "$pheme->push('5')",
+        "3" : "$pheme",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "21",
+        "1" : "regB is an array, so we can push multiple values to it. Push another number.",
+        "2" : "$pheme->push('3289')",
+        "3" : "$pheme",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "19",
+        "1" : "Its color should remain green",
+        "2" : "$pheme->get('color')",
+        "3" : "'green'",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "21",
+        "1" : "Status code is different though.",
+        "2" : "statusCode($pheme)",
+        "3" : "6",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "21",
+        "1" : "The decimal statusCode is derived from binary, which is derived from which of its registers have something inside. The rightmost bit corresponds to the lock bit, so it's zero.",
+        "2" : "bin($pheme)",
+        "3" : "110",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "21",
+        "1" : "Try locking it.",
+        "2" : "$pheme->lock()",
+        "3" : "$pheme",
+        "4" : "",
+        "5" : "^ 0"
+      },
+      {
+        "0" : "21",
+        "1" : "regB should be an array of 2 numbers",
+        "2" : "is_array($pheme->get('regB'))",
+        "3" : "true",
+        "4" : "",
+        "5" : "^ 0"
+      },
+
+      {
+        "0" : "21",
+        "1" : "Now push!",
+        "2" : "$pheme->push('equals')",
+        "3" : "$pheme",
+        "4" : "",
+        "5" : "^ 0"
+      }
+
+
+
+
+    ]
+  }]
+}

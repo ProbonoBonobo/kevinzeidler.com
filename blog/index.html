@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Cardo:400,400italic|Montserrat:700,400' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../maven/style.css"/>
+    <link rel=stylesheet" type="text/css" href="../maven/colors/blue.css"/>
+    <link rel="stylesheet" type="text/css" href="../maven/framework.css"/>
+    <link rel="stylesheet" type="text/css" href="../maven/bootstrap.css"/>
+    <script src="../js/knockout.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/main.js"></script>
+
+    <style>
+        @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css);
+
+        .sidebar {
+            margin-left: 30px;
+        }
+
+        ul.inner-content-list {
+
+            list-style: none;
+            margin-left: 0;
+            padding-left: 8%;
+            padding-right: 10%;
+            padding-bottom: 9px;
+            text-indent: -1em;
+            font-size: 14px;
+        }
+
+        li.inner-content {
+            /*padding-left: 33.3%;*/
+            text-indent: -1.55em;
+            line-height: 18px;
+            -webkit-margin-before: .1em;
+            -webkit-margin-after: .3em;
+            -webkit-margin-start: 0em;
+            -webkit-margin-end: 0px;
+        }
+
+        li.inner-content:before {
+            content: "➙";
+            color: #CA4603;
+            padding-right: 10px;
+        }
+
+        /*li {*/
+        /*font-family: 'Kreon';*/
+        /*font-weight: 400;*/
+        /*font-style: italic;*/
+        /*font-size: 15px;*/
+        /*}*/
+
+        #post-macro-container {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 100%;
+            /*width: 800px;*/
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }
+
+        /*#DIV_1*/
+
+        .post-micro-container {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            position: relative;
+            text-align: left;
+            /*width: 750px;*/
+            /*perspective-origin: 375px 305px;*/
+            /*transform-origin: 375px 305px;*/
+            border-top: 0px none rgb(102, 102, 102);
+            border-right: 0px none rgb(102, 102, 102);
+            border-bottom: 1px solid rgb(233, 233, 233);
+            border-left: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 50px;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 0px 0px 30px 70px;
+        }
+
+        /*#DIV_2*/
+
+        #SPAN_3, #SPAN_21, #SPAN_44, #SPAN_61 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            display: block;
+            height: 62px;
+            left: 0px;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 0px;
+            width: 40px;
+            perspective-origin: 20px 31px;
+            transform-origin: 20px 31px;
+            border-top: 0px none rgb(102, 102, 102);
+            border-right: 0px none rgb(102, 102, 102);
+            border-bottom: 1px solid rgb(233, 233, 233);
+            border-left: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 28.8px / 23.04px Montserrat;
+            outline: rgb(102, 102, 102) none 0px;
+            padding: 0px 0px 10px;
+        }
+
+        /*#SPAN_3, #SPAN_21, #SPAN_44, #SPAN_61*/
+
+        #A_4, #A_22, #A_45, #A_62 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 28.8px / 23.04px Montserrat;
+            outline: rgb(102, 102, 102) none 0px;
+        }
+
+        /*#A_4, #A_22, #A_45, #A_62*/
+
+        #BR_5, #BR_23, #BR_46, #BR_63 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            text-align: center;
+            text-transform: uppercase;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 28.8px / 23.04px Montserrat;
+            outline: rgb(102, 102, 102) none 0px;
+        }
+
+        /*#BR_5, #BR_23, #BR_46, #BR_63*/
+
+        #SMALL_6, #SMALL_24, #SMALL_47, #SMALL_64 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            text-align: center;
+            text-transform: uppercase;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 16.8px / 23.04px Montserrat;
+            outline: rgb(102, 102, 102) none 0px;
+        }
+
+        /*#SMALL_6, #SMALL_24, #SMALL_47, #SMALL_64*/
+
+        .header {
+        }
+
+        .flytitle {
+            display: inline;
+            vertical-align: top;
+
+        }
+
+        .headline {
+            /*box-sizing: border-box;*/
+            color: rgb(102, 102, 102);
+            display: inline;
+            text-align: left;
+            vertical-align: top;
+            width: 680px;
+            /*border: 0px none rgb(102, 102, 102);*/
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }
+
+        /*#DIV_7, #DIV_25, #DIV_48, #DIV_65*/
+
+        .lede {
+            display: inline-block;
+            vertical-align: middle;
+            transform: skewX(-20deg);
+            /*text-indent: -20px;*/
+            letter-spacing: 0px;
+            margin-left: -10px;
+            padding-left: -20px;
+            line-height: 0em;
+            box-sizing: content-box;
+            /*padding: 20px 20px 20px 20px;*/
+            margin-bottom: -10px;
+        }
+
+        .inner-content-block {
+            font-family: "Open Sans Hebrew Condensed";
+            letter-spacing: 1px;
+            display: inline;
+            text-transform: uppercase;
+            font-weight: 200;
+            color: white;
+            letter-spacing: 0px;
+            font-size: 20px;
+            box-sizing: content-box;
+            vertical-align: middle;
+            /*margin-left: -15px;*/
+            /*padding: 0 0px;*/
+            background: #CA4603 none no-repeat scroll 0 0 / auto;
+            /*box-shadow: 15px 0 0 #CA4603, -10px 0 0 #CA4603;*/
+
+            /*font: normal normal normal normal 58px / 64px NHaasGroteskDSPro-75Bd, 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+        }
+
+        .chameleon-continue-link {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(0, 217, 236);
+            display: block;
+            height: 25px;
+            overflow-wrap: break-word;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            width: 566.656px;
+            word-wrap: break-word;
+            perspective-origin: 283.328px 12.5px;
+            transform-origin: 283.328px 12.5px;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(0, 217, 236);
+            font: normal normal normal normal 11px / 25.6px Montserrat;
+            margin: 25px 0px 0px;
+            outline: rgb(0, 217, 236) none 0px;
+            transition: all 0.2s ease 0s;
+
+        }
+
+        .tag-container {
+            display: inline-block;
+            vertical-align: middle;
+            transform: skewX(-20deg);
+            /*text-indent: -20px;*/
+            letter-spacing: 0px;
+            margin-left: -10px;
+            padding-left: -20px;
+            line-height: 0em;
+            box-sizing: content-box;
+            /*padding: 20px 20px 20px 20px;*/
+            margin-bottom: -10px;
+        }
+
+        .taglink {
+            font-family: "Open Sans Hebrew Condensed";
+            letter-spacing: 1px;
+            display: inline;
+            text-transform: uppercase;
+            font-weight: 200;
+            color: white;
+            letter-spacing: 0px;
+            font-size: 20px;
+            box-sizing: content-box;
+            vertical-align: middle;
+            /*margin-left: -15px;*/
+            /*padding: 0 0px;*/
+            background: #CA4603 none no-repeat scroll 0 0 / auto;
+            /*box-shadow: 15px 0 0 #CA4603, -10px 0 0 #CA4603;*/
+
+            /*font: normal normal normal normal 58px / 64px NHaasGroteskDSPro-75Bd, 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+        }
+
+        #H4_8, #H4_26, #H4_49, #H4_66 {
+            box-sizing: border-box;
+            color: rgb(23, 26, 28);
+            height: 36px;
+            letter-spacing: -2px;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 18px;
+            transform-origin: 340px 18px;
+            border: 0px none rgb(23, 26, 28);
+            font: normal normal bold normal 40px / 36px Montserrat;
+            margin: 20px 0px 6px;
+            outline: rgb(23, 26, 28) none 0px;
+        }
+
+        /*#H4_8, #H4_26, #H4_49, #H4_66*/
+
+        #A_9, #A_27, #A_50, #A_67 {
+            background-position: 0px 50%;
+            /*box-sizing: border-box;*/
+            color: rgb(23, 26, 28);
+            letter-spacing: -2px;
+            text-align: left;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(23, 26, 28);
+            font: normal normal bold normal 40px / 36px Montserrat;
+            outline: rgb(23, 26, 28) none 0px;
+            transition: all 0.2s ease 0s;
+        }
+
+        /*#A_9, #A_27, #A_50, #A_67*/
+
+        #DIV_10, #DIV_28, #DIV_51, #DIV_68 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 10px;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 5px;
+            transform-origin: 340px 5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            outline: rgb(102, 102, 102) none 0px;
+        }
+
+        /*#DIV_10, #DIV_28, #DIV_51, #DIV_68*/
+
+        #H6_11, #H6_29, #H6_52, #H6_69 {
+            box-sizing: border-box;
+            color: rgb(170, 170, 170);
+            height: 10px;
+            letter-spacing: 1.8px;
+            text-align: left;
+            text-transform: uppercase;
+            width: 680px;
+            perspective-origin: 340px 5px;
+            transform-origin: 340px 5px;
+            border: 0px none rgb(170, 170, 170);
+            font: normal normal normal normal 9px / 10.8px Montserrat;
+            margin: 20px 0px;
+            outline: rgb(170, 170, 170) none 0px;
+        }
+
+        /*#H6_11, #H6_29, #H6_52, #H6_69*/
+
+        #A_12, #A_13, #A_30, #A_32, #A_53, #A_70 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(170, 170, 170);
+            letter-spacing: 1.8px;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(170, 170, 170);
+            font: normal normal normal normal 9px / 10.8px Montserrat;
+            outline: rgb(170, 170, 170) none 0px;
+            transition: all 0.2s ease 0s;
+        }
+
+        /*#A_12, #A_13, #A_30, #A_32, #A_53, #A_70*/
+
+        #A_14, #A_31, #A_54, #A_71 {
+            background-position: 0px 50%;
+            box-sizing: border-box;
+            color: rgb(170, 170, 170);
+            letter-spacing: 1.8px;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            background: rgba(0, 0, 0, 0) none repeat scroll 0px 50% / auto padding-box border-box;
+            border: 0px none rgb(170, 170, 170);
+            font: normal normal normal normal 9px / 10.8px Montserrat;
+            outline: rgb(170, 170, 170) none 0px;
+            transition: all 0.2s ease 0s;
+        }
+
+        /*#A_14, #A_31, #A_54, #A_71*/
+
+        #DIV_15 {
+            box-sizing: border-box;
+            color: rgb(102, 102, 102);
+            height: 315px;
+            position: relative;
+            text-align: left;
+            width: 680px;
+            perspective-origin: 340px 157.5px;
+            transform-origin: 340px 157.5px;
+            border: 0px none rgb(102, 102, 102);
+            font: normal normal normal normal 18px / normal Cardo;
+            margin: 0px 0px 33px;
+            outline: rgb(102, 102, 102) none 0px;
+        }
+
+        /*#DIV_15*/
+        .image-container {
+            /*margin-left: 3%;*/
+            display: inline-block;
+            /*width: 110%;*/
+            vertical-align: top;
+            /*margin-bottom: 15px;*/
+            margin-left: 2%;
+            margin-top: -5%;
+            width: 110%;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<!-- Loader -->
+<div class="loader center dark">
+    <div class="loader-content">
+        <!--<img src="tmp/kevin-zeidler-logo-clear.png" width="138" height="25" alt="logo"><br>-->
+        <span class="progress-container"><span class="progress"></span></span>
+    </div>
+    <script type="text/javascript">
+        $( window ).load( function () {
+                              $( '.loader' ).delay( 1000 ).fadeOut( 'slow' );
+                          }
+        );
+    </script>
+</div><!-- END LOADER -->
+
+<!-- Header -->
+<header>
+    <!-- Logo -->
+    <div class="header-inner">
+        <a class="logo" href="#"><img src="images/kevin-zeidler-logo-clear.png" alt="logo" width="138" height="25"></a>
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-button">
+        <span class="before"></span>
+        <span class="main"></span>
+        <span class="after"></span>
+    </div>
+</header><!-- END Header -->
+
+<!-- Navigation -->
+<nav class="push-nav push-right" style="background-image: url(tmp/navigation.jpg);">
+    <!-- Logo -->
+    <div class="logo-nav"><a href="#"><img src="images/kevin-zeidler-logo-clear.png" alt="logo" width="138" height="25"></a>
+    </div>
+    <div class="footer-nav">
+        <!-- Social -->
+        <ul class="social">
+            <li><a href="#"><i class="social-icon-behance"></i></a></li>
+            <li><a href="#"><i class="social-icon-twitter"></i></a></li>
+            <li><a href="#"><i class="social-icon-dribbble"></i></a></li>
+            <li><a href="#"><i class="social-icon-instagram"></i></a></li>
+        </ul>
+
+        <!-- Copyright -->
+        <h6>Copyright © 2016 Kevin Zeidler</h6>
+    </div>
+
+</nav>
+<div class="navigation-overlay"></div>
+<div id="wrap">
+
+    <!-- Hero -->
+    <section class="poster dark center padded-xl nav-trigger" style="background-image: url(images/lightningcat.jpg);"
+             data-0="background-position: 0px 0px;" data-top-bottom="background-position: 0px 100px">
+
+        <!-- Hero Content -->
+        <div class="container">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1" data-0="opacity: 1;" data-top-bottom="opacity: 0;">
+                <h2>The blog.</h2>
+                <span class="separator"></span>
+                <h5>latest &amp; greatest news.</h5>
+            </div>
+        </div>
+    </section><!-- END Hero -->
+
+    <!-- Begin Blog Block -->
+    <section class="container">
+        <div class="row">
+
+            <!-- Begin Posts -->
+            <div class="col-sm-8">
+                <div id="post-macro-container" data-bind="foreach: filteredPosts">
+
+
+                    <div class="post-micro-container" data-bind="attr: {id: ID}">
+
+                        <!--BEGIN DATE SPAN-->
+                        <span id="SPAN_3"> <a href="http://maven.themes.tf/2014/12/17/standard-post-with-goodies/"
+                                              id="A_4"><span data-bind="text:DD"></span><br id="BR_5"/>
+                            <small id="SMALL_6" data-bind="text: MMM"></small>
+                        </a></span>
+                        <!--END DATE SPAN-->
+                        <div class="header">
+                            <div class="flytitle">
+                                <h5 data-bind="html: flytitle"></h5>
+                            </div>
+                            <div class="headline">
+                                <h4 data-bind="html: headline"></h4>
+                            </div>
+                            <span class="lede">
+                                <div class="test"></div>
+                                    <h5 data-bind='html: lede, style: { backgroundColor :  $data.bg_color(), boxShadow : $data.myShadow() }'
+                                        class="inner-content-block"></h5>
+                            </span>
+                             <span class="image-container">
+                            <img alt="" data-bind="attr: {src:img}" id="IMG_16"/>
+                            </span>
+                        </div>
+                        <p data-bind="html: $data.contentHead"></p>
+                        <!--Knockout conditionally binds "continue reading" link to the post if the post is abbreviated-->
+                        <!--ko if: contentTail-->
+                        <div class="post-tail">
+                            <a class="chameleon-continue-link" href="#"
+                               data-bind="click: expandPreview, visible: !tailVisible(), style: { color: $data.bg_color() }">Continue
+                                reading...</a>
+                            <div data-bind="html: contentTail, visible: tailVisible"></div>
+                        </div>
+                        <!-- /ko -->
+                        </p>
+                        <!--<a href="http://maven.themes.tf/2014/12/17/standard-post-with-goodies/" >Continue Reading…</a>-->
+                        <!--</p>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+            <!--End Blog post column-->
+            <!-- Begin Blog sidebar column -->
+            <div class="col-sm-4">
+                <div class="sidebar">
+
+                    <!-- Start search widget -->
+                    <div class="widget clearfix">
+                        <form action="#">
+                            <input name="s" id="s" type="text" class="search" placeholder="Search.." value=""/>
+                            <input type="submit" value="Go" class="search-submit"/>
+                        </form>
+                    </div>
+                    <!--End search widget-->
+
+                    <!--Start filter widget -->
+                    <div class="widget_tag_cloud">
+                        <h5>CATEGORIES</h5>
+
+                        <p>Filter posts by tag</p>
+
+                        <div data-bind="foreach: contentFilters" id="cloudcontainer">
+                            <!--The tag container generates the background and skews it-->
+                         <span class="tag-container">
+
+                             <a class="inner-content-block"
+                                data-bind="attr:{href: ('#' + title)}, click: $parent.setActiveFilter, text: title, style: { backgroundColor: $parent.randomColor }"></a><span
+                                 class="tag-separator" style="font-size: 50px; color=gray">, &nbsp;</span>
+                             <span><script>console.log( $( parent ) );</script></span>
+                        </span>
+                            <!--End tag container-->
+                        </div>
+                        <table>
+                            <thead>
+                            <tr data-bind="foreach: headers">
+                                <!--<th data-bind="click: $parent.sort, text: title"></th>-->
+                            </tr>
+                            </thead>
+                        </table>
+                    </div><!--End cloud container-->
+                    <!--End filter widget-->
+                    <div>&nbsp;</div>
+
+                    <div class="widget widget-recent-entries">
+                        <h5>Archives</h5>
+                        <ul data-bind="foreach: chronoFilters" id="archives">
+                            <li>
+                                <a href="#" data-bind="click: $parent.setActiveFilter, text: title"></a>
+                            </li>
+
+                        </ul>
+
+                    </div> <!-- End sidebar (1/2) -->
+                    <div class="widget widget-recent-entries">
+                        <h5>Friends</h5>
+                        <ul>
+                            <li><a href="www.cesweber.com">Ces Weber</a></li>
+                        </ul>
+
+                    </div> <!-- End sidebar (1/2) -->
+                    <!--there is no reason anything should be here-->
+                </div> <!--End sidebar (2/2> -->
+                </div>
+            </div>
+    </section>
+    <!--End blog block-->
+
+
+    <!-- Begin Footer -->
+    <footer class="center black">
+        <div class="container">
+            <!-- Social -->
+            <div class="row">
+                <ul class="social col-xs-12">
+                    <li><a href="#"><i class="social-icon-behance"></i></a></li>
+                    <li><a href="#"><i class="social-icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="social-icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="social-icon-instagram"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- Copyright -->
+            <div class="row">
+                <div class="col-xs-12"><h6>copyright © 2016 Kevin Zeidler</h6></div>
+            </div>
+        </div><!-- END Container -->
+    </footer><!-- END Footer -->
+
+</div><!-- END Main Wrap -->
+
+
+<script>
+    // 2/22: It would appear we need to construct a model of the JSON object in order to filter that object on the client's side.
+    $.ajax( {
+                url: "manifest.json",
+                dataType: 'json',
+                success: function ( res ) {
+                    localStorage.setItem( "dataCache", JSON.stringify( res ) );
+                }
+            }
+    );
+
+    var manifest, db;
+
+
+    if ( localStorage.getItem( "dataCache", 60 * 1000 ) ) {
+        manifest =
+                JSON.parse( localStorage.getItem( "dataCache" ) );
+    }
+
+
+    // Generate an array of all the unique filters
+    var dateFilters = new Set();
+    manifest[ 'posts' ].forEach( function ( o ) { dateFilters.add( o.month + " " + o.year ); } );
+
+    var contentFilters = new Set();
+    var chameleonColors = new Set();
+    manifest[ 'posts' ].forEach( function ( o ) {
+                                     for ( t in o[ 'tags' ] ) {
+                                         if ( o[ 'tags' ][ t ] ) {
+                                             contentFilters.add( o[ 'tags' ][ t ] );
+                                         }
+                                     }
+                                     if ( o[ 'color' ] ) {
+                                         chameleonColors.add( o[ 'color' ] );
+                                     }
+                                 }
+    );
+
+
+    var dateFilterArr = Array.from( dateFilters );
+    var contentFilterArr = Array.from( contentFilters );
+    var chameleonColorScheme = Array.from( chameleonColors );
+    var Post = function ( data, idx ) {
+        var self      = this;
+        self.flytitle =
+                ko.observable();
+
+        $.extend( self, {
+                      ID: idx,
+                      DD: data.day,
+                      MMM: data.month.substring( 0, 3 ),
+                      monthYear: data.month + " " + data.year,
+                      flytitle: data.category,
+                      headline: data.title,
+                      author: data.author,
+                      lede: data.lede,
+                      img: data.image,
+                      contentHead: data.content[ 0 ],
+                      contentTail: data.content[ 1 ] || '',
+                      tags: data.tags.join(),
+                      color: data.color
+                  }
+        );
+        self.tailVisible   =
+                ko.observable( false );
+        self.expandPreview =
+                function () {
+                    self.tailVisible( true );
+                };
+        self.bg_color      =
+                ko.observable( data.color || '#CA4603' );
+        self.myShadow      =
+                ko.computed( function () {
+                                 return ('10px 0 0 ' + data.color + ", -10px 0 0 " + data.color
+                                 );
+                             }
+                );
+        console.log( "Self.myshadow is ", self.myShadow() );
+
+        self.getChameleonColor =
+                ko.computed( function () {
+                                 console.log( "Returning a random chameleon color..." );
+                                 var ret = chameleonColors[ Math.floor( Math.random() * chameleonColors.length ) ];
+                                 console.log( "How about ", ret, "?" );
+                                 return ret;
+                             }
+                );
+    };
+
+    var viewModel = function ( colors ) {
+        var self    = this;
+        self.colors =
+                colors;
+        self.posts  =
+                ko.observableArray();
+
+        self.headers =
+                [
+                    {
+                        title: 'ID',
+                        sortPropertyName: 'ID',
+                        asc: true,
+                        active: true
+                    },
+                    {
+                        title: 'DD',
+                        sortPropertyName: 'DD',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'MMM',
+                        sortPropertyName: 'MMM',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'Publication Date',
+                        sortPropertyName: 'monthYear',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'H2',
+                        sortPropertyName: 'flytitle',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'H1',
+                        sortPropertyName: 'headline',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'Author',
+                        sortPropertyName: 'author',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'Lede',
+                        sortPropertyName: 'lede',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'Image',
+                        sortPropertyName: 'img',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'Head',
+                        sortPropertyName: 'contentHead',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'Tail',
+                        sortPropertyName: 'contentTail',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'Tags',
+                        sortPropertyName: 'tags',
+                        asc: true,
+                        active: false
+                    },
+                    {
+                        title: 'Color',
+                        sortPropertyName: 'color',
+                        asc: true,
+                        active: false
+                    },
+
+                ];
+
+        self.filters =
+                [
+                    {
+                        title: 'Show All',
+                        filter: null
+                    },
+                    {
+                        title: 'Kittens',
+                        filter: function ( item ) {return item.includes( "kittens" );}
+                    },
+                    {
+                        title: 'jQuery',
+                        filter: function ( item ) {return item.tags.includes( "jQuery" );}
+                    },
+                    {
+                        title: 'Eels',
+                        filter: function ( item ) {return item.tags.includes( "eels" ); }
+                    },
+                    {
+                        title: 'Show All',
+                        filter: null
+                    },
+                    {
+                        title: 'February 2016',
+                        filter: function ( item ) {
+                            return item.monthYear == ("February 2016"
+                                    );
+                        }
+                    },
+                    {
+                        title: 'March 2019',
+                        filter: function ( item ) {
+                            return item.monthYear == ("March 2019"
+                                    );
+                        }
+                    }
+                ];
+
+
+        self.chronoFilters   =
+                [];
+        self.contentFilters  =
+                [];
+        self.combinedFilters =
+                [];
+        dateFilterArr.forEach( function ( monthStr ) {
+                                   self.chronoFilters.push(
+                                           {
+                                               title: monthStr,
+                                               count: function ( item ) { return item.month.includes( "Feb" ); },
+                                               filter: function ( item ) {
+                                                   return item.monthYear == (monthStr
+                                                           );
+                                               }
+                                           }
+                                   );
+                               }
+        );
+
+
+        contentFilterArr.forEach( function ( contentTagStr ) {
+                                      self.contentFilters.push(
+                                              {
+                                                  title: contentTagStr,
+                                                  filter: function ( item ) { return item.tags.includes( contentTagStr ); }
+                                              }
+                                      );
+                                  }
+        );
+
+//        self.allFilters = Array.prototype.push.apply(self.chronoFilters, self.contentFilters);
+        var merged = [];
+        merged.push( self.chronoFilters );
+        merged.push( self.contentFilters );
+        self.combinedFilters =
+                [].concat.apply( [], merged );
+
+        console.log( "Created filter " + self.combinedFilters );
+
+
+        self.activeSort =
+                ko.observable( function () {return 0;} ); //set the default sort
+        self.sort =
+                function ( header, event ) {
+                    //if this header was just clicked a second time
+                    if ( header.active ) {
+                        header.asc =
+                                !header.asc; //toggle the direction of the sort
+                    }
+                    //make sure all other headers are set to inactive
+                    ko.utils.arrayForEach( self.headers,
+                                           function ( item ) {
+                                               item.active =
+                                                       false;
+                                           }
+                    );
+                    //the header that was just clicked is now active
+                    header.active =
+                            true;//our now-active header
+
+                    var prop     = header.sortPropertyName;
+                    var ascSort  = function ( a, b ) {
+                        return a[ prop ] < b[ prop ] ? -1 : a[ prop ]
+                                                            > b[ prop ] ? 1 : a[ prop ]
+                                                                              == b[ prop ] ? 0 : 0;
+                    };
+                    var descSort = function ( a, b ) {
+                        return a[ prop ] > b[ prop ] ? -1 : a[ prop ]
+                                                            < b[ prop ] ? 1 : a[ prop ]
+                                                                              == b[ prop ] ? 0 : 0;
+                    };
+                    var sortFunc = header.asc ? ascSort : descSort;
+
+                    //store the new active sort function
+                    self.activeSort( sortFunc );
+                };
+
+        self.activeFilter =
+                ko.observable( self.filters[ 0 ].filter );//set a default filter
+        self.setActiveFilter =
+                function ( model, event ) {
+                    self.activeFilter( model.filter );
+                };
+
+        self.color       =
+                ko.observable( self.colors[ 0 ] || 'red' );
+        self.randomColor =
+                ko.computed( function () {
+                                 var i = manifest[ 'length' ];
+                                 return manifest[ 'posts' ][ 6 ][ 'color' ];
+                             }
+                );
+
+        self.filteredPosts =
+                ko.computed( function () {
+                                 var result;
+                                 if ( self.activeFilter() ) {
+                                     result =
+                                             ko.utils.arrayFilter( self.posts(), self.activeFilter() );
+                                 }
+                                 else {
+                                     result =
+                                             self.posts();
+                                 }
+                                 return result.sort( self.activeSort() );
+                             }
+                );
+
+
+        self.loadManifest =
+                function ( manifest ) {
+                    self.posts( manifest.posts.map( function ( data, i ) {
+                                                        return new Post( data, i );
+                                                    }
+                                )
+                    );
+                };
+
+        self.sort( self.headers[ 0 ] );
+    };
+
+    vm =
+            new viewModel( chameleonColorScheme );
+    ko.applyBindings( vm );
+
+    vm.loadManifest( manifest );
+
+</script>
+
+
+</body>
+</html>

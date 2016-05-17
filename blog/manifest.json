@@ -1,0 +1,175 @@
+{
+  "length" : "8" ,
+  "posts" : [
+    {
+      "id" : "0" ,
+      "category" : "Test post, please ignore" ,
+      "title" : "Creating a Blog From Scratch" ,
+      "lede" : "Sure we <i>could</i> use a ready-made CMS like Wordpress or Jekyll. What fun would that be?" ,
+      "date" : "2016-02-14" ,
+      "day" : "14" ,
+      "month" : "February" ,
+      "year" : "2016" ,
+      "time" : "2:00:00AM" ,
+      "image" : "./images/demo/standard.jpg" ,
+      "author" : "Kevin Zeidler" ,
+      "avatar" : "me.jpg" ,
+      "color" : "#CA4603",
+      "tags" : [
+        "Behind the scenes" ,
+        "jQuery" ,
+        "Javascript" ,
+        "Web Development"
+      ] ,
+      "displayoption" : "truncate" ,
+      "content" : [
+        "Here's my very first blog post. If you're reading this, it means we've successfully created a blog from scratch!</p> <p>Now hold on. Blog from scratch? What does that mean exactly? Well, the post you're currently reading is actually written as a JSON object with fields corresponding to the post's 'title', 'author', 'date'.</p>" ,
+        "<p>At some point in the future, we'll probably write an GUI interface to the blog program that outputs JSON objects, and saves us from having to compose new posts in straight-up object notation. The blog.html page requests the json document, and if the request is successful, it will proceed to construct an HTML representation of the formatted page. For starters, it grabs the 0th blog post's title, inserts it between h1 tags, and appends the header to a designated DOM node. Cool, huh?</p><p>So, what happens next? Well, currently I haven't even gotten that far, but our next step will be to write some logic that iterates through the numbered keys of a 'posts.json' response object, and prints fixednum blog posts in order of recency! In fact, let's see if we can't figure that out right now. Stay tuned!</p>"
+      ]
+    } ,
+    {
+      "id" : "1" ,
+      "category" : "Test post, please ignore" ,
+      "title" : "Display posts in order of recency" ,
+      "lede" : "" ,
+      "date" : "2016-02-14" ,
+      "day" : "14" ,
+      "month" : "February" ,
+      "year" : "2016" ,
+      "time" : "2:38:00AM" ,
+      "image" : "./images/time.jpg" ,
+      "author" : "Kevin Zeidler" ,
+      "avatar" : "me.jpg" ,
+      "color" : "#CA4603",
+      "tags" : [
+        "Behind the scenes"
+      ] ,
+      "displayoption" : "default" ,
+      "content" : [
+        "Here's the second post. It should display above the first post.", ""
+      ]
+    } ,
+    {
+      "id" : "2" ,
+      "category" : "Test post, please ignore" ,
+      "title" : "Well, I'll be darned." ,
+      "lede" : "Looks like we got ourselves a blog." ,
+      "date" : "2016-02-14" ,
+      "day" : "14" ,
+      "month" : "February" ,
+      "year" : "2016" ,
+      "time:" : "5:27:00AM" ,
+      "image" : "./images/demo/standard2.jpg" ,
+      "author" : "Kevin Zeidler" ,
+      "avatar" : "me.jpg" ,
+      "color" : "#CA4603",
+      "tags" : [
+        "Behind the scenes",
+        "Javascript"
+      ] ,
+      "displayoption" : "truncate" ,
+      "content" : [
+        "<p>Phew! The hard part's largely done. Now to create a nice CMS interface to the blog, make the blog itself look pretty, and implement a reasonable pagination strategy. I also need to do the following:</p>" ,
+        "<p><ul class=\"inner-content-list\"><li class=\"inner-content\">Implement permanent URLs for blog posts</li><li class=\"inner-content\">Write a CMS utility method that encodes HTML as a JSON-compatible ASCII string</li><li class=\"inner-content\">Introduce style rules for code snippets</li><li class=\"inner-content\">Integrate homepage nav bar(s)</li></ul></p>"
+      ]
+    } ,
+    {
+      "id" : "3" ,
+      "category" : "Test post, please ignore" ,
+      "title" : "Let's do the time warp." ,
+      "lede" : "This goal of this post is to ensure that our date filters are working properly." ,
+      "date" : "2016-02-14" ,
+      "day" : "14" ,
+      "month" : "March" ,
+      "year" : "2019" ,
+      "time:" : "5:27:00AM" ,
+      "image" : "./images/time-travel.jpg" ,
+      "author" : "Kevin Zeidler" ,
+      "avatar" : "me.jpg" ,
+      "color" : "#215389",
+      "tags" : [
+        "Behind the scenes" ,
+        "jQuery"
+      ] ,
+      "displayoption" : "default" ,
+      "content" : [
+        "I actually wrote this on the same day as the other ones, but today, March 16, 2019, I've decided to be a sneaky person. A sneaky, sneaky person.", ""
+      ]
+    } ,
+    {
+      "id" : "4" ,
+      "category" : "Speedy Graffiti" ,
+      "title" : "Building a custom tag engine with jQuery." ,
+      "lede" : "How to generate links on the fly, no PHP required" ,
+      "date" : "2016-02-14" ,
+      "day" : "17" ,
+      "month" : "February" ,
+      "year" : "2016" ,
+      "time:" : "8:08:00PM" ,
+      "image" : "./images/4-alt.jpg" ,
+      "author" : "Kevin Zeidler" ,
+      "avatar" : "me.jpg" ,
+      "color" : "#1DABF1",
+      "tags" : [
+        "Behind the scenes" ,
+        "jQuery" ,
+        "Web Development" ,
+        "Javascript"
+      ] ,
+      "displayoption" : "truncate" ,
+      "content" : [
+        "One of the perks of writing your own CMS is getting to write your own tag engine. I didn't realize how fun it would be to write my own tag engine, but it's really fun. There's at least one or two subproblems inclusive of the larger project that are technically challenging in addition to being really fun. I've very nearly solved those problems, but I'll talk about that later, because I just think it's neat how the technical problems, while cool, are almost fully enclosed within a larger aesthetic question that tends to be answered on your behalf when you use a CMS. A tag engine is basically an API for your content. It's not really special in that way, it's basically a database problem that just happens to concern relationships between the assets that compose your site. It defines, along with the rest of the model, which of your posts can be viewed separately or together and how.", "</p><p>Is this interesting? You can say no; that's alright. That is all right. Sounded frankly dull to me until it occurred to me that decisions made at the application layer carry forward. Have consequences. Materially affect the method and manner of interaction with your content. Are the navigation options flexible, or are they rigid? Are the contents strictly ordered, or decoupled completely? Is it an overwhelmingly linear, reverse-chronological experience, like turning pages in a magazine? Or is it like a Borges story teeming with links and corridors, full of alleyways and adventures — like</p><p><div style=\" margin-left: 30%; width: 50%; position: relative; \"><em>a cloud, <br>in a sky full of clouds,<br>clouds upon clouds...</em><br><small style=\"text-align: center;\"><h6>–Ashbery</h6></small></p> </div><p>Anyway, a thing I've been working on is an AJAX tag manager that filters posts quickly. Like, really quickly. As fast as you can tap a button, up to a limit I don't imagine this site hitting. Links are generated dynamically. This means they are created every time a page or more qualifies to be indexed for some tag or another; if the content gets deleted, those tag pages disappear immediately. No annoying graveyard of old tag pages that were generated once, and persist long after the content's been recategorized or deleted. As an SEO, I used to have to tend to those graveyards. *shudder* They gave me the heebie jeebies. So, uh, in sum, cute little CMS widget that's very fast, very search engine friendly,  and more or less maintains itself. Yay! <a href=\"./tagnav.html\">Here's a demo</a> until I can implement it more fully. I named the lib revok.js after a graffiti artist I like. You  <a href=\"https://github.com/ProbonoBonobo/kevinzeidler.com\">check it out on Github<a>.</p>"]
+    },
+    {
+      "id" : "5" ,
+      "category" : "Just add water" ,
+      "title" : "Post previews that expand on demand" ,
+      "lede" : "Our CMS now smooshes longer posts into a fun, self-modifying preview that expands when clicked",
+      "date" : "2016-02-14" ,
+      "day" : "17" ,
+      "month" : "February" ,
+      "year" : "2016" ,
+      "time:" : "8:08:00PM" ,
+      "image" : "http://www.kevinzeidler.com/images/5.jpg" ,
+      "author" : "Kevin Zeidler" ,
+      "avatar" : "me.jpg" ,
+      "color" : "#C23632",
+      "tags" : [
+        "Behind the scenes" ,
+        "jQuery" ,
+        "Web Development" ,
+        "Javascript"
+      ] ,
+      "displayoption" : "truncate" ,
+      "content" : [
+        "You'll notice that some posts have a 'continue reading...' link. Originally, these links were hardcoded for convenience. But it's a gigantic pain to do that for each post, so I determined it was a high priority to figure out how to teach the client to generate links like this: ",
+        "<p>And insert them automatically, as if by magic. (Voilá.) <p>The result is amazingly lightweight and modular. Right now, the backend needn't lift a finger. The link is inserted by the client, generated by the client, and rendered client-side. How does it know when to insert the link? Well, the client is pretty smart: it determines at runtime whether a post is fully loaded; if not, it inserts a <em>'continue...'</em> link. How neat is that! It's pretty neat.</p>"
+        ]
+      },
+    {
+      "id" : "6" ,
+      "category" : "Graphic Design" ,
+      "title" : "A color for all seasons." ,
+      "lede" : "The current design isn't bad, but the colors probably ought to coordinate",
+      "date" : "2016-02-14" ,
+      "day" : "27" ,
+      "month" : "February" ,
+      "year" : "2016" ,
+      "time:" : "10:08:39PM" ,
+      "image" : "images/6.jpg" ,
+      "author" : "Kevin Zeidler" ,
+      "avatar" : "me.jpg" ,
+      "color" : "#F63873",
+      "tags" : [
+        "Graphic Design",
+        "Behind the scenes"
+      ] ,
+      "displayoption" : "truncate" ,
+      "content" : [
+        "<p>If this works as intended, the text should have a handsome pink background that blends in nicely with the chameleon.</p>", ""
+      ]
+    }
+  ]
+}
+
+
