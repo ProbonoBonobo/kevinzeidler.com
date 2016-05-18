@@ -1,2 +1,0 @@
-{"0": {"0" : "0", "1" : "Create a semaphore.", "2" :  "$pheme = new Semaphore('pheme');", "3":  "(isSet($pheme)) ? 1 : 0;", "4": "pass"},
-  "1" : {"0": "1", "1": "Look at it.", "2" : "look($pheme);", "3": "Th ? 1 : 0;", "4": "pass" }}

@@ -1,1 +1,0 @@
-[["0","Create a semaphore.","$pheme = new Semaphore('pheme');","(isSet($pheme)) ? 1 : 0;","",""],["1","Each semaphore should have 3 registers..","look($pheme);","","","pass"]]
