@@ -6,7 +6,7 @@
 <meta property="og:title" content="BARK BARK I'M A CAT" />
 <meta property="og:url" content="http://kevinzeidler.com/oops/" />
 <meta property="og:description" content="Glenby/19/Los Gatos, CA. Lead Enginner@ Yahoo! I make Drriverless car that run over children" />
-<meta property="og:image" content="http://kevinzeidler.com/oops/img/php_bear.jpg" />
+<meta property="og:image" content="http://kevinzeidler.com/oops/img/phpbear.jpg" />
 </head>
 
 <body>
