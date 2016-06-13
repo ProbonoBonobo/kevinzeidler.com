@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var wordnet = require('wordnet');
+
+    wordnet.lookup('define', function(err, definitions) {
+
+        definitions.forEach(function(definition) {
+            console.log('  words: %s', words.trim());
+            console.log('  %s', definition.glossary);
+        });
+
+    });
+</script>
+</body>
+</html>
