@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="../js/designpatterns.js"></script>
+    <meta charset="UTF-8">
+    <title>Hooters</title>
+</head>
+<body>
+
+
+ <h1>Welcome to Hooters</h1>
+ <p>Please make your selection from the following menu:</p>
+<div id="menu">
+    <span class="menu-section">
+        <h2>Appetizers</h2>
+        <ul class="appetizers">
+            <li class="orderable">
+                <span class="item">Owl wings</span>
+                <span class="price">5.99</span>
+            </li>
+            <li class="orderable">
+                <span class="item">Owl bisque</span>
+                <span class="price">6.50</span>
+            </li>
+            <li class="orderable">
+                <span class="item">Owl kebabs</span>
+                <span class="price">2.00</span>
+            </li>
+        </ul>
+    </span>
+    <span class="menu-section">
+        <h2>Entreés</h2>
+        <ul class="entrees">
+            <li class="orderable">
+                <span class="item">Owl curry</span>
+                <span class="price">12.75</span>
+            </li>
+            <li class="orderable">
+                <span class="item">Rack of owl</span>
+                <span class="price">19.99</span>
+            </li>
+            <li class="orderable">
+                <span class="item">Braised owl shanks</span>
+                <span class="price">17.25</span>
+            </li>
+        </ul>
+    </span>
+</div>
+
+
+
+<script>
+    function makeCounter() {
+        var i = 0;
+        return function() {
+            return ++i;
+        }
+    }
+    function extend( obj, extension ){
+        var menu = {};
+        for ( var key in extension ){
+            var _item = itemNames[key ].textContent,
+                _price = Number(itemPrices[key ].textContent ),
+                _quantity = 0,
+                _rendered = [menuItems[key]];
+
+            menu[_item] = new obj(_item, _price, _quantity, _rendered);
+            makeClickable(extension[key], menu[_item]);
+        }
+        return menu;
+    }
+
+
+
+    function makeClickable(HTMLNode, orderableObject) {
+        HTMLNode.onclick = function() {
+            return basketModule.addItem( orderableObject );
+        }
+    }
+    function updateHandler(HTMLNode) {
+        var basketNode = menu[ HTMLNode ].rendered.get( "basketModule" ),
+            rootBasketNode = document.getElementById("basket" ),
+            subtotal = document.getElementById("subtotal");
+
+        var basketInitialized = function() {
+            return rootBasketNode;
+        };
+        var containerInitialized = function() {
+            return !rootBasketContainer;
+        };
+
+        function createBasket() {
+            rootBasketNode = document.createElement("span");
+            rootBasketNode.setAttribute("id", "basket");
+            rootBasketNode.innerHTML = "You've ordered: ";
+            document.body.appendChild(rootBasketNode);
+        }
+
+        function createNewBasketItem(quantity, item) {
+            var basketContainerNode = document.createElement("span" ),
+                nodeContent = "";
+            if (document.getElementById("basket").childNodes.length > 1) {
+                var lastIndex = document.getElementById("basket").childNodes.length- 1,
+                    lastNode = document.getElementById("basket").childNodes[lastIndex ];
+                    lastNode.innerHTML += ", ";
+
+            }
+            nodeContent += "<span class='item-container'>" +
+                           " <span class='quantity'>" + quantity + "</span>&nbsp;" +
+                           " <span class='item'>" + item + "</span>" +
+                           "</span>";
+            basketContainerNode.innerHTML = nodeContent;
+            menu[ HTMLNode ].rendered.set( "basketModule", basketContainerNode );
+            rootBasketNode.appendChild(basketContainerNode);
+        }
+        function updateBasketItem(quantity, item) {
+            basketNode = menu[ HTMLNode ].rendered.get( "basketModule" );
+            var container = basketNode.firstChild,
+                count = parseInt(container.childNodes[1].innerHTML);
+            count+= 1;
+            container.childNodes[1].innerHTML = count;
+        }
+
+        function initializeSubtotal() {
+            var subtotalContainer = document.createElement("div" ),
+                    nodeContent = "";
+            nodeContent += "<br><i><span id='subtotal-container'>Subtotal: <span id='subtotal'>0.00</span></span></i>";
+            subtotalContainer.innerHTML = nodeContent;
+            document.body.appendChild(subtotalContainer);
+            subtotal = document.getElementById("subtotal");
+        }
+
+
+
+        function updateSubtotal() {
+            subtotal.innerHTML = basketModule.getPrices().reduce(function(previousValue, currentValue) {
+                return previousValue + currentValue;
+            } ).toFixed(2);
+        }
+        if (!rootBasketNode) {
+            console.log( "Initializing a basket" );
+            createBasket();
+        }
+        if (!basketNode) {
+            console.log( "Initializing a container" );
+            createNewBasketItem(1, HTMLNode);
+        } if (!subtotal) {
+            initializeSubtotal();
+        } else {
+            updateBasketItem(1, HTMLNode);
+
+        }
+        updateSubtotal(subtotal);
+        return true;
+
+    }
+
+    var menuItems = document.getElementsByClassName("orderable" ),
+            itemNames = document.getElementsByClassName("item" ),
+            itemPrices = document.getElementsByClassName("price" );
+
+
+    var menu = extend(Orderable,menuItems);
+
+    // Outputs: 2
+    console.log( basketModule.getItemCount() );
+//    var owlCurry = Orderable("owl curry", 5.99);
+
+</script>
+
+</body>
+</html>
