@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
-    <meta property="og:title" content="PLEASE TELL MOM THIS IS NOT HER FAULT" />
-    <meta property="og:url" content="http://kevinzeidler.com/g" />
+    <meta property="og:title" content="JIMMY FALLON SMELLED LIKE ROAST BEEF HE SMELLED LIKE ROAST BEEF" />
+    <meta property="og:url" content="http://kevinzeidler.com/doodles/the-sound-and-the-fieri.html" />
     <meta property="og:description" content="hello i'm guy fieri. when i die i want you to deep-fry me"/>
     <meta property="og:image" content="http://kevinzeidler.com/oops/img/phpbear.jpg" />
     <meta charset="UTF-8">
@@ -18,6 +18,13 @@
     .foodItem {
         position: absolute;
         font-color: "cyan";
+    }
+    .maintext {
+        font-family: 'Arial' !important;
+        font-weight: 900;
+        text-transform: uppercase !important;
+        font-size: 70px;
+        font-color: red;
     }
 </style>
 <body style="background-color: cyan">
@@ -229,20 +236,27 @@
             }
             newFoodNode.style.zIndex =  ctr;
             var food =  randomFood();
-            newFoodNode.innerHTML = "<h1 style=\"font-family: 'Comic Sans', 'Arial'; font-weight: 900; text-transform: uppercase; font-size: 120px; font-color: red; \">" + food + "&nbsp; &nbsp; &nbsp; " + food  + "&nbsp; &nbsp; &nbsp; " +food  + "&nbsp; &nbsp; &nbsp; " + food + "</h1>";
+            newFoodNode.setAttribute("class", "maintext");
+            newFoodNode.innerHTML = "<h1 class='maintext'>" + food + "&nbsp; &nbsp; &nbsp; " + food  + "&nbsp; &nbsp; &nbsp; " +food  + "&nbsp; &nbsp; &nbsp; " + food + "";
             if (!document.getElementById("prev")) {
                 var root = document.getElementById( "target" );
                 var prev = document.getElementById( "last" );
                 newFoodNode.setAttribute( "id", "prev" );
                 root.insertBefore( newFoodNode, prev );
                 console.log( newFoodNode );
+
+            } else {
                 setTimeout(function(x) {
                     setInterval(function(x) {
                         newFoodNode.innerHTML +=
-                                "&nbsp; &nbsp; &nbsp" + food;
+                                "<h1>&nbsp; &nbsp; &nbsp" + food;
+
                     }, 500);
                 }, 8000);
-            } else {
+
+                if (Math.floor(Math.random() * 10) == 1) {
+                    newFoodNode.innerHTML += " <h1>JIMMY FALLON SMELLED LIKE " + food + " HE SMELLED LIKE " + food;
+                }
                 var prev = document.getElementById( "prev" );
                 var parent = prev.parentNode;
                 parent.insertBefore(newFoodNode, prev);
