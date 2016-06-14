@@ -5,7 +5,7 @@
     <meta property="og:title" content="JIMMY FALLON SMELLED LIKE MUESLI HE SMELLED LIKE MUESLI" />
     <meta property="og:url" content="http://kevinzeidler.com/doodles/the-sound-and-the-fieri.html" />
     <meta property="og:description" content="hello i'm guy fieri. when i die i want you to deep-fry me"/>
-    <meta property="og:image" content="http://kevinzeidler.com/doodles/guyfieri/guy-fieri-ham.png" />
+    <meta property="og:image" content="http://kevinzeidler.com/oops/img/phpbear.jpg" />
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -211,8 +211,8 @@
             randomFood = function() { var ret = ""; ret += " " + randomFoods() + "\n\n"; return ret; };
             var newFoodNode = document.createElement( "span" );
             newFoodNode.style.position = "absolute";
-            newFoodNode.style.width = randRange( 200, 2000);
-            newFoodNode.style.height = randRange( 100, 1600 );
+            newFoodNode.style.width = randRange( 300, 1500);
+            newFoodNode.style.height = randRange( 300, 1600 );
             newFoodNode.style.marginLeft = randRange(-500, 2500);
             newFoodNode.style.marginTop = randRange(-200, 3000);
             newFoodNode.style.left = "0px";
@@ -249,10 +249,10 @@
 
 
                 if (Math.floor(Math.random() * 10) == 1) {
-                    newFoodNode.innerHTML += " <h1> JIMMY FALLON SMELLED LIKE " + food + " HE SMELLED LIKE " + food;
+                    newFoodNode.innerHTML += " <h1>JIMMY FALLON SMELLED LIKE " + food + " HE SMELLED LIKE " + food;
                 }
                 if (Math.floor(Math.random() * 10) > 8) {
-                    newFoodNode.innerHTML += " <h1> HELP";
+                    newFoodNode.innerHTML += " <h1>HELP";
                 }
                 if (Math.floor(Math.random() * 10) > 9) {
                     newFoodNode.innerHTML += " <h1> FOR THE LOVE OF GOD PLEASE HELP ME";
@@ -262,12 +262,14 @@
                 parent.insertBefore(newFoodNode, prev);
                 prev.setAttribute("id", "");
                 newFoodNode.setAttribute("id", "prev");
-                newFoodNode.innerHTML +=  "<h1>&nbsp; &nbsp; &nbsp; " + food;
+                newFoodNode.innerHTML +=  "<h1>&nbsp; &nbsp; &nbsp" + food;
                 var rand = Math.floor(Math.random() *100);
                 while (rand > 30 ){
                     setTimeout(function(x) {
-                        newFoodNode.innerHTML += "<h1>&nbsp; &nbsp; &nbsp; " + food;
-                    } );
+                        newFoodNode.innerHTML += "&nbsp; " + food;
+
+                    }, 1500);
+                    rand = Math.floor(Math.random() *100);
                 }
 
             }
