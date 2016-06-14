@@ -246,24 +246,41 @@
                 console.log( newFoodNode );
 
             } else {
-                setTimeout(function(x) {
-                    setInterval(function(x) {
-                        newFoodNode.innerHTML +=
-                                "<h1>&nbsp; &nbsp; &nbsp" + food;
 
-                    }, 500);
-                }, 8000);
 
                 if (Math.floor(Math.random() * 10) == 1) {
-                    newFoodNode.innerHTML += " <h1>JIMMY FALLON SMELLED LIKE " + food + " HE SMELLED LIKE " + food;
+                    newFoodNode.innerHTML += " <h1> JIMMY FALLON SMELLED LIKE " + food + " HE SMELLED LIKE " + food;
+                }
+                if (Math.floor(Math.random() * 10) > 8) {
+                    newFoodNode.innerHTML += " <h1> HELP";
+                }
+                if (Math.floor(Math.random() * 10) > 9) {
+                    newFoodNode.innerHTML += " <h1> FOR THE LOVE OF GOD PLEASE HELP ME";
                 }
                 var prev = document.getElementById( "prev" );
                 var parent = prev.parentNode;
                 parent.insertBefore(newFoodNode, prev);
                 prev.setAttribute("id", "");
                 newFoodNode.setAttribute("id", "prev");
+                newFoodNode.innerHTML +=  "<h1>&nbsp; &nbsp; &nbsp; " + food;
+                var rand = Math.floor(Math.random() *100);
+                while (rand > 30 ){
+                    setTimeout(function(x) {
+                        newFoodNode.innerHTML += "<h1>&nbsp; &nbsp; &nbsp; " + food;
+                    } );
+                }
+
             }
         }, 1000);
+        setInterval(function(x) {
+
+            setTimeout(function(y) {
+                clearInterval(myVar);
+            }, 5000);
+
+        }, 500);
+
+
 
 
 
