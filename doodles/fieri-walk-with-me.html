@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
     <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
-    <meta property="og:title" content="JIMMY FALLON SMELLED LIKE MUESLI HE SMELLED LIKE MUESLI" />
-    <meta property="og:url" content="http://kevinzeidler.com/doodles/the-sound-and-the-fieri.html" />
-    <meta property="og:description" content="hello i'm guy fieri. when i die i want you to deep-fry me"/>
-    <meta property="og:image" content="http://kevinzeidler.com/doodles/guyfieri/guy-fieri-ham.png" />
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -18,13 +14,6 @@
     .foodItem {
         position: absolute;
         font-color: "cyan";
-    }
-    .maintext {
-        font-family: 'Arial' !important;
-        font-weight: 900;
-        text-transform: uppercase !important;
-        font-size: 70px;
-        font-color: red;
     }
 </style>
 <body style="background-color: cyan">
@@ -236,51 +225,27 @@
             }
             newFoodNode.style.zIndex =  ctr;
             var food =  randomFood();
-            newFoodNode.setAttribute("class", "maintext");
-            newFoodNode.innerHTML = "<h1 class='maintext'>" + food + "&nbsp; &nbsp; &nbsp; " + food  + "&nbsp; &nbsp; &nbsp; " +food  + "&nbsp; &nbsp; &nbsp; " + food + "";
+            newFoodNode.innerHTML = "<h1 style=\"font-family: 'Comic Sans', 'Arial'; font-weight: 900; text-transform: uppercase; font-size: 120px; font-color: red; \">" + food + "&nbsp; &nbsp; &nbsp; " + food  + "&nbsp; &nbsp; &nbsp; " +food  + "&nbsp; &nbsp; &nbsp; " + food + "</h1>";
             if (!document.getElementById("prev")) {
                 var root = document.getElementById( "target" );
                 var prev = document.getElementById( "last" );
                 newFoodNode.setAttribute( "id", "prev" );
                 root.insertBefore( newFoodNode, prev );
                 console.log( newFoodNode );
-
+                setTimeout(function(x) {
+                    setInterval(function(x) {
+                        newFoodNode.innerHTML +=
+                                "&nbsp; &nbsp; &nbsp" + food;
+                    }, 500);
+                }, 8000);
             } else {
-
-
-                if (Math.floor(Math.random() * 10) == 1) {
-                    newFoodNode.innerHTML += " <h1> JIMMY FALLON SMELLED LIKE " + food + " HE SMELLED LIKE " + food;
-                }
-                if (Math.floor(Math.random() * 10) > 8) {
-                    newFoodNode.innerHTML += " <h1> HELP";
-                }
-                if (Math.floor(Math.random() * 10) > 9) {
-                    newFoodNode.innerHTML += " <h1> FOR THE LOVE OF GOD PLEASE HELP ME";
-                }
                 var prev = document.getElementById( "prev" );
                 var parent = prev.parentNode;
                 parent.insertBefore(newFoodNode, prev);
                 prev.setAttribute("id", "");
                 newFoodNode.setAttribute("id", "prev");
-                newFoodNode.innerHTML +=  "<h1>&nbsp; &nbsp; &nbsp; " + food;
-                var rand = Math.floor(Math.random() *100);
-                while (rand > 30 ){
-                    setTimeout(function(x) {
-                        newFoodNode.innerHTML += "<h1>&nbsp; &nbsp; &nbsp; " + food;
-                    } );
-                }
-
             }
         }, 1000);
-        setInterval(function(x) {
-
-            setTimeout(function(y) {
-                clearInterval(myVar);
-            }, 5000);
-
-        }, 500);
-
-
 
 
 

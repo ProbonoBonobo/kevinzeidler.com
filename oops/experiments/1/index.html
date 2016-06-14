@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">  
+  <title>Underscore</title>
+  <meta name="description" content="Adventures in functional javascript">
+  <meta name="author" content="Kevin Zeidler">
+  <script src="http://requirejs.org/docs/release/2.2.0/minified/require.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+<script>  
+//define(function( require ){
+  // Ignore me, I'm complaining about nothing
+  //    var _ = require('underscore');
+//});
+
+
+
+function repeatedly(times, fun) { return _.map(_.range(times), fun);
+}
+
+x = [1, 2,3,4,10,39, 10,4,2,1];
+arr = [];
+_.map( _.range( 10 ), function(times) {
+    copied = x; 
+    console.log("Times: " + times);
+    return arr.push(repeatedly(times, copied.pop()));
+    console.log(x);
+    
+});
+console.log("Arr: " + arr);
+
+console.log(arr);
+</script>
+
+</body>
+</html>
