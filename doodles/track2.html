@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var scales = {
+        "G": [369.99,  392.00,  440.00, 493.88, 523.25,  587.33, 659.25]
+    };
+
+    var gScaleA = [369.99,  392.00, 392.00, 440.00, 440.00, 440.00, 493.88, 493.88, 493.88, 493.88, 523.25,  523.25,  523.25,  587.33, 587.33, 659.25];
+    var gScaleB = [493.88, 523.25,  523.25,  587.33, 587.33,  587.33,  659.25,  659.25,  659.25,  659.25, 369.99, 369.99, 369.99, 392.00, 392.00, 440.00];
+
+    function permutations(len) {
+        arr = new Array(len);
+        // do later
+
+        switch (len) {
+            case 2:
+                arr = [[[1],[1]], [[2,2]]];
+                return arr;
+            case 3:
+                arr = [[[1],[1],[1]], [[2,2],[1]], [[1,1],[2]], [[3,3,3]]];
+                return arr;
+            case 4:
+                arr = [[[1],[1],[1],[1]], [[2,2],[1],[1]], [[1],[2,2],[1]], [[1],[1],[2,2]], [[2,2],[2,2]], [[3,3,3],[1]], [[1],[3,3,3]], [[4,4,4,4]]];
+                return arr;
+
+        }
+
+        return arr;
+    }
+
+    function generateMelody(timeSig, keyOf, numberOfBars, tempo) {
+        var notes = scales[keyOf ],
+            beats = permutations(timeSig ),
+            duration = (1/timeSig) * tempo,
+            musicTuples = [];
+
+        function randRange(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        console.log(randRange(0,beats.length));
+
+        for (var i = 0; i < numberOfBars; i++) {
+            var beatsThisBar = beats[randRange(0, beats.length )];
+            for (var j = 0; j < beatsThisBar.length; j++) {
+                var note = beatsThisBar[j];
+                console.log(note.length*duration, notes[randRange(0, 7)]);
+                musicTuples.push([note.length*duration, notes[randRange(0, 7)]]);
+            }
+
+
+        }
+        return musicTuples;
+    }
+
+    function bendPitch(env, osc, sheetMusic, midiChannel) {
+        var note = sheetMusic.pop(),
+            freq = note[1 ],
+            duration = note[0 ],
+                channel = 0,
+            portamento=0.05,
+            attack = 0.05;
+        envelope.gain.value = 1.0;
+        osc.frequency.cancelScheduledValues(midiChannel);
+        osc.frequency.setTargetAtTime( freq, 0, portamento );
+        env.gain.cancelScheduledValues(0);
+        env.gain.setTargetAtTime(1.0, 0, attack);
+
+        if (sheetMusic.length==0) {
+            bendPitch(env, osc, generateMelody(4,"G", 12, 1000), midiChannel);
+        }
+
+        osc.frequency.value = freq;
+        return setTimeout(function (x) {
+            console.log("The rest of the tune is: " + sheetMusic);
+            envelope.gain.value = 0.0;
+            bendPitch(env, osc, sheetMusic, channel);
+        }, duration);
+    }
+
+    function playTune(sheetMusic, midiChannel) {
+        var note   = sheetMusic.pop(),
+            freq = note[1 ],
+            ms = note[0 ];
+
+
+
+        context                    =
+                new AudioContext;
+        oscillator                 =
+                context.createOscillator();
+        oscillator.frequency.setValueAtTime(110, ms);
+
+        envelope = context.createGain();
+        oscillator.connect( envelope );
+        envelope.connect(context.destination);
+        oscillator.start( midiChannel );
+        envelope.gain.value = 1.0;  // Mute the sound
+        setTimeout( function ( x ) { bendPitch(envelope, oscillator, sheetMusic, midiChannel); }, ms );
+
+    }
+
+    var song = generateMelody(4,"G",12,1000);
+    playTune(song, 0);
+    playTune(generateMelody(4,"G",12,1000), 2);
+
+
+
+
+</script>
+
+</body>
+</html>

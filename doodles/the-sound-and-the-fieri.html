@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
-    <meta property="og:title" content="JIMMY FALLON SMELLED LIKE MUESLI HE SMELLED LIKE MUESLI" />
+    <script   src="../js/jquery.js"></script>
+        <meta property="og:title" content="JIMMY FALLON SMELLED LIKE MUESLI HE SMELLED LIKE MUESLI" />
     <meta property="og:url" content="http://kevinzeidler.com/doodles/the-sound-and-the-fieri.html" />
     <meta property="og:description" content="hello i'm guy fieri. when i die i want you to deep-fry me"/>
     <meta property="og:image" content="http://kevinzeidler.com/doodles/guyfieri/guy-fieri-ham.png"/>
@@ -37,8 +37,98 @@
 
 <script>
 
+    var scales = {
+        "G": [369.99,  392.00,  440.00, 493.88, 523.25,  587.33, 659.25]
+    };
+
     var gScaleA = [369.99,  392.00, 392.00, 440.00, 440.00, 440.00, 493.88, 493.88, 493.88, 493.88, 523.25,  523.25,  523.25,  587.33, 587.33, 659.25];
     var gScaleB = [493.88, 523.25,  523.25,  587.33, 587.33,  587.33,  659.25,  659.25,  659.25,  659.25, 369.99, 369.99, 369.99, 392.00, 392.00, 440.00];
+
+    function permutations(len) {
+        arr = new Array(len);
+        // do later
+
+        switch (len) {
+            case 2:
+                arr = [[[1],[1]], [[2,2]]];
+                return arr;
+            case 3:
+                arr = [[[1],[1],[1]], [[2,2],[1]], [[1,1],[2]], [[3,3,3]]];
+                return arr;
+            case 4:
+                arr = [[[1],[1],[1],[1]], [[2,2],[1],[1]], [[1],[2,2],[1]], [[1],[1],[2,2]], [[2,2],[2,2]], [[3,3,3],[1]], [[1],[3,3,3]], [[4,4,4,4]]]
+                return arr;
+
+        }
+
+        return arr;
+    }
+
+    function generateMelody(timeSig, keyOf, numberOfBars, tempo) {
+        var notes = scales[keyOf ],
+            beats = permutations(timeSig ),
+            duration = (1/timeSig) * tempo,
+            musicTuples = [];
+
+        function randRange(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        console.log(randRange(0,beats.length));
+
+        for (var i = 0; i < numberOfBars; i++) {
+            var beatsThisBar = beats[randRange(0, beats.length )];
+            for (var j = 0; j < beatsThisBar.length; j++) {
+                var note = beatsThisBar[j];
+                console.log(note.length*duration, notes[randRange(0, 7)]);
+                musicTuples.push([note.length*duration, notes[randRange(0, 7)]]);
+            }
+
+
+        }
+        return musicTuples;
+    }
+
+    function bendPitch(osc, sheetMusic) {
+        var note = sheetMusic.pop(),
+            freq = note[1 ],
+            duration = note[0 ];
+        if (sheetMusic.length==0) {
+            bendPitch(osc, generateMelody(4,"G", 12, 1000));
+        }
+
+        osc.frequency.value = freq;
+        return setTimeout(function (x) {
+            console.log("The rest of the tune is: " + sheetMusic);
+            bendPitch(osc, sheetMusic);
+        }, duration);
+    }
+
+    function playTune(sheetMusic, midiChannel) {
+        var note   = sheetMusic.pop(),
+            freq = note[1 ],
+            ms = note[0 ];
+
+
+
+        context                    =
+                new AudioContext;
+        oscillator                 =
+                context.createOscillator();
+        oscillator.frequency.value =
+                freq;
+        oscillator.connect( context.destination );
+        oscillator.start( midiChannel );
+        setTimeout( function ( x ) { bendPitch(oscillator, sheetMusic); }, ms );
+
+    }
+
+    var song = generateMelody(4,"G",12,1000);
+    playTune(song, 0);
+
+
+
+
+
 
 
     function shiftPitch(osc, timeSig, freqArr) {
@@ -71,10 +161,10 @@
         oscillator.start( channel );
         setTimeout( function ( x ) { shiftPitch(oscillator, timeSig, this.myArr); }, ms );
     }
-
-    playRandom(0, 2, 4, gScaleA);
-    playRandom(1, 6, 2, gScaleA);
-    playRandom(2, 6, 16, gScaleB);
+//
+//    playRandom(0, 2, 4, gScaleA);
+//    playRandom(1, 6, 2, gScaleA);
+//    playRandom(2, 6, 16, gScaleB);
 
     $.ajax({
                url: "./deps/index.html",
@@ -107,7 +197,7 @@
                    foods = Array.from(foods);
                    foods.forEach(function(x) {
                        foodArr.push( x.textContent);
-                       console.log( x.textContent);
+
                    });
 
 
@@ -115,7 +205,7 @@
                },
                randomFood: function() {
                    var i = Math.floor( Math.random() * foods.length );
-                   console.log( "A random food is: " + foods[ i ] );
+
                    return foods[ i ];
                }
 
@@ -136,7 +226,7 @@
                                                                null
                         );
                         for ( var i = 0; i < nodesSnapshot.snapshotLength; i++ ) {
-                            console.log(nodesSnapshot.snapshotItem( i ));
+
                             result.push( nodesSnapshot.snapshotItem( i ) );
                         }
                         return result;
@@ -151,7 +241,7 @@
 
                     for (var i in tmp) {
                         if ((i-1) % 3 === 0) {
-                            console.log("Evaluating " + tmp[i ].innerText.split(" "));
+
                             var w = tmp[i ].innerText.split(" ");
                             if (w == tmp[i ].innerText) {
                                 adjArr.push(tmp[i ].innerText);
@@ -174,7 +264,7 @@
 
         function randomFoods() {
             var i = Math.floor( Math.random() * foodArr.length );
-            console.log( "A random food is: " + foodArr[ i ] );
+
             return foodArr[ i ];
         }
 
@@ -217,7 +307,7 @@
             newFoodNode.style.marginTop = randRange(-200, 3000);
             newFoodNode.style.left = "0px";
             newFoodNode.style.top = "0px";
-            if (Math.floor(Math.random() * 8) > 1) {
+            if (Math.floor(Math.random() * 8) > 3) {
                 var v = ['./guyfieri/one.jpg', './guyfieri/two.jpg', './guyfieri/three.png',
                         './guyfieri/four.gif','./guyfieri/six.gif', './guyfieri/zero.jpg',
                         './guyfieri/seven.jpg','./guyfieri/eight.gif', './guyfieri/nine.gif',
@@ -231,7 +321,7 @@
                 newFoodNode.style.backgroundSize = "100% 100%";
 
             } else {
-                var v = ["Teal", "Coral", "Crimson", "Cyan", "Fuschia", "HotPink", "LawnGreen" ];
+                var v = ["Teal", "Coral", "Crimson", "Cyan", "Fuchsia", "HotPink", "LawnGreen" ];
                 newFoodNode.style.backgroundColor = v[Math.floor(Math.random() * v.length)];
             }
             newFoodNode.style.zIndex =  ctr;
@@ -271,27 +361,29 @@
                     }, 1500);
                     rand = Math.floor(Math.random() *100);
                 }
+                setInterval(function(x) {
+
+                    setTimeout(function(y) {
+                        clearInterval(y);
+                        clearInterval(x);
+                        clearInterval(newFoodNode);
+                    }, 5000);
+
+                }, 500);
 
             }
         }, 1000);
-        setInterval(function(x) {
-
-            setTimeout(function(y) {
-                clearInterval(myVar);
-            }, 5000);
-
-        }, 500);
 
 
 
 
 
 
-    };
+
+    }
 
 
 
-    setInterval()
 </script>
 
 </body>
