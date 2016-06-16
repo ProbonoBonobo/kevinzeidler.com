@@ -55,6 +55,8 @@
 
 
 <script>
+    var isFirstItem = true; // patches an off-by-1 error for most item quantities
+
     function makeCounter() {
         var i = 0;
         return function() {
@@ -101,7 +103,13 @@
             document.body.appendChild(rootBasketNode);
         }
 
-        function createNewBasketItem(quantity, item) {
+        function createNewBasketItem(quantity, item, firstFlag) {
+
+            if (isFirstItem) {
+                ++quantity;
+                firstFlag = false;
+            }
+
             var basketContainerNode = document.createElement("span" ),
                 nodeContent = "";
             if (document.getElementById("basket").childNodes.length > 1) {
@@ -111,12 +119,13 @@
 
             }
             nodeContent += "<span class='item-container'>" +
-                           " <span class='quantity'>" + quantity + "</span>&nbsp;" +
+                           " <span class='quantity'>" + (quantity-1) + "</span>&nbsp;" +
                            " <span class='item'>" + item + "</span>" +
                            "</span>";
             basketContainerNode.innerHTML = nodeContent;
             menu[ HTMLNode ].rendered.set( "basketModule", basketContainerNode );
             rootBasketNode.appendChild(basketContainerNode);
+            return firstFlag
         }
         function updateBasketItem(quantity, item) {
             basketNode = menu[ HTMLNode ].rendered.get( "basketModule" );
@@ -148,7 +157,10 @@
         }
         if (!basketNode) {
             console.log( "Initializing a container" );
-            createNewBasketItem(1, HTMLNode);
+
+            // yep i agree this is pretty hacky
+            isFirstItem = createNewBasketItem(1, HTMLNode, isFirstItem);
+
         } if (!subtotal) {
             initializeSubtotal();
         } else {
