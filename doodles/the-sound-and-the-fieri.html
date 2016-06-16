@@ -301,10 +301,10 @@
             randomFood = function() { var ret = ""; ret += " " + randomFoods() + "\n\n"; return ret; };
             var newFoodNode = document.createElement( "span" );
             newFoodNode.style.position = "absolute";
-            newFoodNode.style.width = randRange( 300, 1500);
-            newFoodNode.style.height = randRange( 300, 1600 );
-            newFoodNode.style.marginLeft = randRange(-500, 2500);
-            newFoodNode.style.marginTop = randRange(-200, 3000);
+            newFoodNode.style.width = randRange( 600, 1500);
+            newFoodNode.style.height = randRange( 600, 1600 );
+            newFoodNode.style.marginLeft = randRange(-500, 1500);
+            newFoodNode.style.marginTop = randRange(-200, 1500);
             newFoodNode.style.left = "0px";
             newFoodNode.style.top = "0px";
             if (Math.floor(Math.random() * 8) > 3) {
@@ -369,10 +369,10 @@
                         clearInterval(newFoodNode);
                     }, 5000);
 
-                }, 500);
+                }, 1200);
 
             }
-        }, 1000);
+        }, 2000);
 
 
 
