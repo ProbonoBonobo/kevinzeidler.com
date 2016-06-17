@@ -83,7 +83,17 @@
             envelope.gain.value = 0.0;
             bendPitch(env, osc, sheetMusic, channel);
             if (midiChannel < 5) {
-                playTune(generateMelody(4,"G",12,1000), midiChannel+1);
+                try {
+                    playTune( generateMelody( 4,
+                                              "G",
+                                              12 + (2 * midiChannel
+                                              ),
+                                              1000
+                    ), midiChannel + 1
+                    );
+                } catch (e) {
+                    
+                }
             }
 
         }, duration);
