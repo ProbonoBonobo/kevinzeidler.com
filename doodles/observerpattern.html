@@ -3,8 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .observerlist {
+            display: inline;
+            position: relative;
+        }
+        .observer {
+            background-color: rgba(250,250,250,1);
+            text-align: center;
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 200px;
+            position: relative;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        .motherfucker {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            vertical-align: bottom;
+            margin-bottom: 10px;
+            bottom: 0;
+        }
+
+        #bargraph {
+            position: relative;
+
+        }
+        table {
+            position: absolute;
+            text-align: center;
+            width: 33%;
+            left: 33%;
+            vertical-align: bottom;
+            margin-left: auto;
+            margin-right: auto;
+            bottom: 0;
+
+        }
+
+
+        .chart {
+            display:table;
+            vertical-align: bottom;
+            table-layout: fixed;
+
+            /*width:60%;*/
+            max-width:700px;
+            height:100px;
+            bottom: 0;
+            /*margin:0 auto;*/
+
+            background-image:linear-gradient(bottom, rgba(0, 0, 0, 0.1) 2%, transparent 2%);
+            background-size: 100% 50px;
+            background-position: left top;
+
+        }
+
+        li{
+
+            display:table-cell;
+            vertical-align:bottom;
+            height:150px;
+        }
+
+        .bargraph {
+            margin:0 1em;
+            display: block;
+            animation: draw 1s ease-in-out;
+        }
+
+        #xBar {
+
+            width: 60px;
+            height: 60px;
+            background-color: lightcoral;
+        }
+
+        #yBar {
+
+            width: 60px;
+            height: 90px;
+            background-color: lightblue;
+        }
+
+        #zBar {
+
+            width: 60px;
+            height: 120px;
+            background-color: lightgoldenrodyellow;
+        }
+        @keyframes draw{
+            0%{height:0;}
+        }
+    </style>
 </head>
 <body>
+
+<span width="100%" class="observerlist">
+    <span class="observer">
+        <div class="motherfucker">
+        <table>
+            Fig 1.1: Spreadsheet
+            <tr>
+                <th></th>
+                <th>x</th>
+                <th>y</th>
+                <th>z</th>
+            </tr>
+            <tr>
+
+                <td class="selector datatable"><input type="checkbox"></td>
+                <td class="xRepr datatable">5</td>
+                <td class="yRepr datatable">4</td>
+                <td class="zRepr datatable">7</td>
+            </tr>
+            <tr>
+
+                <td class="selector datatable"><input type="checkbox"></td>
+                <td class="xRepr datatable">6</td>
+                <td class="yRepr datatable">18</td>
+                <td class="zRepr datatable">2</td>
+            </tr>
+        </table>
+        </div>
+    </span>
+    <span class="observer" id="bargraph">
+        <div class="motherfucker">
+        Fig 1.2: Bar graph
+        <ul class="chart">
+            <li><span class="xRepr bargraph" id="xBar"></span></li>
+            <li><span class="yRepr bargraph" id="yBar"></span></li>
+            <li><span class="zRepr bargraph" id="zBar"></span></li>
+        </ul>
+        </div>
+    </span>
+    <span class="observer">
+        Fig 1.3: Pie chart
+        <span class="xRepr piechart"></span>
+        <span class="yRepr piechart"></span>
+        <span class="zRepr piechart"></span>
+    </span>
+</span>
 
 </body>
 </html>
