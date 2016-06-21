@@ -156,7 +156,7 @@
     };
 
     function generateMelody(timeSig, scale, octave, numberOfBars, tempo) {
-        var notes = scale2Notes(scale).map(function(note) { return note2Freq[note]*8; } ),
+        var notes = scale2Notes(scale).map(function(note) { return (note2Freq[note]*Math.pow(2,octave)); } ),
             beats = permutations(timeSig ),
             duration = (1/timeSig) * tempo,
             musicTuples = [];
@@ -200,11 +200,13 @@
     }
 
     var song = generateMelody(4, "C Locrian", 2, 100, 800);
-    var song2 = generateMelody(3, "C Locrian", 2, 100, 600);
+    var song2 = generateMelody(3, "C Locrian", 1, 100, 600);
+    var song3 = generateMelody(2, "C Locrian", 3, 100, 400);
 
 
     play(song);
     play(song2);
+    play(song3);
 
 
 
