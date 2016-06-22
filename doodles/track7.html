@@ -11,7 +11,7 @@
 <script>
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-    // somewhat hacky boolean flag that immediately halts the music if set to true
+    // somewhat hacky boolean flag that eventually halts the music if set to true
     var globalInterruptFlag = false;
 
     var dynamicFrequencyTable = {};
@@ -273,11 +273,8 @@
     function beginPlaying(key) {
         globalInterruptFlag = true; // stop the music!
         var song  = generateMelody( 4, key, 2, 1000, 1000 );
-        var harmony = song.map(function(x) {
-            return [x[0], harmonicThOf(x[1], key)];
-
-        });
-        var song2 = generateMelody( 4, key, 4, 1000, 500 );
+        var harmony = deriveHarmonicAccompaniment(song, key, "random");
+        var song2 = generateMelody( 4, key, 4, 1000, 800 );
         var harmony2 = deriveHarmonicAccompaniment(song2, key, "random");
         var song3 = generateMelody( 2, key, 1, 1000, 1000 );
         var harmony3 =  deriveHarmonicAccompaniment(song3, key, "random");
