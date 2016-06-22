@@ -11,6 +11,9 @@
 <script>
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
+    // somewhat hacky boolean flag that immediately halts the music if set to true
+    var globalInterruptFlag = false;
+
     var scales = {
 
         "G": [ 369.99,  392.00,  440.00, 493.88, 523.25,  587.33, 659.25]
@@ -60,7 +63,7 @@
                          A,
                          B,
                          C ],
-            "C Melodic Minor": [ C,
+            "C Minor": [ C,
                                  D,
                                  Eflat,
                                  F,
@@ -99,7 +102,7 @@
                 arr = [[[1],[1]], [[2,2]]];
                 return arr;
             case 3:
-                arr = [[[1],[1],[1]], [[2,2],[1]], [[1,1],[2]], [[3,3,3]]];
+                arr = [[[1],[1],[1]], [[2,2],[1]], [[1],[2,2]], [[3,3,3]]];
                 return arr;
             case 4:
                 arr = [[[1],[1],[1],[1]], [[2,2],[1],[1]], [[1],[2,2],[1]], [[1],[1],[2,2]], [[2,2],[2,2]], [[3,3,3],[1]], [[1],[3,3,3]], [[4,4,4,4]]];
@@ -182,7 +185,7 @@
     }
 
     function play(noteArr) {
-        if (noteArr && noteArr.length > 0) {
+        if (noteArr && noteArr.length > 0 && !(globalInterruptFlag)) {
                 var note = noteArr.pop();
                 if ( note && note.length === 2 ) {
                     keyboard.keyDown( note[ 1 ], note[ 1 ] );
@@ -199,20 +202,34 @@
         }
     }
 
-    var song = generateMelody(4, "C Phrygian", 2, 100, 800);
-    var song2 = generateMelody(3, "C Phrygian", 1, 100, 600);
-    var song3 = generateMelody(2, "C Phrygian", 3, 100, 400);
-    var song4 = generateMelody(4, "C Phrygian", 4, 100, 800);
+    function beginPlaying(key) {
+        globalInterruptFlag = true; // stop the music!
+        var song  = generateMelody( 4, key, 2, 1000, 800 );
+        var song2 = generateMelody( 3, key, 1, 1000, 600 );
+        var song3 = generateMelody( 2, key, 3, 1000, 400 );
+        var song4 = generateMelody( 4, key, 4, 1000, 800 );
+        play(song);
+        play(song2);
+        play(song3);
+        play(song4);
+    }
 
-    play(song);
-    play(song2);
-    play(song3);
-    play(song4);
+
+
+
 
 
 
 
 </script>
+   <button type="button" onclick="beginPlaying('C Major')">C Major</button>
+   <button type="button" onclick="beginPlaying('C Minor')">C Minor</button>
+   <button type="button" onclick="beginPlaying('C Dorian')">C Dorian</button>
+   <button type="button" onclick="beginPlaying('C Lydian')">C Lydian</button>
+   <button type="button" onclick="beginPlaying('C Phrygian')">C Phrygian</button>
+   <button type="button" onclick="beginPlaying('C Locrian')">C Locrian</button>
+
+
 
 </body>
 </html>
