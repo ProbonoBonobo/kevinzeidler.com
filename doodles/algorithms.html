@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var input;
+    input = "5 5\n" +
+            "1 2 60\n" +
+            "3 5 70\n" +
+            "1 4 120\n" +
+            "4 5 150\n" +
+            "2 3 80\n";
+
+    function initMatrix(n,m) {
+        mat = {};
+        for (var i = 1; i <= m; i++) {
+            mat[i] = [];
+            mat[i ].push(false);
+            for (var j = 1; j <= n; j++) {
+                if (i === j) {
+                    mat[i ].push(0);
+                }
+                mat[i ].push(false);
+            }
+        }
+        return mat;
+    }
+    function constructAdjacencyMatrix(stdIn) {
+        var vertices, start, end, N, mat;
+        start = 1;
+        stdIn = stdIn.split("\n" );
+        end = stdIn[0 ].split(" ")[0];
+        N = stdIn[0 ].split(" ")[1];
+        mat = initMatrix(N, N);
+        console.log("The initialized adjacency matrix is: " + mat);
+        vertices = stdIn.slice(1 ).map(function(x) { return x.split(" "); });
+        vertices.pop();
+        console.log("Vertices: " + vertices);
+        for (i = 1; i < N-1; i++) {
+            var nodeA, nodeB, vertexLength, row;
+            row = vertices.pop();
+            row = row.map(Number);
+            nodeA = row[0];
+            nodeB = row[1];
+            vertexLength = row[2];
+            console.log(nodeA, nodeB, vertexLength);
+            mat[nodeA][nodeB] = vertexLength;
+            mat[nodeB][nodeA] = vertexLength;
+        }
+        console.log(mat);
+    }
+
+
+
+
+
+    var x = initMatrix(5,5);
+    console.log(x);
+    constructAdjacencyMatrix(input);
+
+
+</script>
+
+</body>
+</html>
