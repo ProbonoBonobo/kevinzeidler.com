@@ -264,6 +264,20 @@
                                           }
                                 );
                         return harmony;
+            case "randomOneOctaveLower":
+                var interval, isHigher;
+                interval =
+                        randomBool() ? 2 : 4;
+                isHigher =
+                        randomBool();
+                harmony =
+                        song.map( function ( x ) {
+                                      return [ x[ 0 ],
+                                               (harmonicOf( x[ 1 ], interval, isHigher, key )/2) ];
+
+                                  }
+                        );
+                return harmony;
 
                 }
 
@@ -272,25 +286,25 @@
 
     function beginPlaying(key) {
         globalInterruptFlag = true; // stop the music!
-        var song  = generateMelody( 4, key, 2, 1000, 1000 );
+        var song  = generateMelody( 4, key, 2, 100, 1000 );
         var harmony = deriveHarmonicAccompaniment(song, key, "random");
-        var song2 = generateMelody( 4, key, 4, 1000, 800 );
+        var harmonySecondDerivative = deriveHarmonicAccompaniment(harmony, key, "random");
+        var harmonyThirdDerivative = deriveHarmonicAccompaniment(harmony, key, "randomOneOctaveLower");
+        var song2 = generateMelody( 3, key, 4, 100, 750 );
         var harmony2 = deriveHarmonicAccompaniment(song2, key, "random");
-        var song3 = generateMelody( 2, key, 1, 1000, 1000 );
+        var song3 = generateMelody( 2, key, 1, 100, 1000 );
         var harmony3 =  deriveHarmonicAccompaniment(song3, key, "random");
-        var song4 = generateMelody( 4, key, 4, 1000, 800 );
+        var song4 = generateMelody( 4, key, 4, 100, 800 );
         setTimeout(function() {
             // we must wait at most the length of the longest bar to ensure that the music has completely halted
             globalInterruptFlag = false;
 
             play(song);
             play(harmony);
-            play(song2);
-            play(harmony2);
-            play(song3);
-            play(harmony3);
+            play(harmonySecondDerivative);
+//            play(harmonyThirdDerivative);
 
-//            play(song2);
+            play(song2);
 //            play(song3);
 //            play(song4);
         }, maxBarLength);
