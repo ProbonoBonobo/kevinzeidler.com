@@ -147,3 +147,47 @@ function RLE(input) {
 }
 
 console.log(RLE("mississippi nipple bottom"));
+
+var testInputs =  [[10,10], [3,-3,0], [-6,10,1,-19,1,5,-10,-27,6,2,-10,2,1,0,3,-1,-5,-10,3,1,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], [-1, 3, -4, 5, 1, -6, 2, 1], [-2147483648],  [500, 1, -2, -1, 2], [-1,1,1], [1, 2, -3, 0],  [0], [100]];
+function cumulativeSum(arr) {
+    if (Array.isArray(arr) && arr.length > 0){
+        return arr.reduce(function(total, num) { return total + num; });
+    }
+    return 0;
+}
+
+function partitionAt(arr, index) {
+    var arrCopy = arr;
+    return [arrCopy.slice(0,index), arrCopy.slice(index+1)];
+}
+
+function getEquilibriumIndices(arr) {
+    var eqIndices = [];
+    for (var i = 0; i < arr.length; i++) {
+        var splitArr, left, right;
+        splitArr = partitionAt(arr, i);
+        left = splitArr[0];
+        right = splitArr[1];
+        console.log("Evaluating " + splitArr);
+        console.log("Left side: " + left);
+        console.log("right side: " + right);
+        console.log("Left side (Reduced): " + cumulativeSum(left));
+        console.log("Right side: " + cumulativeSum(right));
+        if (cumulativeSum(splitArr[0]) === cumulativeSum(splitArr[1])) {
+            return i;
+        }
+    }
+    return eqIndices;
+}
+console.log("Testing cumulativeSum(arr)...");
+console.log("Does cumulativeSum([1,2,3,4,5,6])' return 21?");
+(cumulativeSum([1,2,3,4,5,6]) === 21) ? console.log("It does! Assertion passed") :
+console.log("Nope! Check your logic.");
+
+results = new Map();
+
+testInputs.map(function(x) {
+    results.set(x, getEquilibriumIndices((x)));
+});
+
+console.log(results);
