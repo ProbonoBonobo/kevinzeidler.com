@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/querty-hancock.js"></script>
+    <script src="../js/minkowskiDB.js"></script>
+    <script src="../js/tone.js"></script>
+
+</head>
+<body>
+<div id="keyboard"></div>
+
+<!--//    window.AudioContext = window.AudioContext || window.webkitAudioContext;-->
+<!--//-->
+<!--//    // somewhat hacky boolean flag that immediately halts the music if set to true-->
+<!--//    var globalInterruptFlag = false;-->
+<!--//-->
+<!--//    function drawFrame(prev) {-->
+<!--//        var cacheAddress = window.localStorage.getItem( "currentLocationOfStateAtom" ),-->
+<!--//                currentTarget = window.localStorage.getItem( "cacheAddress" );-->
+<!--//-->
+<!--//        if ( prev ) {-->
+<!--//            stackframe = currentTarget;-->
+<!--//        }-->
+<!--//    }-->
+<!--//-->
+<!--//    var StackMachine = (function(prev) {-->
+<!--//        var response = { 'query' : "", 'success?' : false, 'response' : "" };-->
+<!--//        var timesig = (prev && prev.ask( 'timesig' )  ) || [ 4, 4 ],-->
+<!--//                queries = (prev && prev.ask( 'queries' )  ) || [],-->
+<!--//                barlength = (prev && prev.ask( 'barlength' )) || timesig[ 1 ],-->
+<!--//                lookupIndex = [ 'melodic' ],-->
+<!--//                db = [-->
+<!--//                    {-->
+<!--//                        'tableName'  : 'melodic',-->
+<!--//                        'meter'      : (prev && prev.ask( 'melodic meter' ))-->
+<!--//                                       || [ 1,-->
+<!--//                                            1,-->
+<!--//                                            2,-->
+<!--//                                            1,-->
+<!--//                                            1,-->
+<!--//                                            2,-->
+<!--//                                            1,-->
+<!--//                                            1,-->
+<!--//                                            1,-->
+<!--//                                            1,-->
+<!--//                                            1,-->
+<!--//                                            1,-->
+<!--//                                            2 ],-->
+<!--//                        'instrument' : (prev && prev.ask( 'melodic instrument' )) || 'synth',-->
+<!--//                        'keyOf'      : (prev && prev.ask( 'melodic keyOf' )) || 'C',-->
+<!--//                        'mode'       : (prev && prev.ask( 'melodic mode' )) || 'major',-->
+<!--//                        'frequency'  : (prev && prev.ask( 'melodic frequency' ))-->
+<!--//                                       || [ 3,-->
+<!--//                                            4,-->
+<!--//                                            0,-->
+<!--//                                            6,-->
+<!--//                                            4,-->
+<!--//                                            0,-->
+<!--//                                            3,-->
+<!--//                                            4,-->
+<!--//                                            0,-->
+<!--//                                            5,-->
+<!--//                                            0,-->
+<!--//                                            8,-->
+<!--//                                            7 ]-->
+<!--//                    }-->
+<!--//                ];-->
+<!--//-->
+<!--//        function makeResponseHeading(q, isValidQ, responseToQ) {-->
+<!--//            response[ 'query' ] = q;-->
+<!--//            response[ 'success?' ] = isValidQ;-->
+<!--//            response[ 'response' ] = cloneObject( responseToQ );-->
+<!--//            return response;-->
+<!--//        }-->
+<!--//-->
+<!--//        function dumpVars() {-->
+<!--//            var dump = {-->
+<!--//                'response'    : response,-->
+<!--//                'timesig'     : timesig,-->
+<!--//                'queries'     : queries,-->
+<!--//                'barlength'   : barlength,-->
+<!--//                'lookupIndex' : lookupIndex,-->
+<!--//                'db'          : db-->
+<!--//            };-->
+<!--//            return dump;-->
+<!--//        }-->
+<!--//-->
+<!--//        function cloneObject(o) {-->
+<!--//            return Object.assign( {}, o );-->
+<!--//        }-->
+<!--//-->
+<!--//        function queryHasTarget(argVec) {-->
+<!--//            return (-->
+<!--//            argVec.length === 2);-->
+<!--//        }-->
+<!--//-->
+<!--//        function rationalizeBeatDuration() {-->
+<!--//            var numerators = db.meter;-->
+<!--//            return numerators.map( function(beatcount) { return beatcount / barlength } );-->
+<!--//        }-->
+<!--//-->
+<!--//        function propSelectorIsValid(prop) {-->
+<!--//            // todo: instantiate an instance of the "database entry" type on the prototype chain and query that-->
+<!--//            var anEntry = db[ 0 ]; //obviously this won't work if the keys differ across db entries, so be mindful-->
+<!--//            return anEntry.hasOwnProperty( prop );-->
+<!--//        }-->
+<!--//-->
+<!--//        return {-->
+<!--//            ask : function(msg) {-->
+<!--//                // a generic interface to our protected state "atom", which is just a plain ol' JS object behind a thin-->
+<!--//                // veil of getters and setters. It's "immutable" so long as we make sure to defensively copy the results-->
+<!--//                // of our queries into the return sig; this function mustn't return any literal refs to the db atom-->
+<!--//                // or its entries.-->
+<!--//-->
+<!--//                console.assert(-->
+<!--//                        typeof(-->
+<!--//                                msg) === "string" || msg instanceof String-->
+<!--//                );-->
+<!--//                var args = msg.split( " " ),-->
+<!--//                        tableName,-->
+<!--//                        tableId,-->
+<!--//                        propName,-->
+<!--//                        target,-->
+<!--//                        ans,-->
+<!--//                        response,-->
+<!--//                        success;-->
+<!--//-->
+<!--//                if ( queryHasTarget( args ) ) {-->
+<!--//                    tableName = args[ 0 ];-->
+<!--//                    propName = args[ 1 ];-->
+<!--//                    tableId = lookupIndex.indexOf( tableName );-->
+<!--//                    if ( tableId > -1 ) {-->
+<!--//                        target = db[ tableId ];-->
+<!--//                        console.log( "Query received: "-->
+<!--//                                     + msg-->
+<!--//                                     + ". It's valid! :) Preparing a shallow copy for return."-->
+<!--//                        );-->
+<!--//                        ans = target[ propName ];-->
+<!--//                    } else {-->
+<!--//                        console.log( "Unknown table: " + tableName + ". (Known tables: " + this.lookupIndex + " )" );-->
+<!--//                        ans = false;-->
+<!--//                    }-->
+<!--//                    success = (-->
+<!--//                    ans !== false);-->
+<!--//                } else if ( args.length === 1 && this.hasOwnProperty( msg ) ) {-->
+<!--//                    ans = this[ msg ];-->
+<!--//                    success = typeof(-->
+<!--//                                    ans) === "undefined";-->
+<!--//                } else {-->
+<!--//                    ans = false;-->
+<!--//                    success = false;-->
+<!--//                }-->
+<!--//                response = makeResponseHeading( msg, success, ans );-->
+<!--//                queries.push( response );-->
+<!--//                return response;-->
+<!--//            },-->
+<!--//-->
+<!--//            unsafePeek : dumpVars,-->
+<!--//-->
+<!--//            safePeek : function() {-->
+<!--//                var obj = dumpVars(),-->
+<!--//                        doppelgaenger;-->
+<!--//                console.log( "Cloning the object before returning..." );-->
+<!--//                doppelgaenger = cloneObject( obj );-->
+<!--//                return doppelgaenger;-->
+<!--//            },-->
+<!--//-->
+<!--//            stringify : function() {-->
+<!--//                var obj = dumpVars();-->
+<!--//                console.log( "Writing the object to a string..." );-->
+<!--//                return JSON.stringify( obj );-->
+<!--//            }-->
+<!--//        }-->
+<!--//    })();-->
+<!--//-->
+<!--//    var dynamicFrequencyTable = {};-->
+<!--//-->
+<!--//    // used to synchronize stopping/starting of individual midi threads-->
+<!--//    var maxBarLength = 1000;-->
+<!--//-->
+<!--//    var scales = {-->
+<!--//-->
+<!--//        "G" : [ 369.99, 392.00, 440.00, 493.88, 523.25, 587.33, 659.25 ]-->
+<!--//    };-->
+<!--//    //create a synth and connect it to the master output (your speakers)-->
+<!--//    var synth = new Tone.Synth().toMaster();-->
+<!--//-->
+<!--//    //play a middle 'C' for the duration of an 8th note-->
+<!--//    synth.triggerAttackRelease( "C4", "8n" );-->
+
+
+<!--</script>-->
+</body>
+</html>

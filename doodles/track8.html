@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="../js/querty-hancock.js"></script>
-
+    <!--<script src="https://raw.githubusercontent.com/adambom/parallel.js/master/lib/parallel.js"></script>-->
 </head>
 <body>
-<div id="keyboard"></div>
+   <div id="keyboard"></div>
 <script>
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -74,12 +74,12 @@
 
 
             "C Minor": [ C,
-                         D,
-                         Eflat,
-                         F,
-                         G,
-                         A,
-                         B ],
+                                 D,
+                                 Eflat,
+                                 F,
+                                 G,
+                                 A,
+                                 B ],
             "C Dorian" : [C, D, Eflat, F, G, A, Bflat ],
             "C Lydian" : [C, D, E, Fsharp, G, A, B ],
             "C Phrygian" : [C, Dflat, Eflat, F, G, Aflat, Bflat ],
@@ -100,17 +100,14 @@
         })
     }
 
-    function harmonicOf(freq, interval, isHigher, key) {
-        if (interval !== 2 && interval !== 4) {
-            console.log("FYI -- " + interval + " isn't a harmonic interval ")
-        }
+    function harmonicThirdOf(freq, key) {
         var baseNote, baseOctave, harmonicNote, harmonicFreq;
         console.log("Looking up " + freq + " in the global table. Its value is: " +  dynamicFrequencyTable[freq]);
         console.log("This key: " + scale2Notes(key ));
         baseNote = dynamicFrequencyTable[freq][0];
         baseOctave = dynamicFrequencyTable[freq][1];
         baseKeyIndex = scale2Notes(key ).indexOf(baseNote);
-        harmonicIndex = (isHigher) ? (baseKeyIndex + interval) % 7 : (baseKeyIndex - interval) % 7;
+        harmonicIndex = (baseKeyIndex + 2) % 7;
         console.log("That's a " + baseNote + " with index " + baseKeyIndex + " in the key of " + key +". The harmonic third would be the kew with index " + harmonicIndex + ", a " + scale2Notes(key)[harmonicIndex] + "!");
         harmonicNote =scale2Notes(key)[harmonicIndex];
         harmonicFreq = note2Freq[harmonicNote] * Math.pow(2,baseOctave);
@@ -227,61 +224,41 @@
 
     function play(noteArr) {
         if (noteArr && noteArr.length > 0 && !(globalInterruptFlag)) {
-            var note = noteArr.pop();
-            if ( note && note.length === 2 ) {
-                keyboard.keyDown( note[ 1 ], note[ 1 ] );
-                setTimeout( function () {
-                                keyboard.keyUp( note[ 1 ], note[ 1 ] );
-                                return play(noteArr);
-                            }, note[ 0 ]
-                );
+                var note = noteArr.pop();
+                if ( note && note.length === 2 ) {
+                    keyboard.keyDown( note[ 1 ], note[ 1 ] );
+                    setTimeout( function () {
+                                    keyboard.keyUp( note[ 1 ], note[ 1 ] );
+                                    return play(noteArr);
+                                }, note[ 0 ]
+                    );
 
+                }
             }
-        }
         else {
 //            return play(generateMelody(4, "C Dorian", 2, 20, 1000));
         }
     }
 
-    function deriveHarmonicAccompaniment(song, key, mode) {
-        function randomBool() {
-            return (Math.floor(Math.random()*2)+1)===1;
-
-        }
-       var harmony;
-        switch (mode) {
-                    case "random":
-                        var interval, isHigher;
-                        interval =
-                                randomBool() ? 2 : 4;
-                        isHigher =
-                                randomBool();
-                        harmony =
-                                song.map( function ( x ) {
-                                              return [ x[ 0 ],
-                                                       harmonicOf( x[ 1 ], interval, isHigher, key ) ];
-
-                                          }
-                                );
-                        return harmony;
-
-                }
-
-        }
-
-
-    function beginPlaying(key) {
-        globalInterruptFlag = true; // stop the music!
-        var song  = generateMelody( 4, key, 2, 1000, 1000 );
+    function deriveHarmonicAccompaniment(song, key) {
         var harmony = song.map(function(x) {
             return [x[0], harmonicThirdOf(x[1], key)];
 
         });
-        var song2 = generateMelody( 4, key, 4, 1000, 500 );
-        var harmony2 = deriveHarmonicAccompaniment(song2, key, "random");
-        var song3 = generateMelody( 2, key, 1, 1000, 1000 );
-        var harmony3 =  deriveHarmonicAccompaniment(song3, key, "random");
-        var song4 = generateMelody( 4, key, 4, 1000, 800 );
+        return harmony;
+    }
+
+    function beginPlaying(key) {
+        globalInterruptFlag = true; // stop the music!
+        var song  = generateMelody( 4, key, 2, 50, 800 );
+        var harmony = song.map(function(x) {
+            return [x[0], harmonicThirdOf(x[1], key)];
+
+        });
+        var song2 = generateMelody( 3, key, 4, 50, 600 );
+        var harmony2 = deriveHarmonicAccompaniment(song2, key);
+        var song3 = generateMelody( 2, key, 3, 50, 400 );
+        var song4 = generateMelody( 4, key, 4, 50, 800 );
         setTimeout(function() {
             // we must wait at most the length of the longest bar to ensure that the music has completely halted
             globalInterruptFlag = false;
@@ -290,8 +267,6 @@
             play(harmony);
             play(song2);
             play(harmony2);
-            play(song3);
-            play(harmony3);
 
 //            play(song2);
 //            play(song3);
@@ -308,15 +283,15 @@
 
 
 </script>
-<button type="button" onclick="beginPlaying('A Major')">A Major</button>
-<button type="button" onclick="beginPlaying('B Major')">B Major</button>
-<button type="button" onclick="beginPlaying('C Major')">C Major</button>
-<button type="button" onclick="beginPlaying('D Major')">D Major</button>
-<button type="button" onclick="beginPlaying('C Minor')">C Minor</button>
-<button type="button" onclick="beginPlaying('C Dorian')">C Dorian</button>
-<button type="button" onclick="beginPlaying('C Lydian')">C Lydian</button>
-<button type="button" onclick="beginPlaying('C Phrygian')">C Phrygian</button>
-<button type="button" onclick="beginPlaying('C Locrian')">C Locrian</button>
+   <button type="button" onclick="beginPlaying('A Major')">A Major</button>
+   <button type="button" onclick="beginPlaying('B Major')">B Major</button>
+   <button type="button" onclick="beginPlaying('C Major')">C Major</button>
+   <button type="button" onclick="beginPlaying('D Major')">D Major</button>
+   <button type="button" onclick="beginPlaying('C Minor')">C Minor</button>
+   <button type="button" onclick="beginPlaying('C Dorian')">C Dorian</button>
+   <button type="button" onclick="beginPlaying('C Lydian')">C Lydian</button>
+   <button type="button" onclick="beginPlaying('C Phrygian')">C Phrygian</button>
+   <button type="button" onclick="beginPlaying('C Locrian')">C Locrian</button>
 
 
 
